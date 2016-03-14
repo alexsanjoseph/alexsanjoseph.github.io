@@ -1,8 +1,8 @@
 ---
 layout: post
-category : Rpackage
+category : R
 tagline: "Introducing compareDF"
-tags : [R, beginner, package, compare]
+tags : [R, data.frames, package, compare]
 ---
 {% include JB/setup %}
 
@@ -24,7 +24,8 @@ what `compareDF` package is all about.
 
 # Usage
 
-The package has a single function, `compare_df`. It takes in two data frames, and one or
+[The package](https://github.com/alexsanjoseph/compareDF)
+has a single function, `compare_df`. It takes in two data frames, and one or
 more grouping variables and does a comparison between the the two. In addition you can
 sepcificy columns to ignore, decide how many rows of changes to be displayed in the case
 of the HTML output, and decide what tolerance you want to provide to detect change.
@@ -1172,7 +1173,7 @@ Naturally, tolerance has no meaning for non-numeric values.
 
 ## Acknowledgements
 
-I'd like to thank System Insights Inc. for all the things that I have learned while working
+I'd like to thank [System Insights Inc.](http://www.systeminsights.com/) for all the things that I have learned while working
 there which I have used one way or the other in this package.
 
 _A version of this blog has been published as the README for the package._

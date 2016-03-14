@@ -1,11 +1,9 @@
 ---
 layout: page
-title: Hello World!
+title: Welcome to Alex's Data Science Blog!
 tagline: Supporting tagline
 ---
 {% include JB/setup %}
-
-# Welcome to Alex's Data Science Blog
 
 Here are the currently available posts in the blog.
 
