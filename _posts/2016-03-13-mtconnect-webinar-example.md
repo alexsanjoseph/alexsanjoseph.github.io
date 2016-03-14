@@ -163,19 +163,19 @@ zpos_data = getDataItem(mtc_device, "Zposition") %>% getData()
 ggplot() + geom_line(data = xpos_data, aes(x = timestamp, y = value))
 ```
 
-![](mtconnect_challenge_files/figure-html/unnamed-chunk-5-1.png)
+![]({{ site.github.url }}/images/mtconnect_challenge_files/figure-html/unnamed-chunk-5-1.png)
 
 ```r
 ggplot() + geom_line(data = ypos_data, aes(x = timestamp, y = value))
 ```
 
-![](mtconnect_challenge_files/figure-html/unnamed-chunk-5-2.png)
+![]({{ site.github.url }}/images/mtconnect_challenge_files/figure-html/unnamed-chunk-5-2.png)
 
 ```r
 ggplot() + geom_line(data = zpos_data, aes(x = timestamp, y = value))
 ```
 
-![](mtconnect_challenge_files/figure-html/unnamed-chunk-5-3.png)
+![]({{ site.github.url }}/images/mtconnect_challenge_files/figure-html/unnamed-chunk-5-3.png)
 
 ## Merging different data items for simultaneous analysis
 
@@ -272,7 +272,7 @@ ggplot(data = merged_pos_data, aes(x = timestamp)) +
   theme(legend.title = element_blank())
 ```
 
-![](mtconnect_challenge_files/figure-html/unnamed-chunk-8-1.png)
+![]({{ site.github.url }}/images/mtconnect_challenge_files/figure-html/unnamed-chunk-8-1.png)
 
 It does look the sudden traverals are simultaenous across the axes. Plotting one axes
 against the other leads to the same conclusion. It also gives us an idea of the different
@@ -283,19 +283,19 @@ representations of the part
 ggplot(data = merged_pos_data, aes(x = Xposition, y = Yposition)) + geom_path()
 ```
 
-![](mtconnect_challenge_files/figure-html/unnamed-chunk-9-1.png)
+![]({{ site.github.url }}/images/mtconnect_challenge_files/figure-html/unnamed-chunk-9-1.png)
 
 ```r
 ggplot(data = merged_pos_data, aes(x = Xposition, y = Zposition)) + geom_path()
 ```
 
-![](mtconnect_challenge_files/figure-html/unnamed-chunk-9-2.png)
+![]({{ site.github.url }}/images/mtconnect_challenge_files/figure-html/unnamed-chunk-9-2.png)
 
 ```r
 ggplot(data = merged_pos_data, aes(x = Zposition, y = Yposition)) + geom_path()
 ```
 
-![](mtconnect_challenge_files/figure-html/unnamed-chunk-9-3.png)
+![]({{ site.github.url }}/images/mtconnect_challenge_files/figure-html/unnamed-chunk-9-3.png)
 
 So the machine tool is going to the origin every so often.
 
@@ -335,7 +335,7 @@ ggplot(dt.df, aes(x = timestamp, y = value)) +
 ## Warning: Removed 1 rows containing missing values (geom_path).
 ```
 
-![](mtconnect_challenge_files/figure-html/unnamed-chunk-10-1.png)
+![]({{ site.github.url }}/images/mtconnect_challenge_files/figure-html/unnamed-chunk-10-1.png)
 
 ```r
 ggplot(data = merged_pos_data, aes(x = timestamp)) +
@@ -347,7 +347,7 @@ ggplot(data = merged_pos_data, aes(x = timestamp)) +
 ## Warning: Removed 1 rows containing missing values (geom_path).
 ```
 
-![](mtconnect_challenge_files/figure-html/unnamed-chunk-10-2.png)
+![]({{ site.github.url }}/images/mtconnect_challenge_files/figure-html/unnamed-chunk-10-2.png)
 
 Let's add this derived data back into the MTCDevice Class.
 
@@ -438,7 +438,7 @@ X - Y graph again
 ggplot(data = merged_pos_data, aes(x = Xposition, y = Yposition)) + geom_path()
 ```
 
-![](mtconnect_challenge_files/figure-html/unnamed-chunk-13-1.png)
+![]({{ site.github.url }}/images/mtconnect_challenge_files/figure-html/unnamed-chunk-13-1.png)
 
 It is clear that the periods when the machine was origin are roughly X > 30, Y < -30.
 Adding this into the mix
