@@ -9,23 +9,22 @@ tags : [R, data.frames, package, compare]
 # Introduction
 
 Every so often while doing data analysis, I have come across a situation where I have
-two datasets, which have the same structure but with small difference between the two.
-For example:
+two datasets, which have the same structure but with small differences in the actual
+data between the two. For example:
 
 * Variation of a dataset across different time periods for the same grouping
 * Variation of values for different algorithms, etc.
 
-In the above cases, I want to quickly know what has changed across the two data.frames,
-how much has changed, and also to get a quick summary of the extent of change. There are
-packages like the famous `compare` package on R, but that was focused more on the structure of
+In the above cases, I want to easily identify what has changed across the two data.frames,
+how much has changed, and also hopefully to get a quick summary of the extent of change. There are
+packages like the `compare` package on R, which have focused more on the structure of
 the data frame and lesser on the data itself. I was not able to easily identify and
-isolate what has changed in the dataset. So I decided to write one for myself. That is
+isolate what has changed in the data itself. So I decided to write one for myself. That is
 what `compareDF` package is all about.
 
 # Usage
 
-[The package](https://github.com/alexsanjoseph/compareDF)
-has a single function, `compare_df`. It takes in two data frames, and one or
+The package has a single function, `compare_df`. It takes in two data frames, and one or
 more grouping variables and does a comparison between the the two. In addition you can
 sepcificy columns to ignore, decide how many rows of changes to be displayed in the case
 of the HTML output, and decide what tolerance you want to provide to detect change.
@@ -93,8 +92,8 @@ The package allows a user to quickly identify these changes.
 
 ## Basic Comparison
 Now let's compare the performance of the students across the years. The grouping variables is the
-_Student_ columns. We will ignore the _Division_ columns and assume that the student names are unique
-across divisions. In this sub-example, if a student appears in two division, he has studied in both
+_Student_ column. We will ignore the _Division_ column and assume that the student names are unique
+across divisions. In this sub-example, if a student appears in two divisions, he/she has studied in both
 of them.
 
 
@@ -148,18 +147,18 @@ ctable_student$comparison_df
 
 By default, no columns are excluded from the comparison, so any of the tuple of grouping
 variables which are different across the two data frames are shown in the comparison table.
-The `comparison_df` table shows all the rows for which at least one record has changed. If
+The `comparison_df` table shows all the rows for which at least one record has changed. Conversely, if
 nothing has changed across the two tables, the rows are not displayed. If a new record has been
 introduced or a record has been removed, those are displayed as well.
 
-For example, _Akshay, Division A_ has the exact same scores but has two different grades for _Discipline_ across
+For example, _Akshay, Division A_ has had the exact same scores but has two different grades for _Discipline_ across
 the two years so that row is included.
 
-However, _Macho, Division B_ has had the exact same scores in both the years, so his data is not
+However, _Macho, Division B_ has had the exact same scores in both the years for all subjects, so his data is not
 shown in the comparison table.
 
 ## HTML Output
-While the comparison, table can be quickly summarized in various forms for futher analysis, it is
+While the comparison table can be quickly summarized in various forms for futher analysis, it is
 very difficult to  process visually. The `html_output` provides a way to represent this is a way that is easier
 for the numan eye to read. NOTE: You need to install the `htmlTable` package for the HTML comparison to work.
 _For the purpose of the readme I am attaching the html as a png because github markdown doesn't retain styles._
@@ -450,9 +449,9 @@ are colored in Green. Similarly, a row group name (and the other columns in that
 colored red if a row was removed.
 
 For Example, _Akshay_, _Ananth_ and _Bulla_ has had changes in
-scored, which are in _Discipline_, _Maths_, and _Maths_ respectively.
-_Dhakkan_ and _Mugger_ have dropped out of the dataset from 2010 and the full rows are shown
-in red, which _DikChik_ and _Vikram_ have joined new in the data set and the full rows are in green.
+scores, which are in _Discipline_, _Maths_, and _Maths_ respectively.
+_Dhakkan_ and _Mugger_ have dropped out of the dataset from 2010 and the all the columns for the rows are shown
+in red, which _DikChik_ and _Vikram_ have joined new in the data set and all the columns for the rows are in green.
 
 The same data is represented in tabular form (for further analysis, if necessary) in the
 `comparison_table_diff` object
@@ -863,7 +862,8 @@ the case where some columns are not included)
 For dataframes which have a large amount of differences in them, generating HTML might take
 a long time and crash your system. So the maximum diff size for the HTML (and for the HTML
 visualization only) is capped at 100 by default. If you want to see more difference, you can change
-the `limit_html` parameter appropriately.
+the `limit_html` parameter appropriately. NOTE: This is only of the HTML output which is used for visual
+checking. The main comparison data frame and the summaries ALWAYS include data from all the rows.
 
 
 ## Tolerance
@@ -1173,7 +1173,7 @@ Naturally, tolerance has no meaning for non-numeric values.
 
 ## Acknowledgements
 
-I'd like to thank [System Insights Inc.](http://www.systeminsights.com/) for all the things that I have learned while working
+I'd like to thank System Insights Inc. for all the things that I have learned while working
 there which I have used one way or the other in this package.
 
-_A version of this blog has been published as the README for the package._
+_A version of this blog has been published as the README for the [package](https://github.com/alexsanjoseph/compareDF)._
