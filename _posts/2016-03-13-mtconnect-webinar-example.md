@@ -2,8 +2,8 @@
 layout: post
 title: "MTConnect Webinar Example"
 description: ""
-category:
-tags: []
+category: MTConnect
+tags: [R, MTConnect, Webinar]
 ---
 {% include JB/setup %}
 
