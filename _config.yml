@@ -28,7 +28,7 @@ production_url : http://alexsanjoseph.github.io
 
 gems:
   - jekyll-feed
-  
+
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
 JB :
