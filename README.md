@@ -1,6 +1,6 @@
 ## What?
 
-This is the source for the [blog](alexsanjoseph.github.io)
+This is the source for the [blog](http://alexsanjoseph.github.io)
 
 ## License
 
