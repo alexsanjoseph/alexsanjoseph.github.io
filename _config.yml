@@ -15,7 +15,6 @@ author :
   email : alexsanjoseph@gmail.com
   github : alexsanjoseph
   twitter : alexsanjoseph
-  feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt
@@ -27,6 +26,9 @@ author :
 #
 production_url : http://alexsanjoseph.github.io
 
+gems:
+  - jekyll-feed
+  
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
 JB :
