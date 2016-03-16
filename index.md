@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Welcome to Alex's Data Science Blog!
+title: Welcome to Yet Another Data Science Blog!
 tagline: Supporting tagline
 ---
 {% include JB/setup %}
