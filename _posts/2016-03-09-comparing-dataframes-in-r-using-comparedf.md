@@ -26,7 +26,7 @@ what `compareDF` package is all about.
 
 The package has a single function, `compare_df`. It takes in two data frames, and one or
 more grouping variables and does a comparison between the the two. In addition you can
-sepcificy columns to ignore, decide how many rows of changes to be displayed in the case
+specify columns to ignore, decide how many rows of changes to be displayed in the case
 of the HTML output, and decide what tolerance you want to provide to detect change.
 
 # Basic Example
@@ -91,7 +91,7 @@ Eg: - _Mugger and Dhakkan_ dropped out while _Vikram and Dikchik_ where added in
 The package allows a user to quickly identify these changes.
 
 ## Basic Comparison
-Now let's compare the performance of the students across the years. The grouping variables is the
+Now let's compare the performance of the students across the years. The grouping variables are the
 _Student_ column. We will ignore the _Division_ column and assume that the student names are unique
 across divisions. In this sub-example, if a student appears in two divisions, he/she has studied in both
 of them.
@@ -1174,6 +1174,7 @@ Naturally, tolerance has no meaning for non-numeric values.
 ## Acknowledgements
 
 I'd like to thank System Insights Inc. for all the things that I have learned while working
-there which I have used one way or the other in this package.
+there which I have used one way or the other in this package. Special thanks to Nitin for
+proofreading the doc and making sure everything made sense.
 
 _A version of this blog has been published as the README for the [package](https://github.com/alexsanjoseph/compareDF)._
