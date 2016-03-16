@@ -3,7 +3,7 @@ layout: post
 title: "MTConnect Webinar Example"
 description: ""
 category: MTConnect
-tags: [R, MTConnect, Webinar]
+tags: [MTConnect, Webinar]
 ---
 {% include JB/setup %}
 
