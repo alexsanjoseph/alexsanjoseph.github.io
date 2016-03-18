@@ -20,7 +20,7 @@ time is defined as the time taken by the machine to complete the part excluding 
 # Reading Data into R
 First let us define the data files that we are going to be working with. Two sets of
 example data from the MTConnect Agent samples and the result of the MTConnect probe are provided
-along with the package. We will be using the one provided by nist for this analysis. Note that the
+along with the package. We will be using the one provided by NIST for this analysis. Note that the
 package can read in a compressed file as if it were a normal file as well for the samples.
 
 
