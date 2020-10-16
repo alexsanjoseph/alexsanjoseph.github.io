@@ -19,7 +19,7 @@ enableRobotsTXT = true
     sidebar-width = "36 rem"
 
     authorimage = "/img/alex.jpeg"
-    dateformat = "Jan 2, 2006"
+    dateformat = "2006 Jan 2"
 
     # sidebar, copyright & license
     copyright = "alexsanjoseph"
