@@ -2,62 +2,62 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Alex&#39;s Blog</title>
-    <link>/tags/</link>
+    <link>alexsanjoseph.github.com/tags/</link>
     <description>Recent content in Tags on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 17 Aug 2018 01:25:41 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Aug 2018 01:25:41 +0530</lastBuildDate><atom:link href="alexsanjoseph.github.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>compare</title>
-      <link>/tags/compare/</link>
+      <link>alexsanjoseph.github.com/tags/compare/</link>
       <pubDate>Fri, 17 Aug 2018 01:25:41 +0530</pubDate>
       
-      <guid>/tags/compare/</guid>
+      <guid>alexsanjoseph.github.com/tags/compare/</guid>
       <description></description>
     </item>
     
     <item>
       <title>data.frames</title>
-      <link>/tags/data.frames/</link>
+      <link>alexsanjoseph.github.com/tags/data.frames/</link>
       <pubDate>Fri, 17 Aug 2018 01:25:41 +0530</pubDate>
       
-      <guid>/tags/data.frames/</guid>
+      <guid>alexsanjoseph.github.com/tags/data.frames/</guid>
       <description></description>
     </item>
     
     <item>
       <title>package</title>
-      <link>/tags/package/</link>
+      <link>alexsanjoseph.github.com/tags/package/</link>
       <pubDate>Fri, 17 Aug 2018 01:25:41 +0530</pubDate>
       
-      <guid>/tags/package/</guid>
+      <guid>alexsanjoseph.github.com/tags/package/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/tags/r/</link>
+      <link>alexsanjoseph.github.com/tags/r/</link>
       <pubDate>Fri, 17 Aug 2018 01:25:41 +0530</pubDate>
       
-      <guid>/tags/r/</guid>
+      <guid>alexsanjoseph.github.com/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MTConnect</title>
-      <link>/tags/mtconnect/</link>
+      <link>alexsanjoseph.github.com/tags/mtconnect/</link>
       <pubDate>Sun, 16 Oct 2016 22:10:24 +0530</pubDate>
       
-      <guid>/tags/mtconnect/</guid>
+      <guid>alexsanjoseph.github.com/tags/mtconnect/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Webinar</title>
-      <link>/tags/webinar/</link>
+      <link>alexsanjoseph.github.com/tags/webinar/</link>
       <pubDate>Sun, 16 Oct 2016 22:10:24 +0530</pubDate>
       
-      <guid>/tags/webinar/</guid>
+      <guid>alexsanjoseph.github.com/tags/webinar/</guid>
       <description></description>
     </item>
     
