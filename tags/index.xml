@@ -2,62 +2,62 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Alex&#39;s Blog</title>
-    <link>blog.alexsanjoseph.com/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 17 Aug 2018 01:25:41 +0530</lastBuildDate><atom:link href="blog.alexsanjoseph.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Aug 2018 01:25:41 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>compare</title>
-      <link>blog.alexsanjoseph.com/tags/compare/</link>
+      <link>/tags/compare/</link>
       <pubDate>Fri, 17 Aug 2018 01:25:41 +0530</pubDate>
       
-      <guid>blog.alexsanjoseph.com/tags/compare/</guid>
+      <guid>/tags/compare/</guid>
       <description></description>
     </item>
     
     <item>
       <title>data.frames</title>
-      <link>blog.alexsanjoseph.com/tags/data.frames/</link>
+      <link>/tags/data.frames/</link>
       <pubDate>Fri, 17 Aug 2018 01:25:41 +0530</pubDate>
       
-      <guid>blog.alexsanjoseph.com/tags/data.frames/</guid>
+      <guid>/tags/data.frames/</guid>
       <description></description>
     </item>
     
     <item>
       <title>package</title>
-      <link>blog.alexsanjoseph.com/tags/package/</link>
+      <link>/tags/package/</link>
       <pubDate>Fri, 17 Aug 2018 01:25:41 +0530</pubDate>
       
-      <guid>blog.alexsanjoseph.com/tags/package/</guid>
+      <guid>/tags/package/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>blog.alexsanjoseph.com/tags/r/</link>
+      <link>/tags/r/</link>
       <pubDate>Fri, 17 Aug 2018 01:25:41 +0530</pubDate>
       
-      <guid>blog.alexsanjoseph.com/tags/r/</guid>
+      <guid>/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MTConnect</title>
-      <link>blog.alexsanjoseph.com/tags/mtconnect/</link>
+      <link>/tags/mtconnect/</link>
       <pubDate>Sun, 16 Oct 2016 22:10:24 +0530</pubDate>
       
-      <guid>blog.alexsanjoseph.com/tags/mtconnect/</guid>
+      <guid>/tags/mtconnect/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Webinar</title>
-      <link>blog.alexsanjoseph.com/tags/webinar/</link>
+      <link>/tags/webinar/</link>
       <pubDate>Sun, 16 Oct 2016 22:10:24 +0530</pubDate>
       
-      <guid>blog.alexsanjoseph.com/tags/webinar/</guid>
+      <guid>/tags/webinar/</guid>
       <description></description>
     </item>
     
