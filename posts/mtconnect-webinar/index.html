@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.76.5" />
+
+    
+    
+    
+
+<title>MTConnect Webinar Example • Alex&#39;s Blog</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MTConnect Webinar Example"/>
+<meta name="twitter:description" content="Introduction For a real life working example, we have this dataset graciously provided to us by the National Institute of Standards and Technology (http://www.nist.gov/) for one of their test bed parts. We will be trying to solve the first example from the introduction, which was a real problem faced by the NIST researchers. As we walk through each step of the exploratory process, you will understand how you can use similar techniques to solve similar issues that you might have with your Machine Tools."/>
+
+<meta property="og:title" content="MTConnect Webinar Example" />
+<meta property="og:description" content="Introduction For a real life working example, we have this dataset graciously provided to us by the National Institute of Standards and Technology (http://www.nist.gov/) for one of their test bed parts. We will be trying to solve the first example from the introduction, which was a real problem faced by the NIST researchers. As we walk through each step of the exploratory process, you will understand how you can use similar techniques to solve similar issues that you might have with your Machine Tools." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="blog.alexsanjoseph.com/posts/mtconnect-webinar/" />
+<meta property="article:published_time" content="2016-10-16T22:10:24+05:30" />
+<meta property="article:modified_time" content="2016-10-16T22:10:24+05:30" /><meta property="og:site_name" content="Alex&#39;s" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog.alexsanjoseph.com/scss/hyde-hyde.610b92ad1570efec97005d6bca989ded138fab720d6d49c2753307a69ca8b7d6.css" integrity="sha256-YQuSrRVw7&#43;yXAF1rypid7ROPq3INbUnCdTMHppyot9Y=">
+
+
+<link rel="stylesheet" href="/blog.alexsanjoseph.com/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="blog.alexsanjoseph.com/">Alex&#39;s Blog</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="blog.alexsanjoseph.com/img/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+        
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Alex&#39;s Blog</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="blog.alexsanjoseph.com/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="blog.alexsanjoseph.com/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/alexsanjoseph" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/alexsanjoseph" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/alexsanjoseph" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://stackoverflow.com/users/1653808/alex-joseph" rel="me"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:alexsanjoseph%20at%20gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2016 - 2020 alexsanjoseph
+  
+</div>
+
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>MTConnect Webinar Example</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> 2016 Oct 16
+    
+    
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/blog.alexsanjoseph.com/tags/r">r</a>
+           
+      
+          <a class="badge badge-tag" href="/blog.alexsanjoseph.com/tags/mtconnect">mtconnect</a>
+           
+      
+          <a class="badge badge-tag" href="/blog.alexsanjoseph.com/tags/webinar">webinar</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 11 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    <h1 id="introduction">Introduction</h1>
+<p>For a real life working example, we have this dataset graciously provided to us by the National Institute of Standards and Technology (<a href="http://www.nist.gov/">http://www.nist.gov/</a>) for one of their test bed parts. We will be trying to solve the first example from the introduction, which was a real problem faced by the NIST researchers. As we walk through each step of the exploratory process, you will understand how you can use similar techniques to solve similar issues that you might have with your Machine Tools.</p>
+<h1 id="problem-statement">Problem Statement</h1>
+<p>Accurately estimate the productive time of a part, from the data of a part that was manufactured with interruptions. Productive
+time is defined as the time taken by the machine to complete the part excluding interruptions and inefficiencies.</p>
+<h1 id="reading-data-into-r">Reading Data into R</h1>
+<p>First let us define the data files that we are going to be working with. Two sets of
+example data from the MTConnect Agent samples and the result of the MTConnect probe are provided
+along with the package. We will be using the one provided by NIST for this analysis. Note that the
+package can read in a compressed file as if it were a normal file as well for the samples.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">suppressPackageStartupMessages</span>(<span style="color:#a6e22e">require</span>(mtconnectR))
+<span style="color:#a6e22e">suppressPackageStartupMessages</span>(<span style="color:#a6e22e">require</span>(dplyr))
+file_path_dmtcd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;../data/delimited_mtc_data/nist_test_bed/GF_Agie.tar.gz&#34;</span>
+file_path_xml <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;../data/delimited_mtc_data/nist_test_bed/Devices.xml&#34;</span>
+</code></pre></div><h2 id="taking-a-quick-look-at-the-data-files">Taking a quick look at the data files</h2>
+<p>Before we read in the data into the MTC Device Class, it might help us a bit in understanding
+a bit about the data items that we have.</p>
+<h2 id="devices-xml-data">Devices XML Data</h2>
+<h3 id="get_device_info_from_xml">get_device_info_from_xml</h3>
+<p>The <code>MTConnectDevices</code> XML document has information about the logical components of one or
+more devices. This file can obtained using the <code>probe</code> request from an MTConnect Agent.</p>
+<p>We can check out the devices for which the info is present in the devices XML using the
+<code>get_device_info_from_xml</code> function. From the device info, we can select the name of the
+device that we want to analyse further</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">(device_info <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_device_info_from_xml</span>(file_path_xml))
+</code></pre></div><pre><code>##                      name                           uuid           id
+## 1 nist_testbed_Mazak_QT_1 nist_testbed_Mazak_QT_1_74fd52 Mazak_QT_1_1
+## 2  nist_testbed_GF_Agie_1  nist_testbed_GF_Agie_1_3a0e8a GF_Agie_1_78
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">device_name <span style="color:#f92672">=</span> device_info<span style="color:#f92672">$</span>name[2]
+</code></pre></div><h3 id="get_xpaths_from_xml">get_xpaths_from_xml</h3>
+<p>The <code>get_xpath_from_xml</code> function can read in the xpath info for a single device into
+a easily read data.frame format.</p>
+<p>The data.frame contains the id and name of each data item and the xpath along with the type,
+category and subType of the data_item. It is easy to find out what are the data items of a
+particular type using this function. For example, we are going to find out the conditions data
+items which we will be using in the next step.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">xpath_info <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_xpaths_from_xml</span>(file_path_xml, device_name)
+<span style="color:#a6e22e">head</span>(xpath_info)
+</code></pre></div><pre><code>##        id      name           type  category subType
+## 1 dtop_79     avail   AVAILABILITY     EVENT    &lt;NA&gt;
+## 2 dtop_80     estop EMERGENCY_STOP     EVENT    &lt;NA&gt;
+## 3 dtop_81    system         SYSTEM CONDITION    &lt;NA&gt;
+## 4    X_84 Xposition       POSITION    SAMPLE  ACTUAL
+## 5    Y_86 Yposition       POSITION    SAMPLE  ACTUAL
+## 6    Z_88 Zposition       POSITION    SAMPLE  ACTUAL
+##                                                       xpath
+## 1        nist_testbed_GF_Agie_1&lt;Device&gt;:avail&lt;AVAILABILITY&gt;
+## 2      nist_testbed_GF_Agie_1&lt;Device&gt;:estop&lt;EMERGENCY_STOP&gt;
+## 3             nist_testbed_GF_Agie_1&lt;Device&gt;:system&lt;SYSTEM&gt;
+## 4 nist_testbed_GF_Agie_1&lt;Device&gt;:Xposition&lt;POSITION-ACTUAL&gt;
+## 5 nist_testbed_GF_Agie_1&lt;Device&gt;:Yposition&lt;POSITION-ACTUAL&gt;
+## 6 nist_testbed_GF_Agie_1&lt;Device&gt;:Zposition&lt;POSITION-ACTUAL&gt;
+</code></pre><h2 id="getting-sample-data-by-parsing-mtconnectstreams-data">Getting Sample data by parsing <code>MTConnectStreams</code> data</h2>
+<p><code>MTConnectStreams</code> data from an MTConnect Agent can be collected using a <code>ruby</code> script to
+generate a delimited log of device data (referred to in this document as <em>log data</em>) which is
+then used by the <code>mtconnectR</code> Package.</p>
+<h2 id="creating-mtc-device-class">Creating MTC Device Class</h2>
+<p><code>create_mtc_device_from_dmtcd</code> function can read in both the Delimited MTConnect data (DMTCD)
+and the xml data for a device and combine it into a single MTCDevice Class with the
+data organized separately for each data item.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">mtc_device <span style="color:#f92672">=</span> <span style="color:#a6e22e">create_mtc_device_from_dmtcd</span>(file_path_dmtcd, file_path_xml, device_name)
+</code></pre></div><pre><code>## Reading Delimted MTC data...
+</code></pre><pre><code>## 99.83% data contextualized successfuly!
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">names</span>(mtc_device<span style="color:#f92672">@</span>data_item_list)
+</code></pre></div><h1 id="exploring-different-data-items">Exploring different data items</h1>
+<p>It looks like we have the position data items that we might need for this analysis in the log
+data. Let&rsquo;s see the variation in position. We can plot all the data items in one plot using
+ggplot2.</p>
+<h2 id="plotting-the-data">Plotting the data</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;ggplot2&#34;</span>)
+</code></pre></div><pre><code>## Loading required package: ggplot2
+</code></pre><pre><code>## Warning: package 'ggplot2' was built under R version 3.2.4
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;reshape2&#34;</span>)
+</code></pre></div><pre><code>## Loading required package: reshape2
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">xpos_data <span style="color:#f92672">=</span> <span style="color:#a6e22e">getDataItem</span>(mtc_device, <span style="color:#e6db74">&#34;Xposition&#34;</span>) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">getData</span>()
+ypos_data <span style="color:#f92672">=</span> <span style="color:#a6e22e">getDataItem</span>(mtc_device, <span style="color:#e6db74">&#34;Yposition&#34;</span>) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">getData</span>()
+zpos_data <span style="color:#f92672">=</span> <span style="color:#a6e22e">getDataItem</span>(mtc_device, <span style="color:#e6db74">&#34;Zposition&#34;</span>) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">getData</span>()
+
+<span style="color:#a6e22e">ggplot</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_line</span>(data <span style="color:#f92672">=</span> xpos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> timestamp, y <span style="color:#f92672">=</span> value))
+</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-5-1.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_line</span>(data <span style="color:#f92672">=</span> ypos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> timestamp, y <span style="color:#f92672">=</span> value))
+</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-5-2.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_line</span>(data <span style="color:#f92672">=</span> zpos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> timestamp, y <span style="color:#f92672">=</span> value))
+</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-5-3.png" alt=""></p>
+<h2 id="merging-different-data-items-for-simultaneous-analysis">Merging different data items for simultaneous analysis</h2>
+<p>It looks like the machine is going back and forth quite some distance quite often, across
+all the axes. We also don&rsquo;t know how this traversal varies across different axis.
+However, we can get a much better idea of the motion if we could plot one
+axis against the other. For that we have to merge the different data items. Since the
+different data items have different timestamp values as the key, it is not as straightforward
+as doing a join of one data item against the other. For this purpose, the <code>mtconnect</code> packge has a merge
+method defined for the MTCDevice Class</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">merged_pos_data <span style="color:#f92672">=</span> <span style="color:#a6e22e">merge</span>(mtc_device, <span style="color:#e6db74">&#34;position&#34;</span>) <span style="color:#75715e"># merge all dataitems with the word position</span>
+<span style="color:#a6e22e">head</span>(merged_pos_data)
+</code></pre></div><pre><code>##                    timestamp
+## 1 2015-11-02 14:58:49.994391
+## 2 2015-11-02 14:59:03.742392
+## 3 2015-11-02 14:59:03.886408
+## 4 2015-11-02 14:59:14.122334
+## 5 2015-11-02 14:59:14.270387
+## 6 2015-11-02 14:59:22.486440
+##   nist_testbed_GF_Agie_1&lt;Device&gt;:Aposition&lt;ANGLE-ACTUAL&gt;
+## 1                                                -0.0001
+## 2                                                -0.0001
+## 3                                                -0.0001
+## 4                                                -0.0001
+## 5                                                -0.0001
+## 6                                                -0.0001
+##   nist_testbed_GF_Agie_1&lt;Device&gt;:Cposition&lt;ANGLE-ACTUAL&gt;
+## 1                                                 0.0278
+## 2                                                 0.0278
+## 3                                                 0.0278
+## 4                                                 0.0278
+## 5                                                 0.0278
+## 6                                                 0.0278
+##   nist_testbed_GF_Agie_1&lt;Device&gt;:Xposition&lt;POSITION-ACTUAL&gt;
+## 1                                                  33.69547
+## 2                                                  33.69548
+## 3                                                  33.69547
+## 4                                                  33.69548
+## 5                                                  33.69547
+## 6                                                  33.69548
+##   nist_testbed_GF_Agie_1&lt;Device&gt;:Yposition&lt;POSITION-ACTUAL&gt;
+## 1                                                 -38.69783
+## 2                                                 -38.69783
+## 3                                                 -38.69783
+## 4                                                 -38.69783
+## 5                                                 -38.69783
+## 6                                                 -38.69784
+##   nist_testbed_GF_Agie_1&lt;Device&gt;:Zposition&lt;POSITION-ACTUAL&gt;
+## 1                                                  20.37543
+## 2                                                  20.37543
+## 3                                                  20.37543
+## 4                                                  20.37543
+## 5                                                  20.37543
+## 6                                                  20.37543
+</code></pre><p>Oops. Looks like we have also merged in the angular position. Let&rsquo;s try a more
+directed merge. Also, the names of the data items have the full xpaths attached to them. While this might be
+useful in other circumstances to get the hierarchical position of the data, we can dispense with it
+now using the <code>extract_param_from_xpath</code> function. Let&rsquo;s view the data after that</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">merged_pos_data <span style="color:#f92672">=</span> <span style="color:#a6e22e">merge</span>(mtc_device, <span style="color:#e6db74">&#34;position&lt;POSITION-ACTUAL&#34;</span>) <span style="color:#75715e"># merge all dataitems with the word position</span>
+<span style="color:#a6e22e">names</span>(merged_pos_data) <span style="color:#f92672">=</span> <span style="color:#a6e22e">extract_param_from_xpath</span>(<span style="color:#a6e22e">names</span>(merged_pos_data), param <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;DIName&#34;</span>, show_warnings <span style="color:#f92672">=</span> F)
+<span style="color:#a6e22e">head</span>(merged_pos_data)
+</code></pre></div><pre><code>##                    timestamp Xposition Yposition Zposition
+## 1 2015-11-02 14:58:49.994391  33.69547 -38.69783  20.37543
+## 2 2015-11-02 14:59:03.742392  33.69548 -38.69783  20.37543
+## 3 2015-11-02 14:59:03.886408  33.69547 -38.69783  20.37543
+## 4 2015-11-02 14:59:14.122334  33.69548 -38.69783  20.37543
+## 5 2015-11-02 14:59:14.270387  33.69547 -38.69783  20.37543
+## 6 2015-11-02 14:59:22.486440  33.69548 -38.69784  20.37543
+</code></pre><p>Much better. Now let&rsquo;s plot the data items in one shot.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>(data <span style="color:#f92672">=</span> merged_pos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> timestamp)) <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Xposition, col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Xpos&#39;</span>)) <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Yposition, col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Ypos&#39;</span>)) <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Zposition, col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Zpos&#39;</span>)) <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">theme</span>(legend.title <span style="color:#f92672">=</span> <span style="color:#a6e22e">element_blank</span>())
+</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-8-1.png" alt=""></p>
+<p>It does look the sudden traverals are simultaenous across the axes. Plotting one axes
+against the other leads to the same conclusion. It also gives us an idea of the different
+representations of the part</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>(data <span style="color:#f92672">=</span> merged_pos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Xposition, y <span style="color:#f92672">=</span> Yposition)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_path</span>()
+</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-9-1.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>(data <span style="color:#f92672">=</span> merged_pos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Xposition, y <span style="color:#f92672">=</span> Zposition)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_path</span>()
+</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-9-2.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>(data <span style="color:#f92672">=</span> merged_pos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Zposition, y <span style="color:#f92672">=</span> Yposition)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_path</span>()
+</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-9-3.png" alt=""></p>
+<p>So the machine tool is going to the origin every so often.</p>
+<h1 id="deriving-new-process-parameters">Deriving new process parameters</h1>
+<p>It might help our analysis to also calculate a few process parameters that the machine
+tool is not providing directly. Here we are going to calculate the actual Path Feedrate
+of the machine as it executes the process using the position data.</p>
+<h2 id="derived-path-feedrate">Derived Path Feedrate</h2>
+<p>Path Feedrate can be calculated as the rate of change of the position values. Here,
+we must use the 3-dimensional distance value and not just one of the position vectors.</p>
+<p>PFR = Total Distance / Total Time
+= Sqrt(Sum of Squares of distane along individual axis) / time taken for motion</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">position_change_3d <span style="color:#f92672">=</span>
+  ((<span style="color:#a6e22e">lead</span>(merged_pos_data<span style="color:#f92672">$</span>Xposition, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">-</span> merged_pos_data<span style="color:#f92672">$</span>Xposition) ^ <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span>
+  (<span style="color:#a6e22e">lead</span>(merged_pos_data<span style="color:#f92672">$</span>Yposition, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">-</span> merged_pos_data<span style="color:#f92672">$</span>Yposition) ^ <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span>
+  (<span style="color:#a6e22e">lead</span>(merged_pos_data<span style="color:#f92672">$</span>Zposition, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">-</span> merged_pos_data<span style="color:#f92672">$</span>Zposition) ^ <span style="color:#ae81ff">2</span> ) ^ <span style="color:#ae81ff">0.5</span>
+
+merged_pos_data<span style="color:#f92672">$</span>time_taken <span style="color:#f92672">=</span>
+  <span style="color:#a6e22e">lead</span>(<span style="color:#a6e22e">as.numeric</span>(merged_pos_data<span style="color:#f92672">$</span>timestamp), <span style="color:#ae81ff">1</span>) <span style="color:#f92672">-</span> <span style="color:#a6e22e">as.numeric</span>(merged_pos_data<span style="color:#f92672">$</span>timestamp)
+
+merged_pos_data<span style="color:#f92672">$</span>pfr <span style="color:#f92672">=</span> <span style="color:#a6e22e">round</span>(position_change_3d <span style="color:#f92672">/</span> merged_pos_data<span style="color:#f92672">$</span>time_taken, <span style="color:#ae81ff">4</span>)
+
+dt.df <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">melt</span>(merged_pos_data, measure.vars <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;pfr&#34;</span>, <span style="color:#e6db74">&#34;Xposition&#34;</span>, <span style="color:#e6db74">&#34;Yposition&#34;</span>))
+<span style="color:#a6e22e">ggplot</span>(dt.df, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> timestamp, y <span style="color:#f92672">=</span> value)) <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(color <span style="color:#f92672">=</span> variable)) <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">facet_grid</span>(variable <span style="color:#f92672">~</span> ., scales <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;free_y&#34;</span>)
+</code></pre></div><pre><code>## Warning: Removed 1 rows containing missing values (geom_path).
+</code></pre><p><img src="/mtconnect-webinar/unnamed-chunk-10-1.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>(data <span style="color:#f92672">=</span> merged_pos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> timestamp)) <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">geom_step</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> pfr)) <span style="color:#f92672">+</span>
+  <span style="color:#a6e22e">geom_step</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Xposition))
+</code></pre></div><pre><code>## Warning: Removed 1 rows containing missing values (geom_path).
+</code></pre><p><img src="/mtconnect-webinar/unnamed-chunk-10-2.png" alt=""></p>
+<p>Let&rsquo;s add this derived data back into the MTCDevice Class.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">pfr_data <span style="color:#f92672">=</span> merged_pos_data <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">select</span>(timestamp, value <span style="color:#f92672">=</span> pfr) <span style="color:#75715e"># Structuring data correctly</span>
+mtc_device <span style="color:#f92672">=</span> <span style="color:#a6e22e">add_data_item_to_mtc_device</span>(mtc_device, pfr_data, data_item_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pfr&lt;PATH_FEEDRATE&gt;&#34;</span>,
+                                         data_item_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Sample&#34;</span>, source_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;calculated&#34;</span>)
+<span style="color:#a6e22e">names</span>(mtc_device<span style="color:#f92672">@</span>data_item_list)
+</code></pre></div><pre><code>##  [1] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:Aposition&lt;ANGLE-ACTUAL&gt;&quot;
+##  [2] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:avail&lt;AVAILABILITY&gt;&quot;
+##  [3] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:Cposition&lt;ANGLE-ACTUAL&gt;&quot;
+##  [4] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:estop&lt;EMERGENCY_STOP&gt;&quot;
+##  [5] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:execution&lt;EXECUTION&gt;&quot;
+##  [6] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:Fovr&lt;PATH_FEEDRATE-OVERRIDE&gt;&quot;
+##  [7] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:line&lt;LINE&gt;&quot;
+##  [8] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:logic&lt;LOGIC_PROGRAM&gt;:81000045___69 COOLANT SWITCHED OFF&lt;CONDITION&gt;&quot;
+##  [9] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:logic&lt;LOGIC_PROGRAM&gt;:81000046___70 FEED OVERRIDE = 0 %&lt;CONDITION&gt;&quot;
+## [10] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:mode&lt;CONTROLLER_MODE&gt;&quot;
+## [11] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:move&lt;x:MOTION&gt;&quot;
+## [12] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:program&lt;PROGRAM&gt;&quot;
+## [13] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:Sovr&lt;SPINDLE_SPEED-OVERRIDE&gt;&quot;
+## [14] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:system&lt;SYSTEM&gt;:34___Stylus already in contact&lt;CONDITION&gt;&quot;
+## [15] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:system&lt;SYSTEM&gt;:36___Probe system not ready&lt;CONDITION&gt;&quot;
+## [16] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:system&lt;SYSTEM&gt;:3AA___Key non-functional&lt;CONDITION&gt;&quot;
+## [17] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:system&lt;SYSTEM&gt;:454A___Limit switch Y+&lt;CONDITION&gt;&quot;
+## [18] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:Xposition&lt;POSITION-ACTUAL&gt;&quot;
+## [19] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:Yposition&lt;POSITION-ACTUAL&gt;&quot;
+## [20] &quot;nist_testbed_GF_Agie_1&lt;Device&gt;:Zposition&lt;POSITION-ACTUAL&gt;&quot;
+## [21] &quot;pfr&lt;PATH_FEEDRATE&gt;&quot;
+</code></pre><h1 id="identifying-inefficiencies">Identifying Inefficiencies</h1>
+<h2 id="idle-times">Idle times</h2>
+<p>Our first task is to identify the periods when the machine was idle. For this we
+can use a few approaches.</p>
+<ul>
+<li>Find out the times when the execution status was not active OR</li>
+<li>Find out the times when the machine was not feeding (PFR~0) OR</li>
+<li>Find the periods when the feed override was zero</li>
+</ul>
+<p>We will be trying out all the approaches and choosing union of the three as the period
+when machine is idle.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># Getting all the relevant data</span>
+merged_data <span style="color:#f92672">=</span> <span style="color:#a6e22e">merge</span>(mtc_device, <span style="color:#e6db74">&#34;EXECUTION|PATH_FEEDRATE|POSITION&#34;</span>)
+<span style="color:#a6e22e">names</span>(merged_data) <span style="color:#f92672">=</span> <span style="color:#a6e22e">extract_param_from_xpath</span>(<span style="color:#a6e22e">names</span>(merged_data), param <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;DIName&#34;</span>, show_warnings <span style="color:#f92672">=</span> F)
+
+merged_data <span style="color:#f92672">=</span> merged_data <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">mutate</span>(exec_idle <span style="color:#f92672">=</span> F, feed_idle <span style="color:#f92672">=</span> F, override_idle <span style="color:#f92672">=</span> F) <span style="color:#f92672">%&gt;%</span> <span style="color:#75715e"># Setting everything false by default</span>
+  <span style="color:#a6e22e">mutate</span>(exec_idle <span style="color:#f92672">=</span> <span style="color:#a6e22e">replace</span>(exec_idle, <span style="color:#f92672">!</span>(execution <span style="color:#f92672">%in%</span> <span style="color:#e6db74">&#34;ACTIVE&#34;</span>), <span style="color:#66d9ef">TRUE</span>)) <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">mutate</span>(feed_idle <span style="color:#f92672">=</span> <span style="color:#a6e22e">replace</span>(feed_idle, pfr <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.01</span>, <span style="color:#66d9ef">TRUE</span>)) <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">mutate</span>(override_idle <span style="color:#f92672">=</span> <span style="color:#a6e22e">replace</span>(override_idle, Fovr <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>, <span style="color:#66d9ef">TRUE</span>)) <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">mutate</span>(machine_idle <span style="color:#f92672">=</span> <span style="color:#a6e22e">as.logical</span>(exec_idle <span style="color:#f92672">+</span> feed_idle <span style="color:#f92672">+</span> override_idle))
+<span style="color:#a6e22e">head</span>(merged_data)
+</code></pre></div><pre><code>##                    timestamp execution   Fovr Xposition Yposition
+## 1 2015-11-02 14:58:49.990541      &lt;NA&gt; 111.25        NA        NA
+## 2 2015-11-02 14:58:49.994391      &lt;NA&gt; 111.25  33.69547 -38.69783
+## 3 2015-11-02 14:59:03.742392      &lt;NA&gt; 111.25  33.69548 -38.69783
+## 4 2015-11-02 14:59:03.886408      &lt;NA&gt; 111.25  33.69547 -38.69783
+## 5 2015-11-02 14:59:14.122334      &lt;NA&gt; 111.25  33.69548 -38.69783
+## 6 2015-11-02 14:59:14.270387      &lt;NA&gt; 111.25  33.69547 -38.69783
+##   Zposition    pfr exec_idle feed_idle override_idle machine_idle
+## 1        NA     NA      TRUE     FALSE         FALSE         TRUE
+## 2  20.37543 0.0000      TRUE      TRUE         FALSE         TRUE
+## 3  20.37543 0.0001      TRUE      TRUE         FALSE         TRUE
+## 4  20.37543 0.0000      TRUE      TRUE         FALSE         TRUE
+## 5  20.37543 0.0001      TRUE      TRUE         FALSE         TRUE
+## 6  20.37543 0.0000      TRUE      TRUE         FALSE         TRUE
+</code></pre><h2 id="machine-tool-at-origin">Machine tool at origin</h2>
+<p>We need to identify the time spent by the machine at origin. Let&rsquo;s look at the
+X - Y graph again</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>(data <span style="color:#f92672">=</span> merged_pos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Xposition, y <span style="color:#f92672">=</span> Yposition)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_path</span>()
+</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-13-1.png" alt=""></p>
+<p>It is clear that the periods when the machine was origin are roughly X &gt; 30, Y &lt; -30.
+Adding this into the mix</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">merged_data_final <span style="color:#f92672">=</span> merged_data <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">mutate</span>(at_origin <span style="color:#f92672">=</span> F) <span style="color:#f92672">%&gt;%</span> <span style="color:#75715e"># Setting everything false by default</span>
+  <span style="color:#a6e22e">mutate</span>(at_origin <span style="color:#f92672">=</span> <span style="color:#a6e22e">replace</span>(at_origin, Xposition <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">30</span> <span style="color:#f92672">&amp;</span> Yposition <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">-30</span>, <span style="color:#66d9ef">TRUE</span>)) <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">select</span>(timestamp, machine_idle, at_origin)
+<span style="color:#a6e22e">head</span>(merged_data_final)
+</code></pre></div><pre><code>##                    timestamp machine_idle at_origin
+## 1 2015-11-02 14:58:49.990541         TRUE     FALSE
+## 2 2015-11-02 14:58:49.994391         TRUE      TRUE
+## 3 2015-11-02 14:59:03.742392         TRUE      TRUE
+## 4 2015-11-02 14:59:03.886408         TRUE      TRUE
+## 5 2015-11-02 14:59:14.122334         TRUE      TRUE
+## 6 2015-11-02 14:59:14.270387         TRUE      TRUE
+</code></pre><h1 id="calculating-summary-statistics">Calculating Summary Statistics</h1>
+<p>Now we have all the data at our disposal to calculate the time statistics. First we
+need to convert the time series into interval format to get the duratins. We can use
+<code>convert_ts_to_interval</code> function to do the same.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">merged_data_intervals <span style="color:#f92672">=</span> <span style="color:#a6e22e">convert_ts_to_interval</span>(merged_data_final)
+<span style="color:#a6e22e">head</span>(merged_data_intervals)
+</code></pre></div><pre><code>##                        start                        end duration
+## 1 2015-11-02 14:58:49.990541 2015-11-02 08:58:49.994391     0.00
+## 2 2015-11-02 14:58:49.994391 2015-11-02 08:59:03.742392    13.75
+## 3 2015-11-02 14:59:03.742392 2015-11-02 08:59:03.886408     0.14
+## 4 2015-11-02 14:59:03.886408 2015-11-02 08:59:14.122334    10.24
+## 5 2015-11-02 14:59:14.122334 2015-11-02 08:59:14.270387     0.15
+## 6 2015-11-02 14:59:14.270387 2015-11-02 08:59:22.486440     8.22
+##   machine_idle at_origin
+## 1         TRUE     FALSE
+## 2         TRUE      TRUE
+## 3         TRUE      TRUE
+## 4         TRUE      TRUE
+## 5         TRUE      TRUE
+## 6         TRUE      TRUE
+</code></pre><p>Now we can aggregate across the different states to find the total amount of time
+in each state.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">time_summary <span style="color:#f92672">=</span> merged_data_intervals <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(machine_idle, at_origin) <span style="color:#f92672">%&gt;%</span>
+  <span style="color:#a6e22e">summarise</span>(total_time <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>(duration, na.rm <span style="color:#f92672">=</span> T))
+
+<span style="color:#a6e22e">print</span>(time_summary)
+</code></pre></div><pre><code>## Source: local data frame [4 x 3]
+## Groups: machine_idle [?]
+##
+##   machine_idle at_origin total_time
+##          (lgl)     (lgl)      (dbl)
+## 1        FALSE     FALSE    2713.77
+## 2        FALSE      TRUE      21.99
+## 3         TRUE     FALSE    3339.20
+## 4         TRUE      TRUE     576.95
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">total_time <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>(time_summary<span style="color:#f92672">$</span>total_time)
+efficient_time <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>(time_summary<span style="color:#f92672">$</span>total_time[1])
+inefficient_time <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>(time_summary<span style="color:#f92672">$</span>total_time[2<span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>])
+interrupted_time <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>(time_summary<span style="color:#f92672">$</span>total_time[3<span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>])
+time_at_origin <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>(time_summary<span style="color:#f92672">$</span>total_time<span style="color:#a6e22e">[c</span>(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>)])
+</code></pre></div><pre><code>## [1] &quot;Results&quot;
+</code></pre><pre><code>## [1] &quot;Total Time of Operation (including interruptions) = 6651.91s&quot;
+</code></pre><pre><code>## [1] &quot;Total Time without identified inefficiencies = 2713.77s&quot;
+</code></pre><pre><code>## [1] &quot;Total Time wasted due to interruptions = 3916.15s&quot;
+</code></pre><pre><code>## [1] &quot;Total Time wasted due to being at origin = 598.94s&quot;
+</code></pre>
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    
+    <a href="blog.alexsanjoseph.com/posts/comparedf-intro/" class="navigation-next">
+      <span class="navigation-tittle">Introducing compareDF</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>
