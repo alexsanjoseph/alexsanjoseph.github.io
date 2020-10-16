@@ -16,7 +16,9 @@ enableRobotsTXT = true
     author = "Alex"
     title = "Alex's"
 
-    # authorimage = "/img/hugo.png"
+    sidebar-width = "36 rem"
+
+    authorimage = "/img/alex.jpeg"
     dateformat = "Jan 2, 2006"
 
     # sidebar, copyright & license
