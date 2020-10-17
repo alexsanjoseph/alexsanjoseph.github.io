@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Alex&#39;s Blog</title>
-    <link>alexsanjoseph.github.com/tags/r/</link>
+    <link>alexsanjoseph.github.io/tags/r/</link>
     <description>Recent content in R on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 17 Aug 2018 01:25:41 +0530</lastBuildDate><atom:link href="alexsanjoseph.github.com/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Aug 2018 01:25:41 +0530</lastBuildDate><atom:link href="alexsanjoseph.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introducing compareDF</title>
-      <link>alexsanjoseph.github.com/posts/comparedf-intro/</link>
+      <link>alexsanjoseph.github.io/posts/comparedf-intro/</link>
       <pubDate>Fri, 17 Aug 2018 01:25:41 +0530</pubDate>
       
-      <guid>alexsanjoseph.github.com/posts/comparedf-intro/</guid>
+      <guid>alexsanjoseph.github.io/posts/comparedf-intro/</guid>
       <description>NOTE: This is a repost of an article that was first published in 2016, updated to latest version
 Introduction Every so often while doing data analysis, I have come across a situation where I have two datasets, which have the same structure but with small differences in the actual data between the two. For example:
  Variation of a dataset across different time periods for the same grouping Variation of values for different algorithms, etc.</description>
@@ -20,10 +20,10 @@ Introduction Every so often while doing data analysis, I have come across a situ
     
     <item>
       <title>MTConnect Webinar Example</title>
-      <link>alexsanjoseph.github.com/posts/mtconnect-webinar/</link>
+      <link>alexsanjoseph.github.io/posts/mtconnect-webinar/</link>
       <pubDate>Sun, 16 Oct 2016 22:10:24 +0530</pubDate>
       
-      <guid>alexsanjoseph.github.com/posts/mtconnect-webinar/</guid>
+      <guid>alexsanjoseph.github.io/posts/mtconnect-webinar/</guid>
       <description>Introduction For a real life working example, we have this dataset graciously provided to us by the National Institute of Standards and Technology (http://www.nist.gov/) for one of their test bed parts. We will be trying to solve the first example from the introduction, which was a real problem faced by the NIST researchers. As we walk through each step of the exploratory process, you will understand how you can use similar techniques to solve similar issues that you might have with your Machine Tools.</description>
     </item>
     
