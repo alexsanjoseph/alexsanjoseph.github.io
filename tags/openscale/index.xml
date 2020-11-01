@@ -6,11 +6,11 @@
     <description>Recent content in openscale on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 02 Nov 2020 00:12:10 +0530</lastBuildDate><atom:link href="/tags/openscale/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Nov 2020 01:48:26 +0530</lastBuildDate><atom:link href="/tags/openscale/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building a Streamlit app from scratch and deploying it for free using Heroku</title>
       <link>/posts/streamlit-openscale/</link>
-      <pubDate>Mon, 02 Nov 2020 00:12:10 +0530</pubDate>
+      <pubDate>Mon, 02 Nov 2020 01:48:26 +0530</pubDate>
       
       <guid>/posts/streamlit-openscale/</guid>
       <description>Introduction Streamlit is an easy to use python framework to build interactive apps. As opposed to fully featured frameworks like Django and Flask, Streamlit is very opinionated as it has fewer features, but the advantage is you can deploy Streamlit app in under 5 minutes with no knowledge of APIs or routes. Streamlit has recently gotten very popular, especially among data scientists as a quick way to present their findings.</description>

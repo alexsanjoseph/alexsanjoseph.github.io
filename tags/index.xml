@@ -6,56 +6,11 @@
     <description>Recent content in Tags on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 02 Nov 2020 00:12:10 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>dropbox</title>
-      <link>/tags/dropbox/</link>
-      <pubDate>Mon, 02 Nov 2020 00:12:10 +0530</pubDate>
-      
-      <guid>/tags/dropbox/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>heroku</title>
-      <link>/tags/heroku/</link>
-      <pubDate>Mon, 02 Nov 2020 00:12:10 +0530</pubDate>
-      
-      <guid>/tags/heroku/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>openscale</title>
-      <link>/tags/openscale/</link>
-      <pubDate>Mon, 02 Nov 2020 00:12:10 +0530</pubDate>
-      
-      <guid>/tags/openscale/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>/tags/python/</link>
-      <pubDate>Mon, 02 Nov 2020 00:12:10 +0530</pubDate>
-      
-      <guid>/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>streamlit</title>
-      <link>/tags/streamlit/</link>
-      <pubDate>Mon, 02 Nov 2020 00:12:10 +0530</pubDate>
-      
-      <guid>/tags/streamlit/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Mon, 02 Nov 2020 01:57:37 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>bodybuilder</title>
       <link>/tags/bodybuilder/</link>
-      <pubDate>Tue, 20 Oct 2020 02:01:44 +0530</pubDate>
+      <pubDate>Mon, 02 Nov 2020 01:57:37 +0530</pubDate>
       
       <guid>/tags/bodybuilder/</guid>
       <description></description>
@@ -64,9 +19,54 @@
     <item>
       <title>elasticsearch</title>
       <link>/tags/elasticsearch/</link>
-      <pubDate>Tue, 20 Oct 2020 02:01:44 +0530</pubDate>
+      <pubDate>Mon, 02 Nov 2020 01:57:37 +0530</pubDate>
       
       <guid>/tags/elasticsearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>/tags/python/</link>
+      <pubDate>Mon, 02 Nov 2020 01:57:37 +0530</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dropbox</title>
+      <link>/tags/dropbox/</link>
+      <pubDate>Mon, 02 Nov 2020 01:48:26 +0530</pubDate>
+      
+      <guid>/tags/dropbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>heroku</title>
+      <link>/tags/heroku/</link>
+      <pubDate>Mon, 02 Nov 2020 01:48:26 +0530</pubDate>
+      
+      <guid>/tags/heroku/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openscale</title>
+      <link>/tags/openscale/</link>
+      <pubDate>Mon, 02 Nov 2020 01:48:26 +0530</pubDate>
+      
+      <guid>/tags/openscale/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>streamlit</title>
+      <link>/tags/streamlit/</link>
+      <pubDate>Mon, 02 Nov 2020 01:48:26 +0530</pubDate>
+      
+      <guid>/tags/streamlit/</guid>
       <description></description>
     </item>
     

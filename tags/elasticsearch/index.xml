@@ -6,11 +6,11 @@
     <description>Recent content in elasticsearch on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 20 Oct 2020 02:01:44 +0530</lastBuildDate><atom:link href="/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Nov 2020 01:57:37 +0530</lastBuildDate><atom:link href="/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bodybuilder - A python port of the nodeJS BodyBuilder Package</title>
       <link>/posts/bodybuilder_intro/</link>
-      <pubDate>Tue, 20 Oct 2020 02:01:44 +0530</pubDate>
+      <pubDate>Mon, 02 Nov 2020 01:57:37 +0530</pubDate>
       
       <guid>/posts/bodybuilder_intro/</guid>
       <description>At VIMANA, we have an Elasticsearch backend for storing most of our Big Data. While Elasticsearch is an amazing search engine which can do a variety of queries/aggregations, the Elasticsearch Query DSL is difficult to construct, especialy for newcomers. I have spent countless hours trying to get the brackets right and the searching for the specific terms. While the new SQL options allows the user to query using SQL, that still doesn&amp;rsquo;t have all the capabilities supported by the full DSL.</description>

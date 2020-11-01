@@ -28,8 +28,8 @@
 <meta property="og:description" content="Introduction Streamlit is an easy to use python framework to build interactive apps. As opposed to fully featured frameworks like Django and Flask, Streamlit is very opinionated as it has fewer features, but the advantage is you can deploy Streamlit app in under 5 minutes with no knowledge of APIs or routes. Streamlit has recently gotten very popular, especially among data scientists as a quick way to present their findings." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/streamlit-openscale/" />
-<meta property="article:published_time" content="2020-11-02T00:12:10+05:30" />
-<meta property="article:modified_time" content="2020-11-02T00:12:10+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="article:published_time" content="2020-11-02T01:48:26+05:30" />
+<meta property="article:modified_time" content="2020-11-02T01:57:37+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
 
 
     
@@ -400,12 +400,15 @@ touch __init__.py <span style="color:#f92672">&amp;&amp;</span> touch dropbox_au
 <p>You can go to the <a href="https://dashboard.heroku.com/new-app?org=personal-apps">new app screen</a> once you&rsquo;ve created a heroku account to create a new app.</p>
 <p>Here I&rsquo;m creating a new app <code>streamlit-openscale-test</code>.</p>
 <p><img src="/streamlit-openscale/create_new_app.png#bordered" alt="Create New Heroku App"></p>
-<h3 id="step-2-create-git-repository-and-to-heroku-as-remote">Step 2: Create git repository and to Heroku as remote</h3>
+<h3 id="step-2-login-to-heroku-create-a-git-repository-and-add-heroku-as-remote">Step 2: Login to Heroku, create a git repository and add Heroku as remote</h3>
+<p>First, download and install the <a href="https://devcenter.heroku.com/articles/heroku-command-line">Heroku CLI</a>. Then in to your Heroku account and follow the prompts to create a new SSH public key.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">heroku login
+</code></pre></div><h3 id="step-3-create-a-git-repository-and-add-heroku-as-remote">Step 3: Create a git repository and add Heroku as remote</h3>
 <p>Run the following command in your terminal to create a git repository in your root folder and add heroku git as a remote</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git init
 heroku git:remote -a streamlit-openscale-test
 </code></pre></div><p><em>Optionally you can add github as a remote as well for version control</em></p>
-<h3 id="step-3-add-heroku-files">Step 3: Add Heroku files</h3>
+<h3 id="step-4-add-the-heroku-configuration-files">Step 4: Add the Heroku configuration files</h3>
 <h5 id="procfile">Procfile</h5>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">web: sh setup.sh <span style="color:#f92672">&amp;&amp;</span> streamlit run main.py
 </code></pre></div><h5 id="setupsh">setup.sh</h5>
@@ -434,10 +437,10 @@ echo <span style="color:#e6db74">&#34;\
 │   ├── plot.py
 │   └── ui.py
 └── venv
-</code></pre></div><h3 id="step-4-add-heroku-configenv-vars">Step 4: Add heroku config/env vars</h3>
+</code></pre></div><h3 id="step-5-add-the-heroku-env-vars">Step 5: Add the Heroku env vars</h3>
 <p>You can add the configuration variables, in this case <code>DROPBOX_OPENSCALE_ACCESS_KEY</code> in the <a href="https://dashboard.heroku.com/apps/streamlit-openscale-test/settings">heroku configuration page</a></p>
 <p><img src="/streamlit-openscale/heroku_config.png#bordered" alt="Adding Heroku Config"></p>
-<h3 id="step-5-deploy">Step 5: Deploy</h3>
+<h3 id="step-6-deploy">Step 6: Deploy!</h3>
 <p>Once the configuration has been added, we can deploy it to heroku using the heroku command line.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git add . <span style="color:#f92672">&amp;&amp;</span> git commit -am <span style="color:#e6db74">&#34;heroku push&#34;</span> <span style="color:#f92672">&amp;&amp;</span> git push heroku master
 </code></pre></div><!-- raw HTML omitted -->
@@ -450,11 +453,16 @@ echo <span style="color:#e6db74">&#34;\
 
 <div class="navigation navigation-single">
     
-    <a href="/posts/bodybuilder_intro/" class="navigation-prev">
+    <a href="/posts/comparedf-intro/" class="navigation-prev">
       <i aria-hidden="true" class="fa fa-chevron-left"></i>
-      <span class="navigation-tittle">Bodybuilder - A python port of the nodeJS BodyBuilder Package</span>
+      <span class="navigation-tittle">Introducing compareDF</span>
     </a>
     
+    
+    <a href="/posts/bodybuilder_intro/" class="navigation-next">
+      <span class="navigation-tittle">Bodybuilder - A python port of the nodeJS BodyBuilder Package</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
     
 </div>
 
