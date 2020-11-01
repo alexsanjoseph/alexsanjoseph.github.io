@@ -28,14 +28,14 @@
 <meta property="og:description" content="At VIMANA, we have an Elasticsearch backend for storing most of our Big Data. While Elasticsearch is an amazing search engine which can do a variety of queries/aggregations, the Elasticsearch Query DSL is difficult to construct, especialy for newcomers. I have spent countless hours trying to get the brackets right and the searching for the specific terms. While the new SQL options allows the user to query using SQL, that still doesn&rsquo;t have all the capabilities supported by the full DSL." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/bodybuilder_intro/" />
-<meta property="article:published_time" content="2020-10-18T20:39:10+05:30" />
-<meta property="article:modified_time" content="2020-10-18T20:39:10+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="article:published_time" content="2020-10-20T02:01:44+05:30" />
+<meta property="article:modified_time" content="2020-10-20T02:01:44+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
 
 
     
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
 
 
 
@@ -48,6 +48,11 @@
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+
+<link rel="stylesheet" href="/scss/tocbot.5ef07cebc3c477b54270456f149ee02922479bb7555fd344b2c69f953b0e7e5e.css" integrity="sha256-XvB868PEd7VCcEVvFJ7gKSJHm7dVX9NEssaflTsOfl4=">
 
 
 
@@ -172,7 +177,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <div class="post__meta">
     
     
-      <i class="fas fa-calendar-alt"></i> 2020 Oct 18
+      <i class="fas fa-calendar-alt"></i> 2020 Oct 20
     
     
     
@@ -200,6 +205,16 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
 
   </header>
+  
+  
+  
+    <div class="toc-wrapper">
+      <input type="checkbox" id="tocToggle">
+      <label for="tocToggle">Table of Content</label>
+      
+        <div class="toc" id="TableOfContents"></div>
+      
+    </div>
   
   
   <div class="post">
@@ -372,6 +387,23 @@ if (!doNotTrack) {
         hljs.initHighlightingOnLoad();
     </script>
     
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js"></script>
+<script type="text/javascript">
+  if (tocbot) {
+    tocbot.init({
+      
+      tocSelector: '.toc',
+      
+      contentSelector: '.post',
+      
+      headingSelector: 'h2, h3, h4',
+      collapseDepth: 4
+    });
+  }
+</script>
 
 
 
