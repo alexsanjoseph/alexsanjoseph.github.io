@@ -6,7 +6,52 @@
     <description>Recent content in Tags on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 18 Oct 2020 20:39:10 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Nov 2020 10:48:26 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dropbox</title>
+      <link>/tags/dropbox/</link>
+      <pubDate>Sun, 01 Nov 2020 10:48:26 +0530</pubDate>
+      
+      <guid>/tags/dropbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>heroku</title>
+      <link>/tags/heroku/</link>
+      <pubDate>Sun, 01 Nov 2020 10:48:26 +0530</pubDate>
+      
+      <guid>/tags/heroku/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openscale</title>
+      <link>/tags/openscale/</link>
+      <pubDate>Sun, 01 Nov 2020 10:48:26 +0530</pubDate>
+      
+      <guid>/tags/openscale/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>/tags/python/</link>
+      <pubDate>Sun, 01 Nov 2020 10:48:26 +0530</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>streamlit</title>
+      <link>/tags/streamlit/</link>
+      <pubDate>Sun, 01 Nov 2020 10:48:26 +0530</pubDate>
+      
+      <guid>/tags/streamlit/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>bodybuilder</title>
       <link>/tags/bodybuilder/</link>
@@ -22,15 +67,6 @@
       <pubDate>Sun, 18 Oct 2020 20:39:10 +0530</pubDate>
       
       <guid>/tags/elasticsearch/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>/tags/python/</link>
-      <pubDate>Sun, 18 Oct 2020 20:39:10 +0530</pubDate>
-      
-      <guid>/tags/python/</guid>
       <description></description>
     </item>
     
