@@ -13,7 +13,7 @@
       <pubDate>Sun, 18 Oct 2020 20:39:10 +0530</pubDate>
       
       <guid>/posts/bodybuilder_intro/</guid>
-      <description>At VIMANA, we have an Elasticsearch backend for storing most of our Big Data. While Elasticsearch is an amazing search engine which can do a variety of queries/aggregations, the Elasticsearch Query DSL is difficult to construct, especialy for newcomers. I have spent countless hours trying to get the brackets right and the searching for the specific terms. While the new SQL options allows the user to query using SQL, that still doesn&amp;rsquo;t have all the capabilities supported by the full DSL.</description>
+      <description>Bodybuilder At VIMANA, we have an Elasticsearch backend for storing most of our Big Data. While Elasticsearch is an amazing search engine which can do a variety of queries/aggregations, the Elasticsearch Query DSL is difficult to construct, especialy for newcomers. I have spent countless hours trying to get the brackets right and the searching for the specific terms. While the new SQL options allows the user to query using SQL, that still doesn&amp;rsquo;t have all the capabilities supported by the full DSL.</description>
     </item>
     
   </channel>
