@@ -258,7 +258,7 @@ streamlit==0.57.3
 </code></pre></div><p>The last thing to do as part of the setup is to create a <code>/src</code> folder and add the following empty files into it.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir src <span style="color:#f92672">&amp;&amp;</span> cd src
 touch __init__.py <span style="color:#f92672">&amp;&amp;</span> touch dropbox_aux.py <span style="color:#f92672">&amp;&amp;</span> touch plot.py <span style="color:#f92672">&amp;&amp;</span> touch ui.py
-</code></pre></div><p>Your directory strucure should look like this now:</p>
+</code></pre></div><p>Your directory structure should look like this now:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">├── main.py
 ├── requirements.txt
 ├── src
@@ -274,8 +274,9 @@ touch __init__.py <span style="color:#f92672">&amp;&amp;</span> touch dropbox_au
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_streamlit_ui</span>():
     st<span style="color:#f92672">.</span>markdown(<span style="color:#e6db74">&#34;## Openscale + Streamlit = Awesome&#34;</span>)
 
-</code></pre></div><p>Now run the following command in the terminal</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">streamlit run main.py
+</code></pre></div><p>Now run the following command in the terminal after moving to the root folder</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd ..
+streamlit run main.py
 </code></pre></div><p>You should see a process running with an output similar to below.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">  You can now view your Streamlit app in your browser.
 
@@ -308,7 +309,22 @@ touch __init__.py <span style="color:#f92672">&amp;&amp;</span> touch dropbox_au
 <li><code>get_latest_file_name_from_dropbox</code> - Gets the list of files matching a pattern from a particular folder and returns the latest one (most recently updated)</li>
 <li><code>download_file_data_from_dropbox</code> - Downloads the particular file from dropbox</li>
 </ul>
-<h5 id="plotpy">plot.py</h5>
+<p>Here is an example snippet of data after downloading from dropbox:</p>
+<pre><code>
+             dateTime  weight
+0    2020-10-05 09:43    65.1
+1    2020-10-04 19:14    64.0
+2    2020-10-03 09:50    64.3
+3    2020-10-02 20:27    63.7
+4    2020-09-30 19:05    63.7
+..                ...     ...
+764  2018-08-10 22:07    67.7
+765  2018-08-10 08:36    65.8
+766  2018-08-10 08:35    65.8
+767  2018-08-10 08:26    66.2
+768  2018-08-10 08:23    66.2
+
+</code></pre><h5 id="plotpy">plot.py</h5>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> plotnine <span style="color:#f92672">import</span> ggplot, geom_point, geom_smooth, aes, geom_vline, geom_text, geom_label
 <span style="color:#f92672">from</span> pandas <span style="color:#f92672">import</span> to_datetime
 
@@ -320,7 +336,7 @@ touch __init__.py <span style="color:#f92672">&amp;&amp;</span> touch dropbox_au
                    geom_smooth(span<span style="color:#f92672">=</span>smooth_factor, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;red&#39;</span>))
     plot_output<span style="color:#f92672">.</span>save(temp_file_name, width<span style="color:#f92672">=</span><span style="color:#ae81ff">13</span>, height<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, dpi<span style="color:#f92672">=</span><span style="color:#ae81ff">80</span>)
 
-</code></pre></div><p>This file contains the plotting functions. Here I&rsquo;m using the <code>plotnine</code> package which is inspired heavily from the amazing <code>ggplot</code> package in <code>R</code>.</p>
+</code></pre></div><p>This file contains the plotting functions. Here I&rsquo;m using the <code>plotnine</code> package which is heavily inspired from the amazing <code>ggplot</code> package in <code>R</code>.</p>
 <ul>
 <li><code>plot_and_save</code> - Plots the weight data and saves the plot into a temporarily file to plotted by <code>streamlit</code></li>
 </ul>
@@ -343,8 +359,11 @@ touch __init__.py <span style="color:#f92672">&amp;&amp;</span> touch dropbox_au
     FOLDER_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/openscale&#34;</span>
     TEMP_FILE_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;image.png&#34;</span>
 
-    username <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>selectbox(<span style="color:#e6db74">&#34;Select User&#34;</span>, [<span style="color:#e6db74">&#34;Alex&#34;</span>])
-    date_start <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>date_input(<span style="color:#e6db74">&#34;Start Date&#34;</span>, pd<span style="color:#f92672">.</span>to_datetime(<span style="color:#e6db74">&#34;2018-08-01&#34;</span>))
+    users <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Alex&#34;</span>, <span style="color:#e6db74">&#34;Malavika&#34;</span>]
+    default_start_date <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(<span style="color:#e6db74">&#34;2018-08-01&#34;</span>)
+
+    username <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>selectbox(<span style="color:#e6db74">&#34;Select User&#34;</span>, users)
+    date_start <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>date_input(<span style="color:#e6db74">&#34;Start Date&#34;</span>, default_start_date)
     date_end <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>date_input(<span style="color:#e6db74">&#34;End Date&#34;</span>, datetime<span style="color:#f92672">.</span>today()) <span style="color:#f92672">+</span> timedelta(days<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
     smooth_factor <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>slider(<span style="color:#e6db74">&#34;Select smoothening factor&#34;</span>, <span style="color:#ae81ff">0.01</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.12</span>)
 
@@ -392,7 +411,7 @@ touch __init__.py <span style="color:#f92672">&amp;&amp;</span> touch dropbox_au
 <h3 id="running-everything-locally">Running everything locally</h3>
 <p>Now that we&rsquo;ve the app content also ready, we can try running it locally. As mentioned before, we&rsquo;re providing the <code>DROPBOX_OPENSCALE_ACCESS_KEY</code> as an environment variable.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">DROPBOX_OPENSCALE_ACCESS_KEY<span style="color:#f92672">=</span>&lt;your_key&gt; streamlit run main.py
-</code></pre></div><p>Hopefully, you can see the full output similar to below:</p>
+</code></pre></div><p>You should be able to the full output similar to below:</p>
 <p><img src="/streamlit-openscale/full_app.png#bordered#large" alt="Fully featured App"></p>
 <p><em>I seem to be slowly gaining the weight I lost during the lockdown!</em></p>
 <h2 id="deploying-it-in-heroku">Deploying it in Heroku</h2>
@@ -401,7 +420,7 @@ touch __init__.py <span style="color:#f92672">&amp;&amp;</span> touch dropbox_au
 <p>Here I&rsquo;m creating a new app <code>streamlit-openscale-test</code>.</p>
 <p><img src="/streamlit-openscale/create_new_app.png#bordered" alt="Create New Heroku App"></p>
 <h3 id="step-2-login-to-heroku-create-a-git-repository-and-add-heroku-as-remote">Step 2: Login to Heroku, create a git repository and add Heroku as remote</h3>
-<p>First, download and install the <a href="https://devcenter.heroku.com/articles/heroku-command-line">Heroku CLI</a>. Then in to your Heroku account and follow the prompts to create a new SSH public key.</p>
+<p>First, download and install the <a href="https://devcenter.heroku.com/articles/heroku-command-line">Heroku CLI</a>. Then log in to your Heroku account and follow the prompts to create a new SSH public key.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">heroku login
 </code></pre></div><h3 id="step-3-create-a-git-repository-and-add-heroku-as-remote">Step 3: Create a git repository and add Heroku as remote</h3>
 <p>Run the following command in your terminal to create a git repository in your root folder and add heroku git as a remote</p>
