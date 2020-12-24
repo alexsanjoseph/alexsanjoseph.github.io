@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aws on Alex&#39;s Blog</title>
+    <link>/tags/aws/</link>
+    <description>Recent content in aws on Alex&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 20 Dec 2020 10:39:10 +0530</lastBuildDate><atom:link href="/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Instance type recommender for optimal resource packing</title>
+      <link>/posts/aws-instance-recommender/</link>
+      <pubDate>Sun, 20 Dec 2020 10:39:10 +0530</pubDate>
+      
+      <guid>/posts/aws-instance-recommender/</guid>
+      <description>Introduction Are you in the Kubernetes bandwagon yet? We at Vimana are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes smartly allocates the pods on the the available nodes depending on the resource requirements. Automatic scaling groups allows the system to expand and contract based on ephemeral demand making sure that the resources are not wasted when not required.</description>
+    </item>
+    
+  </channel>
+</rss>
