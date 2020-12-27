@@ -78,7 +78,7 @@
         
         
         <div class="author-image">
-          <img src="/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -278,7 +278,7 @@ streamlit run main.py
   Network URL: http://192.168.0.36:8501
 
 </code></pre></div><p>You should also see the following screen if you navigate to <code>localhost:8501</code> in your browser:</p>
-<p><img src="/streamlit-openscale/basic_app.png#bordered" alt="Basic Streamlit App"></p>
+<p><img src="/images/streamlit-openscale/basic_app.png#bordered" alt="Basic Streamlit App"></p>
 <p>Your basic streamlit app is ready!</p>
 <h3 id="adding-the-app-content">Adding the App content</h3>
 <p>Now let&rsquo;s populate each file to actually do something useful.</p>
@@ -406,13 +406,13 @@ streamlit run main.py
 <p>Now that we&rsquo;ve the app content also ready, we can try running it locally. As mentioned before, we&rsquo;re providing the <code>DROPBOX_OPENSCALE_ACCESS_KEY</code> as an environment variable.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">DROPBOX_OPENSCALE_ACCESS_KEY<span style="color:#f92672">=</span>&lt;your_key&gt; streamlit run main.py
 </code></pre></div><p>You should be able to the full output similar to below:</p>
-<p><img src="/streamlit-openscale/full_app.png#bordered#large" alt="Fully featured App"></p>
+<p><img src="/images/streamlit-openscale/full_app.png#bordered#large" alt="Fully featured App"></p>
 <p><em>I seem to be slowly gaining the weight I lost during the lockdown!</em></p>
 <h2 id="deploying-it-in-heroku">Deploying it in Heroku</h2>
 <h3 id="step-1-add-app-in-the-heroku-dashboard">Step 1: Add app in the Heroku dashboard</h3>
 <p>You can go to the <a href="https://dashboard.heroku.com/new-app?org=personal-apps">new app screen</a> once you&rsquo;ve created a heroku account to create a new app.</p>
 <p>Here I&rsquo;m creating a new app <code>streamlit-openscale-test</code>.</p>
-<p><img src="/streamlit-openscale/create_new_app.png#bordered" alt="Create New Heroku App"></p>
+<p><img src="/images/streamlit-openscale/create_new_app.png#bordered" alt="Create New Heroku App"></p>
 <h3 id="step-2-login-to-heroku-create-a-git-repository-and-add-heroku-as-remote">Step 2: Login to Heroku, create a git repository and add Heroku as remote</h3>
 <p>First, download and install the <a href="https://devcenter.heroku.com/articles/heroku-command-line">Heroku CLI</a>. Then log in to your Heroku account and follow the prompts to create a new SSH public key.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">heroku login
@@ -452,7 +452,7 @@ echo <span style="color:#e6db74">&#34;\
 └── venv
 </code></pre></div><h3 id="step-5-add-the-heroku-env-vars">Step 5: Add the Heroku env vars</h3>
 <p>You can add the configuration variables, in this case <code>DROPBOX_OPENSCALE_ACCESS_KEY</code> in the <a href="https://dashboard.heroku.com/apps/streamlit-openscale-test/settings">heroku configuration page</a></p>
-<p><img src="/streamlit-openscale/heroku_config.png#bordered" alt="Adding Heroku Config"></p>
+<p><img src="/images/streamlit-openscale/heroku_config.png#bordered" alt="Adding Heroku Config"></p>
 <h3 id="step-6-deploy">Step 6: Deploy!</h3>
 <p>Once the configuration has been added, we can deploy it to heroku using the heroku command line.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git add . <span style="color:#f92672">&amp;&amp;</span> git commit -am <span style="color:#e6db74">&#34;heroku push&#34;</span> <span style="color:#f92672">&amp;&amp;</span> git push heroku master

@@ -78,7 +78,7 @@
         
         
         <div class="author-image">
-          <img src="/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -291,11 +291,11 @@ ypos_data <span style="color:#f92672">=</span> <span style="color:#a6e22e">getDa
 zpos_data <span style="color:#f92672">=</span> <span style="color:#a6e22e">getDataItem</span>(mtc_device, <span style="color:#e6db74">&#34;Zposition&#34;</span>) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">getData</span>()
 
 <span style="color:#a6e22e">ggplot</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_line</span>(data <span style="color:#f92672">=</span> xpos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> timestamp, y <span style="color:#f92672">=</span> value))
-</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-5-1.png" alt=""></p>
+</code></pre></div><p><img src="/images/mtconnect-webinar/unnamed-chunk-5-1.png" alt=""></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_line</span>(data <span style="color:#f92672">=</span> ypos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> timestamp, y <span style="color:#f92672">=</span> value))
-</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-5-2.png" alt=""></p>
+</code></pre></div><p><img src="/images/mtconnect-webinar/unnamed-chunk-5-2.png" alt=""></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>() <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_line</span>(data <span style="color:#f92672">=</span> zpos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> timestamp, y <span style="color:#f92672">=</span> value))
-</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-5-3.png" alt=""></p>
+</code></pre></div><p><img src="/images/mtconnect-webinar/unnamed-chunk-5-3.png" alt=""></p>
 <h2 id="merging-different-data-items-for-simultaneous-analysis">Merging different data items for simultaneous analysis</h2>
 <p>It looks like the machine is going back and forth quite some distance quite often, across
 all the axes. We also don&rsquo;t know how this traversal varies across different axis.
@@ -368,16 +368,16 @@ now using the <code>extract_param_from_xpath</code> function. Let&rsquo;s view t
   <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Yposition, col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Ypos&#39;</span>)) <span style="color:#f92672">+</span>
   <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Zposition, col <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Zpos&#39;</span>)) <span style="color:#f92672">+</span>
   <span style="color:#a6e22e">theme</span>(legend.title <span style="color:#f92672">=</span> <span style="color:#a6e22e">element_blank</span>())
-</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-8-1.png" alt=""></p>
+</code></pre></div><p><img src="/images/mtconnect-webinar/unnamed-chunk-8-1.png" alt=""></p>
 <p>It does look the sudden traverals are simultaenous across the axes. Plotting one axes
 against the other leads to the same conclusion. It also gives us an idea of the different
 representations of the part</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>(data <span style="color:#f92672">=</span> merged_pos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Xposition, y <span style="color:#f92672">=</span> Yposition)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_path</span>()
-</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-9-1.png" alt=""></p>
+</code></pre></div><p><img src="/images/mtconnect-webinar/unnamed-chunk-9-1.png" alt=""></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>(data <span style="color:#f92672">=</span> merged_pos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Xposition, y <span style="color:#f92672">=</span> Zposition)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_path</span>()
-</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-9-2.png" alt=""></p>
+</code></pre></div><p><img src="/images/mtconnect-webinar/unnamed-chunk-9-2.png" alt=""></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>(data <span style="color:#f92672">=</span> merged_pos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Zposition, y <span style="color:#f92672">=</span> Yposition)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_path</span>()
-</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-9-3.png" alt=""></p>
+</code></pre></div><p><img src="/images/mtconnect-webinar/unnamed-chunk-9-3.png" alt=""></p>
 <p>So the machine tool is going to the origin every so often.</p>
 <h1 id="deriving-new-process-parameters">Deriving new process parameters</h1>
 <p>It might help our analysis to also calculate a few process parameters that the machine
@@ -403,12 +403,12 @@ dt.df <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">melt<
   <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(color <span style="color:#f92672">=</span> variable)) <span style="color:#f92672">+</span>
   <span style="color:#a6e22e">facet_grid</span>(variable <span style="color:#f92672">~</span> ., scales <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;free_y&#34;</span>)
 </code></pre></div><pre><code>## Warning: Removed 1 rows containing missing values (geom_path).
-</code></pre><p><img src="/mtconnect-webinar/unnamed-chunk-10-1.png" alt=""></p>
+</code></pre><p><img src="/images/mtconnect-webinar/unnamed-chunk-10-1.png" alt=""></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>(data <span style="color:#f92672">=</span> merged_pos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> timestamp)) <span style="color:#f92672">+</span>
   <span style="color:#a6e22e">geom_step</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> pfr)) <span style="color:#f92672">+</span>
   <span style="color:#a6e22e">geom_step</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Xposition))
 </code></pre></div><pre><code>## Warning: Removed 1 rows containing missing values (geom_path).
-</code></pre><p><img src="/mtconnect-webinar/unnamed-chunk-10-2.png" alt=""></p>
+</code></pre><p><img src="/images/mtconnect-webinar/unnamed-chunk-10-2.png" alt=""></p>
 <p>Let&rsquo;s add this derived data back into the MTCDevice Class.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">pfr_data <span style="color:#f92672">=</span> merged_pos_data <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">select</span>(timestamp, value <span style="color:#f92672">=</span> pfr) <span style="color:#75715e"># Structuring data correctly</span>
 mtc_device <span style="color:#f92672">=</span> <span style="color:#a6e22e">add_data_item_to_mtc_device</span>(mtc_device, pfr_data, data_item_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;pfr&lt;PATH_FEEDRATE&gt;&#34;</span>,
@@ -475,7 +475,7 @@ merged_data <span style="color:#f92672">=</span> merged_data <span style="color:
 <p>We need to identify the time spent by the machine at origin. Let&rsquo;s look at the
 X - Y graph again</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">ggplot</span>(data <span style="color:#f92672">=</span> merged_pos_data, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Xposition, y <span style="color:#f92672">=</span> Yposition)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_path</span>()
-</code></pre></div><p><img src="/mtconnect-webinar/unnamed-chunk-13-1.png" alt=""></p>
+</code></pre></div><p><img src="/images/mtconnect-webinar/unnamed-chunk-13-1.png" alt=""></p>
 <p>It is clear that the periods when the machine was origin are roughly X &gt; 30, Y &lt; -30.
 Adding this into the mix</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">merged_data_final <span style="color:#f92672">=</span> merged_data <span style="color:#f92672">%&gt;%</span>

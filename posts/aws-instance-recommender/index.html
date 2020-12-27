@@ -78,7 +78,7 @@
         
         
         <div class="author-image">
-          <img src="/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -228,7 +228,7 @@ on ephemeral demands, making sure that resources are not wasted when not require
 </li>
 </ol>
 <p>For many of these questions, the best place to start is at <code>https://www.ec2instances.info</code> which has all the information required to compare different instances to see what is your best case solution.</p>
-<p><img src="/aws-instance-recommender/ec2_instances_info.png#bordered" alt="https://www.ec2instances.info"></p>
+<p><img src="/images/aws-instance-recommender/ec2_instances_info.png#bordered" alt="https://www.ec2instances.info"></p>
 <p>However, the actual optimization problem is still difficult to tackle manually since there are a large number of instance types to choose from, each having it&rsquo;s own RAM/CPU/Total costs. Still, if we could cast this as an optimization problem, we should be able to let the computer do the hard work for us!</p>
 <h1 id="optimization-logic">Optimization logic</h1>
 <p>This problem can be treated as an <em>Linear Integer Optimization</em> problem with the following components.</p>
@@ -302,7 +302,7 @@ on ephemeral demands, making sure that resources are not wasted when not require
 <li>Filter for instances in the region and pass on the constraint optimization problem into the LP solver</li>
 <li>Display the optimal output in a table</li>
 </ul>
-<p><img src="/aws-instance-recommender/example_ui.png#bordered" alt="Example UI"></p>
+<p><img src="/images/aws-instance-recommender/example_ui.png#bordered" alt="Example UI"></p>
 <h1 id="try-it-out">Try it out</h1>
 <p>You can checkout the app in action <a href="https://share.streamlit.io/tuxiedev/instance-recommender/main/streamlit_ui.py">here</a> (using streamlit sharing) and <a href="https://aws-instance-recommender.herokuapp.com/">here</a> (using <a href="(/posts/streamlit-openscale/)">heroku</a>).</p>
 <h1 id="host-it-yourself">Host it yourself!</h1>

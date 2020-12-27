@@ -82,7 +82,7 @@ Introduction Every so often while doing data analysis, I have come across a situ
         
         
         <div class="author-image">
-          <img src="/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -282,7 +282,7 @@ shown in the comparison table.</p>
 very difficult to  process visually. The <code>html_output</code> provides a way to represent this is a way that is easier
 for the numan eye to read. NOTE: You need to install the <code>htmlTable</code> package for the HTML comparison to work.</p>
 <pre><code class="language-{r," data-lang="{r,">create_output_table(ctable_student)
-</code></pre><p><img src="/comparedf-intro/pic_1.png" alt="HTML Output"></p>
+</code></pre><p><img src="/images/comparedf-intro/pic_1.png" alt="HTML Output"></p>
 <p>Now it is very easy to see recognize what has changed. A single cell is colored
 if it has changed across the two datasets. The value of the cell in the older dataset
 is colored red and the value of the cell in the newer dataset is colored green. Cells
@@ -297,7 +297,7 @@ in red, which <em>DikChik</em> and <em>Vikram</em> have joined new in the data s
 <h3 id="xlsx-output">XLSX Output</h3>
 <p>Alternately you can write to an xlsx file as well</p>
 <pre><code class="language-{r}" data-lang="{r}">create_output_table(ctable_student, output_type = 'xlsx', file_name = &quot;test_file.xlsx&quot;)
-</code></pre><p><img src="/comparedf-intro/excel_output.png" alt="HTML Output"></p>
+</code></pre><p><img src="/images/comparedf-intro/excel_output.png" alt="HTML Output"></p>
 <h3 id="change-count-and-summary">Change Count and Summary</h3>
 <p>You can get an details of what has changed for each group using
 the <code>change_count</code> object in the output. A summary
@@ -308,7 +308,7 @@ of the same is provided in the <code>change_summary</code> object.</p>
 <p>We can also group_multiple columns into the grouping variable</p>
 <pre><code class="language-{r," data-lang="{r,">ctable_student_div = compare_df(results_2011, results_2010, c(&quot;Division&quot;, &quot;Student&quot;))
 ctable_student_div$comparison_df
-</code></pre><p><img src="/comparedf-intro/pic_2.png" alt="HTML Output"></p>
+</code></pre><p><img src="/images/comparedf-intro/pic_2.png" alt="HTML Output"></p>
 <p>Now <em>Rohits</em> in each individual division are considered as belonging to separate
 groups and compared accordingly. All the other summaries also change appropriately.</p>
 <h3 id="excluding-certain-columns">Excluding certain Columns</h3>
@@ -333,7 +333,7 @@ parameter. For this case, giving a tolerance of <code>0.05</code> would ignore a
 less than 5% apart from the lower value.</p>
 <pre><code class="language-{r," data-lang="{r,">ctable_student_div = compare_df(results_2011, results_2010, c(&quot;Division&quot;, &quot;Student&quot;), tolerance = 0.05)
 create_output_table(ctable_student_div)
-</code></pre><p><img src="/comparedf-intro/pic_3.png" alt="HTML Output"></p>
+</code></pre><p><img src="/images/comparedf-intro/pic_3.png" alt="HTML Output"></p>
 <p><em>Venu from division A</em> who had a score change from 100 to 99 is no longer present in the
 diff calculation or in the output</p>
 <p>Naturally, tolerance has no meaning for non-numeric values.</p>
