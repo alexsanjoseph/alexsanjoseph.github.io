@@ -44,7 +44,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.734c2525e2d5bfdf61127ef9425318b001a16dc9050f7b859e7e6c4977f421b7.css" integrity="sha256-c0wlJeLVv99hEn75QlMYsAGhbckFD3uFnn5sSXf0Ibc=">
+<link rel="stylesheet" href="/scss/hyde-hyde.41d188a8a068f9702869df1e37ce6f90040c63f1d30b5f92aa03568d8ef38537.css" integrity="sha256-QdGIqKBo&#43;XAoad8eN85vkAQMY/HTC1&#43;SqgNWjY7zhTc=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -215,8 +215,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <h2 id="introduction">Introduction</h2>
-<p>Are you in the Kubernetes bandwagon yet? We at VIMANA are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">smartly allocates</a> the pods on the the available nodes depending on the resource requirements. In AWS, Automatic scaling groups allow the system to expand and contract based
+    <h1 id="introduction">Introduction</h1>
+<p>Are you in the Kubernetes bandwagon yet? We at <a href="https://govimana.com/">VIMANA</a> are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">smartly allocates</a> the pods on the the available nodes depending on the resource requirements. In AWS, Automatic scaling groups allow the system to expand and contract based
 on ephemeral demands, making sure that resources are not wasted when not required.</p>
 <p>Most of the time with cloud providers, we use a generic instance with autoscaling groups, say <code>m5.xlarge</code>, <code>m5.2xlarge</code> etc. Suppose the entire app requires 100 CPUs and 400 GB ram, we could use 100 <code>m5.xlarge</code> or 50 <code>m5.2xlarge</code>. While this satisfies the resource requirements, there are two places where we have an opportunity to optimize the nodes instead of using the generic ones:</p>
 <ol>
@@ -308,11 +308,11 @@ on ephemeral demands, making sure that resources are not wasted when not require
 <h1 id="host-it-yourself">Host it yourself!</h1>
 <p>Instructions on how to host the app yourself can be found in the <a href="https://github.com/alexsanjoseph/instance-recommender">project homepage</a>.</p>
 <h1 id="credits">Credits</h1>
-<p>This work was done in collaboration with Anish Mashankar(<a href="https://github.com/tuxiedev)">https://github.com/tuxiedev)</a>. Also thanks to <a href="https://govimana.com/">VIMANA</a> for giving us the the freedom to spend money to save money!</p>
+<p>This work was done in collaboration with <a href="https://github.com/tuxiedev">Anish Mashankar</a>. Also thanks to <a href="https://govimana.com/">VIMANA</a> for giving us the the freedom to spend money to save money!</p>
 <h1 id="caveats">Caveats</h1>
 <ol>
 <li>This blog post is based on AWS, but the concepts should translate to GCP/Azure and other cloud providers as well</li>
-<li>We&rsquo;re using just CPU + RAM as the requirements, but it should be possinle to extend it to network bandwidth, disk space, etc. if required.</li>
+<li>We&rsquo;re using just CPU + RAM as the requirements, but it should be possible to extend it to network bandwidth, disk space, etc. if required.</li>
 </ol>
 
   </div>
