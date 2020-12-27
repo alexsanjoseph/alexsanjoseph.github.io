@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.76.5" />
+<meta name="generator" content="Hugo 0.79.1" />
 
     
     
@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="AWS Instance type recommender for optimal resource packing"/>
-<meta name="twitter:description" content="Introduction Are you in the Kubernetes bandwagon yet? We at Vimana are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes smartly allocates the pods on the the available nodes depending on the resource requirements. Automatic scaling groups allows the system to expand and contract based on ephemeral demand making sure that the resources are not wasted when not required."/>
+<meta name="twitter:description" content="Introduction Are you in the Kubernetes bandwagon yet? We at VIMANA are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes smartly allocates the pods on the the available nodes depending on the resource requirements. In AWS, Automatic scaling groups allow the system to expand and contract based on ephemeral demands, making sure that resources are not wasted when not required."/>
 
 <meta property="og:title" content="AWS Instance type recommender for optimal resource packing" />
-<meta property="og:description" content="Introduction Are you in the Kubernetes bandwagon yet? We at Vimana are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes smartly allocates the pods on the the available nodes depending on the resource requirements. Automatic scaling groups allows the system to expand and contract based on ephemeral demand making sure that the resources are not wasted when not required." />
+<meta property="og:description" content="Introduction Are you in the Kubernetes bandwagon yet? We at VIMANA are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes smartly allocates the pods on the the available nodes depending on the resource requirements. In AWS, Automatic scaling groups allow the system to expand and contract based on ephemeral demands, making sure that resources are not wasted when not required." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/aws-instance-recommender/" />
 <meta property="article:published_time" content="2020-12-20T10:39:10+05:30" />
@@ -208,7 +208,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     <br />
-    <i class="fas fa-clock"></i> 3 min read
+    <i class="fas fa-clock"></i> 4 min read
 </div>
 
   </header>
@@ -216,20 +216,22 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <h2 id="introduction">Introduction</h2>
-<p>Are you in the Kubernetes bandwagon yet? We at Vimana are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">smartly allocates</a> the pods on the the available nodes depending on the resource requirements. Automatic scaling groups allows the system to expand and contract based on ephemeral demand making sure that the resources are not wasted when not required.</p>
-<p>Most of the time with cloud providers, you&rsquo;re using a generic instance with autoscaling groups, say <code>m5.xlarge</code>, <code>m5.2xlarge</code> etc. Suppose your entire app requires 100 CPUs and 400 GB ram, one could use 100 <code>m5.xlarge</code> or 50 <code>m5.2xlarge</code> etc. While this works, there are two places where we have an opportunity to optimize the nodes that instead of using the generic ones:</p>
+<p>Are you in the Kubernetes bandwagon yet? We at VIMANA are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">smartly allocates</a> the pods on the the available nodes depending on the resource requirements. In AWS, Automatic scaling groups allow the system to expand and contract based
+on ephemeral demands, making sure that resources are not wasted when not required.</p>
+<p>Most of the time with cloud providers, we use a generic instance with autoscaling groups, say <code>m5.xlarge</code>, <code>m5.2xlarge</code> etc. Suppose the entire app requires 100 CPUs and 400 GB ram, we could use 100 <code>m5.xlarge</code> or 50 <code>m5.2xlarge</code>. While this satisfies the resource requirements, there are two places where we have an opportunity to optimize the nodes instead of using the generic ones:</p>
 <ol>
 <li>
-<p>The necessary use case might be ether RAM or CPU intensive - For example, in <code>AWS</code>, an <code>m5.xlarge</code> instance has 4 CPUs and 16 GB RAM. However, if the total resource requirement for all your applications is say 16 CPUs and 20 GB RAM. Your autoscaling will create 4 instances to account for the CPU usage causing 64 - 20 = 44 GB to be wasted. In this case, using a CPU heavy instance like <code>c5.xlarge</code>.</p>
+<p>The required cluster use case might be either RAM or CPU intensive - For example, in AWS, an <code>m5.xlarge</code> instance has 4 CPUs and 16 GB RAM. However, if the total resource requirement of all the applications is say 16 CPUs and 20 GB RAM, the node groups will be autoscaled to create 4 instances to account for the CPU requirement causing 64 - 20 = 44 GB to be wasted. In this case, using a CPU heavy instance like <code>c5.xlarge</code> could be more benefical.</p>
 </li>
 <li>
 <p>Although in general, the cost of the servers scales proportionally to the amount of resources being used, it is not uncommon to find deals on particular regions where some instances are significantly cheaper than others, probably because of a lack of demand. For example, <code>m5.2xlarge</code> which has 8 CPUs and 32 GB RAM is generally twice as expensive as a <code>m5.xlarge</code>, but if it is actually 1.8x, instead of 2x, it makes sense to use the former preferentially.</p>
 </li>
 </ol>
-<p>For many of these questions, the most amazing repository of knowledge to solve this problem is to start at <code>https://www.ec2instances.info</code>. This website has all the information required to compare different instances to see what is your best case solution.</p>
-<p>However, the actual optimization problem is still difficult to do manually since you have a large number of options to choose from, each having it&rsquo;s own RAM/CPU/Total costs.</p>
+<p>For many of these questions, the best place to start is at <code>https://www.ec2instances.info</code> which has all the information required to compare different instances to see what is your best case solution.</p>
+<p><img src="/aws-instance-recommender/ec2_instances_info.png#bordered" alt="https://www.ec2instances.info"></p>
+<p>However, the actual optimization problem is still difficult to tackle manually since there are a large number of instance types to choose from, each having it&rsquo;s own RAM/CPU/Total costs. Still, if we could cast this as an optimization problem, we should be able to let the computer do the hard work for us!</p>
 <h1 id="optimization-logic">Optimization logic</h1>
-<p>This problem can be treated as an optimization problem with the following components.</p>
+<p>This problem can be treated as an <em>Linear Integer Optimization</em> problem with the following components.</p>
 <ul>
 <li>Constants
 <ul>
@@ -254,26 +256,64 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 </li>
 <li>Constraints
 <ul>
-<li><code>$\text{CPU}_1 * n_1 + \text{CPU}_2 * n_2 + ... + \text{CPU}_n * n_m &gt;= \text{CPU}_{\text{total}}$</code></li>
-<li><code>$\text{RAM}_1 * n_1 + \text{RAM}_2 * n_2 + ... + \text{RAM}_n * n_m &gt;= \text{RAM}_{\text{total}}$</code></li>
+<li><code>$\text{CPU}_1 * n_1 + \text{CPU}_2 * n_2 + ... + \text{CPU}_n * n_m &gt;= \text{CPU}_{\text{required}}$</code></li>
+<li><code>$\text{RAM}_1 * n_1 + \text{RAM}_2 * n_2 + ... + \text{RAM}_n * n_m &gt;= \text{RAM}_{\text{required}}$</code></li>
 </ul>
 </li>
 </ul>
-<p>Now this can solved by any linear integer optimizer out of the box. For this project we use the <a href="https://coin-or.github.io/pulp/">PuLP</a> optimizer.</p>
-<h1 id="making-into-an-app">Making into an App</h1>
-<p>For making this into an app, we chose to use <a href="https://www.streamlit.io/">Streamlit</a>. We&rsquo;ve written in detail about making a streamlit app and hosting it yourself for free <a href="/posts/streamlit-openscale/">here</a>. In this app, we follow the following high level steps:</p>
+<p>Now this can solved by any <em>Linear Integer Optimizer</em> out of the box. For this project we use the <a href="https://coin-or.github.io/pulp/">PuLP</a>.optimizer. The relevant code snippet is provided below.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">best_reco</span>(required_resources, instance_df):
+    prob <span style="color:#f92672">=</span> LpProblem(<span style="color:#e6db74">&#34;InstanceRecommender&#34;</span>, LpMinimize)
+
+    instances <span style="color:#f92672">=</span> instance_df[<span style="color:#e6db74">&#39;name&#39;</span>]<span style="color:#f92672">.</span>values
+    instance_dict <span style="color:#f92672">=</span> instance_df<span style="color:#f92672">.</span>set_index(<span style="color:#e6db74">&#39;name&#39;</span>)<span style="color:#f92672">.</span>T<span style="color:#f92672">.</span>to_dict()
+    instance_vars <span style="color:#f92672">=</span> LpVariable<span style="color:#f92672">.</span>dicts(
+        <span style="color:#e6db74">&#34;Instance&#34;</span>, instances, lowBound<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, cat<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Integer&#39;</span>)
+
+    prob <span style="color:#f92672">+=</span> lpSum([instance_dict[i][<span style="color:#e6db74">&#39;price&#39;</span>] <span style="color:#f92672">*</span> instance_vars[i]
+                   <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> instances])
+    prob <span style="color:#f92672">+=</span> lpSum([instance_dict[i][<span style="color:#e6db74">&#39;vcpus&#39;</span>] <span style="color:#f92672">*</span> instance_vars[i]
+                   <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> instances]) <span style="color:#f92672">&gt;=</span> required_resources[<span style="color:#e6db74">&#39;vcpus&#39;</span>]
+    prob <span style="color:#f92672">+=</span> lpSum([instance_dict[i][<span style="color:#e6db74">&#39;memory&#39;</span>] <span style="color:#f92672">*</span> instance_vars[i]
+                   <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> instances]) <span style="color:#f92672">&gt;=</span> required_resources[<span style="color:#e6db74">&#39;memory&#39;</span>]
+
+    prob<span style="color:#f92672">.</span>solve()
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Status:&#34;</span>, LpStatus[prob<span style="color:#f92672">.</span>status])
+    best_reco <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame([
+        {<span style="color:#e6db74">&#39;name&#39;</span>: remove_prefix(v<span style="color:#f92672">.</span>name, <span style="color:#e6db74">&#34;Instance_&#34;</span>), <span style="color:#e6db74">&#39;units&#39;</span>: v<span style="color:#f92672">.</span>varValue}
+        <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> prob<span style="color:#f92672">.</span>variables() <span style="color:#66d9ef">if</span> v<span style="color:#f92672">.</span>varValue <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>]
+    )
+
+    best_reco <span style="color:#f92672">=</span> best_reco<span style="color:#f92672">.</span>merge(instance_df)
+    <span style="color:#66d9ef">return</span> best_reco
+
+</code></pre></div><h1 id="wrapping-it-into-an-application">Wrapping it into an Application</h1>
+<p>For making this into an app, we chose to use <a href="https://www.streamlit.io/">Streamlit</a>. We&rsquo;ve written in detail about making a Streamlit app and hosting it yourself for free <a href="/posts/streamlit-openscale/">here</a>. In this app, we follow the following high level steps:</p>
 <ul>
-<li>Get the required amount of Memory and CPU from the user.</li>
-<li>Get other constraints (Allow burstable, regex search etc)</li>
-<li>Select Region</li>
+<li>Get the requirements from the user
+<ul>
+<li>Memory and CPU</li>
+<li>Region</li>
+<li>Architecture</li>
+<li>Other constraints (Allow burstable, regex search etc.)</li>
+<li>Min and Max instances sizes allowable</li>
+</ul>
+</li>
 <li>Filter for instances in the region and pass on the constraint optimization problem into the LP solver</li>
-<li>Display the optimizal output in a table</li>
+<li>Display the optimal output in a table</li>
 </ul>
 <p><img src="/aws-instance-recommender/example_ui.png#bordered" alt="Example UI"></p>
 <h1 id="try-it-out">Try it out</h1>
 <p>You can checkout the app in action <a href="https://share.streamlit.io/tuxiedev/instance-recommender/main/streamlit_ui.py">here</a> (using streamlit sharing) and <a href="https://aws-instance-recommender.herokuapp.com/">here</a> (using <a href="(/posts/streamlit-openscale/)">heroku</a>).</p>
 <h1 id="host-it-yourself">Host it yourself!</h1>
 <p>Instructions on how to host the app yourself can be found in the <a href="https://github.com/alexsanjoseph/instance-recommender">project homepage</a>.</p>
+<h1 id="credits">Credits</h1>
+<p>This work was done in collaboration with Anish Mashankar(<a href="https://github.com/tuxiedev)">https://github.com/tuxiedev)</a>. Also thanks to <a href="https://govimana.com/">VIMANA</a> for giving us the the freedom to spend money to save money!</p>
+<h1 id="caveats">Caveats</h1>
+<ol>
+<li>This blog post is based on AWS, but the concepts should translate to GCP/Azure and other cloud providers as well</li>
+<li>We&rsquo;re using just CPU + RAM as the requirements, but it should be possinle to extend it to network bandwidth, disk space, etc. if required.</li>
+</ol>
 
   </div>
   

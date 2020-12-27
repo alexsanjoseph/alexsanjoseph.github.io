@@ -13,7 +13,7 @@
       <pubDate>Sun, 20 Dec 2020 10:39:10 +0530</pubDate>
       
       <guid>/posts/aws-instance-recommender/</guid>
-      <description>Introduction Are you in the Kubernetes bandwagon yet? We at Vimana are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes smartly allocates the pods on the the available nodes depending on the resource requirements. Automatic scaling groups allows the system to expand and contract based on ephemeral demand making sure that the resources are not wasted when not required.</description>
+      <description>Introduction Are you in the Kubernetes bandwagon yet? We at VIMANA are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes smartly allocates the pods on the the available nodes depending on the resource requirements. In AWS, Automatic scaling groups allow the system to expand and contract based on ephemeral demands, making sure that resources are not wasted when not required.</description>
     </item>
     
   </channel>

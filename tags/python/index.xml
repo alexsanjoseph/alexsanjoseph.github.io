@@ -6,7 +6,16 @@
     <description>Recent content in python on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 02 Nov 2020 01:48:26 +0530</lastBuildDate><atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 20 Dec 2020 10:39:10 +0530</lastBuildDate><atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Instance type recommender for optimal resource packing</title>
+      <link>/posts/aws-instance-recommender/</link>
+      <pubDate>Sun, 20 Dec 2020 10:39:10 +0530</pubDate>
+      
+      <guid>/posts/aws-instance-recommender/</guid>
+      <description>Introduction Are you in the Kubernetes bandwagon yet? We at VIMANA are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes smartly allocates the pods on the the available nodes depending on the resource requirements. In AWS, Automatic scaling groups allow the system to expand and contract based on ephemeral demands, making sure that resources are not wasted when not required.</description>
+    </item>
+    
     <item>
       <title>Building a Streamlit app from scratch and deploying it for free using Heroku</title>
       <link>/posts/streamlit-openscale/</link>
