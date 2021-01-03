@@ -268,12 +268,9 @@ MathJax.Hub.Config({
     
     
     
-    var go = function () { window.goatcounter.visit_count({ append: 'body' }) }
-    if (window.goatcounter === undefined)
-        document.addEventListener('DOMContentLoaded', function () { go() }, false)
-    else
-        go()
-
+    window.addEventListener('load', function () {
+        window.goatcounter.visit_count({ append: 'body' })
+    })
 </script>
 
     
