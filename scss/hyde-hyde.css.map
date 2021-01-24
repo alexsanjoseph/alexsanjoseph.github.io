@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "hyde-hyde.css",
-	"sourceRoot": "/Users/alexjoseph/Learning/blog",
+	"sourceRoot": "/Users/alexsanjoseph/learning/blog",
 	"sources": [
 		"themes/hyde-hyde/assets/scss/hyde-hyde.scss",
 		"assets/scss/hyde-hyde/_variables.scss",

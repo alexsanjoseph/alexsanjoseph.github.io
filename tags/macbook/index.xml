@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>macbook on Alex&#39;s Blog</title>
+    <link>/tags/macbook/</link>
+    <description>Recent content in macbook on Alex&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 24 Jan 2021 10:30:00 +0530</lastBuildDate><atom:link href="/tags/macbook/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reinstalling OSX Recovery Partition from a bricked MacBook Pro</title>
+      <link>/posts/osx-reinstall-from-scratch/</link>
+      <pubDate>Sun, 24 Jan 2021 10:30:00 +0530</pubDate>
+      
+      <guid>/posts/osx-reinstall-from-scratch/</guid>
+      <description>Intro So my (ostensibly high-end) Macbook Pro has been crawling in the last few months every time I connect it to external monitors. Generally it is still usable, however, after a lot of experimentation I have found that like many things in life I have to make a tradeoff between two out of three things.
+ Get on a zoom call (especially with video/screen sharing). Connect multiple monitors. Charge the laptop.</description>
+    </item>
+    
+  </channel>
+</rss>

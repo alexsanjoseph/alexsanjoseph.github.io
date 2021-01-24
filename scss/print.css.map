@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "print.css",
-	"sourceRoot": "/Users/alexjoseph/Learning/blog",
+	"sourceRoot": "/Users/alexsanjoseph/learning/blog",
 	"sources": [
 		"themes/hyde-hyde/assets/scss/print.scss",
 		"assets/scss/hyde-hyde/_variables.scss",

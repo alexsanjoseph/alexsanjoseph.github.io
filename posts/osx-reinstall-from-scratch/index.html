@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.80.0" />
+
+    
+    
+    
+
+<title>Reinstalling OSX Recovery Partition from a bricked MacBook Pro • Alex&#39;s Blog</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Reinstalling OSX Recovery Partition from a bricked MacBook Pro"/>
+<meta name="twitter:description" content="Intro So my (ostensibly high-end) Macbook Pro has been crawling in the last few months every time I connect it to external monitors. Generally it is still usable, however, after a lot of experimentation I have found that like many things in life I have to make a tradeoff between two out of three things.
+ Get on a zoom call (especially with video/screen sharing). Connect multiple monitors. Charge the laptop."/>
+
+<meta property="og:title" content="Reinstalling OSX Recovery Partition from a bricked MacBook Pro" />
+<meta property="og:description" content="Intro So my (ostensibly high-end) Macbook Pro has been crawling in the last few months every time I connect it to external monitors. Generally it is still usable, however, after a lot of experimentation I have found that like many things in life I have to make a tradeoff between two out of three things.
+ Get on a zoom call (especially with video/screen sharing). Connect multiple monitors. Charge the laptop." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/osx-reinstall-from-scratch/" />
+<meta property="article:published_time" content="2021-01-24T10:30:00+05:30" />
+<meta property="article:modified_time" content="2021-01-24T16:26:01+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.41d188a8a068f9702869df1e37ce6f90040c63f1d30b5f92aa03568d8ef38537.css" integrity="sha256-QdGIqKBo&#43;XAoad8eN85vkAQMY/HTC1&#43;SqgNWjY7zhTc=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="/">Alex&#39;s Blog</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         Pasting random things together 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Alex&#39;s Blog</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/alexsanjoseph" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/alexsanjoseph" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/alexsanjoseph" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://stackoverflow.com/users/1653808/alex-joseph" rel="me"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:alexsanjoseph%20at%20gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2016 - 2021 alexsanjoseph
+  
+</div>
+
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Reinstalling OSX Recovery Partition from a bricked MacBook Pro</h1>
+    
+    
+<div class="post__meta">
+    </script>
+    
+    
+    <i class="fas fa-calendar-alt"></i> Created: 2021 Jan 24
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <br />
+     <i class="fas fa-tags"></i>
+    
+    <a class="badge badge-tag" href="/%20/tags/osx">osx</a>
+     
+    
+    <a class="badge badge-tag" href="/%20/tags/recovery">recovery</a>
+     
+    
+    <a class="badge badge-tag" href="/%20/tags/reinstall">reinstall</a>
+     
+    
+    <a class="badge badge-tag" href="/%20/tags/macbook">macbook</a>
+    
+    
+    
+    
+    <br />
+    <i class="fas fa-clock"></i> 6 min read
+</div>
+
+  </header>
+  
+  
+  <div class="post">
+    <h1 id="intro">Intro</h1>
+<p>So my (ostensibly high-end) Macbook Pro has been crawling in the last few months every time I connect it to external monitors. Generally it is still usable, however, after a lot of experimentation I have found that like many things in life I have to make a tradeoff between two out of three things.</p>
+<ul>
+<li>Get on a zoom call (especially with video/screen sharing).</li>
+<li>Connect multiple monitors.</li>
+<li>Charge the laptop.</li>
+</ul>
+<p>If I do all three of the above, within less than 10 minutes, my mac will start overheating and the dreaded <a href="https://apple.stackexchange.com/questions/363337/how-to-find-cause-of-high-kernel-task-cpu-usage/363933">kernel_task</a> <a href="https://apple.stackexchange.com/questions/209575/why-is-kernel-task-using-so-much-cpu">issue</a> means that my computer is <strong>literally</strong> unusable.</p>
+<p>After trying out a thousand things and failing, I decided to take this weekend to go for the nuclear option, to do a factory reset of my system to see if that helps. After doing the basic reading up on what the plan would (backup important stuff, go to recovery, erase system disk, reinstall, restore backups, install only the things I care about) I was ready for the adventure. After doing the backups (and praying fervently to <a href="https://www.artofliving.org/in-en/culture/amazing-india/why-lord-ganesha-worshipped-first">Lord Ganesha</a>) I reached recovery mode by restarting and holding <code>CMD + R</code> until the recovery screen appeared.</p>
+<h1 id="the-two-mistakes-of-my-life">The two mistakes of my life</h1>
+<p>First step was to erase the system disk. Here is where I goofed up. Instead of just erasing the system partition, the recovery prompt helpfully gave me an option to delete the &ldquo;partition group&rdquo; which I clicked yes accdentally. I was hoping an act of such great gravity would have at least some sort of a dry run, or a further confirmation, but the system was happy enough to go ahead and delete. Everything. Although I didn&rsquo;t realize it at the time, at this point I had ended up deleting not just the system partition, but also the recovery partition that would help me do the reinstall! I had the proverbial cutting-the-branch-where-you&rsquo;re-sitting act!</p>
+<p>I suspect it would still have been possible to reinstall the system as is since the recovery was still loaded, but I decided to try and see what would happen if I restarted the system right about now. My argument was hey, what&rsquo;s the worst that could happen, and I could always have a power issue causing the system to restart, so might as well try and see what&rsquo;s the worst that would happen. Well, turns out that I&rsquo;d know soon enough.</p>
+<p>Curiosity killed the recovery.</p>
+<h1 id="panic">Panic!</h1>
+<p>After the restarted, I didn&rsquo;t do the recovery trick and sure enough macbook reached the <code>Startup Disk Not Found</code> <a href="https://support.apple.com/en-gb/HT204323">screen</a> as expected. All is good. However, I started to realize that I had fucked up when on trying to enter the recovery, instead of the familiar recovery screen, I was met with a spinning globe icon with NOTHING except an option to connect to Wifi.</p>
+<p>I tried connecting to my Wifi, giving my password, and it seems to connect to it, but absolutely nothing changed, I don&rsquo;t get a new message and the globe keeps spinning. I wait a little to no avail. There are no other buttons to click, nothing much do other than watch the globe spin. It didn&rsquo;t look like it was doing anything either since I still had the option to change my WiFi, and reconnect to a different one just like before.</p>
+<p>The next option was to try restarting the system again, in different recovery modes (who knew mac had <a href="https://support.apple.com/en-in/HT201255">so many startup key combinations!</a>), while frantically trying to figure out (what to do)[https://support.apple.com/en-in/HT201372] if the recovery doesn&rsquo;t work. After downloading the system image for Big Sur on my spouse&rsquo;s Macbook and ordering a new USB drive because I hadn&rsquo;t used one in eons, I was back to figure out if I could do anything more while I was waiting.</p>
+<h1 id="debugging">Debugging</h1>
+<p>However, it turns out that while the globe was quietly spinning, it was doing something in the background, and in the 15 minutes when I was figuring out alternate options, I had got an error screen on the system.</p>
+<h2 id="error-2002f">Error 2002f</h2>
+<p>The error message was succinct and read <code>apple.com/support - 2002f</code>. Doing the usual debugging by trawling stackoverflow/stackexchange (useful!) and apple forums (which suggests resetting NVRAM and PRAM for any possible Apple issue starting from getting kicked out of Eden) yielded that this issue was because the system <a href="https://apple.stackexchange.com/questions/249993/unable-to-install-os-x-cmdr-opening-internet-recovery-instead-of-usual-recover/387894#387894">couldn&rsquo;t hit Apple servers</a>. One helpful suggestion floting around was to reset the <a href="https://talesofatech.com/2017/03/rule-1-its-always-dns/">DNS ip on the router</a>.</p>
+<p><img src="/images/osx-recovery-reinstall/lupus.gif" alt="It&rsquo;s never DNS"></p>
+<p>As pointless as it seemed that point(hehe!) I logged into the routed settings and after a lot of digging, changed the DNS from the default to Google DNS <code>8.8.8.8</code> and <code>8.8.4.4</code>. Restarted the routed, restarted recovery, and reconnect to the Wifi.</p>
+<p>The change was instant. While the recovery system had kept spinning even after connecting to Wifi many times before, this time it immedately proceeded to &ldquo;<code>Starting Internet Recovery. This may take a while</code>&rdquo;. I was on cloud nine!</p>
+<h2 id="error-1008f">Error 1008f</h2>
+<p>Already my spouse was asking if she could stop downloading the Big Sur image on her system since she didn&rsquo;t want any accidental unnecessary upgrades, her being a Site Reliability Engineer. However, I thought that that the danger had not yet passed since it was still just starting the recovery download. And I was right.</p>
+<p>After a few minutes, I was hit by a new error. <code>apple.com/support - 1008f</code>. Back to the SOF/SE and the support forums and man pages. <a href="https://support.apple.com/en-gb/HT206989">Turns out</a> that issue can happen because of the <a href="https://support.apple.com/en-in/HT201255">subtle differences</a> between <code>CMD + R</code> and <code>CMD + Option + R</code>. The other possibility was that I had to disable Activation lock by logging into another system and I had everything setup to be ready for that as well. However, it turned out that the changing the startup command to <code>CMD + Option + R</code> actually worked and I was back on the road. This the the recovery download didn&rsquo;t stop immediately and I could see from (lack of) speed of the progress bar that it was actually trying to download something.</p>
+<h2 id="error-2004f">Error 2004f</h2>
+<p>The next error happened after nearly an hour of the recovery being download. The progress bar stopped at one point and gave up with <code>Error-2004f</code>. Searching online just said that these were internet issues (Lies!) but after the restart, the recovery was smart enough to start from the point where it stopped last minute and continue onwards. The issue happened a couple of more times, and I had to do manual restart. However, eventually the recovery system was fully downloaded and the automatic restart took me to the familiar, comforting recovery screen. From thereon, installing Big Sur was an absolute breeze and within a couple of hours, I had my new fresh system ready to go.</p>
+<h1 id="hahahugoshortcode-s0-hbhb"><figure>
+    <img src="/images/osx-recovery-reinstall/recovery.jpg"/> 
+</figure>
+</h1>
+<h1 id="conclusions">Conclusions</h1>
+<p>On retrospect, although the UI/UX could have been better, I am mighty impressed by the fact that I was able to restore my Macbook practically from Silicon and Oxygen all without having to connect any physical media. I have had similar experiences in the past with Win/Linux where the only option if you fuck up at this level was to manually flash a new recovery/boot system using an external USB.</p>
+
+  </div>
+  
+
+
+  
+
+  
+    
+        <div id="graphcomment"></div>
+<script type="text/javascript">
+  window.graphcomment_id = 'blog-alexsanjoseph-com';
+   
+  (function() {
+    var gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
+    gc.src = 'https://graphcomment.com/js/integration.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
+  })();
+</script>
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-179464703-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"
+    integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1"
+    crossorigin="anonymous"></script>
+<script data-goatcounter="https://alexsanjoseph.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+     inlineMath: [['$','$'], ['\\(','\\)']],
+     displayMath: [['$$','$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+<script>
+    
+    
+    
+    window.goatcounter.visit_count({ append: 'body' })
+</script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>
