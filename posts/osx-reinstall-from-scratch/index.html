@@ -46,7 +46,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.268d217502e91a965bd5bab9bcfb398e2172237901ac41d7a3d3614550832592.css" integrity="sha256-Jo0hdQLpGpZb1bq5vPs5jiFyI3kBrEHXo9NhRVCDJZI=">
+<link rel="stylesheet" href="/scss/hyde-hyde.f0327b99a94fe2ec892aaff5ac85540dfe371dc3d7092af61d29a4ef78e173e5.css" integrity="sha256-8DJ7malP4uyJKq/1rIVUDf43HcPXCSr2HSmk73jhc&#43;U=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -235,7 +235,13 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>However, it turned out that while the globe was quietly spinning, it was doing something in the background, and in the 15 minutes when I was figuring out alternate options, I had got an error screen on the system.</p>
 <h2 id="error-2002f">Error 2002f</h2>
 <p>The error message was succinct, and read <code>apple.com/support - 2002f</code>. Doing the usual debugging by trawling stackoverflow/stackexchange (useful!) and apple forums (which suggests resetting NVRAM and PRAM for any possible Apple issue starting from getting kicked out of Eden) yielded that this issue was because the system <a href="https://apple.stackexchange.com/questions/249993/unable-to-install-os-x-cmdr-opening-internet-recovery-instead-of-usual-recover/387894#387894">couldn&rsquo;t hit Apple servers</a>. One helpful suggestion floting around was to reset the <a href="https://talesofatech.com/2017/03/rule-1-its-always-dns/">DNS ip on the router</a>.</p>
-<p><img src="/images/osx-recovery-reinstall/lupus.gif" alt="It&rsquo;s never DNS" title="Well sometimes, it is!"></p>
+<figure>
+    <img src="/images/osx-recovery-reinstall/lupus.gif"
+         alt="Well sometimes, it is!"/> <figcaption>
+            <p><em>Well sometimes, it is!</em></p>
+        </figcaption>
+</figure>
+
 <p>As futile as it seemed that point, I logged into the router settings, and after a lot of digging changed the DNS from the default to Google DNS <code>8.8.8.8</code> and <code>8.8.4.4</code>. Restarted the router, restarted recovery, and reconnected to the Wifi.</p>
 <p>The change was instant. While the recovery system had kept spinning even after connecting to Wifi many times before, this time it immedately proceeded to &ldquo;<code>Starting Internet Recovery. This may take a while</code>&rdquo;. I was on cloud nine!</p>
 <h2 id="error-1008f">Error 1008f</h2>
@@ -243,10 +249,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>After a few minutes, I was hit by a new error. <code>apple.com/support - 1008f</code>. Back to the SOF/SE and the support forums and man pages. <a href="https://support.apple.com/en-gb/HT206989">Turns out</a> that issue can happen because of the <a href="https://support.apple.com/en-in/HT201255">subtle differences</a> between <code>CMD + R</code> and <code>CMD + Option + R</code>. The other possibility was that I had to disable Activation lock by logging into another system and I had everything setup to be ready for that as well. However, it turned out that the changing the startup command to <code>CMD + Option + R</code> actually worked and I was back on the road. This the the recovery download didn&rsquo;t stop immediately and I could see from (lack of) speed of the progress bar that it was actually trying to download something.</p>
 <h2 id="error-2004f">Error 2004f</h2>
 <p>The next error happened after nearly an hour of the recovery being download. The progress bar stopped at one point and gave up with <code>Error-2004f</code>. Searching online just said that these were internet issues (Lies!) but after the restart, the recovery was smart enough to start from the point where it stopped last minute and continue onwards. The issue happened a couple of more times, and I had to do manual restart. However, eventually the recovery system was fully downloaded and the automatic restart took me to the familiar, comforting recovery screen. From thereon, installing Big Sur was an absolute breeze and within a couple of hours, I had my new fresh system ready to go.</p>
-<h1 id="hahahugoshortcode-s0-hbhb"><figure>
+<figure>
     <img src="/images/osx-recovery-reinstall/recovery.jpg"/> 
 </figure>
-</h1>
+
 <h1 id="conclusions">Conclusions</h1>
 <p>On retrospect, although the UI/UX could have been better, I am mighty impressed by the fact that I was able to restore my Macbook practically from Silicon and Oxygen all without having to connect any physical media. I have had similar experiences in the past with Win/Linux where the only option if you fuck up at this level was to manually flash a new recovery/boot system using an external USB.</p>
 
