@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 20 Dec 2020 10:39:10 +0530</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Jan 2021 10:30:00 +0530</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reinstalling OSX Recovery Partition from a bricked MacBook Pro</title>
+      <link>/posts/osx-reinstall-from-scratch/</link>
+      <pubDate>Sun, 24 Jan 2021 10:30:00 +0530</pubDate>
+      
+      <guid>/posts/osx-reinstall-from-scratch/</guid>
+      <description>Intro So my (ostensibly high-end) Macbook Pro has been crawling in the last few months every time I connect it to external monitors. Generally it is still usable, however, after a lot of experimentation I have found that like many things in life I have to make a tradeoff between two out of three things.
+ Get on a zoom call (especially with video/screen sharing). Connect multiple monitors. Charge the laptop.</description>
+    </item>
+    
     <item>
       <title>AWS Instance type recommender for optimal resource packing</title>
       <link>/posts/aws-instance-recommender/</link>

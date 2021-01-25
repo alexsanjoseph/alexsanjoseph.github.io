@@ -4,7 +4,42 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-12-27T20:30:52+05:30</lastmod>
+    <lastmod>2021-01-25T11:50:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/macbook/</loc>
+    <lastmod>2021-01-25T11:50:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/osx/</loc>
+    <lastmod>2021-01-25T11:50:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2021-01-25T11:50:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/recovery/</loc>
+    <lastmod>2021-01-25T11:50:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/reinstall/</loc>
+    <lastmod>2021-01-25T11:50:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/osx-reinstall-from-scratch/</loc>
+    <lastmod>2021-01-25T11:50:41+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2021-01-25T11:50:41+05:30</lastmod>
   </url>
   
   <url>
@@ -23,22 +58,12 @@
   </url>
   
   <url>
-    <loc>/posts/</loc>
-    <lastmod>2020-12-27T20:30:52+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/python/</loc>
     <lastmod>2020-12-27T20:30:52+05:30</lastmod>
   </url>
   
   <url>
     <loc>/tags/streamlit/</loc>
-    <lastmod>2020-12-27T20:30:52+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-12-27T20:30:52+05:30</lastmod>
   </url>
   

@@ -31,7 +31,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/osx-reinstall-from-scratch/" />
 <meta property="article:published_time" content="2021-01-24T10:30:00+05:30" />
-<meta property="article:modified_time" content="2021-01-24T16:26:01+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="article:modified_time" content="2021-01-25T11:50:41+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
 
 
     
@@ -46,7 +46,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.41d188a8a068f9702869df1e37ce6f90040c63f1d30b5f92aa03568d8ef38537.css" integrity="sha256-QdGIqKBo&#43;XAoad8eN85vkAQMY/HTC1&#43;SqgNWjY7zhTc=">
+<link rel="stylesheet" href="/scss/hyde-hyde.268d217502e91a965bd5bab9bcfb398e2172237901ac41d7a3d3614550832592.css" integrity="sha256-Jo0hdQLpGpZb1bq5vPs5jiFyI3kBrEHXo9NhRVCDJZI=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -179,6 +179,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     
+    , Updated:
+    2021 Jan 25
+    
     
     
     
@@ -217,22 +220,23 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <li>Connect multiple monitors.</li>
 <li>Charge the laptop.</li>
 </ul>
-<p>If I do all three of the above, within less than 10 minutes, my mac will start overheating and the dreaded <a href="https://apple.stackexchange.com/questions/363337/how-to-find-cause-of-high-kernel-task-cpu-usage/363933">kernel_task</a> <a href="https://apple.stackexchange.com/questions/209575/why-is-kernel-task-using-so-much-cpu">issue</a> means that my computer is <strong>literally</strong> unusable.</p>
-<p>After trying out a thousand things and failing, I decided to take this weekend to go for the nuclear option, to do a factory reset of my system to see if that helps. After doing the basic reading up on what the plan would (backup important stuff, go to recovery, erase system disk, reinstall, restore backups, install only the things I care about) I was ready for the adventure. After doing the backups (and praying fervently to <a href="https://www.artofliving.org/in-en/culture/amazing-india/why-lord-ganesha-worshipped-first">Lord Ganesha</a>) I reached recovery mode by restarting and holding <code>CMD + R</code> until the recovery screen appeared.</p>
+<p>If I do all three of the above, within less than 10 minutes, my mac will start overheating and the dreaded <a href="https://apple.stackexchange.com/questions/363337/how-to-find-cause-of-high-kernel-task-cpu-usage/363933">kernel_task</a> <a href="https://apple.stackexchange.com/questions/209575/why-is-kernel-task-using-so-much-cpu">issue</a> kicks in meaning that my computer is <strong>literally</strong> unusable.</p>
+<p>I had tried a thousand things and failed miserable and so decided to take the plunge this weekend to go for the nuclear option, and do a factory reset of my system to see if that helps. I did  basic reading up and figured out what the plan would be (backup important stuff, go to recovery, erase system disk, reinstall, restore backups, install only the things I care about) and was ready for the adventure. After doing the backups, I reached recovery mode by restarting and holding <code>CMD + R</code> until the recovery screen appeared.</p>
 <h1 id="the-two-mistakes-of-my-life">The two mistakes of my life</h1>
-<p>First step was to erase the system disk. Here is where I goofed up. Instead of just erasing the system partition, the recovery prompt helpfully gave me an option to delete the &ldquo;partition group&rdquo; which I clicked yes accdentally. I was hoping an act of such great gravity would have at least some sort of a dry run, or a further confirmation, but the system was happy enough to go ahead and delete. Everything. Although I didn&rsquo;t realize it at the time, at this point I had ended up deleting not just the system partition, but also the recovery partition that would help me do the reinstall! I had the proverbial cutting-the-branch-where-you&rsquo;re-sitting act!</p>
-<p>I suspect it would still have been possible to reinstall the system as is since the recovery was still loaded, but I decided to try and see what would happen if I restarted the system right about now. My argument was hey, what&rsquo;s the worst that could happen, and I could always have a power issue causing the system to restart, so might as well try and see what&rsquo;s the worst that would happen. Well, turns out that I&rsquo;d know soon enough.</p>
-<p>Curiosity killed the recovery.</p>
+<p>The first step was to erase the system disk. <em>Here</em> is where I goofed up the first time. Instead of just erasing the system partition, the recovery prompt helpfully gave me an option to delete the &ldquo;partition group&rdquo; which I clicked yes accidentally. I was hoping an act of such great gravity would have at least some sort of a dry run, or a further confirmation, but the system was happy enough to go ahead and delete on that single click. Everything. Although I didn&rsquo;t realize it at the time, at this point I had ended up deleting not just the system partition, but also the recovery partition that would help me do the reinstall! I had done the proverbial cutting-the-branch-where-you&rsquo;re-sitting act!</p>
+<p>I suspect it would still have been possible to reinstall the system as is at the time(maybe not?) since the recovery was still loaded in memory, but I decided to try and see what would happen if I restarted the system right about now. My argument was - hey, what&rsquo;s the worst that could happen, I could always have a power issue causing the system to restart, so might as well try and see it through. Well, turns out that I&rsquo;d know soon enough.</p>
+<p>Curiosity had killed the recovery.</p>
 <h1 id="panic">Panic!</h1>
-<p>After the restarted, I didn&rsquo;t do the recovery trick and sure enough macbook reached the <code>Startup Disk Not Found</code> <a href="https://support.apple.com/en-gb/HT204323">screen</a> as expected. All is good. However, I started to realize that I had fucked up when on trying to enter the recovery, instead of the familiar recovery screen, I was met with a spinning globe icon with NOTHING except an option to connect to Wifi.</p>
-<p>I tried connecting to my Wifi, giving my password, and it seems to connect to it, but absolutely nothing changed, I don&rsquo;t get a new message and the globe keeps spinning. I wait a little to no avail. There are no other buttons to click, nothing much do other than watch the globe spin. It didn&rsquo;t look like it was doing anything either since I still had the option to change my WiFi, and reconnect to a different one just like before.</p>
+<p>After the restart, I didn&rsquo;t do the recovery trick and sure enough MacBook reached the <code>Startup Disk Not Found</code> <a href="https://support.apple.com/en-gb/HT204323">screen</a> as expected. All was good and expected. However, when on trying to enter the recovery, instead of the familiar recovery screen, I was met with a black screen a spinning globe icon with NOTHING except an option to connect to Wifi.  I knew I had fucked up.</p>
+<p><img src="/images/osx-recovery-reinstall/screwed.jpg" alt="You&rsquo;re screwed!"></p>
+<p>I tried connecting to my Wifi, giving my password, and it seems to connect to it, but absolutely nothing changed, I don&rsquo;t get a new message and the globe keeps spinning. I wait a little, to no avail. There are no other buttons to click, nothing much do other than watch the globe spin. It didn&rsquo;t look like it was doing anything either since I still had the option to change my WiFi, and reconnect to a different one just like before.</p>
 <p>The next option was to try restarting the system again, in different recovery modes (who knew mac had <a href="https://support.apple.com/en-in/HT201255">so many startup key combinations!</a>), while frantically trying to figure out (what to do)[https://support.apple.com/en-in/HT201372] if the recovery doesn&rsquo;t work. After downloading the system image for Big Sur on my spouse&rsquo;s Macbook and ordering a new USB drive because I hadn&rsquo;t used one in eons, I was back to figure out if I could do anything more while I was waiting.</p>
 <h1 id="debugging">Debugging</h1>
-<p>However, it turns out that while the globe was quietly spinning, it was doing something in the background, and in the 15 minutes when I was figuring out alternate options, I had got an error screen on the system.</p>
+<p>However, it turned out that while the globe was quietly spinning, it was doing something in the background, and in the 15 minutes when I was figuring out alternate options, I had got an error screen on the system.</p>
 <h2 id="error-2002f">Error 2002f</h2>
-<p>The error message was succinct and read <code>apple.com/support - 2002f</code>. Doing the usual debugging by trawling stackoverflow/stackexchange (useful!) and apple forums (which suggests resetting NVRAM and PRAM for any possible Apple issue starting from getting kicked out of Eden) yielded that this issue was because the system <a href="https://apple.stackexchange.com/questions/249993/unable-to-install-os-x-cmdr-opening-internet-recovery-instead-of-usual-recover/387894#387894">couldn&rsquo;t hit Apple servers</a>. One helpful suggestion floting around was to reset the <a href="https://talesofatech.com/2017/03/rule-1-its-always-dns/">DNS ip on the router</a>.</p>
+<p>The error message was succinct, and read <code>apple.com/support - 2002f</code>. Doing the usual debugging by trawling stackoverflow/stackexchange (useful!) and apple forums (which suggests resetting NVRAM and PRAM for any possible Apple issue starting from getting kicked out of Eden) yielded that this issue was because the system <a href="https://apple.stackexchange.com/questions/249993/unable-to-install-os-x-cmdr-opening-internet-recovery-instead-of-usual-recover/387894#387894">couldn&rsquo;t hit Apple servers</a>. One helpful suggestion floting around was to reset the <a href="https://talesofatech.com/2017/03/rule-1-its-always-dns/">DNS ip on the router</a>.</p>
 <p><img src="/images/osx-recovery-reinstall/lupus.gif" alt="It&rsquo;s never DNS"></p>
-<p>As pointless as it seemed that point(hehe!) I logged into the routed settings and after a lot of digging, changed the DNS from the default to Google DNS <code>8.8.8.8</code> and <code>8.8.4.4</code>. Restarted the routed, restarted recovery, and reconnect to the Wifi.</p>
+<p>As futile as it seemed that point, I logged into the router settings, and after a lot of digging changed the DNS from the default to Google DNS <code>8.8.8.8</code> and <code>8.8.4.4</code>. Restarted the router, restarted recovery, and reconnected to the Wifi.</p>
 <p>The change was instant. While the recovery system had kept spinning even after connecting to Wifi many times before, this time it immedately proceeded to &ldquo;<code>Starting Internet Recovery. This may take a while</code>&rdquo;. I was on cloud nine!</p>
 <h2 id="error-1008f">Error 1008f</h2>
 <p>Already my spouse was asking if she could stop downloading the Big Sur image on her system since she didn&rsquo;t want any accidental unnecessary upgrades, her being a Site Reliability Engineer. However, I thought that that the danger had not yet passed since it was still just starting the recovery download. And I was right.</p>
