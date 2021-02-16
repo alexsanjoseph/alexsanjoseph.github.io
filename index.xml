@@ -13,8 +13,7 @@
       <pubDate>Sun, 24 Jan 2021 10:30:00 +0530</pubDate>
       
       <guid>/posts/osx-reinstall-from-scratch/</guid>
-      <description>Intro So my (ostensibly high-end) Macbook Pro has been crawling the last few months whenever I connect it to external monitors. Generally it is still usable, however, after a lot of experimentation, I have found that like many things in life I have to make a tradeoff between two out of three things -
- Get on a zoom call (especially with video/screen sharing). Connect multiple monitors. Charge the laptop.  If I do all three of the above, within less than 10 minutes, my mac will start overheating and the dreaded kernel_task issue kicks in meaning that my computer is literally unusable.</description>
+      <description></description>
     </item>
     
     <item>
@@ -23,7 +22,7 @@
       <pubDate>Sun, 20 Dec 2020 10:39:10 +0530</pubDate>
       
       <guid>/posts/aws-instance-recommender/</guid>
-      <description>Introduction Are you in the Kubernetes bandwagon yet? We at VIMANA are fully bought into the ecosystem, which has been working out great for us because of the amazing abstractions and the ease of operations once everything has been properly setup. One thing that Kubernetes does is Automatic Bin Packing wherein the Kubernetes smartly allocates the pods on the the available nodes depending on the resource requirements. In AWS, Automatic scaling groups allow the system to expand and contract based on ephemeral demands, making sure that resources are not wasted when not required.</description>
+      <description></description>
     </item>
     
     <item>
@@ -32,7 +31,7 @@
       <pubDate>Mon, 02 Nov 2020 01:48:26 +0530</pubDate>
       
       <guid>/posts/streamlit-openscale/</guid>
-      <description>Introduction Streamlit is an easy to use python framework to build interactive apps. As opposed to fully featured frameworks like Django and Flask, Streamlit is very opinionated as it has fewer features, but the advantage is you can deploy Streamlit app in under 5 minutes with no knowledge of APIs or routes. Streamlit has recently gotten very popular, especially among data scientists as a quick way to present their findings.</description>
+      <description></description>
     </item>
     
     <item>
@@ -52,7 +51,7 @@ Ever since my graduation in 2011, I&amp;rsquo;ve been working with a startup cal
       <pubDate>Sun, 18 Oct 2020 20:39:10 +0530</pubDate>
       
       <guid>/posts/bodybuilder_intro/</guid>
-      <description>Bodybuilder At VIMANA, we have an Elasticsearch backend for storing most of our Big Data. While Elasticsearch is an amazing search engine which can do a variety of queries/aggregations, the Elasticsearch Query DSL is difficult to construct, especialy for newcomers. I have spent countless hours trying to get the brackets right and the searching for the specific terms. While the new SQL options allows the user to query using SQL, that still doesn&amp;rsquo;t have all the capabilities supported by the full DSL.</description>
+      <description></description>
     </item>
     
     <item>
@@ -61,9 +60,7 @@ Ever since my graduation in 2011, I&amp;rsquo;ve been working with a startup cal
       <pubDate>Fri, 17 Aug 2018 01:25:41 +0530</pubDate>
       
       <guid>/posts/comparedf-intro/</guid>
-      <description>NOTE: This is a repost of an article that was first published in 2016, updated to for latest version
-Introduction Every so often while doing data analysis, I have come across a situation where I have two datasets, which have the same structure but with small differences in the actual data between the two. For example:
- Variation of a dataset across different time periods for the same grouping Variation of values for different algorithms, etc.</description>
+      <description></description>
     </item>
     
     <item>
@@ -72,7 +69,7 @@ Introduction Every so often while doing data analysis, I have come across a situ
       <pubDate>Sun, 16 Oct 2016 22:10:24 +0530</pubDate>
       
       <guid>/posts/mtconnect-webinar/</guid>
-      <description>Introduction For a real life working example, we have this dataset graciously provided to us by the National Institute of Standards and Technology (http://www.nist.gov/) for one of their test bed parts. We will be trying to solve the first example from the introduction, which was a real problem faced by the NIST researchers. As we walk through each step of the exploratory process, you will understand how you can use similar techniques to solve similar issues that you might have with your Machine Tools.</description>
+      <description></description>
     </item>
     
   </channel>
