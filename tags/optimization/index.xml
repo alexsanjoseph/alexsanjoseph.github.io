@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>optimization on Alex&#39;s Blog</title>
+    <link>/tags/optimization/</link>
+    <description>Recent content in optimization on Alex&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 20 Dec 2020 10:39:10 +0530</lastBuildDate><atom:link href="/tags/optimization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Instance type recommender for optimal resource packing</title>
+      <link>/posts/aws-instance-recommender/</link>
+      <pubDate>Sun, 20 Dec 2020 10:39:10 +0530</pubDate>
+      
+      <guid>/posts/aws-instance-recommender/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
