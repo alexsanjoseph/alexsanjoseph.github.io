@@ -29,7 +29,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/optimizing-grafana-queries-with-es/" />
 <meta property="article:published_time" content="2021-02-24T21:05:59+05:30" />
-<meta property="article:modified_time" content="2021-03-07T15:40:41+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="article:modified_time" content="2021-03-09T00:47:30+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
 
 
     
@@ -44,7 +44,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.83f4dc3c9b4a15b54b9cf55707895ab9820360b8e3641ad42f190f355252307f.css" integrity="sha256-g/TcPJtKFbVLnPVXB4lauYIDYLjjZBrULxkPNVJSMH8=">
+<link rel="stylesheet" href="/scss/hyde-hyde.fbbe6475f7463d581e5ebdc253527b42140b752fcc5bdbcca2b3ce35489077b2.css" integrity="sha256-&#43;75kdfdGPVgeXr3CU1J7QhQLdS/MW9vMorPONUiQd7I=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -178,7 +178,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     , Updated:
-    2021 Mar 7
+    2021 Mar 9
     
     
     
@@ -209,76 +209,76 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <h1 id="intro">Intro</h1>
-<p><a href="">Grafana</a>, a visualization framework, was originally created a single developer because <a href="https://grafana.com/blog/2019/09/03/the-mostly-complete-history-of-grafana-ux/">he felt that he could improve Kibana</a>, a vizualization framework which comes bundled with Elasticsearch. Over time, it was co-opted by other ecosystems like <a href="">Prometheus</a>, <a href="">Influx</a> as their own standard way of visualization as well, allowing grafana to become one of the industry standards in the field of observability and visualization of metrics.</p>
-<p>At <a href="https://govimana.com/">VIMANA</a>, we use grafana dashboards extensively for monitoring. This includes both the operations data (about the infrastructure), as well as the device data (from the sensors). The data in the backend is hosted in Elasticsearch, and Grafana makes Elasticsearch queries to render the visualizations</p>
-<p>Grafana dashboards are very inuititive to build (except the landing page - I can never make sense of it!). However, we have observed over time that single dashboards which could have only panels in the low 10s can end up causing a huge load on a reasonably large Elasticsearch cluster. Even a small number of users simulataneously querying Elasticsearch with one of these dashboards can cause ES CPU usage to spike causing lack of availability and reducing indexing speeds cluttering up the pipeline. This document explains a few things we have learned while trying to optimize Grafana dashboards.</p>
+<p><a href="">Grafana</a> was originally created by a single developer because <a href="https://grafana.com/blog/2019/09/03/the-mostly-complete-history-of-grafana-ux/">he felt that he could improve Kibana</a>, a visualization framework which comes bundled with Elasticsearch. Over time, it has been co-opted by other ecosystems like <a href="">Prometheus</a>, <a href="">Influx</a> as one the standard ways of visualization as well, allowing Grafana to become one of the industry standards in the field of observability and visualization of data.</p>
+<p>At <a href="https://govimana.com/">VIMANA</a>, we use Grafana dashboards extensively for system observability. This includes both the telemetry data (about the operations infrastructure), as well as the device data (from the sensors). The data in the backend is hosted in Elasticsearch, and Grafana makes queries to Elasticsearch to render the visualizations.</p>
+<p>Grafana dashboards are very intuitive to build (except the landing page which I can never make sense of!). However, we have observed over time that even a single, unoptimized dashboard can end up causing a huge load on the Elasticsearch cluster. A small number of users simultaneously querying Elasticsearch via one of these dashboards can cause the CPU usage to spike causing a potential lack of data availability and reducing Elasticsearch indexing speeds, cluttering up the downstream pipeline. This document explains a few things we have learned while trying to improve Grafana dashboards.</p>
 <h1 id="how-to-profile-your-grafana-query">How to profile your Grafana query</h1>
 <h2 id="panel-inspector">Panel Inspector</h2>
 <p>Grafana comes packaged with with a <a href="https://grafana.com/docs/grafana/latest/panels/inspect-panel/">Panel Inspector Tool</a> that allows you to:</p>
 <ul>
-<li>Show the request being made to the server</li>
-<li>Show the response from the server</li>
-<li>Get statistics of how much time the query took</li>
+<li>View the request being made to the server</li>
+<li>View the response from the server</li>
+<li>Get statistics on query response times</li>
 </ul>
 <p><img src="/images/optimizing-grafana-queries-with-es/query_inspector.png#medium" alt="Grafana Query inspector!"></p>
-<p>This is a good place to start your profiling as it tells us what&rsquo;s the  query that is being sent to Elasticsearch. In many cases, just getting an understanding of the actual query that&rsquo;s being made helps us understand where the bottlenecks are.</p>
-<p>The panel inspector allows you to debug individual panels in grafana quite well. However, in cases where there are dashboards with many panels, you might be interested in knowing the interactions between the queries the different panels make and how the multiple requests are sent from the dashboard. In this case, we have found that it is best to use the developer tools from the browser to get a holistic view of the dashboard.</p>
-<h2 id="using-browser-devtools">Using Browser Devtools</h2>
-<p>Browser usually have a <code>Developer Tools</code> option that can help in all sorts of debugging. Developer tools have <em>a lot</em> of information, but in this specific case, we&rsquo;re interested in the <code>Network</code> tab, which shows what are the queries that are made by the browser to the backend.</p>
+<p>This is a good place to start your profiling as it tells us what is the exact query that is being sent to Elasticsearch. In many cases, getting an understanding of the actual queries being made, helps us understand where the bottlenecks are.</p>
+<h2 id="using-browser-devtools">Using Browser DevTools</h2>
+<p>The panel inspector allows you to debug individual panels in Grafana quite well. However, in cases where there are dashboards with many panels, you might be interested in knowing the interactions between the queries being made by the different panels and the multiple Elasticsearch requests sent from the dashboard. In this case, we have found that it is best to use the developer tools from the browser to get a holistic view of the dashboard.</p>
+<p>Browser usually have a <code>Developer Tools</code> option that can help in all sorts of debugging. Developer tools have <em>a lot</em> of information, but in this specific case, we&rsquo;re interested in the <code>Network</code> tab which shows what are all the queries that are made by the browser, including those to the backend.</p>
 <p><img src="/images/optimizing-grafana-queries-with-es/grafana_devtools.png#small" alt="Using Devtools to see all queries made by a dashboard"></p>
-<p>Grafana queries to ES are sent to the <code>_msearch</code> end point you can filter by that prefix to see all the queries made by the single dashboard load. For each query, we can also see the time taken by the request, and also the query details, payload etc can be accessed by going into the details page of individual queries.</p>
+<p>Grafana queries to ES are sent to the <code>_msearch</code> endpoint which you can filter using the search box, to see all the queries made by a single dashboard load. For each query, we can also see the time taken by the request along with the query details, payload etc which can be accessed by going into the details page of the individual queries.</p>
 <h2 id="using-logs-from-elasticsearch">Using Logs from Elasticsearch</h2>
-<p>In you have query logging enabled in ES, we can also see the same queries from the Elasticsearch side of things by going over the query logs. This can be either by logging into the container and looking at the logs, or more likely, by persisting this in a logging system (like an ELK stack) and looking at the logs in bulk. This is also the most efficient way to get summary statistics of the queries. There are two kinds of queries in this case that you might be interested in</p>
+<p>If you have <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html">query logging enabled in ES</a>, we can also see the same queries from the Elasticsearch side of things by going over the query logs. This can be either by accessing the container logs directly, or more likely, by persisting these in a logging system (like an ELK stack) and looking at the logs as a whole. This is also the most efficient way to get summary statistics of the queries. There are two kinds of queries in this case that you might be interested in</p>
 <ul>
-<li>Dashboard logs for each page loag request from a Grafana dashboard</li>
-<li>Query logs for each individual query made.</li>
+<li>Dashboard logs for each page load request from a Grafana dashboard</li>
+<li>Logs for each individual query made</li>
 </ul>
 <!-- raw HTML omitted -->
 <h2 id="using-elasticsearch-dev-tools">Using Elasticsearch Dev Tools</h2>
-<p>Once you have identified the queries that you want to profile using the above techniques, we have to figure out how to improve them. Sometimes it might be obvious why the queries are slow, but in other cases, you might want to understand what Elasticsearch is doing in the background for it to take so much time. Kibana has a Dev Tools tab which has a search profiler, which can help you debug how single queries are executed.</p>
+<p>Once you have identified the queries that you want to profile using the above techniques, we have to figure out if those queries can be optimized further and if so, how. Sometimes it might be obvious why the queries are slow, but in other cases, you might want to understand what Elasticsearch is doing in the background for it to take so much time. Kibana has a Dev Tools tab which has a search profiler which can help you debug how a single query are executed.</p>
 <p><img src="/images/optimizing-grafana-queries-with-es/es_search_profiler.png#medium" alt="ES Dev Tools"></p>
 <h1 id="observations-and-recommendations">Observations and Recommendations</h1>
 <h2 id="now-queries-are-not-cached">&lsquo;Now&rsquo; Queries are not Cached</h2>
-<p>By default, Grafana dashboards are tranched by time into executing the query for the last few hours, minutes, etc. These queries are parsed by Grafana to find the <code>current</code> time and sent to the Elasticsearch as absolute time <code>range</code> queries. However, one issue with the default <code>Now</code> queries is that because the time ranges of each query is different.</p>
-<p>Elasticsearch natively implements <a href="https://www.elastic.co/guide/en/elasticsearch/reference/master/query-cache.html">query caching</a> which can quickly return results that have been executed previously without stressing the cluster. However, the cache is hit only when the queried time range exactly matches a previously queried time. Because of this behavor, the user doesn&rsquo;t get any benefit of using the Elasticsearch cache while doing very similar repeated queries.</p>
+<p>By default, Grafana dashboards are tranched by time into executing the query for the last few hours, minutes, etc. These queries are parsed by Grafana to find the <code>current</code> time and sent to the Elasticsearch as absolute time <code>range</code> queries. However, one issue with the default <code>now</code> queries is that the time range of each query is different.</p>
+<p>Elasticsearch natively implements <a href="https://www.elastic.co/guide/en/elasticsearch/reference/master/query-cache.html">query caching</a> which can quickly return results that have been executed previously without stressing the cluster. However, the cache is hit only when the queried time range exactly matches a previously queried time. Because of this behavior, the user doesn&rsquo;t get any benefit of using the Elasticsearch cache while doing very similar repeated queries.</p>
 <h3 id="recommendations">Recommendations</h3>
 <ul>
-<li>Query Using absolute times in the dashboard the the time range you&rsquo;re looking for is in the past.</li>
-<li>If relative times are necessary, but use the <code>/</code> notation (<code>now - 1d/d</code>, <code>now - 2h/h</code>) etc to tranch the time range to fixed boundaries</li>
+<li>Query using absolute times in the dashboard if the the time range you&rsquo;re looking for is in the past.</li>
+<li>If relative times are necessary, use the <code>/</code> notation (<code>now - 1d/d</code>, <code>now - 2h/h</code>) etc to tranch the time range to fixed boundaries</li>
 </ul>
 <figure>
     <img src="/images/optimizing-grafana-queries-with-es/time_ranges.png"
-         alt="Use tranched absolute times rather than now queres"/> <figcaption>
-            <p><em>Use tranched absolute times rather than <code>now</code> queres</em></p>
+         alt="Use tranched absolute times rather than now queries"/> <figcaption>
+            <p><em>Use tranched absolute times rather than <code>now</code> queries</em></p>
         </figcaption>
 </figure>
 
 <h2 id="time-aggregations-can-become-expensive">Time aggregations can become expensive</h2>
-<p>We&rsquo;ve seen two cases where aggregations based on time where the query can become really expensive.</p>
+<p>We&rsquo;ve seen two cases in which aggregations based on time where the query can become really expensive -</p>
 <ul>
-<li>Date histogram with small buckets - This is a common case where the user is trying to zoom into individual data points, since grafana only allows the user to view an aggregation and not necessarily the source data. However, the number of aggregation buckets can grow really large if the bucket size is small. For example, we have had users trying to look at last one day of data with a bucket size of 250ms. This comes to around 86400 * 4 buckets which can overload 1) the cluster, 2) network, 3) Grafana trying to plot all these points.</li>
-<li>Term aggregations based on time - This is similar to the other case, but where the user tries to work around the situation of having small buckets by keeping each timestamp in individual buckets. While this can be alright if the number of timestamps is low, in many cases the sampling rate of the data is very high and we could end up with millions of data points in a few days time range if we are not careful.</li>
+<li>Date histogram with small buckets - This is a common case where the user is trying to zoom into individual data points, since Grafana only allows the user to view an aggregation and not necessarily the source data. However, the number of aggregation buckets can grow really large if the bucket size is small. For example, we have had users trying to look at last one day of data with a bucket size of 250ms. This comes to around 86400 * 4 buckets which can overload 1) the cluster, 2) network, 3) Grafana trying to render all these points.</li>
+<li>Term aggregations based on time - This is similar to the other case, but where the user tries to work around the situation of having small buckets by keeping each timestamp in individual buckets. While this can be alright if the number of timestamps is less, in many cases the sampling rate of the data is very high and we could end up with millions of data points in a few hours time range if we are not careful.</li>
 </ul>
 <h3 id="recommendations-1">Recommendations</h3>
 <ul>
 <li>Let Grafana manage the bucket size (default behavior)</li>
 <li>Limit queries across smaller time ranges if you&rsquo;re looking for very granular data</li>
-<li>Don&rsquo;t use terms queries for fields with large cardinality like time ranges</li>
+<li>Do not use terms queries for fields with large cardinality like time ranges</li>
 </ul>
 <figure>
     <img src="/images/optimizing-grafana-queries-with-es/auto_interval.png"
-         alt="Using Interval: auto allows grafana to manage the bucket size smartly"/> <figcaption>
-            <p><em>Using <code>Interval: auto</code> allows grafana to manage the bucket size smartly</em></p>
+         alt="Using Interval: auto allows Grafana to manage the bucket size smartly"/> <figcaption>
+            <p><em>Using <code>Interval: auto</code> allows Grafana to manage the bucket size smartly</em></p>
         </figcaption>
 </figure>
 
 <h2 id="a-single-dashboard-can-make-100s-of-queries">A Single Dashboard can make 100s of queries</h2>
-<p>In many cases, people making the dashboard likes to have all the information they want in one screen. While this might work for dashboards having less data, with more data/aggregation heavy dashboards, this can mean that each dasboard is sending 100s of queries in one shot while it is getting loaded.</p>
+<p>In many cases, people creating the dashboard like to have all the information they want in one screen. While this might work for dashboards having less data, with more data/aggregation-heavy dashboards, this can mean that each dashboard is sending 100s of queries in one shot while it is getting loaded.</p>
 <h3 id="recommendations-2">Recommendations</h3>
 <ul>
-<li>Use Group By instead of multiple queries - In many cases, you want to see the behavior or multiple timelines which different by a single field (say comparing multiple IoT devices) at the same time for comparison. In such a case, instead of having an independent query for each filter (Query 1 filtered <code>device_1</code>, Query 2 filtered by <code>device_2</code>), it is better to do a generic filter (filter by <code>device_1 OR device_2</code>&hellip;) and then add a <code>Group By</code> option (before the mandatory <code>Then by</code> timestamp).</li>
+<li>Use <code>Group By</code> instead of multiple queries - In many cases, you want to compare the behavior of multiple timelines which differ by a single field (say comparing multiple IoT devices) at the same time. In such a case, instead of having an independent query for each filter (Query 1 filtered <code>device_1</code>, Query 2 filtered by <code>device_2</code>), it is better to do a generic filter (filter by <code>device_1 OR device_2</code>&hellip;) and then add a <code>Group By</code> option (before the mandatory <code>Then by</code> timestamp).</li>
 <li>Use different dashboards for each use case rather than putting everything into one dashboard</li>
-<li>Use <a href="https://grafana.com/docs/grafana/latest/dashboards/#rows">Rows</a> to hide set of panels that are not always relevant (rows are loaded lazily only while expanding by grafana)</li>
+<li>Use <a href="https://grafana.com/docs/Grafana/latest/dashboards/#rows">Rows</a> to hide set of panels that are not always relevant (rows are loaded lazily by Grafana only upon expanding)</li>
 </ul>
 <figure>
     <img src="/images/optimizing-grafana-queries-with-es/group_by.png"
@@ -288,15 +288,15 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 </figure>
 
 <h2 id="queries-hitting-multiple-shards-can-overload-the-system">Queries hitting multiple shards can overload the system</h2>
-<p>If most of your aggregations are about a single dimension (a data item, a device etc), if the data about that dimension is stored across all the shards (default round robin routing behavior), then each query will be hitting all the nodes of the cluster. While this can potentially increase the querying speed, in many cases, this also invovles bringing in data from all partitions into a single node for aggregation and also taxes all the nodes instead of isolating the load into a single node/shard. This can cause the cluster load to go up when lots of queries are happening at the same time.</p>
+<p>If most of your aggregations are about a single dimension (a data item, a device etc), if the data about that dimension is stored across all the shards (default round robin routing behavior), then each query (even if for a single device) will be hitting all shards of all indices matching the index pattern of the cluster, which most likely will be dividedd across all the nodes. While this can potentially increase the querying speed, in many cases, this also involves bringing in data from all partitions into a single node for aggregation while also taxing all the nodes instead of isolating the load into a single node/shard. This can cause the cluster load to go up when many queries are being made at the same time.</p>
 <h3 id="recommendations-3">Recommendations</h3>
 <ul>
-<li><a href="https://www.elastic.co/blog/customizing-your-document-routing">Route documents</a> while storing the data so that each commonly queried dimention is stored in a single shard/node as much as possible.</li>
+<li><a href="https://www.elastic.co/blog/customizing-your-document-routing">Route documents</a> while storing the data so that each commonly queried dimension is stored in a single shard/node as much as possible.</li>
 </ul>
 <h1 id="conclusion">Conclusion</h1>
-<p>The contents of this post have been created after a lot of experimentation and reading the excellent Elastic Documentation. We&rsquo;ve been able to make an order of magnitude increase in querying efficiency following the above guidelines. However, it is possible that the suggestions don&rsquo;t work as is for your system and data model! If so please post a comment so that we can learn together!</p>
+<p>The contents of this post have been created after a lot of experimentation and reading the excellent <a href="https://www.elastic.co/guide/index.html">Elastic Documentation</a>. We&rsquo;ve been able to make an order of magnitude increase in querying efficiency following the above guidelines. However, it is possible that the suggestions don&rsquo;t work as is for your system and data model and if so, please post a comment!</p>
 <h1 id="credits">Credits</h1>
-<p>This work was done in collaboration with <a href="https://github.com/akivalam">Malavika Krishnaswamy</a>. Also thanks to <a href="https://govimana.com/">VIMANA</a> where I learned everything I know about Elasticsearch (and programming in general!)</p>
+<p>This work was done in collaboration with Malavika Krishnaswamy. Also thanks to <a href="https://govimana.com/">VIMANA</a> where I learned everything I know about Elasticsearch (and programming in general!)</p>
   </div>
   
 

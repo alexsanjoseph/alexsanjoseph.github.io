@@ -4,7 +4,37 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2021-03-06T14:40:22+05:30</lastmod>
+    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/elasticsearch/</loc>
+    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/grafana/</loc>
+    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/optimization/</loc>
+    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/optimizing-grafana-queries-with-es/</loc>
+    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
   </url>
   
   <url>
@@ -14,11 +44,6 @@
   
   <url>
     <loc>/tags/osx/</loc>
-    <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
   </url>
   
@@ -38,11 +63,6 @@
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/aws/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
   </url>
@@ -54,11 +74,6 @@
   
   <url>
     <loc>/tags/linear-programming/</loc>
-    <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/optimization/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
   </url>
   
@@ -104,11 +119,6 @@
   
   <url>
     <loc>/posts/bodybuilder_intro/</loc>
-    <lastmod>2021-02-17T00:46:22+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/elasticsearch/</loc>
     <lastmod>2021-02-17T00:46:22+05:30</lastmod>
   </url>
   

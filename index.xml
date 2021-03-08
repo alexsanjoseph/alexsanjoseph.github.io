@@ -6,7 +6,16 @@
     <description>Recent content on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 24 Jan 2021 10:30:00 +0530</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Feb 2021 21:05:59 +0530</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Optimizing Grafana Queries With Elasticsearch</title>
+      <link>/posts/optimizing-grafana-queries-with-es/</link>
+      <pubDate>Wed, 24 Feb 2021 21:05:59 +0530</pubDate>
+      
+      <guid>/posts/optimizing-grafana-queries-with-es/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Reinstalling OSX Recovery Partition from a bricked MacBook Pro</title>
       <link>/posts/osx-reinstall-from-scratch/</link>

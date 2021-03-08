@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 24 Jan 2021 10:30:00 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Feb 2021 21:05:59 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>elasticsearch</title>
+      <link>/tags/elasticsearch/</link>
+      <pubDate>Wed, 24 Feb 2021 21:05:59 +0530</pubDate>
+      
+      <guid>/tags/elasticsearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>grafana</title>
+      <link>/tags/grafana/</link>
+      <pubDate>Wed, 24 Feb 2021 21:05:59 +0530</pubDate>
+      
+      <guid>/tags/grafana/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optimization</title>
+      <link>/tags/optimization/</link>
+      <pubDate>Wed, 24 Feb 2021 21:05:59 +0530</pubDate>
+      
+      <guid>/tags/optimization/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>macbook</title>
       <link>/tags/macbook/</link>
@@ -62,15 +89,6 @@
     </item>
     
     <item>
-      <title>optimization</title>
-      <link>/tags/optimization/</link>
-      <pubDate>Sun, 20 Dec 2020 10:39:10 +0530</pubDate>
-      
-      <guid>/tags/optimization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>python</title>
       <link>/tags/python/</link>
       <pubDate>Sun, 20 Dec 2020 10:39:10 +0530</pubDate>
@@ -121,15 +139,6 @@
       <pubDate>Sun, 18 Oct 2020 20:39:10 +0530</pubDate>
       
       <guid>/tags/bodybuilder/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>elasticsearch</title>
-      <link>/tags/elasticsearch/</link>
-      <pubDate>Sun, 18 Oct 2020 20:39:10 +0530</pubDate>
-      
-      <guid>/tags/elasticsearch/</guid>
       <description></description>
     </item>
     
