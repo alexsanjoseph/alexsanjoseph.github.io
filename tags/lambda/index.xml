@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lambda on Alex&#39;s Blog</title>
+    <link>/tags/lambda/</link>
+    <description>Recent content in lambda on Alex&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 22 May 2021 16:18:43 +0530</lastBuildDate><atom:link href="/tags/lambda/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Duolingo Automatic Streak Save</title>
+      <link>/posts/duolingo-save-streak/</link>
+      <pubDate>Sat, 22 May 2021 16:18:43 +0530</pubDate>
+      
+      <guid>/posts/duolingo-save-streak/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,169 +1,103 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>/</loc>
-    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-03-09T00:51:45+05:30</lastmod>
+  </url><url>
     <loc>/tags/elasticsearch/</loc>
-    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-03-09T00:51:45+05:30</lastmod>
+  </url><url>
     <loc>/tags/grafana/</loc>
-    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-03-09T00:51:45+05:30</lastmod>
+  </url><url>
     <loc>/tags/optimization/</loc>
-    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-03-09T00:51:45+05:30</lastmod>
+  </url><url>
     <loc>/posts/optimizing-grafana-queries-with-es/</loc>
-    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-03-09T00:51:45+05:30</lastmod>
+  </url><url>
     <loc>/posts/</loc>
-    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-03-09T00:51:45+05:30</lastmod>
+  </url><url>
     <loc>/tags/</loc>
-    <lastmod>2021-03-09T00:47:30+05:30</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-03-09T00:51:45+05:30</lastmod>
+  </url><url>
     <loc>/tags/macbook/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/osx/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/recovery/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/reinstall/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/osx-reinstall-from-scratch/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/aws/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/aws-instance-recommender/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/linear-programming/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/python/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/streamlit/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/streamlit-openscale/</loc>
     <lastmod>2021-02-18T00:55:19+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/dropbox/</loc>
     <lastmod>2021-02-18T00:55:19+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/heroku/</loc>
     <lastmod>2021-02-18T00:55:19+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/openscale/</loc>
     <lastmod>2021-02-18T00:55:19+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/about/</loc>
     <lastmod>2020-10-18T22:27:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/bodybuilder/</loc>
     <lastmod>2021-02-17T00:46:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/bodybuilder_intro/</loc>
     <lastmod>2021-02-17T00:46:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/compare/</loc>
     <lastmod>2021-02-17T00:46:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/data.frames/</loc>
     <lastmod>2021-02-17T00:46:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/comparedf-intro/</loc>
     <lastmod>2021-02-17T00:46:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/package/</loc>
     <lastmod>2021-02-17T00:46:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/r/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/mtconnect/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/posts/mtconnect-webinar/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/webinar/</loc>
     <lastmod>2021-03-06T14:40:22+05:30</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/categories/</loc>
   </url>
-  
 </urlset>

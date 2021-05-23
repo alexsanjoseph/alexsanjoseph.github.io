@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.83.1" />
 
     
     
@@ -27,9 +27,10 @@
 <meta property="og:title" content="Optimizing Grafana Queries With Elasticsearch" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/optimizing-grafana-queries-with-es/" />
-<meta property="article:published_time" content="2021-02-24T21:05:59+05:30" />
-<meta property="article:modified_time" content="2021-03-09T00:47:30+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="og:url" content="/posts/optimizing-grafana-queries-with-es/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-24T21:05:59&#43;05:30" />
+<meta property="article:modified_time" content="2021-03-09T00:51:45&#43;05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+
 
 
     
@@ -44,7 +45,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.fbbe6475f7463d581e5ebdc253527b42140b752fcc5bdbcca2b3ce35489077b2.css" integrity="sha256-&#43;75kdfdGPVgeXr3CU1J7QhQLdS/MW9vMorPONUiQd7I=">
+<link rel="stylesheet" href="/scss/hyde-hyde.808d9444d2f291a36b2c70808230576e7e51955a6e13b6e49c23e9d1b297e6ce.css" integrity="sha256-gI2URNLykaNrLHCAgjBXbn5RlVpuE7bknCPp0bKX5s4=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -246,9 +247,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <li>Query using absolute times in the dashboard if the the time range you&rsquo;re looking for is in the past.</li>
 <li>If relative times are necessary, use the <code>/</code> notation (<code>now - 1d/d</code>, <code>now - 2h/h</code>) etc to tranch the time range to fixed boundaries</li>
 </ul>
-<figure>
-    <img src="/images/optimizing-grafana-queries-with-es/time_ranges.png"
-         alt="Use tranched absolute times rather than now queries"/> <figcaption>
+<figure><img src="/images/optimizing-grafana-queries-with-es/time_ranges.png"
+         alt="Use tranched absolute times rather than now queries"/><figcaption>
             <p><em>Use tranched absolute times rather than <code>now</code> queries</em></p>
         </figcaption>
 </figure>
@@ -265,9 +265,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <li>Limit queries across smaller time ranges if you&rsquo;re looking for very granular data</li>
 <li>Do not use terms queries for fields with large cardinality like time ranges</li>
 </ul>
-<figure>
-    <img src="/images/optimizing-grafana-queries-with-es/auto_interval.png"
-         alt="Using Interval: auto allows Grafana to manage the bucket size smartly"/> <figcaption>
+<figure><img src="/images/optimizing-grafana-queries-with-es/auto_interval.png"
+         alt="Using Interval: auto allows Grafana to manage the bucket size smartly"/><figcaption>
             <p><em>Using <code>Interval: auto</code> allows Grafana to manage the bucket size smartly</em></p>
         </figcaption>
 </figure>
@@ -280,9 +279,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <li>Use different dashboards for each use case rather than putting everything into one dashboard</li>
 <li>Use <a href="https://grafana.com/docs/Grafana/latest/dashboards/#rows">Rows</a> to hide set of panels that are not always relevant (rows are loaded lazily by Grafana only upon expanding)</li>
 </ul>
-<figure>
-    <img src="/images/optimizing-grafana-queries-with-es/group_by.png"
-         alt="Group By terms, then by time"/> <figcaption>
+<figure><img src="/images/optimizing-grafana-queries-with-es/group_by.png"
+         alt="Group By terms, then by time"/><figcaption>
             <p><em>Group By terms, then by time</em></p>
         </figcaption>
 </figure>
