@@ -28,8 +28,8 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/duolingo-save-streak/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-05-22T16:18:43&#43;05:30" />
-<meta property="article:modified_time" content="2021-05-23T15:20:26&#43;05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="article:published_time" content="2021-05-24T16:18:43&#43;05:30" />
+<meta property="article:modified_time" content="2021-05-25T00:21:50&#43;05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
 
 
 
@@ -174,12 +174,12 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     </script>
     
     
-    <i class="fas fa-calendar-alt"></i> Created: 2021 May 22
+    <i class="fas fa-calendar-alt"></i> Created: 2021 May 24
     
     
     
     , Updated:
-    2021 May 23
+    2021 May 25
     
     
     
@@ -212,16 +212,16 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   
   <div class="post">
-    <p>Have you heard of the <a href="https://nickwignall.com/seinfeld-strategy/">Seinfeld Strategy</a>? It&rsquo;s the philosophy of acquiring a skill/habit by making sure that you practice a little bit every day. It doesn&rsquo;t matter what is happening in the world, and how shitty you&rsquo;re feeling, you make a promise to yourself that you will spend at least a little time on your chose skill. You don&rsquo;t break the streak! As the streak gets longer and longer, you have more of a tendency to keep doing it every day, and getting a little better each day.</p>
-<p>I&rsquo;ve been following this technique for learning languages the last few years. Coming to my help in implementing this is the amazing (free!) app Duolingo which enables positive gamification by showing how long you have had a continuous streak of daily usage in the platform. When you have a long streak, you have even more of a bonus to keep going!</p>
+    <p>Have you heard of the <a href="https://nickwignall.com/seinfeld-strategy/">Seinfeld Strategy</a>? It&rsquo;s the philosophy of acquiring a skill/habit by making sure that you practice a little bit every day. It doesn&rsquo;t matter what is happening in the world or how shitty you&rsquo;re feeling, you make a promise to yourself that you will spend at least some time on a skill of your choosing. You don&rsquo;t break the streak! As the streak gets longer and longer, you have more of a tendency to keep doing it every day, and getting better each day.</p>
+<p>I&rsquo;ve been following this technique for learning languages the last few years. Coming to my help in implementing this is the amazing (free!) app <a href="https://www.duolingo.com/learn">Duolingo</a> which enables gamification by showing how long you have had a continuous streak of daily usage in the platform. When you have a long streak, you have even more of a bonus to keep going!</p>
 <p><img src="/images/duolingo-save-streak/sample_streak.png#smaller#center" alt="Example of a 50 day long streak"></p>
 <!-- raw HTML omitted -->
-<p>However, one potential problem with streaks, is that try as you might, life gets in the way, and you invariably end up forgetting/not able to do what you set out to do daily once in a while. <del>If</del> When that happens, if your entire streak is lost, then you&rsquo;ll end up with negative motivation to continue since all your effort of keeping the long streak has gone down the drain.</p>
-<p>However, duolingo offers a really smart alternative to make sure this doesn&rsquo;t happen. Duolingo has the concept of a &ldquo;streak-freeze&rdquo; by which you can spend the Duo currency you&rsquo;ve earned by advancing across levels to buy a component in-app which allows you prevent your streak from disappearing, just for a day. Once the streak freeze is used, it disappears until you buy a new one from the market again.</p>
+<p>However, one potential problem with streaks is that try as you might, life gets in the way, and you invariably end up forgetting/not being able to do what you set out to do daily. <del>If</del> When that happens, if your entire streak is lost, then you end up with negative motivation to continue since all your effort of keeping the long streak has gone down the drain.</p>
+<p>However, duolingo offers a really smart alternative to make sure this doesn&rsquo;t happen. Duolingo has the concept of a &ldquo;streak freeze&rdquo; in the <a href="https://www.duolingo.com/shop">in-app shop</a> by which you can spend the Duo currency you&rsquo;ve earned by advancing across levels to buy a component in-app which prevents you to from losing your hard-earned streak, just for that day. Once the <em>streak freeze</em> is used, you have to buy a new one from the market again in order to be able to use it.</p>
 <p><img src="/images/duolingo-save-streak/streak_freeze.png#small#center" alt="Streak freeze in action"></p>
-<p>What if you&rsquo;re out for multiple days in a row and you&rsquo;re not in a position to play/buy the streak freeze? This happened to me once while I was travelling when I was stuck without internet for three days. I had a pretty long streak at the time and I ended up losing all the motivation to play the game for a while.</p>
+<p>What if you&rsquo;re out for multiple days in a row and you&rsquo;re not in a position to play/buy the <em>streak freeze</em>? This happened to me once while I was travelling when I was stuck without internet for three days. I had a pretty long streak at the time and I ended up losing all the motivation to play the game for a while.</p>
 <h2 id="automatic-streak-save">Automatic Streak Save</h2>
-<p>However, later I learned that Duolingo has a public API that allows you to buy the streak freeze programmatically. This gave me an idea to quickly wire up a small script in python using the unofficial <a href="https://github.com/KartikTalwar/Duolingo">Python API</a> which bought the Streak Freeze by using my account creds every time it was running. All I had to do was to set it up as a cron job on a system and it will ensure that my precious streak was not lost.</p>
+<p>However, later I learned that Duolingo has a public API that allows you to buy the <em>streak freeze</em> programmatically. This gave me an idea to quickly wire up a small script in python using the unofficial <a href="https://github.com/KartikTalwar/Duolingo">Python API</a> which bought the <em>streak freeze</em> by using my account creds every time it was running. All I had to do was to set it up as a cron job on a system and it will ensure that my precious streak was not lost.</p>
 <p>The code for the streak save is quite simple and described below:</p>
 <h3 id="main"><code>main</code></h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
@@ -272,8 +272,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <li>For each item to purchase
 <ol>
 <li>See if the item is already equipped</li>
-<li>If not, try to purchase the item.</li>
-<li>Show error/info message appropriately</li>
+<li>If not, try to purchase the item</li>
+<li>Show appropriate error/info message</li>
 </ol>
 </li>
 </ol>
@@ -289,33 +289,34 @@ Processing username2
 Trying to Buy streak_freeze for usernam2
 Bought streak_freeze for username2
 </code></pre><h2 id="localserver-deployment">Local/Server Deployment</h2>
-<p>The easiest way to deploy this would be as a cron job. If you have a server that is always running, this is probably a fast, simple and sufficiently good enough solution.</p>
+<p>The easiest way to deploy this would be as a cron job. If you have a server that is always running, this is probably the fastest-to-get-it-running solution - simple and sufficiently good enough.</p>
 <h2 id="deployment-in-aws">Deployment in AWS</h2>
-<p>However, the above requires that you need a server running which is always up (or at least up during the times that you want to run the job). I initially deployed the job using the Amazon T instances that are quite cheap, but you barely need a few seconds of runtime each day. The instrumentation to bring up a full instance and taking them down after seemed too much of a hassle.</p>
+<p>However, a prerequisite for the above is that you need an always running server (at least during the times that you want to run the job). Initially, I had deployed the job using the Amazon T instances that are quite cheap, but you barely need a few seconds of runtime each day. The instrumentation to bring up a full instance and taking them down after seemed too much of a hassle.</p>
 <p>Enter serverless functions.</p>
 <h3 id="lambda-function">Lambda Function</h3>
-<p><a href="https://aws.amazon.com/lambda/">AWS Lambda</a> is the AWS serverless offering, made to cater to exactly these kinds of use cases. You provide the function and AWS takes care of the rest, of deploying and making sure that it runs on a schedule. You only pay of the time it is running (along with generous free minutes!). Creating a lambda function is also quite a breeze and there are numerous tutorials available online, so I wont delve into the details here. Here is a snapshot of how my code looks fully setup. The code itself is stored in a folder in AWS S3.</p>
+<p><a href="https://aws.amazon.com/lambda/">AWS Lambda</a> is the AWS serverless offering, made to cater to exactly these kinds of use cases. You provide the function and AWS takes care of the rest - the deployment and orchestration. You only pay of the time it is running (along with generous free minutes!). Creating a lambda function is quite a breeze and there are numerous tutorials available online, so I wont delve into the details here. Here is a snapshot of how my code which is stored in AWS S3 looks, fully setup.</p>
 <p><img src="/images/duolingo-save-streak/code_in_lambda.png#center" alt="AWS Lambda code"></p>
 <h3 id="env-vars">Env vars</h3>
 <p>Once you have the code uploaded, you need provide the credentials. Currently I&rsquo;ve provided them as environment variables since this is a personal account, but <a href="https://aws.amazon.com/blogs/security/how-to-securely-provide-database-credentials-to-lambda-functions-by-using-aws-secrets-manager/">there are standard ways</a> to provide this information as a secret if necessary.</p>
 <p><img src="/images/duolingo-save-streak/env_vars.png#center" alt="AWS Lambda code"></p>
 <h3 id="trigger">Trigger</h3>
-<p>You can use the <code>Test</code> function capability in the Lambda consle to make sure that the setup is correct and the streak freeze is getting purchased. However, to make sure that this runs automatically, we need to set a trigger to the lambda functions. AWS has <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">extended documentation</a> on how to do this as well.</p>
+<p>You can use the <code>Test</code> function capability in the Lambda console to make sure that the setup is correct and the streak freeze is getting purchased. However, to make sure that this runs automatically, we need to set a trigger to the lambda functions. AWS has <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html">extended documentation</a> on how to do this as well.</p>
 <p>Here is my setup as an example:</p>
 <p><img src="/images/duolingo-save-streak/trigger.png#center" alt="AWS Lambda code"></p>
 <p>You should be good to go now! Depending on how you set up the trigger, you should be able to the lambda function running periodically!</p>
 <h3 id="alarms">Alarms</h3>
-<p>Now that you&rsquo;re depending on Lambda to do the right thing (in the <strong>rare</strong> case you can&rsquo;t), how do you make sure that the lambda function is itself not failing due to any reason? For that reason, I have an alarm also setup in <code>Cloudwatch</code>. This alarm scrapes throught the logs of the Lambda function and can send out an email alert in case a threshold is breached. In my specific case, I have set the alarm to alert me in I see at least one alert from this function in the last 6 hours as you can see below:</p>
+<p>Now that you&rsquo;re depending on Lambda to do the right thing (in the <strong>rare</strong> case that you can&rsquo;t), how do you make sure that the Lambda function is itself not failing for whatever reason? To capture that case, I have an alarm setup in <code>AWS Cloudwatch</code>. This alarm scrapes throught the logs of the Lambda function and can send out an email alert in case a threshold is breached. In my specific case, I have set the alarm to alert me if there is at least one alert from this function in the last 6 hours, as you can see below:</p>
 <p><img src="/images/duolingo-save-streak/alarm.png#center" alt="AWS Lambda code"></p>
-<p>Note: This kind of failure is quite common and has actually happened a few times in the last few years whenever Duolingo changes their APIs.</p>
+<p>Note: This kind of failure is not uncommon and has actually happened a few times in the last few years whenever Duolingo changes their APIs. An example error message is show below:</p>
+<p><img src="/images/duolingo-save-streak/duo_error.png#center" alt="Duo Error"></p>
 <h3 id="costs">Costs</h3>
-<p>You might also want to know how much it costs to have this setup! It turns out that our functions are lite enough and Amazon&rsquo;s free limits are generous events such that all of the above setup comes for free!</p>
+<p>You might also want to know how much it costs to have this setup! It turns out that our functions are lite enough and Amazon&rsquo;s free limits are generous events such that all of the above setup comes at literally zero cost!</p>
 <p><img src="/images/duolingo-save-streak/costs.png#center" alt="My Streak"></p>
-<p>Thanks, AWS!</p>
+<p>Thank you, AWS!</p>
 <h2 id="in-action">In action</h2>
-<p>As you can see above, using this setup as a helper, I have managed to a streak on Duolingo which extends for more than half a decade now #humblebrag! Thanks to Duolingo for keeping the API public and allowing such shenanigans to happen!</p>
+<p>As you can see above, using this setup as a helper, I have managed to maintain a streak on Duolingo which extends for more than half a decade now #humblebrag! Thanks to Duolingo for keeping the API public and allowing such shenanigans to happen!</p>
 <p><img src="/images/duolingo-save-streak/my_streak.png#small#center" alt="My Streak"></p>
-<p><em>Caveat: I&rsquo;m well aware that for some people, such a setup might do end up doing the opposite and take out the motication to even feel like playing. However, it has worked splendingly for my case as you can see above. YMMV</em></p>
+<p><em>Caveat: I&rsquo;m well aware that for some people, such a setup might end up doing the opposite and take out the motivation to play at all. However, it has worked splendingly for my case as you can see above. YMMV</em></p>
   </div>
   
 
