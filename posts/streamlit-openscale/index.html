@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.87.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
     
     
@@ -45,7 +45,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.55ec7fa5588e891466ee735b2e62a1a1a8babb25bd5db5e2bf6f4617c240419a.css" integrity="sha256-Vex/pViOiRRm7nNbLmKhoai6uyW9XbXiv29GF8JAQZo=">
+<link rel="stylesheet" href="/scss/hyde-hyde.5ed440bb4a08309a76b1bf660051e36356133e3d8ce25a1cb1e3300e35574399.css" integrity="sha256-XtRAu0oIMJp2sb9mAFHjY1YTPj2M4locseMwDjVXQ5k=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -231,7 +231,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 </code></pre></div><p>It&rsquo;s a general practice for any sort of self-contained projects to start with by creating a virtual environment. There are <a href="https://realpython.com/python-virtual-environments-a-primer/">very good reasons</a> to use a virtual environment, which I&rsquo;ll not go into detail here. Let&rsquo;s create a <code>venv</code> and activate it</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">python3 -m venv venv <span style="color:#f92672">&amp;&amp;</span> source venv/bin/activate
 </code></pre></div><p>We&rsquo;ll also need to install the libraries that we&rsquo;ll be using for the project. Instead of manually installing them one by one, the standard approach is to create a <em>requirements</em> file which holds the information on the different libraries and their versions. Let&rsquo;s create a file called <code>requirements.txt</code> which has the following contents.</p>
-<pre><code>dropbox==9.5.0
+<pre tabindex="0"><code>dropbox==9.5.0
 pandas==1.0.3
 plotnine==0.6.0
 streamlit==0.57.3
@@ -301,7 +301,7 @@ streamlit run main.py
 <li><code>download_file_data_from_dropbox</code> - Downloads the particular file from dropbox</li>
 </ul>
 <p>Here is an example snippet of data after downloading from dropbox:</p>
-<pre><code>
+<pre tabindex="0"><code>
              dateTime  weight
 0    2020-10-05 09:43    65.1
 1    2020-10-04 19:14    64.0

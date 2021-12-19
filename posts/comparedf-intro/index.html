@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.87.0" />
+<meta name="generator" content="Hugo 0.88.1" />
 
     
     
@@ -45,7 +45,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.55ec7fa5588e891466ee735b2e62a1a1a8babb25bd5db5e2bf6f4617c240419a.css" integrity="sha256-Vex/pViOiRRm7nNbLmKhoai6uyW9XbXiv29GF8JAQZo=">
+<link rel="stylesheet" href="/scss/hyde-hyde.5ed440bb4a08309a76b1bf660051e36356133e3d8ce25a1cb1e3300e35574399.css" integrity="sha256-XtRAu0oIMJp2sb9mAFHjY1YTPj2M4locseMwDjVXQ5k=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -230,9 +230,9 @@ what <code>compareDF</code> package is all about.</p>
 <p>The output can be visualized either on the RStudio Viewer, or sent to a file as an <code>HTML</code> or an <code>XLSX</code> file.</p>
 <h2 id="installation">Installation</h2>
 <p>You can install the CRAN version of the package as below:</p>
-<pre><code class="language-{r}" data-lang="{r}">install.packages(&quot;compareDF&quot;)
+<pre tabindex="0"><code class="language-{r}" data-lang="{r}">install.packages(&quot;compareDF&quot;)
 </code></pre><p>Development version can be installed using <code>devtools</code></p>
-<pre><code class="language-{r}" data-lang="{r}">devtools::install_github('alexsanjoseph/compareDF')
+<pre tabindex="0"><code class="language-{r}" data-lang="{r}">devtools::install_github('alexsanjoseph/compareDF')
 </code></pre><h2 id="usage">Usage</h2>
 <p>The package has a single function, <code>compare_df</code>. It takes in two data frames, and one or
 more grouping variables and does a comparison between the the two. In addition you can
@@ -241,7 +241,7 @@ of the HTML output, and decide what tolerance you want to provide to detect chan
 <h2 id="basic-example">Basic Example</h2>
 <p>Let&rsquo;s take the example of a teacher who wants to compare the marks and grades of students across
 two years, 2010 and 2011. The data is stored in tabular format.</p>
-<pre><code class="language-{r}" data-lang="{r}">library(compareDF)
+<pre tabindex="0"><code class="language-{r}" data-lang="{r}">library(compareDF)
 data(&quot;results_2010&quot;, &quot;results_2011&quot;)
 print(results_2010)
 print(results_2011)
@@ -258,7 +258,7 @@ Eg: - <em>Mugger and Dhakkan</em> dropped out while <em>Vikram and Dikchik</em> 
 <em>Student</em> column. We will ignore the <em>Division</em> column and assume that the student names are unique
 across divisions. In this sub-example, if a student appears in two divisions, he/she has studied in both
 of them.</p>
-<pre><code class="language-{r}" data-lang="{r}">ctable_student = compare_df(results_2011, results_2010, c(&quot;Student&quot;))
+<pre tabindex="0"><code class="language-{r}" data-lang="{r}">ctable_student = compare_df(results_2011, results_2010, c(&quot;Student&quot;))
 ctable_student$comparison_df
 
 </code></pre><p>By default, no columns are excluded from the comparison, so any of the tuple of grouping
@@ -274,7 +274,7 @@ shown in the comparison table.</p>
 <p>While the comparison table can be quickly summarized in various forms for futher analysis, it is
 very difficult to  process visually. The <code>html_output</code> provides a way to represent this is a way that is easier
 for the numan eye to read. NOTE: You need to install the <code>htmlTable</code> package for the HTML comparison to work.</p>
-<pre><code class="language-{r," data-lang="{r,">create_output_table(ctable_student)
+<pre tabindex="0"><code class="language-{r," data-lang="{r,">create_output_table(ctable_student)
 </code></pre><p><img src="/images/comparedf-intro/pic_1.png" alt="HTML Output"></p>
 <p>Now it is very easy to see recognize what has changed. A single cell is colored
 if it has changed across the two datasets. The value of the cell in the older dataset
@@ -289,17 +289,17 @@ scores, which are in <em>Discipline</em>, <em>Maths</em>, and <em>Maths</em> res
 in red, which <em>DikChik</em> and <em>Vikram</em> have joined new in the data set and all the columns for the rows are in green.</p>
 <h3 id="xlsx-output">XLSX Output</h3>
 <p>Alternately you can write to an xlsx file as well</p>
-<pre><code class="language-{r}" data-lang="{r}">create_output_table(ctable_student, output_type = 'xlsx', file_name = &quot;test_file.xlsx&quot;)
+<pre tabindex="0"><code class="language-{r}" data-lang="{r}">create_output_table(ctable_student, output_type = 'xlsx', file_name = &quot;test_file.xlsx&quot;)
 </code></pre><p><img src="/images/comparedf-intro/excel_output.png" alt="HTML Output"></p>
 <h3 id="change-count-and-summary">Change Count and Summary</h3>
 <p>You can get an details of what has changed for each group using
 the <code>change_count</code> object in the output. A summary
 of the same is provided in the <code>change_summary</code> object.</p>
-<pre><code class="language-{r}" data-lang="{r}">ctable_student$change_count
-</code></pre><pre><code class="language-{r}" data-lang="{r}">ctable_student$change_summary
+<pre tabindex="0"><code class="language-{r}" data-lang="{r}">ctable_student$change_count
+</code></pre><pre tabindex="0"><code class="language-{r}" data-lang="{r}">ctable_student$change_summary
 </code></pre><h3 id="grouping-multiple-columns">Grouping Multiple Columns</h3>
 <p>We can also group_multiple columns into the grouping variable</p>
-<pre><code class="language-{r," data-lang="{r,">ctable_student_div = compare_df(results_2011, results_2010, c(&quot;Division&quot;, &quot;Student&quot;))
+<pre tabindex="0"><code class="language-{r," data-lang="{r,">ctable_student_div = compare_df(results_2011, results_2010, c(&quot;Division&quot;, &quot;Student&quot;))
 ctable_student_div$comparison_df
 </code></pre><p><img src="/images/comparedf-intro/pic_2.png" alt="HTML Output"></p>
 <p>Now <em>Rohits</em> in each individual division are considered as belonging to separate
@@ -324,7 +324,7 @@ if the marks of a student vary by less that 5% across the years, it could be due
 error and not any real performance indictaor. In such a case, you would want to give a tolerance
 parameter. For this case, giving a tolerance of <code>0.05</code> would ignore all the changes that are
 less than 5% apart from the lower value.</p>
-<pre><code class="language-{r," data-lang="{r,">ctable_student_div = compare_df(results_2011, results_2010, c(&quot;Division&quot;, &quot;Student&quot;), tolerance = 0.05)
+<pre tabindex="0"><code class="language-{r," data-lang="{r,">ctable_student_div = compare_df(results_2011, results_2010, c(&quot;Division&quot;, &quot;Student&quot;), tolerance = 0.05)
 create_output_table(ctable_student_div)
 </code></pre><p><img src="/images/comparedf-intro/pic_3.png" alt="HTML Output"></p>
 <p><em>Venu from division A</em> who had a score change from 100 to 99 is no longer present in the
