@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2021-09-13T01:31:12+05:30</lastmod>
+    <lastmod>2021-12-20T00:00:49+05:30</lastmod>
+  </url><url>
+    <loc>/tags/expense-tracking/</loc>
+    <lastmod>2021-12-20T00:00:49+05:30</lastmod>
+  </url><url>
+    <loc>/tags/fun/</loc>
+    <lastmod>2021-12-20T00:00:49+05:30</lastmod>
+  </url><url>
+    <loc>/tags/lifehacking/</loc>
+    <lastmod>2021-12-20T00:00:49+05:30</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2021-12-20T00:00:49+05:30</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2021-12-20T00:00:49+05:30</lastmod>
+  </url><url>
+    <loc>/posts/tracking-expenses/</loc>
+    <lastmod>2021-12-20T00:00:49+05:30</lastmod>
   </url><url>
     <loc>/tags/aws/</loc>
     <lastmod>2021-05-25T00:21:50+05:30</lastmod>
@@ -17,14 +35,8 @@
     <loc>/tags/lambda/</loc>
     <lastmod>2021-05-25T00:21:50+05:30</lastmod>
   </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2021-09-13T01:31:12+05:30</lastmod>
-  </url><url>
     <loc>/tags/python/</loc>
     <lastmod>2021-05-25T00:21:50+05:30</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2021-09-13T01:31:12+05:30</lastmod>
   </url><url>
     <loc>/tags/elasticsearch/</loc>
     <lastmod>2021-03-09T00:51:45+05:30</lastmod>

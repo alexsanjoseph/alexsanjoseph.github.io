@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 24 May 2021 16:18:43 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Dec 2021 11:39:10 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>expense-tracking</title>
+      <link>/tags/expense-tracking/</link>
+      <pubDate>Sat, 18 Dec 2021 11:39:10 +0530</pubDate>
+      
+      <guid>/tags/expense-tracking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fun</title>
+      <link>/tags/fun/</link>
+      <pubDate>Sat, 18 Dec 2021 11:39:10 +0530</pubDate>
+      
+      <guid>/tags/fun/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lifehacking</title>
+      <link>/tags/lifehacking/</link>
+      <pubDate>Sat, 18 Dec 2021 11:39:10 +0530</pubDate>
+      
+      <guid>/tags/lifehacking/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>aws</title>
       <link>/tags/aws/</link>
