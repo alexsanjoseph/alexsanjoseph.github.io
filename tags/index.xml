@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 18 Dec 2021 11:39:10 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Jan 2022 10:17:52 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>golang</title>
+      <link>/tags/golang/</link>
+      <pubDate>Sun, 16 Jan 2022 10:17:52 +0000</pubDate>
+      
+      <guid>/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kata</title>
+      <link>/tags/kata/</link>
+      <pubDate>Sun, 16 Jan 2022 10:17:52 +0000</pubDate>
+      
+      <guid>/tags/kata/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>riemann-hypothesis</title>
+      <link>/tags/riemann-hypothesis/</link>
+      <pubDate>Sun, 16 Jan 2022 10:17:52 +0000</pubDate>
+      
+      <guid>/tags/riemann-hypothesis/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>expense-tracking</title>
       <link>/tags/expense-tracking/</link>

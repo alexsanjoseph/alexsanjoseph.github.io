@@ -6,7 +6,16 @@
     <description>Recent content on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 18 Dec 2021 11:39:10 +0530</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Jan 2022 15:59:03 +0530</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Searching for RH Counterexamples in Golang - Setting up</title>
+      <link>/posts/rh-counterexamples-in-go-1-setup/</link>
+      <pubDate>Sun, 16 Jan 2022 10:17:52 +0000</pubDate>
+      
+      <guid>/posts/rh-counterexamples-in-go-1-setup/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Tracking Personal Expenses for Fun (and Future!)</title>
       <link>/posts/tracking-expenses/</link>
@@ -88,6 +97,24 @@ Ever since my graduation in 2011, I&amp;rsquo;ve been working with a startup cal
       
       <guid>/posts/comparedf-intro/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Project P1&#39;s Title</title>
+      <link>/portfolio/p1/</link>
+      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/p1/</guid>
+      <description>Here is a longer summary of the project. You can write as long as you wish.</description>
+    </item>
+    
+    <item>
+      <title>Project P2&#39;s Title</title>
+      <link>/portfolio/p2/</link>
+      <pubDate>Tue, 02 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/p2/</guid>
+      <description>Here is a longer summary of the project. You can write as long as you wish.</description>
     </item>
     
     <item>
