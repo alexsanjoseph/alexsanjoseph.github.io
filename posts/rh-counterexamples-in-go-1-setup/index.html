@@ -29,7 +29,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/rh-counterexamples-in-go-1-setup/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-16T10:17:52+00:00" />
-<meta property="article:modified_time" content="2022-01-16T18:10:21+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="article:modified_time" content="2022-01-17T01:46:52+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
 
 
 
@@ -178,6 +178,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     
+    , Updated:
+    2022 Jan 17
+    
     
     
     
@@ -207,7 +210,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <h2 id="motivation">Motivation</h2>
-<p>There are a lot of tutorials available online on how to solve specific problems in different programming languages. However, there are few that teach the philosophy of developing a reasonable sized production quality project end-to-end with examples. My <a href="https://jeremykun.com/2020/09/11/searching-for-rh-counterexamples-setting-up-pytest/">favorite resource</a> on this is this series of blog posts by Jeremy Kunn. In this series, he explains how to solve a problem using good programming practices in <code>Python</code>. This includes setting up a project using git, test-driven development, using a database, deploying the project on cloud, scaling and productionizing. I consider these absolute gold on the internet and suggest it to young developers when they&rsquo;re starting out with programming as an example of thinking about building a project brick-by-brick from scratch.</p>
+<p>There are a lot of tutorials available online on how to solve specific problems in different programming languages. However, there are few that teach the philosophy of developing a reasonable sized production quality project end-to-end with examples. For this, my <a href="https://jeremykun.com/2020/09/11/searching-for-rh-counterexamples-setting-up-pytest/">favorite resource</a> is this series of blog posts by Jeremy Kunn. In this series, he explains how to solve a problem using good programming practices in <code>Python</code>. This includes setting up a project using git, test-driven development, using a database, deploying the project on cloud, scaling and productionizing. I consider these absolute gold on the internet and suggest it to young developers when they&rsquo;re starting out with programming as an example of thinking about building a project brick-by-brick from scratch.</p>
 <p>I found this resource a few years back and went over it in detail as a read-through. I have been wanting to follow it step-by-step in <code>Python</code> as <a href="https://en.wikipedia.org/wiki/Kata">Kata</a> to make sure that I understand the details of how he went through each step. However, recently, after getting fascinated with Golang - I was wondering if I could try to recreate the same in <code>Golang</code> instead of <code>Python</code>, enabling me to reify the techniques of software engineering, as well as learning <code>Golang</code> in one shot.</p>
 <p>I&rsquo;m planning to chronicle my progress on this in this series of blog posts and on <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go">this</a> github repo, starting with this one. We will be closely following along the same path as the original with the same structure. I will try to explain the differences from the source, to keep this fairly self-standing, but to get the full benefit it might make sense to read the original blog post as well.</p>
 <p><em>Note: Jeremy has graciously given permission to use his post as a source, and I really thank his generosity!</em></p>
@@ -298,7 +301,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>Turns out that most of our time is spent calculating in the DivisorSum! It is easy to see that we have a time complexity of $O(n^2)$, one $n$ for the loop and one $n$ since we&rsquo;re going all the way upto the number, We need to find ways to improve this function.</p>
 <h2 id="improving-implementation">Improving implementation</h2>
 <p>Before we go about improving the implementation, we add some <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/94b692347bff83a43d6c3631dbaef2e627f96f04">additional tests</a> to make sure that we&rsquo;re not breaking any
-functionality. Copying the steps in the original post, there is an <a href="https://math.stackexchange.com/a/22744">approach by Euler</a> which recursively uses the results from a previous computation to calculate the Divisor Sum. In our case, since we&rsquo;re linearly search across all the numbers, this allows us an opportunity for memorization and hence improved efficiency.</p>
+functionality. Copying the steps in the original post, there is an <a href="https://math.stackexchange.com/a/22744">approach by Euler</a> which recursively uses the results from a previous computation to calculate the Divisor Sum. In our case, since we&rsquo;re linearly search across all the numbers, this allows us an opportunity for <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> and hence improved efficiency.</p>
 <p>In this approach, we&rsquo;re trading computation complexity for space complexity (by caching all the previous computations) and for this we need to use some kind of cache. The original implementation uses the LRU cache, but we&rsquo;re going the simple route and instead using a <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/a309583e8580135a4412654dbb302a708482cbc1">simple hashmap as a cache</a>, since we don&rsquo;t worry too much about memory constraints.</p>
 <p>On rerunning the tests, we can see that the functions are running much 2-3x faster for our samples. Faster, but not fast enough. It is still taking 2.6 seconds for calculating upto 100K.</p>
 <figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/profiling_cached.png#medium"
@@ -356,12 +359,12 @@ functionality. Copying the steps in the original post, there is an <a href="http
 <td>-</td>
 </tr>
 <tr>
-<td><strong>Square Root Python (from <a href="https://jeremykun.com/2020/09/11/searching-for-rh-counterexamples-setting-up-pytest/">original post</a>)</strong></td>
-<td>?</td>
-<td>?</td>
-<td>?</td>
-<td>8</td>
-<td>~Minutes</td>
+<td><strong>Square Root Python (replicated locally)</strong></td>
+<td>0.06</td>
+<td>0.14</td>
+<td>0.46</td>
+<td>1.2</td>
+<td>~25</td>
 </tr>
 <tr>
 <td><strong>Square Root Golang</strong></td>
