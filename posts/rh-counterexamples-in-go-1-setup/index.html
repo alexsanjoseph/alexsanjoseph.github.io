@@ -29,7 +29,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/rh-counterexamples-in-go-1-setup/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-16T10:17:52+00:00" />
-<meta property="article:modified_time" content="2022-01-17T01:46:52+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="article:modified_time" content="2022-01-17T02:03:51+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
 
 
 
@@ -238,7 +238,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>Before we write any code, we are going to start by setting up the tests. The first function we&rsquo;re going to add is the <code>DivisorSum</code> function which calculate the sum of divisors for a number. We can setup the testing without any implementation to get a failing test <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/9c62b1fc307c52c48ca2c51b870f32b96c202e6a">here</a>.</p>
 <p>We started out making testing as part of the <code>riemann</code> package which contains the code. In this <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/57d60a2647f99025ab8634d79992634e5deb5530">commit</a>, we move it over to a separate <code>riemann_test</code> package which allows us to interact with the <code>riemann</code> package only through the public API. There are <a href="https://stackoverflow.com/questions/19998250/proper-package-naming-for-testing-with-the-go-language">pros and cons</a> to both approaches, but for this project, we&rsquo;re not going to worry too much about with fields and methods should be public or private (in a real project, this is something you should worry about!), so the difference is mostly stylistic.</p>
 <h2 id="improving-testing">Improving testing</h2>
-<p>Once we have basic testing in place and working (you can test that this is failing by running <code>go test</code> on the terminal), we can move to a better testing package. In my case, I&rsquo;m using <a href="https://onsi.github.io/ginkgo/">Ginko</a>. Along with the <a href="https://onsi.github.io/gomega/">Gomega</a> matching/assertiong library (almost always used in conjuction with Ginkgo), Ginkgo allows us to write more expressive tests, which almost read like plain english rather than having a million if else statements with the basic testing library.</p>
+<p>Once we have basic testing in place and working (you can test that this is failing by running <code>go test</code> on the terminal), we can move to a better testing package. In my case, I&rsquo;m using <a href="https://onsi.github.io/ginkgo/">Ginkgo</a>. Along with the <a href="https://onsi.github.io/gomega/">Gomega</a> matching/assertion library (almost always used in conjunction with Ginkgo), Ginkgo allows us to write more expressive tests, which almost read like plain english rather than having a million if else statements with the basic testing library.</p>
 <p>For example, while the previous test case was simple enough with:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestDivisorSum</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
 	<span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">DivisorSum</span>(<span style="color:#ae81ff">195</span>)
@@ -275,7 +275,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>With such a simple test, the value proposition might not be clear enough, but when the test suite gets larger and larger, having a dedicated testing library really helps to keep the code maintained and clean.</p>
 <p>Installing ginkgo/gomega libraries also pull in a bunch of indirect dependencies. All of these are marked in the <code>go.mod</code> file along with the hashes in the <code>go.sum</code> file which is very similar to <code>package-lock.json</code> in <code>NodeJS</code> or <code>Pipfile.lock</code> in <code>Python</code>.</p>
 <p>All of the above changes can be seen in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/591df89e79806eea8266ee934f964fbed5f5790e">this</a> commit.</p>
-<p>In addition, I have also installed the <a href="https://github.com/smartystreets/goconvey">Goconvey</a> package, which automatically runs my tests on every save and gives me a fancy UI (an example is shown below) to show if the tests have passed or failed. (This is not captured in a commit because I have installed it globally for my other projects)</p>
+<p>In addition, I have also installed the <a href="https://github.com/smartystreets/goconvey">GoConvey</a> package, which automatically runs my tests on every save and gives me a fancy UI (an example is shown below) to show if the tests have passed or failed. (This is not captured in a commit because I have installed it globally for my other projects)</p>
 <h2 id="divisor-sum---naive-implementation">Divisor Sum - Naive implementation</h2>
 <p>Now that we have the basic scaffolding in place, let&rsquo;s go ahead with the implementation. To calculate the sum of Divisors of a number, we have implemented a Naive algorithm which runs through every integer and checks if the said integer is a divisor. We can check that the algorithm is working (and failing) correctly by adding a bunch of tests for the different use cases. The tests are added <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/9cfdb3c1b9ed9cf85284c1897cb9f6b8e98013ad">here</a>.</p>
 <p>Currently we have only one testing file and hence having the Test suite handler in the file is alright, but we expect that to change pretty soon once we have more files. Hence in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/36d306db0832f58d135005782b15b83c1972f1a1">this</a> commit, I have moved test handler to separate file for cleanliness.</p>
@@ -298,27 +298,27 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
          alt="Profiling DivisorSum naive implementation "/>
 </figure>
 
-<p>Turns out that most of our time is spent calculating in the DivisorSum! It is easy to see that we have a time complexity of $O(n^2)$, one $n$ for the loop and one $n$ since we&rsquo;re going all the way upto the number, We need to find ways to improve this function.</p>
+<p>Turns out that most of our time is spent calculating in the DivisorSum! It is easy to see that we have a time complexity of $O(n^2)$, one $n$ for the loop and one $n$ since we&rsquo;re going all the way up to the number, We need to find ways to improve this function.</p>
 <h2 id="improving-implementation">Improving implementation</h2>
 <p>Before we go about improving the implementation, we add some <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/94b692347bff83a43d6c3631dbaef2e627f96f04">additional tests</a> to make sure that we&rsquo;re not breaking any
 functionality. Copying the steps in the original post, there is an <a href="https://math.stackexchange.com/a/22744">approach by Euler</a> which recursively uses the results from a previous computation to calculate the Divisor Sum. In our case, since we&rsquo;re linearly search across all the numbers, this allows us an opportunity for <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> and hence improved efficiency.</p>
 <p>In this approach, we&rsquo;re trading computation complexity for space complexity (by caching all the previous computations) and for this we need to use some kind of cache. The original implementation uses the LRU cache, but we&rsquo;re going the simple route and instead using a <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/a309583e8580135a4412654dbb302a708482cbc1">simple hashmap as a cache</a>, since we don&rsquo;t worry too much about memory constraints.</p>
-<p>On rerunning the tests, we can see that the functions are running much 2-3x faster for our samples. Faster, but not fast enough. It is still taking 2.6 seconds for calculating upto 100K.</p>
+<p>On rerunning the tests, we can see that the functions are running much 2-3x faster for our samples. Faster, but not fast enough. It is still taking 2.6 seconds for calculating up to 100K.</p>
 <figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/profiling_cached.png#medium"
          alt="Profiling DivisorSum Cached implementation "/>
 </figure>
 
 <p>Rerunning the profiling, we can see that it is spending lesser time calculating the Divisor sum, but now there is definite overhead associated with the caching which is slowing things down.</p>
 <h2 id="simplerfaster">Simpler/Faster</h2>
-<p>If we look at the algorithm, we can see that we still have a time complexity of $O(n^{\frac{3}{2}})$. This same complexity can be achieved by a much simpler implementation of the naive algorithm by only computing the divisors upto $\sqrt n$ instead of blindly counting all the way upto $n$. We implement this in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/d918f89302a51f037634617c1115f2c1a78f0ada">this</a> commit and gets rid of the caching since that&rsquo;s not relevant anymore.</p>
-<p>Rerunning the tests, the change is incredible, we&rsquo;ve gotten a benefit of two orders of magnitude in the tests and calculating upto 1M which used to take a minute happens in under a second now! We can now calculate all the way upto 10M in ~15 seconds as we can see from the <code>GoConvey</code> test output below.</p>
+<p>If we look at the algorithm, we can see that we still have a time complexity of $O(n^{\frac{3}{2}})$. This same complexity can be achieved by a much simpler implementation of the naive algorithm by only computing the divisors up to $\sqrt n$ instead of blindly counting all the way up to $n$. We implement this in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/d918f89302a51f037634617c1115f2c1a78f0ada">this</a> commit and gets rid of the caching since that&rsquo;s not relevant anymore.</p>
+<p>Rerunning the tests, the change is incredible, we&rsquo;ve gotten a benefit of two orders of magnitude in the tests and calculating up to 1M which used to take a minute happens in under a second now! We can now calculate all the way up to 10M in ~15 seconds as we can see from the <code>GoConvey</code> test output below.</p>
 <figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/witness_till_10M.png#large-left"
          alt="open in separate window to zoom"/><figcaption>
             <p>open in separate window to zoom</p>
         </figcaption>
 </figure>
 
-<p><em>Note</em>: At this point in the implementation, Jeremy uses <code>numba</code> in <code>Python</code> to invoke Just-In-Time compilation to make the python program go faster. However, since <code>Golang</code> is already compiled, we don&rsquo;t need to do any of that! Even with Numba, tests in <code>Python</code> run in 8 seconds for 1M which takes &lt; 1 second for us.</p>
+<p><em>Note</em>: At this point in the implementation, Jeremy uses <code>numba</code> in <code>Python</code> to invoke Just-In-Time compilation to make the python program go faster. However, since <code>Golang</code> is already compiled, we don&rsquo;t need to do any of that! Even with <code>numba</code>, tests in <code>Python</code> run in 8 seconds for 1M which takes &lt; 1 second for us.</p>
 <p>Now that we have the implementation set correctly, we can <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/22d78340d18c2f4b38c36e22bb76aa347e95aa6e">improve</a> the test output better using an additional package. I also <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/93dd60d84b862c93d00491e8db1bfb16b70e01ac">remove</a> the inferior implementation since we&rsquo;re no longer planning to use them (we can always get them back any time thanks to Github!)</p>
 <h2 id="benchmarking">Benchmarking</h2>
 <p>Final results of the different implementation times are given in this table -</p>
@@ -379,6 +379,8 @@ functionality. Copying the steps in the original post, there is an <a href="http
 <p>We can clearly see both the power of algorithms (and the power of programming languages 😉)</p>
 <h2 id="conclusion-and-next-steps">Conclusion and Next steps</h2>
 <p>In this blog post, we went over setting up a project, and basic implementation of a few different algorithms in Golang. In the next post, we will bring in a database to persist our output rather than calculating the results every time from scratch.</p>
+<hr>
+<p><em>Note: Thanks to Vishnu Shankar for making me remember the importance of keeping the control variables constant in experimental design!</em></p>
   </div>
   
 
