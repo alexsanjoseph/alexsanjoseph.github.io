@@ -29,7 +29,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/rh-counterexamples-in-go-1-setup/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-16T10:17:52+00:00" />
-<meta property="article:modified_time" content="2022-01-17T02:03:51+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="article:modified_time" content="2022-01-17T12:16:46+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
 
 
 
@@ -45,7 +45,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.62e72fa642e225c799ab76772f6ceb07fa32e918c6682976cb8321ecee822c1e.css" integrity="sha256-YucvpkLiJceZq3Z3L2zrB/oy6RjGaCl2y4Mh7O6CLB4=">
+<link rel="stylesheet" href="/scss/hyde-hyde.64a0ce02b4616b214e243dd8062bdbdaaaec6ef7b399d7c8690a619760d8695a.css" integrity="sha256-ZKDOArRhayFOJD3YBivb2qrsbvezmdfIaQphl2DYaVo=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -213,7 +213,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>There are a lot of tutorials available online on how to solve specific problems in different programming languages. However, there are few that teach the philosophy of developing a reasonable sized production quality project end-to-end with examples. For this, my <a href="https://jeremykun.com/2020/09/11/searching-for-rh-counterexamples-setting-up-pytest/">favorite resource</a> is this series of blog posts by Jeremy Kunn. In this series, he explains how to solve a problem using good programming practices in <code>Python</code>. This includes setting up a project using git, test-driven development, using a database, deploying the project on cloud, scaling and productionizing. I consider these absolute gold on the internet and suggest it to young developers when they&rsquo;re starting out with programming as an example of thinking about building a project brick-by-brick from scratch.</p>
 <p>I found this resource a few years back and went over it in detail as a read-through. I have been wanting to follow it step-by-step in <code>Python</code> as <a href="https://en.wikipedia.org/wiki/Kata">Kata</a> to make sure that I understand the details of how he went through each step. However, recently, after getting fascinated with Golang - I was wondering if I could try to recreate the same in <code>Golang</code> instead of <code>Python</code>, enabling me to reify the techniques of software engineering, as well as learning <code>Golang</code> in one shot.</p>
 <p>I&rsquo;m planning to chronicle my progress on this in this series of blog posts and on <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go">this</a> github repo, starting with this one. We will be closely following along the same path as the original with the same structure. I will try to explain the differences from the source, to keep this fairly self-standing, but to get the full benefit it might make sense to read the original blog post as well.</p>
-<p><em>Note: Jeremy has graciously given permission to use his post as a source, and I really thank his generosity!</em></p>
+<blockquote class="info">
+    <strong><a href="https://jeremykun.com/">Jeremy Kun</a> has graciously given permission to use his post as a source, thanks Jeremy!</strong><br>
+    
+</blockquote>
 <h2 id="riemann-hypothesis">Riemann Hypothesis</h2>
 <p><code>Riemann Hypothesis</code> is a conjecture that can be stated quite simply as (from Wikipedia):</p>
 <blockquote>
@@ -318,7 +321,10 @@ functionality. Copying the steps in the original post, there is an <a href="http
         </figcaption>
 </figure>
 
-<p><em>Note</em>: At this point in the implementation, Jeremy uses <code>numba</code> in <code>Python</code> to invoke Just-In-Time compilation to make the python program go faster. However, since <code>Golang</code> is already compiled, we don&rsquo;t need to do any of that! Even with <code>numba</code>, tests in <code>Python</code> run in 8 seconds for 1M which takes &lt; 1 second for us.</p>
+<blockquote class="info">
+    <strong>At this point in the implementation, Jeremy uses <code>numba</code> in <code>Python</code> to invoke Just-In-Time compilation to make the python program more efficient. However, since <code>Golang</code> is already compiled, we don&rsquo;t need to do any of that! Even with <code>numba</code>, tests in <code>Python</code> are twice as fast in <code>Golang</code>!</strong><br>
+    
+</blockquote>
 <p>Now that we have the implementation set correctly, we can <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/22d78340d18c2f4b38c36e22bb76aa347e95aa6e">improve</a> the test output better using an additional package. I also <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/93dd60d84b862c93d00491e8db1bfb16b70e01ac">remove</a> the inferior implementation since we&rsquo;re no longer planning to use them (we can always get them back any time thanks to Github!)</p>
 <h2 id="benchmarking">Benchmarking</h2>
 <p>Final results of the different implementation times are given in this table -</p>
@@ -380,7 +386,8 @@ functionality. Copying the steps in the original post, there is an <a href="http
 <h2 id="conclusion-and-next-steps">Conclusion and Next steps</h2>
 <p>In this blog post, we went over setting up a project, and basic implementation of a few different algorithms in Golang. In the next post, we will bring in a database to persist our output rather than calculating the results every time from scratch.</p>
 <hr>
-<p><em>Note: Thanks to Vishnu Shankar for making me remember the importance of keeping the control variables constant in experimental design!</em></p>
+<!-- raw HTML omitted -->
+<p><em>Credits: Thanks to Vishnu Shankar for reminding me on the importance of keeping the control variables constant in experimental design!</em></p>
   </div>
   
 
