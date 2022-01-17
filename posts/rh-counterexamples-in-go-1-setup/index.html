@@ -304,7 +304,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>Turns out that most of our time is spent calculating in the DivisorSum! It is easy to see that we have a time complexity of $O(n^2)$, one $n$ for the loop and one $n$ since we&rsquo;re going all the way up to the number, We need to find ways to improve this function.</p>
 <h2 id="improving-implementation">Improving implementation</h2>
 <p>Before we go about improving the implementation, we add some <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/94b692347bff83a43d6c3631dbaef2e627f96f04">additional tests</a> to make sure that we&rsquo;re not breaking any
-functionality. Copying the steps in the original post, there is an <a href="https://math.stackexchange.com/a/22744">approach by Euler</a> which recursively uses the results from a previous computation to calculate the Divisor Sum. In our case, since we&rsquo;re linearly search across all the numbers, this allows us an opportunity for <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> and hence improved efficiency.</p>
+functionality. Copying the steps in the original post, there is an <a href="https://math.stackexchange.com/a/22744">approach by Euler</a> which recursively uses the results from a previous computation to calculate the Divisor Sum. In our case, since we&rsquo;re linearly searching across all the numbers, this allows us an opportunity for <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> and hence improved efficiency.</p>
 <p>In this approach, we&rsquo;re trading computation complexity for space complexity (by caching all the previous computations) and for this we need to use some kind of cache. The original implementation uses the LRU cache, but we&rsquo;re going the simple route and instead using a <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/a309583e8580135a4412654dbb302a708482cbc1">simple hashmap as a cache</a>, since we don&rsquo;t worry too much about memory constraints.</p>
 <p>On rerunning the tests, we can see that the functions are running much 2-3x faster for our samples. Faster, but not fast enough. It is still taking 2.6 seconds for calculating up to 100K.</p>
 <figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/profiling_cached.png#medium"
@@ -313,7 +313,7 @@ functionality. Copying the steps in the original post, there is an <a href="http
 
 <p>Rerunning the profiling, we can see that it is spending lesser time calculating the Divisor sum, but now there is definite overhead associated with the caching which is slowing things down.</p>
 <h2 id="goconvey">Simpler/Faster</h2>
-<p>If we look at the algorithm, we can see that we still have a time complexity of $O(n^{\frac{3}{2}})$. This same complexity can be achieved by a much simpler implementation of the naive algorithm by only computing the divisors up to $\sqrt n$ instead of blindly counting all the way up to $n$. We implement this in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/d918f89302a51f037634617c1115f2c1a78f0ada">this</a> commit and gets rid of the caching since that&rsquo;s not relevant anymore.</p>
+<p>If we look at the algorithm, we can see that we still have a time complexity of $O(n^{\frac{3}{2}})$. This same complexity can be achieved by a much simpler implementation of the naive algorithm by only computing the divisors up to $\sqrt n$ instead of blindly counting all the way up to $n$ implemented in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/d918f89302a51f037634617c1115f2c1a78f0ada">this</a> commit. It also gets rid of the caching since that&rsquo;s not relevant anymore.</p>
 <p>Rerunning the tests, the change is incredible, we&rsquo;ve gotten a benefit of two orders of magnitude in the tests and calculating up to 1M which used to take a minute happens in under a second now! We can now calculate all the way up to 10M in ~15 seconds as we can see from the <code>GoConvey</code> test output below.</p>
 <figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/witness_till_10M.png#large-left"
          alt="open in separate window to zoom"/><figcaption>
@@ -325,7 +325,7 @@ functionality. Copying the steps in the original post, there is an <a href="http
     <strong>At this point in the implementation, Jeremy uses <code>numba</code> in <code>Python</code> to invoke Just-In-Time compilation to make the python program more efficient. However, since <code>Golang</code> is already compiled, we don&rsquo;t need to do any of that! Even with <code>numba</code>, tests in <code>Python</code> are twice as fast in <code>Golang</code>!</strong><br>
     
 </blockquote>
-<p>Now that we have the implementation set correctly, we can <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/22d78340d18c2f4b38c36e22bb76aa347e95aa6e">improve</a> the test output better using an additional package. I also <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/93dd60d84b862c93d00491e8db1bfb16b70e01ac">remove</a> the inferior implementation since we&rsquo;re no longer planning to use them (we can always get them back any time thanks to Github!)</p>
+<p>Now that we have the implementation set correctly, we can <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/22d78340d18c2f4b38c36e22bb76aa347e95aa6e">improve</a> the test output better using an additional package. I also <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/93dd60d84b862c93d00491e8db1bfb16b70e01ac">removed</a> the inferior implementation since we&rsquo;re no longer planning to use them (we can always get them back any time thanks to Github!)</p>
 <h2 id="benchmarking">Benchmarking</h2>
 <p>Final results of the different implementation times are given in this table -</p>
 <table>
@@ -382,11 +382,10 @@ functionality. Copying the steps in the original post, there is an <a href="http
 </tr>
 </tbody>
 </table>
-<p>We can clearly see both the power of algorithms (and the power of programming languages 😉)</p>
+<p>We can clearly see both the power of algorithms, and the power of programming languages 😉</p>
 <h2 id="conclusion-and-next-steps">Conclusion and Next steps</h2>
 <p>In this blog post, we went over setting up a project, and basic implementation of a few different algorithms in Golang. In the next post, we will bring in a database to persist our output rather than calculating the results every time from scratch.</p>
 <hr>
-<!-- raw HTML omitted -->
 <p><em>Credits: Thanks to Vishnu Shankar for reminding me on the importance of keeping the control variables constant in experimental design!</em></p>
   </div>
   
