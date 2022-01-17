@@ -29,7 +29,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/rh-counterexamples-in-go-1-setup/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-16T10:17:52+00:00" />
-<meta property="article:modified_time" content="2022-01-17T12:16:46+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="article:modified_time" content="2022-01-17T14:45:33+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
 
 
 
@@ -212,9 +212,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     <h2 id="motivation">Motivation</h2>
 <p>There are a lot of tutorials available online on how to solve specific problems in different programming languages. However, there are few that teach the philosophy of developing a reasonable sized production quality project end-to-end with examples. For this, my favorite resource is <a href="https://jeremykun.com/tag/riemann-hypothesis/">this series of blog posts</a> by Jeremy Kun. In this series, he explains how to solve a problem using good programming practices in <code>Python</code>. This includes setting up a project using git, test-driven development, using a database, deploying the project on cloud, scaling and productionizing. I consider these absolute gold on the internet and suggest it to young developers when they&rsquo;re starting out with programming as an example of how to build a project brick-by-brick.</p>
 <p>I found this resource a few years back and went over it in detail as a read-through. I have been wanting to follow it step-by-step in <code>Python</code> as <a href="https://en.wikipedia.org/wiki/Kata">Kata</a> to make sure that I understand the details of how he went through each step. However, recently, after getting fascinated with Golang - I was wondering if I could try to recreate the same in <code>Golang</code> instead of <code>Python</code>, enabling me to reify the techniques of software engineering, as well as learning <code>Golang</code> in one shot.</p>
-<p>I&rsquo;m planning to chronicle my progress on this series of blog posts and on <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go">this</a> github repo, starting with this one. We will be closely following along the same path as the original with the same structure. I will try to explain the differences from the source, to keep this fairly self-standing, but to get the full benefit it might make sense to read the <a href="https://jeremykun.com/2020/09/11/searching-for-rh-counterexamples-setting-up-pytest/">original blog post</a> as well.</p>
+<p>I&rsquo;m planning to chronicle my progress on this, in a series of blog posts, and on <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go">this</a> github repo, starting with this one. We will be closely following along the same path as the original with the same structure. I will try to explain the differences from the source, to keep this fairly self-standing, but to get the full benefit it might make sense to read the <a href="https://jeremykun.com/2020/09/11/searching-for-rh-counterexamples-setting-up-pytest/">original blog post</a> as well.</p>
 <blockquote class="info">
-    <strong><a href="https://jeremykun.com/">Jeremy Kun</a> has graciously given permission to use his post as a source, thanks Jeremy!</strong><br>
+    <strong><a href="https://jeremykun.com/">Jeremy Kun</a> has graciously given permission to use his post as a source. Thanks Jeremy!</strong><br>
     
 </blockquote>
 <h2 id="riemann-hypothesis">Riemann Hypothesis</h2>
@@ -222,7 +222,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <blockquote>
 <p>The Riemann zeta function has its zeros only at the negative even integers and complex numbers with real part $\frac{1}{2}$</p>
 </blockquote>
-<p>This seems fairly simple, but turns out to be quite difficult to understand, let along try to find a proof for. It is considered one of the &ldquo;celebrity&rdquo; math problems that are still unsolved (especially now that <a href="https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem">Fermat&rsquo;s Last theorem</a> is no longer in the running) and is one of the unsolved <a href="https://en.wikipedia.org/wiki/Hilbert%27s_problems">Hilbert Problems</a> and one of the <a href="https://en.wikipedia.org/wiki/Millennium_Prize_Problems">Millennium Prize problems</a> worth a cool 1 Million$. One of the ways the problem can be expressed is using a simpler formulation proposed <a href="https://www.emis.de/journals/JTNB/2007-2/article03.pdf">here</a>, which John Carlos <a href="https://twitter.com/johncarlosbaez/status/1402336425136168964">has paraphrased</a>, as:</p>
+<p>This seems fairly simple, but turns out to be quite difficult to understand, let alone try to find a proof for. It is considered one of the &ldquo;celebrity&rdquo; math problems that is still unsolved (especially now that <a href="https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem">Fermat&rsquo;s Last theorem</a> is no longer in the running) and is one of the unsolved <a href="https://en.wikipedia.org/wiki/Hilbert%27s_problems">Hilbert Problems</a> and one of the <a href="https://en.wikipedia.org/wiki/Millennium_Prize_Problems">Millennium Prize problems</a> worth a cool $1 Million. One of the ways the problem can be expressed is using a simpler formulation proposed <a href="https://www.emis.de/journals/JTNB/2007-2/article03.pdf">here</a>, which John Carlos <a href="https://twitter.com/johncarlosbaez/status/1402336425136168964">has paraphrased</a>, as:</p>
 <blockquote>
 <p>find a number n &gt; 5040 whose sum of divisors, divided by n ln(ln n), is more than $e^γ$ where $\gamma$ is Euler&rsquo;s constant.</p>
 </blockquote>
