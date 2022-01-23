@@ -8,12 +8,12 @@
     <language>en</language>
     <lastBuildDate>Sun, 16 Jan 2022 15:59:03 +0530</lastBuildDate><atom:link href="/portfolio/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>RH Counterexample search</title>
+      <title>RH Counterexample Search</title>
       <link>/portfolio/rh/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>/portfolio/rh/</guid>
-      <description>In this project, I follow the recreate a Python project that inspired me, in Golang, to find out counterexamples of Riemann Hypothesis by searching across integers.
+      <description>In this project, I recreate a Python project that inspired me, to find out counterexamples of Riemann Hypothesis by searching across integers, in Golang.
 This includes setting up a project using git, test-driven development, using a database, deploying the project on cloud, scaling and productionizing.</description>
     </item>
     
@@ -23,7 +23,7 @@ This includes setting up a project using git, test-driven development, using a d
       <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/portfolio/awsinstance/</guid>
-      <description>We solve the optimization problem by expressing as a linear programming equation and solving it using the PuLP package in python.</description>
+      <description>The optimization problem is solved by expressing it as a linear programming equation and solving it using the PuLP package in python.</description>
     </item>
     
     <item>
@@ -32,7 +32,7 @@ This includes setting up a project using git, test-driven development, using a d
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/portfolio/plagiarism/</guid>
-      <description>In this project, I identify cases of plagiarism for a particular competitive programming challenge.</description>
+      <description>This project was done in a personal capacity as a way to automate manual detection of plagiarism for a campus recruitment drive.</description>
     </item>
     
     <item>
@@ -50,7 +50,7 @@ This includes setting up a project using git, test-driven development, using a d
       <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
       
       <guid>/portfolio/comparedf/</guid>
-      <description>This package has been on CRAN since 2016 with two major releases and many minor/patch releases and Has h0+ stars, with 80K downloads, currently averaging ~2000 downloads per month.</description>
+      <description>This package has been on CRAN since 2016 with two major releases and many minor/patch releases and Has 70+ stars, with 80K downloads, currently averaging ~2000 downloads per month.</description>
     </item>
     
   </channel>
