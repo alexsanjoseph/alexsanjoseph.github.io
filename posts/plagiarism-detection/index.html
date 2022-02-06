@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.88.1" />
+
+    
+    
+    
+
+<title>Plagiarism Detection in Competitive Programming • Alex&#39;s Blog</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Plagiarism Detection in Competitive Programming"/>
+<meta name="twitter:description" content=""/>
+
+<meta property="og:title" content="Plagiarism Detection in Competitive Programming" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/plagiarism-detection/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-24T16:18:43+05:30" />
+<meta property="article:modified_time" content="2022-01-26T12:39:37+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.ef4dc69e05366996f8b4744f33ffc5295f58cbc657280d57885de02e6cb15d8c.css" integrity="sha256-703GngU2aZb4tHRPM//FKV9Yy8ZXKA1XiF3gLmyxXYw=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="icon" href="/icon.png">
+    <link rel="shortcut icon" href="/icon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="/">Alex&#39;s Blog</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         Pasting random things together 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Alex&#39;s Blog</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Portfolio</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/alexsanjoseph" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/alexsanjoseph" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/alexsanjoseph" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://stackoverflow.com/users/1653808/alex-joseph" rel="me"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:alexsanjoseph%20at%20gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2016 - 2022 alexsanjoseph
+  
+</div>
+
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Plagiarism Detection in Competitive Programming</h1>
+    
+    
+<div class="post__meta">
+    </script>
+    
+    
+    <i class="fas fa-calendar-alt"></i> Created: 2021 May 24
+    
+    
+    
+    , Updated:
+    2022 Jan 26
+    
+    
+    
+    
+    
+    
+    
+    <br />
+     <i class="fas fa-tags"></i>
+    
+    <a class="badge badge-tag" href="/%20/tags/r">r</a>
+     
+    
+    <a class="badge badge-tag" href="/%20/tags/algorithms">algorithms</a>
+     
+    
+    <a class="badge badge-tag" href="/%20/tags/clustering">clustering</a>
+    
+    
+    
+    
+    <br />
+    <i class="fas fa-clock"></i> 9 min read
+</div>
+
+  </header>
+  
+  
+  <div class="post">
+    <h2 id="problem-statement">Problem Statement</h2>
+<p>Competitive Programming is commonly used as a way to check the competence of candidates, especially when the number of applicants are large. The results of the program is checked against previously verified results to generate a score for each user to create the leader board. However, in many cases, logistical challenges make it difficult to ensure that the candidates are not cheating by collaborating with each other, especially since most exams are conducted online without any supervision. Since only the value of the outputs are checked, this gives the cheating participants a high score at the detriment of the candidates who haven&rsquo;t cheated.</p>
+<p>In this project, I&rsquo;ll be trying to identify cases of plagiarism for a particular programming challenge conducted at the firm where I&rsquo;m working currently.</p>
+<p><em>Note: I&rsquo;ve obtained permission from the organization I work with to use the dataset, and all the Personally Identifiable Information is anonymized before analysis as well.</em></p>
+<h2 id="data-source">Data Source</h2>
+<p>The data is not easily available since the free version of the website which was used to conduct the test doesn&rsquo;t give any APIs to access the data. Hence for first part of tackling the problem I got the data by using scraping techniques from the competition website. For this, I used <code>Python</code> with <code>Selenium</code> to do the following steps. The scraping tool built in <code>Selenium</code> has throttling built-in to prevent DoSing the server.</p>
+<ol>
+<li>Login to the website using credentials</li>
+<li>Get the list of solutions which are final submissions from the leader board with status: Accepted (Fig 1)</li>
+<li>Get the submission code themselves from the individual pages (Fig 2)</li>
+</ol>
+<p><img src="/images/plagiarism-detection/example_submissions_page.png" alt="Example Submissions Page, only submissions with &ldquo;Status&rdquo; checked are final submissions"></p>
+<p><img src="/images/plagiarism-detection/example_submission_code.png" alt="Example Submission"></p>
+<p>The data from each submission was stored in a local SQLite database for easy retrieval.</p>
+<p>Once the data is retrieved, all personally identifiable information like usernames was anonymized at source before the analysis to protect privacy for this exercise. Usernames were anonymized using a hashing function. The users were from one of two institutes, here anonymized as <code>institute_1</code> and <code>institute_2</code>. In total, each user participated in a maximum of 5 challenges (<code>Crossing Ants</code>, <code>Find phrase in a text</code>, <code>Middle insert Queue</code>, <code>Plentiful Numbers 1</code>, <code>Seesaw Pivot</code>).</p>
+<p>At the end of this step, input data looks like this (code column truncated):</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>user</th>
+<th>challenge</th>
+<th>code</th>
+<th>institute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>58db10</td>
+<td>Crossing Ants</td>
+<td>#include &lt;math.h&gt; #include &lt;stdio.h&gt; #include &lt;string.h&gt; #include &lt;stdlib.h&gt; #include &lt;assert.h&gt; #in&hellip;</td>
+<td>institute_1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>e68150</td>
+<td>Crossing Ants</td>
+<td>#!/bin/python3 import math import os import random import re import sys # # Complete the &lsquo;find_tot&hellip;</td>
+<td>institute_1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>e6d99c</td>
+<td>Crossing Ants</td>
+<td>#include &lt;bits/stdc++.h&gt; using namespace std; string ltrim(const string &amp;); string rtrim(const str&hellip;</td>
+<td>institute_1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>e873e9</td>
+<td>Crossing Ants</td>
+<td>#include &lt;bits/stdc++.h&gt; using namespace std; string ltrim(const string &amp;); string rtrim(const str&hellip;</td>
+<td>institute_1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>7db876</td>
+<td>Crossing Ants</td>
+<td>import java.io.<em>; import java.util.</em>; import java.text.<em>; import java.math.</em>; import java.util.regex&hellip;</td>
+<td>institute_1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>e5204d</td>
+<td>Crossing Ants</td>
+<td>#include &lt;bits/stdc++.h&gt; using namespace std; string ltrim(const string &amp;); string rtrim(const str&hellip;</td>
+<td>institute_1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="methodology">Methodology</h2>
+<h3 id="creating-a-plagiarism-metric-for-each-submission">Creating a plagiarism metric for each submission</h3>
+<p>The first thing that we do is to create a metric to identify two submissions that have been plagiarized. For this, we&rsquo;re going to assume that plagiarized code has similar content in text. The distance of each submission with respect to all the other submissions need to be calculated. For this we can use various <a href="/images/plagiarism-detection/https://en.wikipedia.org/wiki/String_metric">String Metrics</a>. The following string metrics were considered:</p>
+<ol>
+<li>Levenshtein Distance</li>
+<li>Hamming Distance</li>
+<li>Jaro Winkler Distance</li>
+<li>Jaccard index</li>
+</ol>
+<p>Hamming distance is the simplest string distance function. It identifies the number of locations where the characters are different between two strings. However, it requires the two strings to have the same length. In this case it is not always true that people who plagiarized the code would not have made any changes, since an additional space, or renaming a variable or even a newline character can cause significant differences.</p>
+<p>Levenshtein Distance was another possibility. In small scale tests, it yielded really good results, but the computational complexity of this distance function is of an order of complexity $O(n^2)$. However, we had a length &gt; 10000 characters for many challenge submissions, and this meant that the computation complexity was too much and the program took too long to finish. Hence this was discarded for practical reasons.</p>
+<p>Jaccard index is another fast distance metric, but it measures similarity between sets and doesn&rsquo;t consider ordering of the characters. Naturally, we couldn&rsquo;t use this as a metric for this.</p>
+<p>Jaro Winkler distance was chosen as the best approach since there are implementations of this with a linear computational complexity and it was found to give good results while eyeballing.</p>
+<p>The distance metrics were implemented in <code>R</code> using the <code>stringdist</code> package which has built-in functions for all of these distance metrics. At the end of this step, we get 5 tables, one for each challenge, with an <code>nxn</code> matrix where n is the number of submissions for each challenge.</p>
+<p>Once we have the distance metric for each submission against every other submission for the same challenge, we can try to assign a similarity score to each submission. In this case, the similarity score against all the other submissions were taken and the top similarity score was selected as the similarity score for each submission. This means that for each submission, the score to the closest submission will be selected as it&rsquo;s score. The higher the score, the more a submission is different from every other submission. Users who didn&rsquo;t do a submission were assigned a score of 1 (no similarity).</p>
+<p>Sample output once the scores have been identified:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>user</th>
+<th>Crossing Ants</th>
+<th>Find phrase in a text</th>
+<th>Middle insert Queue</th>
+<th>Plentiful Numbers 1</th>
+<th>Seesaw Pivot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>000ea1</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.188</td>
+<td>0.000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>002184</td>
+<td>0.057</td>
+<td>1.000</td>
+<td>0.071</td>
+<td>0.120</td>
+<td>0.118</td>
+</tr>
+<tr>
+<td>3</td>
+<td>002530</td>
+<td>0.064</td>
+<td>0.148</td>
+<td>0.108</td>
+<td>0.155</td>
+<td>1.000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>003f2f</td>
+<td>0.064</td>
+<td>0.169</td>
+<td>0.123</td>
+<td>0.099</td>
+<td>0.138</td>
+</tr>
+<tr>
+<td>5</td>
+<td>006a59</td>
+<td>0.038</td>
+<td>0.074</td>
+<td>0.089</td>
+<td>0.111</td>
+<td>0.087</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0093aa</td>
+<td>0.074</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+</tr>
+</tbody>
+</table>
+<p>In the above case, we can see that user <code>000ea1</code> has four submissions that were identical (score: <code>0.000</code>) to other submissions in the dataset. User <code>006a59</code> has one submission which was similar to at least one another submission (score: <code>0.038</code>).</p>
+<h3 id="identifying-plagiarism-threshold-for-each-challenge">Identifying plagiarism threshold for each challenge</h3>
+<p>Now that we have the plagiarism score, we need to identify a threshold which classifies submissions as plagiarized or not. One option is to give a threshold of <code>0</code>, which means that only submissions that are perfectly identical to the others will classified as plagiarized. However, this means that even simple changes to the code won&rsquo;t be identified (False Negative, Type II error). On the contrary, having too high a threshold will cause submissions which were not copied from each other, but accidentally managed to be similar to each other will be flagged as plagiarized (False positive, Type I error).</p>
+<p>Also, each challenge is of a different complexity, and the chances that two submissions are accidentally similar to each other are higher in the simpler assignments, rather than the complex ones. Hence we need to create an adaptive threshold depending on the data itself.</p>
+<p>For this particular problem, this was done by using an elbow point detection algorithm on the log of the sorted submission scores. The elbow point detection algorithm finds the point in the curve with the maximum change in the slope (second derivative) as the elbow point. This can be imagined as the point where there is a large variation between the regimes of plagiarized and non plagiarized data (Fig 3).</p>
+<p><img src="/images/plagiarism-detection/elbow_point.png" alt="Elbow point Detection"></p>
+<h2 id="visualization-and-evaluation">Visualization and Evaluation</h2>
+<h3 id="visualizing-results">Visualizing Results</h3>
+<p>Once the threshold of similarity scores for each individual challenge has been identified, we can now identify the users who have a high probability of having plagiarized. This was implemented as a simple thresholding rule and each user was assigned a score depending on how many of their submissions were closer to the plagiarism threshold. The results are shown below (Fig 4).</p>
+<p><img src="/images/plagiarism-detection/plagiarism_count.png" alt="Total Plagiarism Count"></p>
+<p>From the above graph, we can quickly summarize that a bulk majority of the students haven&rsquo;t engaged in plagiarism of any sort. However, a significant chunk of students have been involved in 1,2,3 and 4 submissions which were identified as being plagiarized. In addition, we can see clear differences in the behavior across institutes, which are better visualized using the percentage summary statistics below:</p>
+<p><img src="/images/plagiarism-detection/plagiarism_summary.png" alt="Total Plagiarism Percentage"></p>
+<p>Although <code>institute_1</code> had a lot more students (from the graph above in Fig 5), it turns out students of <code>institute_2</code> have been involved in significantly less copying from each other.</p>
+<h3 id="evaluation-and-final-results">Evaluation and Final Results</h3>
+<p>In this case, since the true output is not known, it is not easy to evaluate whether the algorithm is exact or not. However, we can gain some confidence on the validity of the analysis by performing some clustering analysis on how the plagiarism chain has spread across users.</p>
+<p>In this case we try to use the techniques we learned in the class to form a network of students who copied from each other. In the graph below (Fig 6), each node represents a student and an edge represents two students who have at least one submission that are very similar to each other. The color of the networks represent the institute of the students.</p>
+<p><img src="/images/plagiarism-detection/graph_full.png" alt="Plagrism Network - Full"></p>
+<p>If the plagiarism detection was close to random, we&rsquo;d have expected the total number of clusters to increase steadily, with some of the points being disconnected, many cliques with 2 nodes, fewer with 3, even fewer with 4, etc. Also, there shouldn&rsquo;t be any patterns across the two institutes. However, in the graph we can see a different scenario. The brute majority of points are disconnected showing that most people haven&rsquo;t copied from each other, as expected, but we&rsquo;re also seeing huge clusters where people nodes are closely connected to each other showing a good amount of organized plagiarism.</p>
+<p><img src="/images/plagiarism-detection/graph_zoom.png" alt="Plagrism Network - Zoomed"></p>
+<p>In the graph above (Fig 7), we can clearly see clusters of the same colors which are closely connected to each other. This represents students of the same institute who have copied the answers en masse and distributed. This is much more prevalent in <code>institute_1</code>, but we see a few clusters in <code>institute_2</code> as well. However, the interconnection between the red and green colors are very rare (it&rsquo;s more logistically difficult to engage in plagiarism across institutes) which shows that the detection is performing well.</p>
+<p>In addition to the above, it was anecdotally observed that the students in <code>institute_1</code> had more opportunity to plagiarize from each other size because the challenges lasted for multiple days in <code>institute_1</code>, but the duration was cut down to a few hours in <code>institute_2</code>. This results is also corroborated by the number where the number of students who have indulged in plagiarism is ~0.57 in <code>institute_1</code>, but much higher at <code>0.82</code> in <code>institute_2</code>.</p>
+<p>For the real life scenario, it is possible that there are some false positives where two candidates who haven&rsquo;t plagiarized, and hence this was used as only one of the criteria for candidate selection/rejection. In addition, we give can give another safety factor by which the threshold is scaled to make sure that even if some students who plagiarized were let off, we didn&rsquo;t unnecessarily penalize students whose code accidentally happened to be similar to other students.</p>
+  </div>
+  
+
+
+  
+
+  
+    
+        <div id="graphcomment"></div>
+<script type="text/javascript">
+  window.graphcomment_id = 'blog-alexsanjoseph-com';
+   
+  (function() {
+    var gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
+    gc.src = 'https://graphcomment.com/js/integration.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
+  })();
+</script>
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-179464703-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"
+    integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1"
+    crossorigin="anonymous"></script>
+<script data-goatcounter="https://alexsanjoseph.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+     inlineMath: [['$','$'], ['\\(','\\)']],
+     displayMath: [['$$','$$']],
+     processEscapes: true,
+     processEnvironments: true,
+     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+     TeX: { equationNumbers: { autoNumber: "AMS" },
+            extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+<script>
+    
+    
+    
+    window.goatcounter.visit_count({ append: 'body' })
+</script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>
