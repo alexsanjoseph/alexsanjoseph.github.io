@@ -13,7 +13,7 @@
       <pubDate>Sun, 06 Feb 2022 00:00:52 +0000</pubDate>
       
       <guid>/posts/rh-counterexamples-in-go-1_1-performance/</guid>
-      <description>Performance Although I had promised in the previous post to have follow the original series closely, a conversation with a friend prompted me to spend some time to see if I can improve upon the current performance of both Python and Golang by leveraging parallel processing. So we&amp;rsquo;re going to take a small detour to figure out if we can improve the function performance using parallel processing before coming back to the database implementation in the next post.</description>
+      <description></description>
     </item>
     
   </channel>

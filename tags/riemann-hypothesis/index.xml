@@ -6,7 +6,16 @@
     <description>Recent content in riemann-hypothesis on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 16 Jan 2022 10:17:52 +0000</lastBuildDate><atom:link href="/tags/riemann-hypothesis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Feb 2022 00:00:52 +0000</lastBuildDate><atom:link href="/tags/riemann-hypothesis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Searching for RH Counterexamples in Golang - Improving Performance via Parallel processing</title>
+      <link>/posts/rh-counterexamples-in-go-1_1-performance/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:52 +0000</pubDate>
+      
+      <guid>/posts/rh-counterexamples-in-go-1_1-performance/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Searching for RH Counterexamples in Golang - Setting up</title>
       <link>/posts/rh-counterexamples-in-go-1-setup/</link>

@@ -2,31 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/</loc>
+    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
+  </url><url>
+    <loc>/tags/golang/</loc>
+    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
+  </url><url>
+    <loc>/tags/optimization/</loc>
+    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
+  </url><url>
+    <loc>/tags/parallelization/</loc>
+    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
+  </url><url>
+    <loc>/tags/python/</loc>
+    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
+  </url><url>
+    <loc>/tags/riemann-hypothesis/</loc>
+    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
+  </url><url>
+    <loc>/posts/rh-counterexamples-in-go-1_1-performance/</loc>
+    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
+  </url><url>
     <loc>/about/</loc>
     <lastmod>2022-01-26T01:50:19+05:30</lastmod>
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
     <loc>/portfolio/</loc>
     <lastmod>2022-01-16T15:59:03+05:30</lastmod>
   </url><url>
-    <loc>/tags/golang/</loc>
-    <lastmod>2022-01-26T12:39:37+05:30</lastmod>
-  </url><url>
     <loc>/tags/kata/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2022-01-26T12:39:37+05:30</lastmod>
-  </url><url>
-    <loc>/tags/riemann-hypothesis/</loc>
-    <lastmod>2022-01-26T12:39:37+05:30</lastmod>
-  </url><url>
     <loc>/posts/rh-counterexamples-in-go-1-setup/</loc>
-    <lastmod>2022-01-26T12:39:37+05:30</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
     <loc>/portfolio/rh/</loc>
@@ -56,16 +68,10 @@
     <loc>/tags/lambda/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/python/</loc>
-    <lastmod>2022-01-26T12:39:37+05:30</lastmod>
-  </url><url>
     <loc>/tags/elasticsearch/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
     <loc>/tags/grafana/</loc>
-    <lastmod>2022-01-26T12:39:37+05:30</lastmod>
-  </url><url>
-    <loc>/tags/optimization/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
     <loc>/posts/optimizing-grafana-queries-with-es/</loc>
