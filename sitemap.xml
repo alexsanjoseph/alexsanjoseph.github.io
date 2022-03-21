@@ -3,10 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
+    <lastmod>2022-03-20T10:17:52+00:00</lastmod>
+  </url><url>
+    <loc>/tags/database/</loc>
+    <lastmod>2022-03-20T10:17:52+00:00</lastmod>
   </url><url>
     <loc>/tags/golang/</loc>
-    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
+    <lastmod>2022-03-20T10:17:52+00:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2022-03-20T10:17:52+00:00</lastmod>
+  </url><url>
+    <loc>/tags/riemann-hypothesis/</loc>
+    <lastmod>2022-03-20T10:17:52+00:00</lastmod>
+  </url><url>
+    <loc>/posts/rh-counterexamples-in-go-1-database/</loc>
+    <lastmod>2022-03-20T10:17:52+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-03-20T10:17:52+00:00</lastmod>
   </url><url>
     <loc>/tags/optimization/</loc>
     <lastmod>2022-02-08T21:14:31+05:30</lastmod>
@@ -14,19 +29,10 @@
     <loc>/tags/parallelization/</loc>
     <lastmod>2022-02-08T21:14:31+05:30</lastmod>
   </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
-  </url><url>
     <loc>/tags/python/</loc>
     <lastmod>2022-02-08T21:14:31+05:30</lastmod>
   </url><url>
-    <loc>/tags/riemann-hypothesis/</loc>
-    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
-  </url><url>
     <loc>/posts/rh-counterexamples-in-go-1_1-performance/</loc>
-    <lastmod>2022-02-08T21:14:31+05:30</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2022-02-08T21:14:31+05:30</lastmod>
   </url><url>
     <loc>/about/</loc>
