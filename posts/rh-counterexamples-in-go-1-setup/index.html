@@ -306,7 +306,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">go test ./riemann -cpuprofile profile.out
 </code></pre></div><p>This command profiles the test code and outputs the profiling info into <code>profile.out</code>. The results can be visualized using the command</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pprof -http<span style="color:#f92672">=</span>localhost:10000 profile.out
-</code></pre></div><figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/profiling_naive.avif#small"
+</code></pre></div><figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/profiling_naive.png#small"
          alt="Profiling DivisorSum naive implementation "/>
 </figure>
 
@@ -316,7 +316,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 functionality. Copying the steps in the original post, there is an <a href="https://math.stackexchange.com/a/22744">approach by Euler</a> which recursively uses the results from a previous computation to calculate the Divisor Sum. In our case, since we&rsquo;re linearly searching across all the numbers, this allows us an opportunity for <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> and hence improved efficiency.</p>
 <p>In this approach, we&rsquo;re trading computation complexity for space complexity (by caching all the previous computations) and for this we need to use some kind of cache. The original implementation uses the LRU cache, but we&rsquo;re going the simple route and instead using a <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/a309583e8580135a4412654dbb302a708482cbc1">simple hashmap as a cache</a>, since we don&rsquo;t worry too much about memory constraints.</p>
 <p>On rerunning the tests, we can see that the functions are running much 2-3x faster for our samples. Faster, but not fast enough. It is still taking 2.6 seconds for calculating up to 100K.</p>
-<figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/profiling_cached.avif#medium"
+<figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/profiling_cached.png#medium"
          alt="Profiling DivisorSum Cached implementation "/>
 </figure>
 
@@ -324,7 +324,7 @@ functionality. Copying the steps in the original post, there is an <a href="http
 <h2 id="goconvey">Simpler/Faster</h2>
 <p>If we look at the algorithm, we can see that we still have a time complexity of $O(n^{\frac{3}{2}})$. This same complexity can be achieved by a much simpler implementation of the naive algorithm by only computing the divisors up to $\sqrt n$ instead of blindly counting all the way up to $n$ implemented in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/d918f89302a51f037634617c1115f2c1a78f0ada">this</a> commit. It also gets rid of the caching since that&rsquo;s not relevant anymore.</p>
 <p>Rerunning the tests, the change is incredible, we&rsquo;ve gotten a benefit of two orders of magnitude in the tests and calculating up to 1M which used to take a minute happens in under a second now! We can now calculate all the way up to 10M in ~15 seconds as we can see from the <code>GoConvey</code> test output below.</p>
-<figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/witness_till_10M.avif#large-left"
+<figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/witness_till_10M.png#large-left"
          alt="open in separate window to zoom"/><figcaption>
             <p>open in separate window to zoom</p>
         </figcaption>

@@ -6,16 +6,7 @@
     <description>Recent content in golang on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 20 Mar 2022 10:17:52 +0000</lastBuildDate><atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Searching for RH Counterexamples in Golang - Adding a Database</title>
-      <link>/posts/rh-counterexamples-in-go-1-database/</link>
-      <pubDate>Sun, 20 Mar 2022 10:17:52 +0000</pubDate>
-      
-      <guid>/posts/rh-counterexamples-in-go-1-database/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Sun, 06 Feb 2022 00:00:52 +0000</lastBuildDate><atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Searching for RH Counterexamples in Golang - Improving Performance via Parallel processing</title>
       <link>/posts/rh-counterexamples-in-go-1_1-performance/</link>
