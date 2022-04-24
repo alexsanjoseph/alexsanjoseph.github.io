@@ -225,8 +225,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <h2 id="performance">Performance</h2>
-<p>Although I had promised in the previous post to follow the original series closely, a conversation with a friend prompted me to spend some time to see if I can improve upon the current performance of both <code>Python</code> and <code>Golang</code> by leveraging parallel processing. So I am going to take a small detour to figure out if the function performance can be improved using parallel processing before coming back to the database implementation in the next post.</p>
-<p>In <code>Python</code>, <code>numba</code> allows parallel processing by calling the appropriate APIs and using the parallel option and in <code>Golang</code>, you have native support for <code>goroutines</code> which allows concurrency and parallel processing trivially. In this post I will be trying out both approaches to see how they fare.</p>
+<p>Although I had promised in the <a href="https://blog.alexsanjoseph.com/posts/rh-counterexamples-in-go-1-setup">previous post</a> to follow the original series closely, a conversation with a friend prompted me to spend some time to see if I can improve upon the current performance of both <code>Python</code> and <code>Golang</code> by leveraging parallel processing. So I am going to take a small detour to figure out if the function performance can be improved using parallel processing before coming back to the database implementation in the next post.</p>
+<p>In <code>Python</code>, <code>numba</code> allows parallel processing by calling the appropriate APIs and using the parallel option. <code>Golang</code> has native support for <code>goroutines</code> which allows concurrency and parallel processing trivially. In this post I will be trying out both approaches to see how they fare.</p>
 <p><em>Note: I will not be rigorously following benchmarking techniques to get the most precise
 results. The focus will be mostly on the approaches rather than the exact, reproducible results.</em></p>
 <h2 id="status-quo">Status Quo</h2>
