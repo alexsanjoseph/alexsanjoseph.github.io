@@ -29,7 +29,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/rh-counterexamples-in-go-1-database/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-20T10:17:52+00:00" />
-<meta property="article:modified_time" content="2022-03-20T10:17:52+00:00" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="article:modified_time" content="2022-04-23T22:51:40-04:00" /><meta property="og:site_name" content="Alex&#39;s Blog" />
 
 
 
@@ -45,7 +45,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.52a3e4c42b123d9e586cf178786d09d7451c6eb9ee52cab6d47d09f2ab23bd7b.css" integrity="sha256-UqPkxCsSPZ5YbPF4eG0J10UcbrnuUsq21H0J8qsjvXs=">
+<link rel="stylesheet" href="/scss/hyde-hyde.a49b6ba6c4955c432d9ded493e8ac2653879067ed0659625ca96a85e8747609f.css" integrity="sha256-pJtrpsSVXEMtne1JPorCZTh5Bn7QZZYlypaoXodHYJ8=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -187,6 +187,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     
+    , Updated:
+    2022 Apr 23
+    
     
     
     
@@ -208,90 +211,122 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     <br />
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 8 min read
 </div>
 
   </header>
   
   
   <div class="post">
-    <ul>
-<li>
-<p>As always, following up from <a href="https://jeremykun.com/2020/09/11/searching-for-rh-counterexamples-adding-a-database/">here</a></p>
-</li>
-<li>
-<p>Why are we adding a database</p>
-</li>
-<li>
-<p>Interface pattern</p>
-</li>
-<li>
-<p>Creating a new branch</p>
-</li>
-<li>
-<p>What does the database have?</p>
+    <h2 id="why-a-database">Why a Database?</h2>
+<p>In the <a href="https://blog.alexsanjoseph.com/posts/rh-counterexamples-in-go-1-setup/">previous</a> post, we started searching for Riemann counterexamples by trying to find a <a href="https://en.wikipedia.org/wiki/Witness_(mathematics)"><em>witness</em></a>, that would disprove the hypothesis, across a range of integers. While we were successful in getting the code working to find the witness value, we had no way to save the results. In effect, this meant that for each program run, we were starting from scratch.</p>
+<p>To make sure that we preserve the results of our runs, we need to introduce some way of persisting the results, and the state at which we stopped each run. This way, we could pick up where we started when we run the program next.</p>
+<p>There are many ways to introduce persistence in the code, with the simplest being to write the values to a file and read the file each time to understand what has happened before and where to start the next time. However, <a href="https://softwareengineering.stackexchange.com/questions/190482/why-use-a-database-instead-of-just-saving-your-data-to-disk">it is better</a> to use a database instead. In this post, we add the simplest of databases, SQLite, to our system.</p>
+<p>As always, we will be closely following the original post from <a href="https://jeremykun.com/2020/09/11/searching-for-rh-counterexamples-adding-a-database/">here</a>.</p>
+<h2 id="the-interface-pattern">The Interface pattern</h2>
+<p>As mentioned before, we are planning to use a SQLite database in our implementation. The simplest approach would be write code that depends on this knowledge and uses the database functions directly. However, this means that if we decide to use a different implementation for persisting the data tomorrow, we have to rewrite all the parts that interact with the database!</p>
+<p>So instead of adding just a database implementation, we need to add an abstraction layer instead decoupling the intent and the implementation. This layer is called an <a href="https://bowenli86.github.io/2016/04/14/best%20practices/design%20pattern/Design-Pattern-Strategy-Pattern-Program-to-an-interface-not-an-implementation/">interface</a>. We first identify the operations that we want the interface to support and then hide the actual code enabling the different operation as a detail to each implementation. We also write tests for the interface and expect results irrespective of the implementation details.</p>
+<blockquote class="info">
+    <strong>Since we are getting started on a major feature addition now, it is a good idea to add all additional changes in a separate branch. In our case, I&rsquo;m using the branch <code>database</code> to handle all the code in this post</strong><br>
+    
+</blockquote>
+<h2 id="what-functions-should-the-persistence-interface-support">What functions should the persistence interface support?</h2>
+<p>Let us think about the basic operations our persistence implementation needs to support:</p>
 <ul>
-<li>Load</li>
-<li>Upsert</li>
-<li>Summarize</li>
+<li>A way to insert/overwrite data in the persistence layer (<strong>Upsert</strong>)</li>
+<li>A way to read the data that has already been written (<strong>Load</strong>)</li>
+<li>In addition, we will also add a convenience action to get summary statistics of the data that is already present in the persistence layer (<strong>Summarize</strong>)</li>
 </ul>
-</li>
-<li>
-<p>And Adding tests - All of this in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/d124238ac423012a06711fb9cfb331995216cd37">this</a> commit</p>
-</li>
-<li>
-<p>Precomputed witness value <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/ed160bb88939e7dccbb9e0c2ae1102665666d84b">here</a></p>
-</li>
-<li>
-<p>Computing Riemann sums for an array <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/cf64a837d847605a9ffd0004a30b7e9088f831d7">here</a></p>
-</li>
-<li>
-<p>Added main function <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/90c71b301c5e15ac11e2fe3f3095ee4d2c41b79f">here</a>. Now you can run commands like <code>go run main.go</code></p>
-</li>
-<li>
-<p>Start and end points for search <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/9f61164a2f987fbb6c0076a65134e224a3e91c0b">here</a></p>
-</li>
-<li>
-<p>Int is too small! <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/124ed09b73327e14426b1cea5025232e6950621b">commit</a></p>
-</li>
-<li>
-<p>Bug in ints again <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/56b825af90665d979b3a07a296d97adb83ef73d8">commit</a></p>
-</li>
-<li>
-<p>panic testing <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/ea31c3f434274be16823b4d0acb962532aa9bfc3">here</a></p>
-</li>
-<li>
-<p>Cleanups <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/237fe79ebb6ea8b32b7440eea0059dbd90c1f497">here</a>, <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/9a5379ebde6a3bcc31c7fc3a6fd2c9564e484b52">here</a>, and <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/d84903dfec8a20b0601ccc7f8c040c6d9fc98b94">here</a></p>
-</li>
-<li>
-<p>Public and Private fields <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/e7e4d7a7ebd16adc98348c84802bef2d8a2c33f4">here</a></p>
-</li>
-<li>
-<p><a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/bd9c025b94f09548aa007d6324438e31c9d4fc9d">Ginkgo upgrade</a> + Go mod tidy</p>
-</li>
-<li>
-<p><a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/5ff381ccf7166a0a1d06b5aca4f5802d53fe4eaf">Sqlite database code + tests</a>. It&rsquo;s more or less the same code!</p>
-</li>
-<li>
-<p><a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/bc098600cd280279f2670d4e3e433c5dac3c8de3">Parametrized tests</a></p>
-</li>
-<li>
-<p><a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/469ff79014f2a32470db839cc49565295d36f8de">Main function upgrade</a>. New command line output</p>
-</li>
-<li>
-<p>In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pulls%5D">this</a> pull request and <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/7b8f8e351f01472535a311512af27781476a9b26">merge commit</a></p>
-</li>
-<li>
-<p>Additional cleanups <a href="">here</a></p>
+<p>That is our interface! If we build the interface right, we should be able to plug any code into our system easily, as long as it has way to support these three methods.</p>
+<p>To see this in action, we will be first adding a non-persistent in-memory database (a simple Hashmap of values) as our first implementation, and then adding the SQLite database as an additional implementation.</p>
+<h2 id="adding-the-first-implementation">Adding the First Implementation</h2>
+<h3 id="adding-the-types">Adding the Types</h3>
+<p>We first create a type <code>RiemannDivisorSum</code> to hold a single record, with the number(N), the Sum of Divisors(DivisorSum) and the calculated Witness values (WitnessValues).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">RiemannDivisorSum</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">N</span>            <span style="color:#66d9ef">int</span>
+	<span style="color:#a6e22e">DivisorSum</span>   <span style="color:#66d9ef">int</span>
+	<span style="color:#a6e22e">WitnessValue</span> <span style="color:#66d9ef">float64</span>
+}
+</code></pre></div><p>We can also add <code>SummaryStats</code>, which holds the Largest Computed N and for the Largest Witness value, both <code>RiemannDivisorSum</code> values.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">
+<span style="color:#66d9ef">type</span> <span style="color:#a6e22e">SummaryStats</span> <span style="color:#66d9ef">struct</span> {
+	<span style="color:#a6e22e">LargestComputedN</span>    <span style="color:#a6e22e">RiemannDivisorSum</span>
+	<span style="color:#a6e22e">LargestWitnessValue</span> <span style="color:#a6e22e">RiemannDivisorSum</span>
+}
+</code></pre></div><h3 id="adding-the-interface">Adding the Interface</h3>
+<p>Now that we have the <em>types</em> in place, we can add the interface with the methods as discussed before.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">DivisorDb</span> <span style="color:#66d9ef">interface</span> {
+	<span style="color:#a6e22e">Load</span>() []<span style="color:#a6e22e">RiemannDivisorSum</span>
+	<span style="color:#a6e22e">Upsert</span>([]<span style="color:#a6e22e">RiemannDivisorSum</span>)
+	<span style="color:#a6e22e">Summarize</span>() <span style="color:#a6e22e">SummaryStats</span>
+}
+</code></pre></div><p>Now that we have interface fully defined, we can add the implementation. The In-Memory Database implementation is defined in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/blob/d124238ac423012a06711fb9cfb331995216cd37/riemann/in_memory_database.go">this</a> file and the tests are in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/blob/d124238ac423012a06711fb9cfb331995216cd37/riemann/in_memory_database_test.go">this</a> one.</p>
+<p>All of the above steps are done as a single feature in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/d124238ac423012a06711fb9cfb331995216cd37">this</a> commit.</p>
+<h3 id="precomputing-divisor-sum">Precomputing Divisor Sum</h3>
+<p>In some cases, we can provide the DivisorSum directly to the function without it having to compute it. For that, we need to extend the function to optionally take the precomputed DivisorSum value as a parameter, and calculate the DivisorSum only if this value is not provided. This is implemented in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/ed160bb88939e7dccbb9e0c2ae1102665666d84b">this</a> commit.</p>
+<h2 id="calculating-riemann-sums-for-an-array">Calculating Riemann sums for an array</h2>
+<p>Now that we know how to find the Riemann sums for a single integer, it is trivial to we can <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/cf64a837d847605a9ffd0004a30b7e9088f831d7">extend it</a> for an array.</p>
+<h2 id="adding-the-main">Adding the <code>main</code></h2>
+<p>We have the individual components in place along with the unit tests. Now, it is time to add the <code>main</code> function. The <code>main</code> function in <code>Golang</code> is the entrypoint to your code. In our case, it calculates the Witness values for a range of numbers and prints out the summary statistics across the range. Once we have the <code>main</code> <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/90c71b301c5e15ac11e2fe3f3095ee4d2c41b79f">implemented</a>, you can invoke the main function using <code>go run main.go</code> to see the output in the terminal.</p>
+<p>In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/9f61164a2f987fbb6c0076a65134e224a3e91c0b">this</a> commit, we also add capability to search across arbitrary start and end ranges.</p>
+<h2 id="additional-fixes">Additional fixes</h2>
+<p>At this point, I identified a few issues with the code which I fixed in the following small commits:</p>
 <ul>
-<li>Precomputer</li>
-<li>Changing scope</li>
+<li>We were using <code>int</code> till now which is soon going to be too small to represent the numbers we are going to handle! In this <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/124ed09b73327e14426b1cea5025232e6950621b">commit</a>, we change all numbers to <code>int64</code>.</li>
+<li>While adding that fix, we introduced another bug. That was fixed and additional tests were added in this <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/56b825af90665d979b3a07a296d97adb83ef73d8">commit</a>.</li>
+<li>We also add tests to capture the <code>panic</code> situations correctly in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/ea31c3f434274be16823b4d0acb962532aa9bfc3">this</a> commit.</li>
+<li>In additional, there are many small (mostly cosmetic) cleanups <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/237fe79ebb6ea8b32b7440eea0059dbd90c1f497">here</a>, <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/9a5379ebde6a3bcc31c7fc3a6fd2c9564e484b52">here</a>, and <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/d84903dfec8a20b0601ccc7f8c040c6d9fc98b94">here</a>.</li>
 </ul>
-</li>
-<li>
-<p>On to search strategies!</p>
-</li>
-</ul>
+<p>With these changes, we are well and truly done with our first implementation and can more on to the second (and more practical) implementation.</p>
+<h2 id="adding-the-sqlite-implementation">Adding the SQLite Implementation</h2>
+<p>While ideating on adding the SQLite implementation, I realized that I had made a mistake by missing one method in the interface - which would <em>initialize</em> the interface. This design error actually came up while we were adding the first implementation as well, when I had to make the <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/blob/d84903dfec8a20b0601ccc7f8c040c6d9fc98b94/riemann/in_memory_database.go#L4">data field in the in-memory-database</a> public, just to initialize the function. This is a code smell since the way the data is stored is really an implementation concern and not something the user should be aware of. In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/e7e4d7a7ebd16adc98348c84802bef2d8a2c33f4">this</a> commit, I rectify that mistake by making the data field private and adding and Initialize method to the interface, in addition to the method for the implementation (+ tests!)</p>
+<p>Now we can add in the SQLite implementation, using the same methods as before. The implementation details are completely different from the in-memory database, but the interfaces remain the same. This is best showcased <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/5ff381ccf7166a0a1d06b5aca4f5802d53fe4eaf">in this commit</a>, where the test files are practically the same of the two implementations! This also allows us to parametrize the tests in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/bc098600cd280279f2670d4e3e433c5dac3c8de3">this</a> commit by moving the tests to be database specific rather than implementation specific. We can now go back and forth between the two implementations as we please!</p>
+<p>The last step to do is to <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/469ff79014f2a32470db839cc49565295d36f8de">upgrade the main function</a> to use the SQLite implementation instead of the In-Memory DB. This gives us an output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">❯ go run main.go
+Computed Sums from 1,010,082 to 2,010,081 in 2.250402s
+Computed Sums from 2,010,082 to 3,010,081 in 2.570138167s
+Computed Sums from 3,010,082 to 4,010,081 in 2.820090959s
+Computed Sums from 4,010,082 to 5,010,081 in 3.26657375s
+^CGot Interrupt. Shutting down...
+
+Highest Number Analyzed
+<span style="color:#f92672">======</span>
+<span style="color:#f92672">{</span>N:4010081 DivisorSum:4010082 WitnessValue:0.367434<span style="color:#f92672">}</span>
+
+Largest Witness Value
+<span style="color:#f92672">======</span>
+<span style="color:#f92672">{</span>N:55440 DivisorSum:232128 WitnessValue:1.751247<span style="color:#f92672">}</span>
+DB Closed!
+</code></pre></div><p>On rerunning the function after stopping it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">❯ go run main.go
+Computed Sums from 5,010,083 to 6,010,082 in 3.399881167s
+Computed Sums from 6,010,083 to 7,010,082 in 3.468380792s
+Computed Sums from 7,010,083 to 8,010,082 in 3.460063167s
+Computed Sums from 8,010,083 to 9,010,082 in 3.5575695s
+^CGot Interrupt. Shutting down...
+
+Highest Number Analyzed
+<span style="color:#f92672">======</span>
+<span style="color:#f92672">{</span>N:8010082 DivisorSum:12027996 WitnessValue:0.542865<span style="color:#f92672">}</span>
+
+Largest Witness Value
+<span style="color:#f92672">======</span>
+<span style="color:#f92672">{</span>N:55440 DivisorSum:232128 WitnessValue:1.751247<span style="color:#f92672">}</span>
+DB Closed!
+</code></pre></div><p>You can see that function is able to save the state of the last run and start the calculations from that time instead of from scratch each time.</p>
+<h2 id="wrapping-up">Wrapping up</h2>
+<p>Now that we have the entire feature added, we can create a new <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pulls%5D">pull request</a> which after review is <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/7b8f8e351f01472535a311512af27781476a9b26">merged on</a> to the <code>main</code> branch.</p>
+<p>Running the function upto a 100M now takes just a few minutes, and we can stop and start any time we want. However, we&rsquo;re still nowhere close to finding a better candidate that the original <code>55440</code>. If you look at the top witness values in the SQLite DB, we can see a curious pattern:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">sqlite<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> RiemannDivisorSums <span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> witness_value <span style="color:#66d9ef">DESC</span> <span style="color:#66d9ef">limit</span> <span style="color:#ae81ff">10</span>;
+
+<span style="color:#ae81ff">55440</span><span style="color:#f92672">|</span><span style="color:#ae81ff">232128</span><span style="color:#f92672">|</span><span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">751247</span>
+<span style="color:#ae81ff">27720</span><span style="color:#f92672">|</span><span style="color:#ae81ff">112320</span><span style="color:#f92672">|</span><span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">742537</span>
+<span style="color:#ae81ff">15120</span><span style="color:#f92672">|</span><span style="color:#ae81ff">59520</span><span style="color:#f92672">|</span><span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">738559</span>
+<span style="color:#ae81ff">110880</span><span style="color:#f92672">|</span><span style="color:#ae81ff">471744</span><span style="color:#f92672">|</span><span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">734849</span>
+<span style="color:#ae81ff">720720</span><span style="color:#f92672">|</span><span style="color:#ae81ff">3249792</span><span style="color:#f92672">|</span><span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">733065</span>
+<span style="color:#ae81ff">1441440</span><span style="color:#f92672">|</span><span style="color:#ae81ff">6604416</span><span style="color:#f92672">|</span><span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">72774</span>
+</code></pre></div><p>All of the top numbers are multipliers of <code>2520</code>. This makes intuitive sense since <code>2520</code> is a <a href="https://en.wikipedia.org/wiki/Superabundant_number">superabundant number</a> and it <a href="https://www.tandfonline.com/doi/abs/10.1080/00029890.2009.11920937">has been proven</a> that a witness value, <em>if it exists</em>, has to be a superabundant number, and a multiplier of 2520. Maybe we can use this idea to improve the <em>way we search</em>?</p>
+<p>In the next post, we will go over adding <em>search strategies</em> than indiscriminately searching every number, thereby improving the speed of our calculations by multiple orders of magnitude!</p>
   </div>
   
 
