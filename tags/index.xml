@@ -6,7 +6,43 @@
     <description>Recent content in Tags on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 20 Apr 2022 10:17:52 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>data-visualization</title>
+      <link>/tags/data-visualization/</link>
+      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/data-visualization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lifehacking</title>
+      <link>/tags/lifehacking/</link>
+      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/lifehacking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pain</title>
+      <link>/tags/pain/</link>
+      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pain/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tonsillectomy</title>
+      <link>/tags/tonsillectomy/</link>
+      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/tonsillectomy/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>database</title>
       <link>/tags/database/</link>
@@ -112,15 +148,6 @@
       <pubDate>Sat, 18 Dec 2021 11:39:10 +0530</pubDate>
       
       <guid>/tags/fun/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>lifehacking</title>
-      <link>/tags/lifehacking/</link>
-      <pubDate>Sat, 18 Dec 2021 11:39:10 +0530</pubDate>
-      
-      <guid>/tags/lifehacking/</guid>
       <description></description>
     </item>
     

@@ -3,7 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2022-06-24T18:53:25+05:30</lastmod>
+    <lastmod>2022-06-27T20:03:20+05:30</lastmod>
+  </url><url>
+    <loc>/tags/data-visualization/</loc>
+    <lastmod>2022-06-27T20:03:20+05:30</lastmod>
+  </url><url>
+    <loc>/tags/lifehacking/</loc>
+    <lastmod>2022-06-27T20:03:20+05:30</lastmod>
+  </url><url>
+    <loc>/tags/pain/</loc>
+    <lastmod>2022-06-27T20:03:20+05:30</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2022-06-27T20:03:20+05:30</lastmod>
+  </url><url>
+    <loc>/posts/adult-tonsillectomy/</loc>
+    <lastmod>2022-06-27T20:03:20+05:30</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-06-27T20:03:20+05:30</lastmod>
+  </url><url>
+    <loc>/tags/tonsillectomy/</loc>
+    <lastmod>2022-06-27T20:03:20+05:30</lastmod>
   </url><url>
     <loc>/tags/database/</loc>
     <lastmod>2022-06-24T18:53:25+05:30</lastmod>
@@ -11,16 +32,10 @@
     <loc>/tags/golang/</loc>
     <lastmod>2022-06-24T18:53:25+05:30</lastmod>
   </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2022-06-24T18:53:25+05:30</lastmod>
-  </url><url>
     <loc>/tags/riemann-hypothesis/</loc>
     <lastmod>2022-06-24T18:53:25+05:30</lastmod>
   </url><url>
     <loc>/posts/rh-counterexamples-in-go-1-database/</loc>
-    <lastmod>2022-06-24T18:53:25+05:30</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2022-06-24T18:53:25+05:30</lastmod>
   </url><url>
     <loc>/tags/algorithms/</loc>
@@ -66,9 +81,6 @@
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
     <loc>/tags/fun/</loc>
-    <lastmod>2022-01-26T12:39:37+05:30</lastmod>
-  </url><url>
-    <loc>/tags/lifehacking/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
     <loc>/posts/tracking-expenses/</loc>
