@@ -6,7 +6,16 @@
     <description>Recent content in riemann-hypothesis on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 20 Apr 2022 10:17:52 +0000</lastBuildDate><atom:link href="/tags/riemann-hypothesis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 Oct 2022 10:17:52 +0000</lastBuildDate><atom:link href="/tags/riemann-hypothesis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Searching for RH Counterexamples in Golang - Superabundant Numbers</title>
+      <link>/posts/rh-counterexamples-in-go-3-1-superabundant/</link>
+      <pubDate>Sat, 29 Oct 2022 10:17:52 +0000</pubDate>
+      
+      <guid>/posts/rh-counterexamples-in-go-3-1-superabundant/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Searching for RH Counterexamples in Golang - Adding a Database</title>
       <link>/posts/rh-counterexamples-in-go-1-database/</link>

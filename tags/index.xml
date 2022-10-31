@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 29 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 Oct 2022 10:17:52 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>golang</title>
+      <link>/tags/golang/</link>
+      <pubDate>Sat, 29 Oct 2022 10:17:52 +0000</pubDate>
+      
+      <guid>/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>riemann-hypothesis</title>
+      <link>/tags/riemann-hypothesis/</link>
+      <pubDate>Sat, 29 Oct 2022 10:17:52 +0000</pubDate>
+      
+      <guid>/tags/riemann-hypothesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>superabundant</title>
+      <link>/tags/superabundant/</link>
+      <pubDate>Sat, 29 Oct 2022 10:17:52 +0000</pubDate>
+      
+      <guid>/tags/superabundant/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>data-visualization</title>
       <link>/tags/data-visualization/</link>
@@ -49,24 +76,6 @@
       <pubDate>Wed, 20 Apr 2022 10:17:52 +0000</pubDate>
       
       <guid>/tags/database/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>/tags/golang/</link>
-      <pubDate>Wed, 20 Apr 2022 10:17:52 +0000</pubDate>
-      
-      <guid>/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>riemann-hypothesis</title>
-      <link>/tags/riemann-hypothesis/</link>
-      <pubDate>Wed, 20 Apr 2022 10:17:52 +0000</pubDate>
-      
-      <guid>/tags/riemann-hypothesis/</guid>
       <description></description>
     </item>
     
