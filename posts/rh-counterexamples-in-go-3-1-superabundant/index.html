@@ -234,7 +234,7 @@ $$</p>
 <p>where $p_i$ is the <code>i</code>th prime factor and $a_i \leq a_{i-1}$.</p>
 <p>The non-increasing list of numbers that add to a number is called a <code>partition</code>. We just need to find the partitions of a number, and combine them with the non-increasing prime factor and we&rsquo;re well on our way to a better approach to solve this problem.</p>
 <h2 id="finding-partitions">Finding Partitions</h2>
-<p>There are pretty standard methods to find partitions, one of which was included in the original post. However, I found the algorithm a bit difficult to understand and hence ended up <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/ab34c1977440eae9d3f2f098a0f3bca8bd0eeace">implementing</a> a simple recursion algorithm instead</p>
+<p>There are pretty standard methods to find partitions, one of which was included in the original post. However, I found the algorithm a bit difficult to understand and hence ended up <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/ab34c1977440eae9d3f2f098a0f3bca8bd0eeace">implementing</a> a simple recursion algorithm instead.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">PartitionsOfN</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) [][]<span style="color:#66d9ef">int</span> {
 	<span style="color:#a6e22e">output</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{{<span style="color:#a6e22e">n</span>}}
@@ -252,8 +252,8 @@ $$</p>
 	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">output</span>
 }
 
-</code></pre></div><p>While this approach worked and found the right set of partitions, the algorithm grinded to a halt as we approached $n&gt;25$! I could see that a similar slowdown was seen for the <code>Kun/Python</code> algorithm around $n&gt;70$ so we were far away from that!</p>
-<p>I realized that the algorithm for each numbers it was calculating the partitions for all the smaller numbers again and again and duplicating the work. In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/341ac8fa2a98a18ac53d6a8a32ba72806c64c442">this commit</a>, I implemented memoization to calculate the partitions only if the number was new and otherwise read from the existing cache. This approach is called <a href="https://en.wikipedia.org/wiki/Dynamic_programming">Dynamic Programming</a></p>
+</code></pre></div><p>Quite simply, partitions of a number are the previous partitions ($n-1$), plus the partitions created by the additional number.While this approach worked and found the right set of partitions, the algorithm grinded to a halt as we approached $n&gt;25$! A similar slowdown was seen for the <code>Kun/Python</code> algorithm only around $n&gt;70$ so we definitely needed to do better!</p>
+<p>On inspection, I realized that for each number, the algorithm was calculating the partitions for all the smaller numbers again and again, duplicating the work. In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/341ac8fa2a98a18ac53d6a8a32ba72806c64c442">this commit</a>, I implemented <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> which calculates the partitions only if the number was new, otherwise reading from the existing cache. This approach of <code>memoization</code> + <code>recursion</code> is called <a href="https://en.wikipedia.org/wiki/Dynamic_programming">Dynamic Programming</a></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">cachedPartitionsOfN</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">cache</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>][][]<span style="color:#66d9ef">int</span>) [][]<span style="color:#66d9ef">int</span> {
 	<span style="color:#a6e22e">possibleOutput</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cache</span>[<span style="color:#a6e22e">n</span>]
 	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ok</span> {
@@ -280,18 +280,20 @@ $$</p>
 	<span style="color:#a6e22e">cache</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>][][]<span style="color:#66d9ef">int</span>)
 	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cachedPartitionsOfN</span>(<span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">cache</span>)
 }
-</code></pre></div><p>This significantly sped up the process and we were able to approach partition computation speeds on par with the other approach.</p>
+</code></pre></div><p>This significantly sped up the process and we were able to approach partition computation speeds on par with the <code>Python</code> approach.</p>
 <blockquote class="info">
-    <strong>At this point, I noticed some minor discrepancy between the results of my approach and the original authors approach.. So in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/bd1f673ec2bb01bf2a9eca6186e33ad24ab03656">this commit</a> I implemented the same myself and saw the the issue is persisting and raised a <a href="https://github.com/j2kun/riemann-divisor-sum/issues/39">bug report</a> which the author fixed promptly!</strong><br>
+    <strong>At this point, I noticed some minor discrepancy between the results of my approach and the original authors approach. To verify, <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/bd1f673ec2bb01bf2a9eca6186e33ad24ab03656">I implemented the same myself</a> and saw the the issue is persisting and raised a <a href="https://github.com/j2kun/riemann-divisor-sum/issues/39">bug report</a> which the author fixed promptly!</strong><br>
     
 </blockquote>
-<p>Now that we had the partitions, finding the prime factor <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/blob/be440d2bd29c2c7ca2d6131ef53c1c86cef3367a/riemann/divisor.go">was straightforward</a>. While the algorithm is fairly simple, this has quite a few edge cases and we add a few tests to check for these.</p>
-<h2 id="hypothesis-tests">Hypothesis tests</h2>
-<p>Generally, we add tests by manually computing the expected value and then comparing the results of a function with the expected value to see if it matches correctly. This kind of testing is useful primarily in preventing regressions, where a further change can accidentally break existing functionality. However, this kind of testing rarely captures edge cases that the programmer hasn&rsquo;t thought of. We can mitigate some of this by using <code>property tests</code>.</p>
-<p>In the case of [Property Tests](Software testing § Property testing), the test cases are generated automatically and randomly at test time based on a specific property of the expected output. For example, if we implement the <code>square</code> function, we usually test the value of squares for a few numbers.</p>
+<p>Now that we had the partitions, finding the prime factor divisor sum <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/blob/be440d2bd29c2c7ca2d6131ef53c1c86cef3367a/riemann/divisor.go">is straightforward</a>.</p>
+<h2 id="property-testing">Property Testing</h2>
+<p>In general, we add tests by manually computing the expected value and then comparing the results of a function with the expected value to see if it matches correctly. This kind of testing is useful primarily in preventing regressions, where a further change can accidentally break existing functionality. However, this rarely captures edge cases that the programmer herself hasn&rsquo;t thought of. We can mitigate some of this by using <code>property tests</code>.</p>
+<p>In the case of <a href="https://en.wikipedia.org/wiki/Software_testing#Property_testing">Property Tests</a>, the test cases are generated automaticallyat test time. After that, the expected output is checked based on a specific property of the expected output.</p>
+<p>For example, let us assume we are implementing the <code>square</code> function. We usually test the function by checking the value of squares for a few numbers.</p>
 <ul>
 <li>square(1) = 1</li>
 <li>square(2) = 4</li>
+<li>square(11) = 121</li>
 </ul>
 <p>While this might look sufficient, this doesn&rsquo;t necessarily capture edge cases. For example our algorithm might fail for</p>
 <ul>
@@ -303,14 +305,14 @@ $$</p>
 </ul>
 <p>So instead of trying to account for every possible number, we instead give properties of the squaring function that we know:</p>
 <ul>
-<li>Square any number is positive</li>
+<li>Square of any number is positive</li>
 <li>Square of any number &gt; 1 should be greater than itself</li>
 <li>Square of any number &lt;1 should be less than itself</li>
 <li>Square of any integer is another integer</li>
 <li>Square of any fraction is a fraction.</li>
 </ul>
 <p>This kind of an approach can find out many hidden bugs in the code and is essential for all mission critical code!</p>
-<p>In our case, we add the property tests by calculating the Prime Factor Divisor Sum using the naive approach to validate our tests. In <code>Golang</code>, the <code>gopter</code> package allows you to quickly generate hypothesis tests and customize it to your hearts content.</p>
+<p>In our case, we add the property tests by calculating the <code>Prime Factor Divisor Sum</code> using the naive approach to validate our tests. In <code>Golang</code>, the <code>gopter</code> package allows you to quickly generate hypothesis tests and customize it to your hearts content.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">
 <span style="color:#a6e22e">parameters</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gopter</span>.<span style="color:#a6e22e">DefaultTestParameters</span>()
 <span style="color:#a6e22e">parameters</span>.<span style="color:#a6e22e">MinSuccessfulTests</span> = <span style="color:#ae81ff">100</span>
@@ -373,14 +375,15 @@ $$</p>
 </ul>
 <p>Thankfully, our partitions algorithm was already beyond reproach ;) and we didn&rsquo;t have to change any code!</p>
 <h2 id="dealing-with-really-large-numbers">Dealing with (REALLY) Large Numbers</h2>
-<p>The one issue that we identified which we had postponed was dealing with large numbers. Even if we are using 64 bit integers (which are the largest primitives in <code>Golang</code>) while doing the math, it turns out we max out at a paltry <code>9223372036854775807</code> which is not going to be nearly enough if we&rsquo;re going to find a witness.</p>
+<p>The one issue that we identified which we had avoided till now was dealing with large numbers. Even if we are using 64 bit integers (which are the largest primitives in <code>Golang</code>) while doing the math, it turns out that we max-out at a paltry <code>9223372036854775807</code> which is not going to be nearly enough if we&rsquo;re going to find a counterexample.</p>
 <blockquote class="info">
-    <strong>Native <code>Python</code> doesn&rsquo;t face this issue since this is handled internally by <code>Python</code>, but the moment we try to optimize the code by using packages like <code>numpy</code> and <code>numba</code>, we have the same problem!</strong><br>
+    <strong>Native <code>Python</code> doesn&rsquo;t face this issue since large number math is handled internally by <code>Python</code>, but the moment we try to optimize the code by using packages like <code>numpy</code> and <code>numba</code>, we have the same problem!</strong><br>
     
 </blockquote>
-<p>Thankfully, <code>Golang</code> has a standard way of dealing with this by using the <code>Bigint</code> package. While using the package is a bit more clunky than native numbers, it allows you to do all the math required to solve our problem. In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/29743a7cc1b9307a9d3eb58d4d1dafa89cdab575">this commit</a> I upgrade the numbers to <code>Bigint</code> and add a few more tests. This allows us to remove the constraint on large numbers (now the constraints are only to make sure that the tests run within a reasonable time!)</p>
+<p>Thankfully, <code>Golang</code> has a standard way of dealing with this by using the <code>math/big</code> package. While using the package is a bit more clunky than native numbers, it allows you to do all the math required to solve our problem. In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/29743a7cc1b9307a9d3eb58d4d1dafa89cdab575">this commit</a> I upgrade the numbers to <code>Bigint</code> and add a few more tests. This allows us to remove the constraint on large numbers (now the constraints are only to make sure that the tests run within a reasonable time!)</p>
 <h2 id="next-steps">Next steps</h2>
-<p>Now we are all set to solve the actual problem, and we have the subset of numbers that we need to search as candidates for a Reimann counterexample. All the commits are condensed into <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4">this</a> pull request.</p>
+<p>All the commits above are condensed into <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4">this</a> pull request.</p>
+<p>We are all set to solve the actual problem, since we have the subset of numbers that we need to search as candidates for a <code>Reimann counterexample</code>.</p>
 <p>In the next post, we will use the candidates we found using this approach to solve the Riemann Hypothesis problem.</p>
   </div>
   
