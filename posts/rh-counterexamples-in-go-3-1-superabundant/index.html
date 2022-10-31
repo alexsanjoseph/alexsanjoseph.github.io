@@ -291,7 +291,7 @@ $$</p>
 <p>Now that we had the partitions, finding the prime factor divisor sum <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/blob/be440d2bd29c2c7ca2d6131ef53c1c86cef3367a/riemann/divisor.go">is straightforward</a>.</p>
 <h2 id="property-testing">Property Testing</h2>
 <p>In general, we add tests by manually computing the expected value and then comparing the results of a function with the expected value to see if it matches correctly. This kind of testing is useful primarily in preventing regressions, where a further change can accidentally break existing functionality. However, this rarely captures edge cases that the programmer herself hasn&rsquo;t thought of. We can mitigate some of this by using <code>property tests</code>.</p>
-<p>In the case of <a href="https://en.wikipedia.org/wiki/Software_testing#Property_testing">Property Tests</a>, the test cases are generated automaticallyat test time. After that, the expected output is checked based on a specific property of the expected output.</p>
+<p>In the case of <a href="https://en.wikipedia.org/wiki/Software_testing#Property_testing">Property Tests</a>, the test cases are generated automatically at test time. After that, the expected output is checked based on a specific property of the expected output.</p>
 <p>For example, let us assume we are implementing the <code>square</code> function. We usually test the function by checking the value of squares for a few numbers.</p>
 <ul>
 <li>square(1) = 1</li>
