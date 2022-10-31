@@ -28,8 +28,8 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/rh-counterexamples-in-go-3-1-superabundant/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-09-16T10:17:52+00:00" />
-<meta property="article:modified_time" content="2022-09-16T10:17:52+00:00" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="article:published_time" content="2022-10-29T10:17:52+00:00" />
+<meta property="article:modified_time" content="2022-10-29T10:17:52+00:00" /><meta property="og:site_name" content="Alex&#39;s Blog" />
 
 
 
@@ -183,7 +183,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     </script>
     
     
-    <i class="fas fa-calendar-alt"></i> Created: 2022 Sep 16
+    <i class="fas fa-calendar-alt"></i> Created: 2022 Oct 29
     
     
     
@@ -216,24 +216,25 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <h2 id="intro">Intro</h2>
-<p>In the <a href="../rh-counterexamples-in-go-1-database/">last post</a>, we added persistence to our search by adding a database. This ensured that we didn&rsquo;t lose any of the work that we did, but still the progress was pretty slow and we didn&rsquo;t move much past millions in the search. We were considering every number as a potential candidate for a witness. However, once we take a look at the numbers we see that the high <code>witness values</code> are all created by numbers that have a lot of divisors. Can we focus our search <em>only</em> on these numbers?</p>
+<p>In the <a href="../rh-counterexamples-in-go-1-database/">last post</a>, we added persistence to our search by adding a database. This ensured that we didn&rsquo;t lose any of the work that we did, but still the progress was pretty slow and we didn&rsquo;t move much past millions in the search. We were considering every number as a potential candidate for a <code>Riemann Counterexample</code>. However, on inspection, we can see that the high <code>witness values</code> are all created by numbers that have a lot of divisors. Can we focus our search <em>only</em> on these numbers?</p>
 <blockquote class="info">
     <strong>As always, credits go to the original author <a href="https://jeremykun.com/2020/09/28/searching-for-rh-counterexamples-search-strategies/">here</a></strong><br>
     
 </blockquote>
 <h2 id="superabundant-numbers">Superabundant Numbers</h2>
-<p>In mathematics, numbers that have a high number factors are called <a href="https://en.wikipedia.org/wiki/Abundant_number">abundant numbers</a>. These numbers have a sum of their factors that add up to more than the number itself. It is easy to see how these numbers are prime candidates for a Riemann counterexample since they have a high chance of a high sum of divisors.</p>
-<p>Among abundant numbers, some numbers are called <code>superabundant</code> which have the property of &ldquo;maximal relative divisor sums&rdquo;,
-i.e, these are the numbers that have the property that the ratio of the sum of divisors to itself is larger than every number smaller than itself. This can be expressed as:</p>
+<p>In mathematics, numbers that have the sum of their factors that add up to more than the number itself are called <a href="https://en.wikipedia.org/wiki/Abundant_number">abundant numbers</a></p>
+<p>$$\phi(n) &gt; n$$</p>
+<p>where $\phi(n)$ refers to the sum of factors of n. It is easy to see how these numbers are prime candidates for a Riemann counterexample since they have a high chance of a high sum of divisors.</p>
+<p>Among abundant numbers, some numbers are called <code>superabundant</code> which have the property of &ldquo;maximal relative divisor sums&rdquo;, i.e, these are the numbers that have the the ratio of the sum of divisors to itself is larger than every number smaller than itself. This can be expressed as:</p>
 <p>$$
-\frac{\sigma_m}{m} \lt \frac{\sigma_n}{n} ;; \forall ;; m &lt;n
+\frac{\sigma_m}{m} \lt \frac{\sigma_n}{n} \hspace{1em} \forall \hspace{1em} m &lt;n
 $$</p>
 <p>While there is no easy strategy to find superabundant numbers, it <a href="https://doi.org/10.2307%2F1990319">has been proved</a> that superabundant numbers have to have a prime decomposition where all the prime factors occur in non-increasing exponents:</p>
 <p>$$n = \prod_{i=1}^n {p_i}^{a_i}$$</p>
-<p>where <code>p_i</code> is the <code>i</code>th prime factor and $a_i \leq a_{i-1}$.</p>
-<p>Finding the <code>i</code>th prime number is easy. The non-increasing list of numbers that add to a number is called a partition of N. So our problem now devolves into finding out these two lists and combine them!</p>
+<p>where $p_i$ is the <code>i</code>th prime factor and $a_i \leq a_{i-1}$.</p>
+<p>The non-increasing list of numbers that add to a number is called a <code>partition</code>. We just need to find the partitions of a number, and combine them with the non-increasing prime factor and we&rsquo;re well on our way to a better approach to solve this problem.</p>
 <h2 id="finding-partitions">Finding Partitions</h2>
-<p>There are pretty standard methods to find partitions, one of which was included in the original post. However, I found the algorithm a bit difficult to understand and hence ended up <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/ab34c1977440eae9d3f2f098a0f3bca8bd0eeace">implementing</a> a simple recursion algorithm.</p>
+<p>There are pretty standard methods to find partitions, one of which was included in the original post. However, I found the algorithm a bit difficult to understand and hence ended up <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/ab34c1977440eae9d3f2f098a0f3bca8bd0eeace">implementing</a> a simple recursion algorithm instead</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">PartitionsOfN</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) [][]<span style="color:#66d9ef">int</span> {
 	<span style="color:#a6e22e">output</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{{<span style="color:#a6e22e">n</span>}}
