@@ -29,7 +29,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/rh-counterexamples-in-go-3-2-search-strategies/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-12-16T18:00:00+00:00" />
-<meta property="article:modified_time" content="2022-12-17T02:04:43+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+<meta property="article:modified_time" content="2022-12-18T14:24:06+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
 
 
 
@@ -188,7 +188,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     , Updated:
-    2022 Dec 17
+    2022 Dec 18
     
     
     
@@ -219,10 +219,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <h2 id="intro">Intro</h2>
-<p>Now that <a href="../rh-counterexamples-in-go-3-1-superabundant/">we have created</a> a list of superabundant numbers to search across, we can use this approach instead of searching across every number. The simplest way would be to just throw away the existing naive approach and as our app to use this one instead, but what if we want to keep both options open?</p>
-<p>This idea of enabling different strategies that can be chosen at runtime is called the strategy pattern. In our case, we can allow the user to choose either the naive, or the superabundant strategy, or a third strategy that we might dream up later!</p>
+<p>Now that <a href="../rh-counterexamples-in-go-3-1-superabundant/">we have created</a> a list of superabundant numbers to search across, we can use this approach instead of searching across every number. The simplest way would be to just throw away the existing naive approach and use this one instead, but what if we want to keep both options open?</p>
+<p>This idea of enabling different strategies that can be chosen at runtime is called the <a href="https://refactoring.guru/design-patterns/strategy">strategy pattern</a>. In our case, this allows the user to choose either the <code>naive</code>, or the <code>superabundant</code> strategy, or even a third strategy that we might dream up later!</p>
 <h2 id="adding-search-db">Adding Search DB</h2>
-<p>We have currently assumed a single database to store the Divisor values, the largest of which implicitly (another leak) doubles up as the <code>state</code> where we stopped. We need to create a separate database, where we can store the state of which are the elements that we have searched for. Each record in this database will correspond to a <code>SearchMetadata</code> interface which store the current state of the search. The interface and the structures for this DB can be defined as follows:</p>
+<p>We have currently assumed a single database to store the Divisor values, the largest of which implicitly doubles up as the &ldquo;state&rdquo; where we stopped. A cleaner abstraction would be to create a separate database where we can store the state at which we stopped the search, which we can continue next time. Each record in this database will correspond to a <code>SearchMetadata</code> interface which store the current state of the search. The interface and the structures for this DB can be defined as follows:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">riemann</span>
 
 <span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;time&#34;</span>
@@ -247,8 +247,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 	<span style="color:#a6e22e">InsertSearchMetadata</span>(<span style="color:#a6e22e">SearchMetadata</span>)
 	<span style="color:#a6e22e">Close</span>()
 }
-</code></pre></div><h2 id="abstracting-out-the-search-state">Abstracting out the Search State</h2>
-<p>In addition, while trying to go to this abstraction, we come across a few abstraction leaks, where the function implementation bleeds into the function signature. Firstly, we don&rsquo;t have any function that calculates the Divisor Sum for a single state, but we have a starting and ending number. In addition, we have assumed that each Search State is a number, which might not be necessarily true in our case. Currently, our <code>RiemannDivisorSum</code> accepts a starting and ending integer as an argument, which needs to be changed.</p>
+</code></pre></div><p>In the above implementation, we have a <code>SearchStateDB</code> interface representing the DB, <code>SearchMetadata</code> interface representing the a record in the DB, and a <code>SearchState</code> interface representing a single state of search.</p>
+<h2 id="abstracting-out-the-search-state">Abstracting out the Search State</h2>
+<p>While trying to add this abstraction, we come across a few abstraction leaks, where the function implementation bleeds into the function signature.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">ComputerRiemannDivisorSums</span>(<span style="color:#a6e22e">startingN</span>, <span style="color:#a6e22e">endingN</span> <span style="color:#66d9ef">int64</span>) []<span style="color:#a6e22e">RiemannDivisorSum</span> {
 	<span style="color:#a6e22e">output</span> <span style="color:#f92672">:=</span> []<span style="color:#a6e22e">RiemannDivisorSum</span>{}
 	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">startingN</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">endingN</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
@@ -261,7 +262,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 	}
 	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">output</span>
 }
-</code></pre></div><p>To go with the strategy pattern, we need to generalize the API of our function call which computes the RiemannDivisorSum to accept a generic <code>SearchState</code> object.</p>
+</code></pre></div><p>Firstly, we don&rsquo;t have any function that calculates the Divisor Sum for a single state, but we have a starting and ending number. Secondly, our <code>RiemannDivisorSum</code> accepts a starting and ending integer as an argument, which needs to be changed. This implicitly assumes that each <code>SearchState</code> is going to be a number, which is not necessarily the case. Finally, the search strategy is currently just a simple linear search which we are going to chance soon.</p>
+<p>To go with the strategy pattern, we need to generalize the API of our function call which computes the RiemannDivisorSum to accept a generic <code>SearchState</code> object and returns a single <code>RiemannDivisorSum</code> object.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">ComputeRiemannDivisorSum</span>(<span style="color:#a6e22e">ss</span> <span style="color:#a6e22e">SearchState</span>) <span style="color:#a6e22e">RiemannDivisorSum</span> {
 	<span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">ss</span>.<span style="color:#a6e22e">Value</span>()
 	<span style="color:#a6e22e">ds</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">DivisorSum</span>(<span style="color:#a6e22e">i</span>)
@@ -272,7 +274,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">RiemannDivisorSum</span>{<span style="color:#a6e22e">N</span>: <span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">WitnessValue</span>: <span style="color:#a6e22e">wv</span>, <span style="color:#a6e22e">DivisorSum</span>: <span style="color:#a6e22e">ds</span>}
 }
 </code></pre></div><h3 id="extracting-the-search-strategy">Extracting the Search Strategy</h3>
-<p>Finally, the search strategy, which is currently a simple linear search, which was subsumed within the <code>ComputeRiemannDivisorSums</code> function is also extracted into a separate interface:</p>
+<p>The search strategy can be extracted into a method for the <code>ExhaustiveSearchState</code> type as well.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#f92672">package</span> <span style="color:#a6e22e">riemann</span>
 
 <span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
@@ -304,28 +306,20 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">output</span>
 }
 
-<span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">ess</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">ExhaustiveSearchState</span>) <span style="color:#a6e22e">GetLatestSearchState</span>() <span style="color:#a6e22e">SearchState</span> {
-
-	<span style="color:#a6e22e">ss</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">SearchState</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">ExhaustiveSearchState</span>{
-		<span style="color:#a6e22e">n</span>: <span style="color:#ae81ff">10000</span>,
-	})
-
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ss</span>
-}
-</code></pre></div><p>All the above changes are combined into a single commit which supports the In-Memory DB<a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/411b7ea3a416551e8b31aea7e641e979a83965f1">here</a>, which includes the updation in tests as well to handle the changes. In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/4731dd18e76cf113bed6340d4c18856ce11c621e">this</a> commit, we add the SQLite DB implementation as well.</p>
-<h2 id="being-stupid-and-precalculating-primes">Being stupid and precalculating Primes.</h2>
-<p>In the next step for creating the SuperAbundant strategy, we need to create the superabundant numbers themselves. As we have identified before, this requires us to list all the first N primes, and then use the exponent function by the partitions identified in the previous post.</p>
+</code></pre></div><p>All the above changes are combined into a single commit which supports the In-Memory DB <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/411b7ea3a416551e8b31aea7e641e979a83965f1">here</a>, which includes updating the tests as well to handle the changes. In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/4731dd18e76cf113bed6340d4c18856ce11c621e">this</a> commit, we add the SQLite DB implementation as well.</p>
+<h2 id="keeping-it-simple-and-precalculating-primes">Keeping It Simple and Precalculating Primes</h2>
+<p>In the next step for creating the <code>superabundant</code> strategy, we need to create the superabundant numbers themselves. As we have identified before, this requires us to list all the first <code>N</code> primes, and then raise it to the partitions identified in the previous post.</p>
 <p>To calculate the first N primes, we have a few options:</p>
 <ol>
 <li>Find the first N prime for each pass</li>
 <li>Precalulcate the first N prime for each program run</li>
 <li>Just create a simple list of the first N primes, which is long enough for us to not run out for our purpose!</li>
 </ol>
-<p>The first option is definitely inefficient, as we have to calculate the same thing many, many times, and I almost implemented the simple, second option before realizing even this was unnecessary, since we would certainly never run out of primes if we just had the first few hundreds of them pre-populated! In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/61408e53182c022e4dd17cd4171d3d035aa8cf8e">this</a> commit, we create a simple function to precalculate the primes by reading them from a list!</p>
+<p>The first option is definitely inefficient, as we have to calculate the same thing many, many times. I almost implemented the simple, second option before realizing that even this was unnecessary, since we would certainly never run out of primes if we just had the first few hundreds of them pre-populated! In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/61408e53182c022e4dd17cd4171d3d035aa8cf8e">this</a> commit, we create a simple function to precalculate the primes by reading them from a list!</p>
 <h2 id="getting-search-working-almost">Getting Search Working (Almost)</h2>
-<p>With that, we have all the parts ready to get search working. In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/3d9d406cf868c58b66da8b0e12f7d220cfaa63a3">this</a> commit, we add in the code to get search working with the In-Memory database. In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/8654865ca6cc0a0dce6e9192e4cbaf5807fd01fe">this</a> commit, we extend this to support the SQLite DB as well.</p>
+<p>With that, we have all the parts ready to get search working. In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/3d9d406cf868c58b66da8b0e12f7d220cfaa63a3">this</a> commit, we add in some of the final code to get search working with the In-Memory database and in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/8654865ca6cc0a0dce6e9192e4cbaf5807fd01fe">this</a> commit, we extend this to support the SQLite DB as well.</p>
 <h2 id="integer-overflow-strikes-again">Integer Overflow strikes again!</h2>
-<p>At this point, I was expecting the search to start working for larger and larger values, (especially since we had already accounted for <code>BigInt</code> in out code) until we run out of numbers :D. However, I soon realized that the numbers were not going above some limit. In addition, some of the numbers in the DB were&hellip; negative?</p>
+<p>At this point, I was expecting the search to start working for larger and larger values (especially since we had already accounted for <code>BigInt</code> in our code). However, I soon realized that the numbers were not going above some limit. In addition, some of the numbers in the DB were&hellip; negative?</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">21564263898777600|131077474504704000|1.675769
 113982537750681600|699079864025088000|1.670911
 934656809555589120|5682842765623296000|1.633229
@@ -337,25 +331,20 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <li>Use a different DB which supports BigInt</li>
 <li>Hack the way through by storing the Integer as Text!</li>
 </ol>
-<p>I couldn&rsquo;t find an easy way to make #1 happen in my searches. #2 was certainly doable and is probably a more robust approach to this, adopted by the <a href="https://jeremykun.com/2020/10/13/searching-for-rh-counterexamples-unbounded-integers/">original post</a>.</p>
-<p>After some deliberation, I decided to go with #3 because it seemed like the easiest approach to Get Things Done. The idea is to convert the integer into a string and store in the DB as text instead. We need to pad the string with as many zeroes as possible to make sure each record has the same length to allow for sorting (to finding the largest number, etc).</p>
-<p>In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/01523862c5b2dcd82ffc5ce7c6b000c3854f292e">this</a> commit, I do the necessary steps required to implement this, and also standardize some other parts of the codebase(the search state) which didn&rsquo;t have the BigInt representation yet.</p>
+<p>I couldn&rsquo;t find an easy way to make #1 happen in my searches. #2 is certainly doable and is probably a more robust approach to this, adopted by the <a href="https://jeremykun.com/2020/10/13/searching-for-rh-counterexamples-unbounded-integers/">original post</a>, but the effort involved seemed intimidating. After some deliberation, I decided to go with #3 because it seemed like the easiest approach to <em>Get Things Done</em>. The idea is to convert the integer into a string and store in the DB as text instead. We need to pad the string with as many zeroes as possible to make sure each record has the same length to allow for sorting (to finding the largest number, etc).</p>
+<p>In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/01523862c5b2dcd82ffc5ce7c6b000c3854f292e">this</a> commit, I do the necessary steps required to implement this, and also standardize some other parts of the codebase (eg:- the search state) which didn&rsquo;t have the <code>BigInt</code> representation yet.</p>
 <h2 id="optimizations">Optimizations</h2>
-<p>After this commit, I could see that the number was increasing above the BigInt limit (yay!), but still the rate of increase was very slow. So I did some profiling and fixed a couple of issues in the code:</p>
+<p>After this commit, I could see that the number was increasing above the BigInt limit (yay!), but still the rate of increase was very slow. So I did some profiling of the code and fixed a couple of issues:</p>
 <ul>
-<li>
-<p>I was accidentally using the non-optimized version of partition function, and I changed it to the Memorized version instead.</p>
-</li>
-<li>
-<p>We were currently pushing all the witnessValues into the DB whether or not they were good or not. I constrained the push to only work for the values above a particular threshold</p>
-</li>
+<li>I was accidentally using the non-optimized version of partition function, and I changed it to the Memoized version instead.</li>
+<li>We were currently pushing all the witnessValues into the DB whether or not they were good or not. I constrained the push to only work for the values above a particular threshold</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">candidateResult</span>.<span style="color:#a6e22e">WitnessValue</span> &gt; <span style="color:#a6e22e">minWitnessValue</span> {
     <span style="color:#a6e22e">candidateResults</span> = append(<span style="color:#a6e22e">candidateResults</span>, <span style="color:#a6e22e">candidateResult</span>)
 }
 </code></pre></div><p>The max size of the integers soon flew past 100 digits and I also had to increase the text size from 100 to 200. All of these changes + some tests were added in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/fe25bd7b7f45fb899f0b71edd61ca3bf06e215cc">this</a> commit.</p>
 <p>Now that we have the setup ready, I exposed the configuration to the user as command line variables using the <code>flag</code> package in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/5/commits/bd0e2df1ceaaee8109fdeb268c98f9bb5e8f4adb">this</a> commit.</p>
-<p>Now e can run the function as follows:</p>
+<p>Now we can run the function as follows:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">go run main.go -batchSize<span style="color:#f92672">=</span><span style="color:#ae81ff">2000000</span>
 </code></pre></div><p>I let the function for 90 minutes and go the following result!</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Inserted Metadata in 8.9245ms
@@ -376,9 +365,9 @@ DB Closed!
 DB Closed!
 
 </code></pre></div><h2 id="conclusion">Conclusion</h2>
-<p>With all the changes that we did above, we were able to search all the superabundant numbers containing upto <code>76</code> factors, with the largest number analyzed having <code>135</code> digits! We found witness values much higher than the original local optimum at <code>10080</code> but we have a long way to go to find a riemann counterexample!</p>
+<p>With all the changes that we did above, we were able to search all the superabundant numbers containing upto <code>76</code> factors, with the largest number analyzed having <code>135</code> digits! We found witness values much higher than the original local optimum at <code>10080</code> but we have a long way to go to find a Riemann counterexample!</p>
 <p>Before I wrap up the code, I did a couple more refactors (<a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/422cb6acec83d1e15e1bd43ff497fc51d3710967">#1</a>, <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/50cbe120662a946259f80f4e7de732902a34fbe4">#2</a>) to get the repo into a state where I am more happy with the package structure. The final state of the repository is <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go">here</a>.</p>
-<p>In the <a href="https://jeremykun.com/tag/riemann-hypothesis/">original series</a>, Jeremy does quite a few things more, by dockerizing, deploying it in AWS, and doing some amazing analysis on the results, but I&rsquo;ve decided to end my journey here as it is since the original intent of the series was to learn <code>Golang</code> and the rest of the path deviates away from that goal. Feel free to raise an issue in Github, if you have find anything that I&rsquo;ve missed or got wrong. Thanks for reading and hope you have enjoyed the series as much as I did, and</p>
+<p>In the <a href="https://jeremykun.com/tag/riemann-hypothesis/">original series</a>, Jeremy does quite a few things more, by dockerizing, deploying it in AWS, and doing some amazing analysis on the results, but I&rsquo;ve decided to end my journey here as it is since the original intent of the series was to learn <code>Golang</code> and the rest of the path deviates away from that goal. Feel free to raise an issue in Github, if you have find anything that I&rsquo;ve missed or got wrong. Thanks for reading and I hope you have enjoyed the series as much as I did!</p>
 <p><em>Cover Image: (<a href="https://unsplash.com/photos/P3rS8J1THi4?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditShareLink">Fork in the Road - Beth Macdonald</a>)</em></p>
   </div>
   

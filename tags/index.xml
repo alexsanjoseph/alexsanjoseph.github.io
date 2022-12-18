@@ -6,11 +6,11 @@
     <description>Recent content in Tags on Alex&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 29 Oct 2022 10:17:52 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Dec 2022 18:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>golang</title>
       <link>/tags/golang/</link>
-      <pubDate>Sat, 29 Oct 2022 10:17:52 +0000</pubDate>
+      <pubDate>Fri, 16 Dec 2022 18:00:00 +0000</pubDate>
       
       <guid>/tags/golang/</guid>
       <description></description>
@@ -19,9 +19,18 @@
     <item>
       <title>riemann-hypothesis</title>
       <link>/tags/riemann-hypothesis/</link>
-      <pubDate>Sat, 29 Oct 2022 10:17:52 +0000</pubDate>
+      <pubDate>Fri, 16 Dec 2022 18:00:00 +0000</pubDate>
       
       <guid>/tags/riemann-hypothesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>search-strategies</title>
+      <link>/tags/search-strategies/</link>
+      <pubDate>Fri, 16 Dec 2022 18:00:00 +0000</pubDate>
+      
+      <guid>/tags/search-strategies/</guid>
       <description></description>
     </item>
     
