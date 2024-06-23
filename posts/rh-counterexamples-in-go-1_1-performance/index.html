@@ -4,14 +4,14 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.88.1" />
+<meta name="generator" content="Hugo 0.127.0">
 
     
     
@@ -20,17 +20,26 @@
 <title>Searching for RH Counterexamples in Golang - Improving Performance via Parallel processing • Alex&#39;s Blog</title>
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Searching for RH Counterexamples in Golang - Improving Performance via Parallel processing"/>
-<meta name="twitter:description" content=""/>
 
-<meta property="og:title" content="Searching for RH Counterexamples in Golang - Improving Performance via Parallel processing" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/rh-counterexamples-in-go-1_1-performance/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-02-06T00:00:52+00:00" />
-<meta property="article:modified_time" content="2022-04-24T15:09:59-04:00" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Searching for RH Counterexamples in Golang - Improving Performance via Parallel processing">
+  <meta name="twitter:description" content="Pasting random things together">
+      <meta name="twitter:site" content="@alexsanjoseph">
 
+<meta property="og:url" content="//localhost:1313/posts/rh-counterexamples-in-go-1_1-performance/">
+  <meta property="og:site_name" content="Alex&#39;s Blog">
+  <meta property="og:title" content="Searching for RH Counterexamples in Golang - Improving Performance via Parallel processing">
+  <meta property="og:description" content="Pasting random things together">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-02-06T00:00:52+00:00">
+    <meta property="article:modified_time" content="2022-04-24T15:09:59-04:00">
+    <meta property="article:tag" content="Golang">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Riemann-Hypothesis">
+    <meta property="article:tag" content="Optimization">
+    <meta property="article:tag" content="Parallelization">
 
 
     
@@ -73,14 +82,14 @@
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="/">Alex&#39;s Blog</a>
+        <a href="//localhost:1313/">Alex&#39;s Blog</a>
       </span>
       
         
         
         
         <div class="author-image">
-          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="//localhost:1313/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -158,7 +167,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2016 - 2022 alexsanjoseph
+  &copy; 2016 - 2024 alexsanjoseph
   
 </div>
 
@@ -257,196 +266,195 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>We can also take a look at the code that gave the above results:</p>
 <h3 id="heading"></h3>
 <p>We start with <strong>DivisorSum function</strong>. In <code>Python</code>, we have added JIT compilation using the <code>numba</code> <code>njit</code> decorator which gives us the performance benefits to keeping it competitive with the compiled <code>Go</code> code.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#a6e22e">@njit</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">divisor_sum</span>(n: int) <span style="color:#f92672">-&gt;</span> int:
-    <span style="color:#e6db74">&#39;&#39;&#39;Compute the sum of divisors of a positive integer.&#39;&#39;&#39;</span>
-    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
-        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
-
-    i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-    limit <span style="color:#f92672">=</span> math<span style="color:#f92672">.</span>sqrt(n)
-    the_sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-    <span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;=</span> limit:
-        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-            the_sum <span style="color:#f92672">+=</span> i
-            <span style="color:#66d9ef">if</span> i <span style="color:#f92672">!=</span> limit:
-                the_sum <span style="color:#f92672">+=</span> n <span style="color:#f92672">//</span> i
-        i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-
-    <span style="color:#66d9ef">return</span> the_sum
-</code></pre></div><p>This is the equivalent <code>Golang</code> code.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DivisorSum</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int64</span>) (<span style="color:#66d9ef">int64</span>, <span style="color:#66d9ef">error</span>) {
-	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span> {
-		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;value cannot be less than or equal to zero&#34;</span>)
-	}
-	<span style="color:#a6e22e">limit</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Sqrt</span>(float64(<span style="color:#a6e22e">n</span>))
-	<span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">0</span>)
-
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">1</span>); float64(<span style="color:#a6e22e">i</span>) <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">limit</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">n</span><span style="color:#f92672">%</span><span style="color:#a6e22e">i</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
-			<span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">i</span>
-			<span style="color:#66d9ef">if</span> float64(<span style="color:#a6e22e">i</span>) <span style="color:#f92672">!=</span> <span style="color:#a6e22e">limit</span> {
-				<span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">i</span>
-			}
-		}
-	}
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">sum</span>, <span style="color:#66d9ef">nil</span>
-}
-</code></pre></div><p>On to the wrapper function in <code>Python</code>, which runs the above function across all the numbers serially, to find the best Witness.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">witness_value</span>(n: int) <span style="color:#f92672">-&gt;</span> float:
-    denominator <span style="color:#f92672">=</span> n <span style="color:#f92672">*</span> math<span style="color:#f92672">.</span>log(math<span style="color:#f92672">.</span>log(n))
-    <span style="color:#66d9ef">return</span> divisor_sum(n) <span style="color:#f92672">/</span> denominator
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">best_witness</span>(max_range: int, search_start: int <span style="color:#f92672">=</span> SEARCH_START) <span style="color:#f92672">-&gt;</span> int:
-    <span style="color:#66d9ef">return</span> max(range(search_start, max_range), key<span style="color:#f92672">=</span>witness_value)
-
-</code></pre></div><p>The <code>Golang</code> implementation is trivial as well</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">BestWitness</span>(<span style="color:#a6e22e">maxRange</span>, <span style="color:#a6e22e">searchStart</span> <span style="color:#66d9ef">int64</span>) (<span style="color:#66d9ef">int64</span>, <span style="color:#66d9ef">float64</span>) {
-	<span style="color:#a6e22e">maxVal</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0.0</span>
-	<span style="color:#a6e22e">bestWitness</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">searchStart</span>
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">searchStart</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">maxRange</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-		<span style="color:#a6e22e">currentWitness</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">WitnessValue</span>(<span style="color:#a6e22e">i</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">currentWitness</span> &gt; <span style="color:#a6e22e">maxVal</span> {
-			<span style="color:#a6e22e">bestWitness</span> = <span style="color:#a6e22e">i</span>
-			<span style="color:#a6e22e">maxVal</span> = <span style="color:#a6e22e">currentWitness</span>
-		}
-	}
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">bestWitness</span>, <span style="color:#a6e22e">maxVal</span>
-}
-</code></pre></div><p>Finally, the tests in each language.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#a6e22e">@njit</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">divisor_sum</span>(n: int) <span style="color:#f92672">-&gt;</span> int:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;Compute the sum of divisors of a positive integer.&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    limit <span style="color:#f92672">=</span> math<span style="color:#f92672">.</span>sqrt(n)
+</span></span><span style="display:flex;"><span>    the_sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;=</span> limit:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            the_sum <span style="color:#f92672">+=</span> i
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> i <span style="color:#f92672">!=</span> limit:
+</span></span><span style="display:flex;"><span>                the_sum <span style="color:#f92672">+=</span> n <span style="color:#f92672">//</span> i
+</span></span><span style="display:flex;"><span>        i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> the_sum
+</span></span></code></pre></div><p>This is the equivalent <code>Golang</code> code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DivisorSum</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int64</span>) (<span style="color:#66d9ef">int64</span>, <span style="color:#66d9ef">error</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">errors</span>.<span style="color:#a6e22e">New</span>(<span style="color:#e6db74">&#34;value cannot be less than or equal to zero&#34;</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">limit</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Sqrt</span>(float64(<span style="color:#a6e22e">n</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">1</span>); float64(<span style="color:#a6e22e">i</span>) <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">limit</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">n</span><span style="color:#f92672">%</span><span style="color:#a6e22e">i</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">i</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> float64(<span style="color:#a6e22e">i</span>) <span style="color:#f92672">!=</span> <span style="color:#a6e22e">limit</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">i</span>
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">sum</span>, <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>On to the wrapper function in <code>Python</code>, which runs the above function across all the numbers serially, to find the best Witness.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">witness_value</span>(n: int) <span style="color:#f92672">-&gt;</span> float:
+</span></span><span style="display:flex;"><span>    denominator <span style="color:#f92672">=</span> n <span style="color:#f92672">*</span> math<span style="color:#f92672">.</span>log(math<span style="color:#f92672">.</span>log(n))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> divisor_sum(n) <span style="color:#f92672">/</span> denominator
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">best_witness</span>(max_range: int, search_start: int <span style="color:#f92672">=</span> SEARCH_START) <span style="color:#f92672">-&gt;</span> int:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> max(range(search_start, max_range), key<span style="color:#f92672">=</span>witness_value)
+</span></span></code></pre></div><p>The <code>Golang</code> implementation is trivial as well</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">BestWitness</span>(<span style="color:#a6e22e">maxRange</span>, <span style="color:#a6e22e">searchStart</span> <span style="color:#66d9ef">int64</span>) (<span style="color:#66d9ef">int64</span>, <span style="color:#66d9ef">float64</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">maxVal</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">bestWitness</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">searchStart</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">searchStart</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">maxRange</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">currentWitness</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">WitnessValue</span>(<span style="color:#a6e22e">i</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">currentWitness</span> &gt; <span style="color:#a6e22e">maxVal</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">bestWitness</span> = <span style="color:#a6e22e">i</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">maxVal</span> = <span style="color:#a6e22e">currentWitness</span>
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">bestWitness</span>, <span style="color:#a6e22e">maxVal</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Finally, the tests in each language.</p>
 <p><strong>Python:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_best_witness_million</span>():
-    start_time <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now()
-    output <span style="color:#f92672">=</span> best_witness(<span style="color:#ae81ff">20_000_000</span>, search_start <span style="color:#f92672">=</span> <span style="color:#ae81ff">11000</span>)
-    end_time <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now()
-    print(<span style="color:#e6db74">&#34;Total time: &#34;</span>, end_time <span style="color:#f92672">-</span> start_time)
-    <span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">55440</span> <span style="color:#f92672">==</span> output
-</code></pre></div><p><strong>Golang:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#a6e22e">It</span>(<span style="color:#e6db74">&#34;should find best witness successfully&#34;</span>, <span style="color:#66d9ef">func</span>() {
-		<span style="color:#a6e22e">count_till</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">20_000_000</span>)
-
-		<span style="color:#a6e22e">output</span>, <span style="color:#a6e22e">witnessVal</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">riemann</span>.<span style="color:#a6e22e">BestWitness</span>(<span style="color:#a6e22e">count_till</span>, <span style="color:#ae81ff">11000</span>)
-		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;\nCurrent Best till&#34;</span>, <span style="color:#a6e22e">humanize</span>.<span style="color:#a6e22e">Comma</span>(int64(<span style="color:#a6e22e">count_till</span>)), <span style="color:#e6db74">&#34;is&#34;</span>, <span style="color:#a6e22e">output</span>, <span style="color:#e6db74">&#34;at value&#34;</span>, <span style="color:#a6e22e">witnessVal</span>)
-
-		<span style="color:#a6e22e">Expect</span>(<span style="color:#a6e22e">output</span>).<span style="color:#a6e22e">To</span>(<span style="color:#a6e22e">Equal</span>(int64(<span style="color:#ae81ff">55440</span>)))
-	})
-</code></pre></div><h2 id="parallelization">Parallelization</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_best_witness_million</span>():
+</span></span><span style="display:flex;"><span>    start_time <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now()
+</span></span><span style="display:flex;"><span>    output <span style="color:#f92672">=</span> best_witness(<span style="color:#ae81ff">20_000_000</span>, search_start <span style="color:#f92672">=</span> <span style="color:#ae81ff">11000</span>)
+</span></span><span style="display:flex;"><span>    end_time <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now()
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Total time: &#34;</span>, end_time <span style="color:#f92672">-</span> start_time)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> <span style="color:#ae81ff">55440</span> <span style="color:#f92672">==</span> output
+</span></span></code></pre></div><p><strong>Golang:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>	<span style="color:#a6e22e">It</span>(<span style="color:#e6db74">&#34;should find best witness successfully&#34;</span>, <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">count_till</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">20_000_000</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">output</span>, <span style="color:#a6e22e">witnessVal</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">riemann</span>.<span style="color:#a6e22e">BestWitness</span>(<span style="color:#a6e22e">count_till</span>, <span style="color:#ae81ff">11000</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;\nCurrent Best till&#34;</span>, <span style="color:#a6e22e">humanize</span>.<span style="color:#a6e22e">Comma</span>(int64(<span style="color:#a6e22e">count_till</span>)), <span style="color:#e6db74">&#34;is&#34;</span>, <span style="color:#a6e22e">output</span>, <span style="color:#e6db74">&#34;at value&#34;</span>, <span style="color:#a6e22e">witnessVal</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">Expect</span>(<span style="color:#a6e22e">output</span>).<span style="color:#a6e22e">To</span>(<span style="color:#a6e22e">Equal</span>(int64(<span style="color:#ae81ff">55440</span>)))
+</span></span><span style="display:flex;"><span>	})
+</span></span></code></pre></div><h2 id="parallelization">Parallelization</h2>
 <h3 id="python">Python</h3>
 <p>For python, <code>numba</code> makes parallelizing a piece of cake by adding the <code>parallel=True</code> argument to the <code>njit</code> decorator. However, while doing so, the parallel functions do not necessarily run in any particular order and we cannot <code>map</code> it to an object like we did previously. Instead, we need to make sure that the array is preallocated and that each parallel run can independently write to this preallocated array. At the end of the calculation, we use <code>np.argmax</code> to find the index of the object with the maximum value.</p>
 <p>given below:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#a6e22e">@njit</span>(parallel <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>)
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">best_witness</span>(max_range: int, search_start: int <span style="color:#f92672">=</span> SEARCH_START) <span style="color:#f92672">-&gt;</span> int:
-    witness_array <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(max_range)
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> prange(search_start, max_range):
-        witness_array[i] <span style="color:#f92672">=</span> witness_value(i)
-    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>argmax(witness_array)
-</code></pre></div><p>With the above parallel code, in my Macbook M1 Air, the process ran in ~(20) seconds. This is 3x the speed of the non-parallelized version!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#a6e22e">@njit</span>(parallel <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">best_witness</span>(max_range: int, search_start: int <span style="color:#f92672">=</span> SEARCH_START) <span style="color:#f92672">-&gt;</span> int:
+</span></span><span style="display:flex;"><span>    witness_array <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(max_range)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> prange(search_start, max_range):
+</span></span><span style="display:flex;"><span>        witness_array[i] <span style="color:#f92672">=</span> witness_value(i)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>argmax(witness_array)
+</span></span></code></pre></div><p>With the above parallel code, in my Macbook M1 Air, the process ran in ~(20) seconds. This is 3x the speed of the non-parallelized version!</p>
 <h3 id="golang">Golang</h3>
 <p>In golang, there is a little bit more effort to be done in parallelizing the code. First we need to define a Witness structure to hold the results.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">witness</span> <span style="color:#66d9ef">struct</span> {
-	<span style="color:#a6e22e">idx</span>   <span style="color:#66d9ef">int64</span>
-	<span style="color:#a6e22e">value</span> <span style="color:#66d9ef">float64</span>
-}
-</code></pre></div><p>We make a buffered channel of the <code>witness</code> type with a buffer size equal to the number of iterations:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#a6e22e">allValues</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">witness</span>, <span style="color:#a6e22e">maxRange</span><span style="color:#f92672">-</span><span style="color:#a6e22e">searchStart</span>)
-</code></pre></div><p>Then we make a sync group and add the counter equivalent to the number of iterations to make sure that we proceed only when all of the iterations are done.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
-	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(int(<span style="color:#a6e22e">maxRange</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">searchStart</span>))
-</code></pre></div><p>Now we iterate across the elements and start one goroutine for each iteration of finding the Witness value. Within each iteration, push the output to the channel once the process has calculated the results. We also close the Waitgroup counter using the <code>defer</code> keyword once the function has finished running.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">searchStart</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">maxRange</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-		<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">j</span> <span style="color:#66d9ef">int64</span>) {
-			<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
-			<span style="color:#a6e22e">currentWitness</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">WitnessValue</span>(<span style="color:#a6e22e">j</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-			<span style="color:#a6e22e">allValues</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">witness</span>{<span style="color:#a6e22e">j</span>, <span style="color:#a6e22e">currentWitness</span>}
-		}(<span style="color:#a6e22e">i</span>)
-	}
-</code></pre></div><p>We wait for all the iterations to be done using the <code>wg.Wait()</code> command and then close the channel. Then we can iterate over the channel to find the index of the elements with the maximum Witness value.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
-	close(<span style="color:#a6e22e">allValues</span>)
-	<span style="color:#a6e22e">bestWitness</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">0</span>)
-	<span style="color:#a6e22e">maxVal</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">allValues</span> {
-		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">value</span> &gt; <span style="color:#a6e22e">maxVal</span> {
-			<span style="color:#a6e22e">maxVal</span> = <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">value</span>
-			<span style="color:#a6e22e">bestWitness</span> = <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">idx</span>
-		}
-	}
-</code></pre></div><p>Here is the final function in all its glory -</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">BestWitness</span>(<span style="color:#a6e22e">maxRange</span>, <span style="color:#a6e22e">searchStart</span> <span style="color:#66d9ef">int64</span>) (<span style="color:#66d9ef">int64</span>, <span style="color:#66d9ef">float64</span>) {
-	<span style="color:#a6e22e">allValues</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">witness</span>, <span style="color:#a6e22e">maxRange</span><span style="color:#f92672">-</span><span style="color:#a6e22e">searchStart</span>)
-	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
-	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(int(<span style="color:#a6e22e">maxRange</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">searchStart</span>))
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">searchStart</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">maxRange</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-		<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">j</span> <span style="color:#66d9ef">int64</span>) {
-			<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
-			<span style="color:#a6e22e">currentWitness</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">WitnessValue</span>(<span style="color:#a6e22e">j</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-			<span style="color:#a6e22e">allValues</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">witness</span>{<span style="color:#a6e22e">j</span>, <span style="color:#a6e22e">currentWitness</span>}
-		}(<span style="color:#a6e22e">i</span>)
-	}
-	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
-	close(<span style="color:#a6e22e">allValues</span>)
-	<span style="color:#a6e22e">bestWitness</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">0</span>)
-	<span style="color:#a6e22e">maxVal</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">allValues</span> {
-		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">value</span> &gt; <span style="color:#a6e22e">maxVal</span> {
-			<span style="color:#a6e22e">maxVal</span> = <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">value</span>
-			<span style="color:#a6e22e">bestWitness</span> = <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">idx</span>
-		}
-	}
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">bestWitness</span>, <span style="color:#a6e22e">maxVal</span>
-}
-</code></pre></div><p>The above function took almost 40 seconds to run, which is roughly the same as the non-parallel version! However, I could see that the parallel cores were getting used but I realized that the overhead of creating 20million goroutines was too much, causing <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law">Amdahl&rsquo;s law</a> to come in to play, negating any advantages of parallelization. We will have to do better!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">witness</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">idx</span>   <span style="color:#66d9ef">int64</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">value</span> <span style="color:#66d9ef">float64</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We make a buffered channel of the <code>witness</code> type with a buffer size equal to the number of iterations:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>    <span style="color:#a6e22e">allValues</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">witness</span>, <span style="color:#a6e22e">maxRange</span><span style="color:#f92672">-</span><span style="color:#a6e22e">searchStart</span>)
+</span></span></code></pre></div><p>Then we make a sync group and add the counter equivalent to the number of iterations to make sure that we proceed only when all of the iterations are done.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(int(<span style="color:#a6e22e">maxRange</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">searchStart</span>))
+</span></span></code></pre></div><p>Now we iterate across the elements and start one goroutine for each iteration of finding the Witness value. Within each iteration, push the output to the channel once the process has calculated the results. We also close the Waitgroup counter using the <code>defer</code> keyword once the function has finished running.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">searchStart</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">maxRange</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">j</span> <span style="color:#66d9ef">int64</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">currentWitness</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">WitnessValue</span>(<span style="color:#a6e22e">j</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">allValues</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">witness</span>{<span style="color:#a6e22e">j</span>, <span style="color:#a6e22e">currentWitness</span>}
+</span></span><span style="display:flex;"><span>		}(<span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>We wait for all the iterations to be done using the <code>wg.Wait()</code> command and then close the channel. Then we can iterate over the channel to find the index of the elements with the maximum Witness value.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+</span></span><span style="display:flex;"><span>	close(<span style="color:#a6e22e">allValues</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">bestWitness</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">maxVal</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">allValues</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">value</span> &gt; <span style="color:#a6e22e">maxVal</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">maxVal</span> = <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">bestWitness</span> = <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">idx</span>
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>Here is the final function in all its glory -</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">BestWitness</span>(<span style="color:#a6e22e">maxRange</span>, <span style="color:#a6e22e">searchStart</span> <span style="color:#66d9ef">int64</span>) (<span style="color:#66d9ef">int64</span>, <span style="color:#66d9ef">float64</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">allValues</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">witness</span>, <span style="color:#a6e22e">maxRange</span><span style="color:#f92672">-</span><span style="color:#a6e22e">searchStart</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(int(<span style="color:#a6e22e">maxRange</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">searchStart</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">searchStart</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">maxRange</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">j</span> <span style="color:#66d9ef">int64</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">currentWitness</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">WitnessValue</span>(<span style="color:#a6e22e">j</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">allValues</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">witness</span>{<span style="color:#a6e22e">j</span>, <span style="color:#a6e22e">currentWitness</span>}
+</span></span><span style="display:flex;"><span>		}(<span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+</span></span><span style="display:flex;"><span>	close(<span style="color:#a6e22e">allValues</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">bestWitness</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">maxVal</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">allValues</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">value</span> &gt; <span style="color:#a6e22e">maxVal</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">maxVal</span> = <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">bestWitness</span> = <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">idx</span>
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">bestWitness</span>, <span style="color:#a6e22e">maxVal</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The above function took almost 40 seconds to run, which is roughly the same as the non-parallel version! However, I could see that the parallel cores were getting used but I realized that the overhead of creating 20million goroutines was too much, causing <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law">Amdahl&rsquo;s law</a> to come in to play, negating any advantages of parallelization. We will have to do better!</p>
 <h2 id="parallel-optimization">Parallel Optimization</h2>
 <p>In the next iteration of the code, I try a more optimized approach, wherein I restrict the parallelism to a lower number, say 100. The work splitting function is smarter, and split the work across the limited number of goroutines evenly.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">BestWitness</span>(<span style="color:#a6e22e">maxRange</span>, <span style="color:#a6e22e">searchStart</span> <span style="color:#66d9ef">int64</span>) (<span style="color:#66d9ef">int64</span>, <span style="color:#66d9ef">float64</span>) {
-	<span style="color:#a6e22e">parallelism</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">100</span>)
-	<span style="color:#a6e22e">allValues</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">witness</span>, <span style="color:#a6e22e">parallelism</span>)
-	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
-	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(int(<span style="color:#a6e22e">parallelism</span>))
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">0</span>); <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">parallelism</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-		<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">j</span> <span style="color:#66d9ef">int64</span>) {
-			<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
-			<span style="color:#a6e22e">maxVal</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0.0</span>
-			<span style="color:#a6e22e">bestWitness</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">searchStart</span>
-			<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">k</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">searchStart</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">j</span>; <span style="color:#a6e22e">k</span> &lt; <span style="color:#a6e22e">maxRange</span>; <span style="color:#a6e22e">k</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">parallelism</span> {
-				<span style="color:#a6e22e">currentWitness</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">WitnessValue</span>(<span style="color:#a6e22e">k</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-				<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">currentWitness</span> &gt; <span style="color:#a6e22e">maxVal</span> {
-					<span style="color:#a6e22e">maxVal</span> = <span style="color:#a6e22e">currentWitness</span>
-					<span style="color:#a6e22e">bestWitness</span> = <span style="color:#a6e22e">k</span>
-				}
-			}
-			<span style="color:#a6e22e">allValues</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">witness</span>{<span style="color:#a6e22e">bestWitness</span>, <span style="color:#a6e22e">maxVal</span>}
-		}(<span style="color:#a6e22e">i</span>)
-	}
-	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
-	close(<span style="color:#a6e22e">allValues</span>)
-	<span style="color:#a6e22e">bestWitness</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">0</span>)
-	<span style="color:#a6e22e">maxVal</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">allValues</span> {
-		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">value</span> &gt; <span style="color:#a6e22e">maxVal</span> {
-			<span style="color:#a6e22e">maxVal</span> = <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">value</span>
-			<span style="color:#a6e22e">bestWitness</span> = <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">idx</span>
-		}
-	}
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">bestWitness</span>, <span style="color:#a6e22e">maxVal</span>
-}
-</code></pre></div><p>Now the test runs in 10s, which is <code>~4x</code> faster than the non-parallel version!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">BestWitness</span>(<span style="color:#a6e22e">maxRange</span>, <span style="color:#a6e22e">searchStart</span> <span style="color:#66d9ef">int64</span>) (<span style="color:#66d9ef">int64</span>, <span style="color:#66d9ef">float64</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">parallelism</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">allValues</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">chan</span> <span style="color:#a6e22e">witness</span>, <span style="color:#a6e22e">parallelism</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(int(<span style="color:#a6e22e">parallelism</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">0</span>); <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">parallelism</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">j</span> <span style="color:#66d9ef">int64</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">maxVal</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">bestWitness</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">searchStart</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">k</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">searchStart</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">j</span>; <span style="color:#a6e22e">k</span> &lt; <span style="color:#a6e22e">maxRange</span>; <span style="color:#a6e22e">k</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">parallelism</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">currentWitness</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">WitnessValue</span>(<span style="color:#a6e22e">k</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">currentWitness</span> &gt; <span style="color:#a6e22e">maxVal</span> {
+</span></span><span style="display:flex;"><span>					<span style="color:#a6e22e">maxVal</span> = <span style="color:#a6e22e">currentWitness</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#a6e22e">bestWitness</span> = <span style="color:#a6e22e">k</span>
+</span></span><span style="display:flex;"><span>				}
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">allValues</span> <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">witness</span>{<span style="color:#a6e22e">bestWitness</span>, <span style="color:#a6e22e">maxVal</span>}
+</span></span><span style="display:flex;"><span>		}(<span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+</span></span><span style="display:flex;"><span>	close(<span style="color:#a6e22e">allValues</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">bestWitness</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">maxVal</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">allValues</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">value</span> &gt; <span style="color:#a6e22e">maxVal</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">maxVal</span> = <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">bestWitness</span> = <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">idx</span>
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">bestWitness</span>, <span style="color:#a6e22e">maxVal</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now the test runs in 10s, which is <code>~4x</code> faster than the non-parallel version!</p>
 <h3 id="revisiting-python">Revisiting Python</h3>
 <p>We can now refactor the python implementation using the the same optimization logic.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#a6e22e">@njit</span>(parallel<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">best_witness</span>(max_range: int, search_start: int <span style="color:#f92672">=</span> SEARCH_START) <span style="color:#f92672">-&gt;</span> int:
-    parallelism <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
-    witness_array <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(max_range)
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> prange(parallelism):
-        current_best_witness <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(search_start <span style="color:#f92672">+</span> i, max_range, parallelism):
-            witness <span style="color:#f92672">=</span> witness_value(k)
-            <span style="color:#66d9ef">if</span> witness <span style="color:#f92672">&gt;</span> current_best_witness:
-                current_best_witness <span style="color:#f92672">=</span> witness
-                witness_array[k] <span style="color:#f92672">=</span> witness
-    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>argmax(witness_array)
-}
-</code></pre></div><p>This optimized implementation takes ~15 seconds to run, which is 4x faster than the non-parallel version, and 1.3x faster than the naive implementation!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#a6e22e">@njit</span>(parallel<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">best_witness</span>(max_range: int, search_start: int <span style="color:#f92672">=</span> SEARCH_START) <span style="color:#f92672">-&gt;</span> int:
+</span></span><span style="display:flex;"><span>    parallelism <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>    witness_array <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(max_range)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> prange(parallelism):
+</span></span><span style="display:flex;"><span>        current_best_witness <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(search_start <span style="color:#f92672">+</span> i, max_range, parallelism):
+</span></span><span style="display:flex;"><span>            witness <span style="color:#f92672">=</span> witness_value(k)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> witness <span style="color:#f92672">&gt;</span> current_best_witness:
+</span></span><span style="display:flex;"><span>                current_best_witness <span style="color:#f92672">=</span> witness
+</span></span><span style="display:flex;"><span>                witness_array[k] <span style="color:#f92672">=</span> witness
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>argmax(witness_array)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This optimized implementation takes ~15 seconds to run, which is 4x faster than the non-parallel version, and 1.3x faster than the naive implementation!</p>
 <h2 id="biglittle">big.LITTLE</h2>
 <p>I was initially concerned that the maximum performance improvement that we could attain with multi core processing was only ~4x, and not closer to 7x with 8 cores, in my Macbook. Turns out the M1 processor has a <a href="https://www.toptal.com/apple/apple-m1-processor-compatibility-overview">big.LITTLE architecture</a> with 4 heavy duty cores and 4 smaller efficiency cores which are much slower. This means, we&rsquo;re constrained heavily by the big 4 cores and it is unlikely that we can get a faster performance. Hence, the 4x speed up that we got in both <code>Python</code> and <code>Golang</code> makes perfect sense.</p>
 <h2 id="conclusion">Conclusion</h2>
@@ -506,16 +514,12 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
   
   
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-179464703-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+    
+      
+    
+  
+
 
 
 <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"

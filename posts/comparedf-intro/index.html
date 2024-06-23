@@ -4,14 +4,14 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.88.1" />
+<meta name="generator" content="Hugo 0.127.0">
 
     
     
@@ -20,17 +20,25 @@
 <title>Introducing compareDF • Alex&#39;s Blog</title>
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Introducing compareDF"/>
-<meta name="twitter:description" content=""/>
 
-<meta property="og:title" content="Introducing compareDF" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/comparedf-intro/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2018-08-17T01:25:41+05:30" />
-<meta property="article:modified_time" content="2022-01-26T12:39:37+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Introducing compareDF">
+  <meta name="twitter:description" content="Pasting random things together">
+      <meta name="twitter:site" content="@alexsanjoseph">
 
+<meta property="og:url" content="//localhost:1313/posts/comparedf-intro/">
+  <meta property="og:site_name" content="Alex&#39;s Blog">
+  <meta property="og:title" content="Introducing compareDF">
+  <meta property="og:description" content="Pasting random things together">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-08-17T01:25:41+05:30">
+    <meta property="article:modified_time" content="2022-01-26T12:39:37+05:30">
+    <meta property="article:tag" content="R">
+    <meta property="article:tag" content="Data.frames">
+    <meta property="article:tag" content="Package">
+    <meta property="article:tag" content="Compare">
 
 
     
@@ -73,14 +81,14 @@
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="/">Alex&#39;s Blog</a>
+        <a href="//localhost:1313/">Alex&#39;s Blog</a>
       </span>
       
         
         
         
         <div class="author-image">
-          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="//localhost:1313/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -158,7 +166,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2016 - 2022 alexsanjoseph
+  &copy; 2016 - 2024 alexsanjoseph
   
 </div>
 
@@ -239,9 +247,13 @@ what <code>compareDF</code> package is all about.</p>
 <p>The output can be visualized either on the RStudio Viewer, or sent to a file as an <code>HTML</code> or an <code>XLSX</code> file.</p>
 <h2 id="installation">Installation</h2>
 <p>You can install the CRAN version of the package as below:</p>
-<pre tabindex="0"><code class="language-{r}" data-lang="{r}">install.packages(&quot;compareDF&quot;)
-</code></pre><p>Development version can be installed using <code>devtools</code></p>
-<pre tabindex="0"><code class="language-{r}" data-lang="{r}">devtools::install_github('alexsanjoseph/compareDF')
+<p>```{<code>r</code>}
+install.packages(&ldquo;compareDF&rdquo;)</p>
+<pre tabindex="0"><code>
+Development version can be installed using `devtools`
+
+```{`r`}
+devtools::install_github(&#39;alexsanjoseph/compareDF&#39;)
 </code></pre><h2 id="usage">Usage</h2>
 <p>The package has a single function, <code>compare_df</code>. It takes in two data frames, and one or
 more grouping variables and does a comparison between the the two. In addition you can
@@ -250,26 +262,34 @@ of the HTML output, and decide what tolerance you want to provide to detect chan
 <h2 id="basic-example">Basic Example</h2>
 <p>Let&rsquo;s take the example of a teacher who wants to compare the marks and grades of students across
 two years, 2010 and 2011. The data is stored in tabular format.</p>
-<pre tabindex="0"><code class="language-{r}" data-lang="{r}">library(compareDF)
-data(&quot;results_2010&quot;, &quot;results_2011&quot;)
+<p>```{<code>r</code>}
+library(compareDF)
+data(&ldquo;results_2010&rdquo;, &ldquo;results_2011&rdquo;)
 print(results_2010)
-print(results_2011)
-</code></pre><p>The data shows the performance of students in two divisions, A and B for two years. Some subjects
-like <em>Maths, Physics, Chemistry and Art</em> are given scores while others like <em>Discipline and PE</em> are
-given grades.</p>
-<p>It is possible that there are students of the same name in two divisions, for example, there is
-a <em>Rohit</em> in both the divisions in 2011.</p>
-<p>It is also possible that some students have dropped out, or added new across the two years.
-Eg: - <em>Mugger and Dhakkan</em> dropped out while <em>Vikram and Dikchik</em> where added in the Division B</p>
-<p>The package allows a user to quickly identify these changes.</p>
-<h3 id="basic-comparison">Basic Comparison</h3>
-<p>Now let&rsquo;s compare the performance of the students across the years. The grouping variables are the
-<em>Student</em> column. We will ignore the <em>Division</em> column and assume that the student names are unique
-across divisions. In this sub-example, if a student appears in two divisions, he/she has studied in both
-of them.</p>
-<pre tabindex="0"><code class="language-{r}" data-lang="{r}">ctable_student = compare_df(results_2011, results_2010, c(&quot;Student&quot;))
-ctable_student$comparison_df
+print(results_2011)</p>
+<pre tabindex="0"><code>
+The data shows the performance of students in two divisions, A and B for two years. Some subjects
+like _Maths, Physics, Chemistry and Art_ are given scores while others like _Discipline and PE_ are
+given grades.
 
+It is possible that there are students of the same name in two divisions, for example, there is
+a _Rohit_ in both the divisions in 2011.
+
+It is also possible that some students have dropped out, or added new across the two years.
+Eg: - _Mugger and Dhakkan_ dropped out while _Vikram and Dikchik_ where added in the Division B
+
+The package allows a user to quickly identify these changes.
+
+### Basic Comparison
+
+Now let&#39;s compare the performance of the students across the years. The grouping variables are the
+_Student_ column. We will ignore the _Division_ column and assume that the student names are unique
+across divisions. In this sub-example, if a student appears in two divisions, he/she has studied in both
+of them.
+
+```{`r`}
+ctable_student = compare_df(results_2011, results_2010, c(&#34;Student&#34;))
+ctable_student$comparison_df
 </code></pre><p>By default, no columns are excluded from the comparison, so any of the tuple of grouping
 variables which are different across the two data frames are shown in the comparison table.
 The <code>comparison_df</code> table shows all the rows for which at least one record has changed. Conversely, if
@@ -283,57 +303,83 @@ shown in the comparison table.</p>
 <p>While the comparison table can be quickly summarized in various forms for futher analysis, it is
 very difficult to  process visually. The <code>html_output</code> provides a way to represent this is a way that is easier
 for the numan eye to read. NOTE: You need to install the <code>htmlTable</code> package for the HTML comparison to work.</p>
-<pre tabindex="0"><code class="language-{r," data-lang="{r,">create_output_table(ctable_student)
-</code></pre><p><img src="/images/comparedf-intro/pic_1.png" alt="HTML Output"></p>
-<p>Now it is very easy to see recognize what has changed. A single cell is colored
+<p>```{<code>r, results = 'hide'</code>}
+create_output_table(ctable_student)</p>
+<pre tabindex="0"><code>
+![HTML Output](/images/comparedf-intro/pic_1.png)
+
+Now it is very easy to see recognize what has changed. A single cell is colored
 if it has changed across the two datasets. The value of the cell in the older dataset
 is colored red and the value of the cell in the newer dataset is colored green. Cells
-that haven&rsquo;t changed across the two datasets are colored grey.</p>
-<p>If a new row was introduced, the Row group names (and all the other columns for that row as well )
+that haven&#39;t changed across the two datasets are colored grey.
+
+If a new row was introduced, the Row group names (and all the other columns for that row as well )
 are colored in Green. Similarly, a row group name (and the other columns in that row) are
-colored red if a row was removed.</p>
-<p>For Example, <em>Akshay</em>, <em>Ananth</em> and <em>Bulla</em> has had changes in
-scores, which are in <em>Discipline</em>, <em>Maths</em>, and <em>Maths</em> respectively.
-<em>Dhakkan</em> and <em>Mugger</em> have dropped out of the dataset from 2010 and the all the columns for the rows are shown
-in red, which <em>DikChik</em> and <em>Vikram</em> have joined new in the data set and all the columns for the rows are in green.</p>
-<h3 id="xlsx-output">XLSX Output</h3>
-<p>Alternately you can write to an xlsx file as well</p>
-<pre tabindex="0"><code class="language-{r}" data-lang="{r}">create_output_table(ctable_student, output_type = 'xlsx', file_name = &quot;test_file.xlsx&quot;)
+colored red if a row was removed.
+
+For Example, _Akshay_, _Ananth_ and _Bulla_ has had changes in
+scores, which are in _Discipline_, _Maths_, and _Maths_ respectively.
+_Dhakkan_ and _Mugger_ have dropped out of the dataset from 2010 and the all the columns for the rows are shown
+in red, which _DikChik_ and _Vikram_ have joined new in the data set and all the columns for the rows are in green.
+
+### XLSX Output
+
+Alternately you can write to an xlsx file as well
+
+```{`r`}
+create_output_table(ctable_student, output_type = &#39;xlsx&#39;, file_name = &#34;test_file.xlsx&#34;)
 </code></pre><p><img src="/images/comparedf-intro/excel_output.png" alt="HTML Output"></p>
 <h3 id="change-count-and-summary">Change Count and Summary</h3>
 <p>You can get an details of what has changed for each group using
 the <code>change_count</code> object in the output. A summary
 of the same is provided in the <code>change_summary</code> object.</p>
-<pre tabindex="0"><code class="language-{r}" data-lang="{r}">ctable_student$change_count
-</code></pre><pre tabindex="0"><code class="language-{r}" data-lang="{r}">ctable_student$change_summary
+<p>```{<code>r</code>}
+ctable_student$change_count</p>
+<pre tabindex="0"><code>
+```{`r`}
+ctable_student$change_summary
 </code></pre><h3 id="grouping-multiple-columns">Grouping Multiple Columns</h3>
 <p>We can also group_multiple columns into the grouping variable</p>
-<pre tabindex="0"><code class="language-{r," data-lang="{r,">ctable_student_div = compare_df(results_2011, results_2010, c(&quot;Division&quot;, &quot;Student&quot;))
-ctable_student_div$comparison_df
-</code></pre><p><img src="/images/comparedf-intro/pic_2.png" alt="HTML Output"></p>
-<p>Now <em>Rohits</em> in each individual division are considered as belonging to separate
-groups and compared accordingly. All the other summaries also change appropriately.</p>
-<h3 id="excluding-certain-columns">Excluding certain Columns</h3>
-<p>You can ignore certain columns using the <em>exclude</em> parameter. The fields that have to be
+<p>```{<code>r, results = 'hide'</code>}
+ctable_student_div = compare_df(results_2011, results_2010, c(&ldquo;Division&rdquo;, &ldquo;Student&rdquo;))
+ctable_student_div$comparison_df</p>
+<pre tabindex="0"><code>![HTML Output](/images/comparedf-intro/pic_2.png)
+
+Now _Rohits_ in each individual division are considered as belonging to separate
+groups and compared accordingly. All the other summaries also change appropriately.
+
+### Excluding certain Columns
+
+You can ignore certain columns using the _exclude_ parameter. The fields that have to be
 excluded can be given as a character vector. (This is a convenience function to deal with
-the case where some columns are not included)</p>
-<h3 id="preserving-all-rows">Preserving all rows</h3>
-<p>The default behavior of the <code>compare_df</code> function is to show only the records that have changed. Sometimes the use might want to preserve all the records even after the comparison and not just see the values that have been changed (especially in the HTML). In this case, you can set the <code>keep_unchanged</code> parameter to <code>TRUE</code>.</p>
-<h3 id="limiting-html-size">Limiting HTML size</h3>
-<p>For dataframes which have a large amount of differences in them, generating HTML might take
+the case where some columns are not included)
+
+### Preserving all rows
+
+The default behavior of the `compare_df` function is to show only the records that have changed. Sometimes the use might want to preserve all the records even after the comparison and not just see the values that have been changed (especially in the HTML). In this case, you can set the `keep_unchanged` parameter to `TRUE`.
+
+### Limiting HTML size
+
+For dataframes which have a large amount of differences in them, generating HTML might take
 a long time and crash your system. So the maximum diff size for the HTML (and for the HTML
 visualization only) is capped at 100 by default. If you want to see more difference, you can change
-the <code>limit_html</code> parameter appropriately. NOTE: This is only of the HTML output which is used for visual
-checking. The main comparison data frame and the summaries ALWAYS include data from all the rows.</p>
-<h3 id="changing-color">Changing color</h3>
-<p>You can use the <code>color_scheme</code> parameter to change the color of the cells generated. The parameter must me a named vector or a list with the appropriate names - The default values are <code>c(&quot;addition&quot; = &quot;green&quot;, &quot;removal&quot; = &quot;red&quot;, &quot;unchanged_cell&quot; = &quot;gray&quot;, &quot;unchanged_row&quot; = &quot;deepskyblue&quot;)</code> but can be changed as needed by the user.</p>
-<h3 id="tolerance">Tolerance</h3>
-<p>It is possible that you&rsquo;d like numbers very close to each other to be ignored. For example,
+the `limit_html` parameter appropriately. NOTE: This is only of the HTML output which is used for visual
+checking. The main comparison data frame and the summaries ALWAYS include data from all the rows.
+
+### Changing color
+
+You can use the `color_scheme` parameter to change the color of the cells generated. The parameter must me a named vector or a list with the appropriate names - The default values are `c(&#34;addition&#34; = &#34;green&#34;, &#34;removal&#34; = &#34;red&#34;, &#34;unchanged_cell&#34; = &#34;gray&#34;, &#34;unchanged_row&#34; = &#34;deepskyblue&#34;)` but can be changed as needed by the user.
+
+### Tolerance
+
+It is possible that you&#39;d like numbers very close to each other to be ignored. For example,
 if the marks of a student vary by less that 5% across the years, it could be due to random
 error and not any real performance indictaor. In such a case, you would want to give a tolerance
-parameter. For this case, giving a tolerance of <code>0.05</code> would ignore all the changes that are
-less than 5% apart from the lower value.</p>
-<pre tabindex="0"><code class="language-{r," data-lang="{r,">ctable_student_div = compare_df(results_2011, results_2010, c(&quot;Division&quot;, &quot;Student&quot;), tolerance = 0.05)
+parameter. For this case, giving a tolerance of `0.05` would ignore all the changes that are
+less than 5% apart from the lower value.
+
+```{`r, results = &#39;hide&#39;`}
+ctable_student_div = compare_df(results_2011, results_2010, c(&#34;Division&#34;, &#34;Student&#34;), tolerance = 0.05)
 create_output_table(ctable_student_div)
 </code></pre><p><img src="/images/comparedf-intro/pic_3.png" alt="HTML Output"></p>
 <p><em>Venu from division A</em> who had a score change from 100 to 99 is no longer present in the
@@ -381,16 +427,12 @@ diff calculation or in the output</p>
 
   
   
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-179464703-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+    
+      
+    
+  
+
 
 
 <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"

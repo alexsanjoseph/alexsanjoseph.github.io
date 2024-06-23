@@ -4,14 +4,14 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.88.1" />
+<meta name="generator" content="Hugo 0.127.0">
 
     
     
@@ -20,17 +20,24 @@
 <title>Searching for RH Counterexamples in Golang - Superabundant Numbers • Alex&#39;s Blog</title>
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Searching for RH Counterexamples in Golang - Superabundant Numbers"/>
-<meta name="twitter:description" content=""/>
 
-<meta property="og:title" content="Searching for RH Counterexamples in Golang - Superabundant Numbers" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/rh-counterexamples-in-go-3-1-superabundant/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-10-29T10:17:52+00:00" />
-<meta property="article:modified_time" content="2022-12-17T02:04:43+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Searching for RH Counterexamples in Golang - Superabundant Numbers">
+  <meta name="twitter:description" content="Pasting random things together">
+      <meta name="twitter:site" content="@alexsanjoseph">
 
+<meta property="og:url" content="//localhost:1313/posts/rh-counterexamples-in-go-3-1-superabundant/">
+  <meta property="og:site_name" content="Alex&#39;s Blog">
+  <meta property="og:title" content="Searching for RH Counterexamples in Golang - Superabundant Numbers">
+  <meta property="og:description" content="Pasting random things together">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-10-29T10:17:52+00:00">
+    <meta property="article:modified_time" content="2022-12-17T02:04:43+05:30">
+    <meta property="article:tag" content="Golang">
+    <meta property="article:tag" content="Riemann-Hypothesis">
+    <meta property="article:tag" content="Superabundant">
 
 
     
@@ -45,7 +52,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.a49b6ba6c4955c432d9ded493e8ac2653879067ed0659625ca96a85e8747609f.css" integrity="sha256-pJtrpsSVXEMtne1JPorCZTh5Bn7QZZYlypaoXodHYJ8=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -73,14 +80,14 @@
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="/">Alex&#39;s Blog</a>
+        <a href="//localhost:1313/">Alex&#39;s Blog</a>
       </span>
       
         
         
         
         <div class="author-image">
-          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="//localhost:1313/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -158,7 +165,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2016 - 2022 alexsanjoseph
+  &copy; 2016 - 2024 alexsanjoseph
   
 </div>
 
@@ -238,52 +245,51 @@ $$</p>
 <p>The non-increasing list of numbers that add to a number is called a <code>partition</code>. We just need to find the partitions of a number, and combine them with the non-increasing prime factor and we&rsquo;re well on our way to a better approach to solve this problem.</p>
 <h2 id="finding-partitions">Finding Partitions</h2>
 <p>There are pretty standard methods to find partitions, one of which was included in the original post. However, I found the algorithm a bit difficult to understand and hence ended up <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/ab34c1977440eae9d3f2f098a0f3bca8bd0eeace">implementing</a> a simple recursion algorithm instead.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">PartitionsOfN</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) [][]<span style="color:#66d9ef">int</span> {
-	<span style="color:#a6e22e">output</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{{<span style="color:#a6e22e">n</span>}}
-	<span style="color:#a6e22e">arrayToAdd</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">n</span>)
-	<span style="color:#a6e22e">splitPoint</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
-	<span style="color:#a6e22e">arrayToAdd</span>[<span style="color:#a6e22e">splitPoint</span>] = <span style="color:#a6e22e">n</span>
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &gt; <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span> {
-		<span style="color:#a6e22e">newParts</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">PartitionsOfN</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">i</span>)
-		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">part</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">newParts</span> {
-			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">part</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">i</span> {
-				<span style="color:#a6e22e">output</span> = append(<span style="color:#a6e22e">output</span>, append([]<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">i</span>}, <span style="color:#a6e22e">part</span><span style="color:#f92672">...</span>))
-			}
-		}
-	}
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">output</span>
-}
-
-</code></pre></div><p>Quite simply, partitions of a number are the previous partitions ($n-1$), plus the partitions created by the additional number.While this approach worked and found the right set of partitions, the algorithm grinded to a halt as we approached $n&gt;25$! A similar slowdown was seen for the <code>Kun/Python</code> algorithm only around $n&gt;70$ so we definitely needed to do better!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">PartitionsOfN</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) [][]<span style="color:#66d9ef">int</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">output</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{{<span style="color:#a6e22e">n</span>}}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">arrayToAdd</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">n</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">splitPoint</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">arrayToAdd</span>[<span style="color:#a6e22e">splitPoint</span>] = <span style="color:#a6e22e">n</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &gt; <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">newParts</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">PartitionsOfN</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">i</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">part</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">newParts</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">part</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">i</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">output</span> = append(<span style="color:#a6e22e">output</span>, append([]<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">i</span>}, <span style="color:#a6e22e">part</span><span style="color:#f92672">...</span>))
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">output</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Quite simply, partitions of a number are the previous partitions ($n-1$), plus the partitions created by the additional number.While this approach worked and found the right set of partitions, the algorithm grinded to a halt as we approached $n&gt;25$! A similar slowdown was seen for the <code>Kun/Python</code> algorithm only around $n&gt;70$ so we definitely needed to do better!</p>
 <p>On inspection, I realized that for each number, the algorithm was calculating the partitions for all the smaller numbers again and again, duplicating the work. In <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/341ac8fa2a98a18ac53d6a8a32ba72806c64c442">this commit</a>, I implemented <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> which calculates the partitions only if the number was new, otherwise reading from the existing cache. This approach of <code>memoization</code> + <code>recursion</code> is called <a href="https://en.wikipedia.org/wiki/Dynamic_programming">Dynamic Programming</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">cachedPartitionsOfN</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">cache</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>][][]<span style="color:#66d9ef">int</span>) [][]<span style="color:#66d9ef">int</span> {
-	<span style="color:#a6e22e">possibleOutput</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cache</span>[<span style="color:#a6e22e">n</span>]
-	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ok</span> {
-		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">possibleOutput</span>
-	}
-
-	<span style="color:#a6e22e">output</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{{<span style="color:#a6e22e">n</span>}}
-	<span style="color:#a6e22e">arrayToAdd</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">n</span>)
-	<span style="color:#a6e22e">splitPoint</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
-	<span style="color:#a6e22e">arrayToAdd</span>[<span style="color:#a6e22e">splitPoint</span>] = <span style="color:#a6e22e">n</span>
-	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &gt; <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span> {
-		<span style="color:#a6e22e">newParts</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cachedPartitionsOfN</span>(<span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">cache</span>)
-		<span style="color:#a6e22e">cache</span>[<span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#a6e22e">i</span>] = <span style="color:#a6e22e">newParts</span>
-		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">part</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">newParts</span> {
-			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">part</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">i</span> {
-				<span style="color:#a6e22e">output</span> = append(<span style="color:#a6e22e">output</span>, append([]<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">i</span>}, <span style="color:#a6e22e">part</span><span style="color:#f92672">...</span>))
-			}
-		}
-	}
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">output</span>
-}
-
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">MemoizedPartitionsOfN</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) [][]<span style="color:#66d9ef">int</span> {
-	<span style="color:#a6e22e">cache</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>][][]<span style="color:#66d9ef">int</span>)
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cachedPartitionsOfN</span>(<span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">cache</span>)
-}
-</code></pre></div><p>This significantly sped up the process and we were able to approach partition computation speeds on par with the <code>Python</code> approach.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">cachedPartitionsOfN</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">cache</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>][][]<span style="color:#66d9ef">int</span>) [][]<span style="color:#66d9ef">int</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">possibleOutput</span>, <span style="color:#a6e22e">ok</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cache</span>[<span style="color:#a6e22e">n</span>]
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">ok</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">possibleOutput</span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">output</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{{<span style="color:#a6e22e">n</span>}}
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">arrayToAdd</span> <span style="color:#f92672">:=</span> make([]<span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">n</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">splitPoint</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">arrayToAdd</span>[<span style="color:#a6e22e">splitPoint</span>] = <span style="color:#a6e22e">n</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">i</span> &gt; <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">--</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">newParts</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">cachedPartitionsOfN</span>(<span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#a6e22e">i</span>, <span style="color:#a6e22e">cache</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">cache</span>[<span style="color:#a6e22e">n</span><span style="color:#f92672">-</span><span style="color:#a6e22e">i</span>] = <span style="color:#a6e22e">newParts</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">part</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">newParts</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">part</span>[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">i</span> {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">output</span> = append(<span style="color:#a6e22e">output</span>, append([]<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">i</span>}, <span style="color:#a6e22e">part</span><span style="color:#f92672">...</span>))
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">output</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">MemoizedPartitionsOfN</span>(<span style="color:#a6e22e">n</span> <span style="color:#66d9ef">int</span>) [][]<span style="color:#66d9ef">int</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">cache</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">int</span>][][]<span style="color:#66d9ef">int</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cachedPartitionsOfN</span>(<span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">cache</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This significantly sped up the process and we were able to approach partition computation speeds on par with the <code>Python</code> approach.</p>
 <blockquote class="info">
     <strong>At this point, I noticed some minor discrepancy between the results of my approach and the original authors approach. To verify, <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4/commits/bd1f673ec2bb01bf2a9eca6186e33ad24ab03656">I implemented the same myself</a> and saw the the issue is persisting and raised a <a href="https://github.com/j2kun/riemann-divisor-sum/issues/39">bug report</a> which the author fixed promptly!</strong><br>
     
@@ -316,53 +322,52 @@ $$</p>
 </ul>
 <p>This kind of an approach can find out many hidden bugs in the code and is essential for all mission critical code!</p>
 <p>In our case, we add the property tests by calculating the <code>Prime Factor Divisor Sum</code> using the naive approach to validate our tests. In <code>Golang</code>, the <code>gopter</code> package allows you to quickly generate hypothesis tests and customize it to your hearts content.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">
-<span style="color:#a6e22e">parameters</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gopter</span>.<span style="color:#a6e22e">DefaultTestParameters</span>()
-<span style="color:#a6e22e">parameters</span>.<span style="color:#a6e22e">MinSuccessfulTests</span> = <span style="color:#ae81ff">100</span>
-<span style="color:#a6e22e">parameters</span>.<span style="color:#a6e22e">MaxSize</span> = <span style="color:#ae81ff">10</span>
-<span style="color:#a6e22e">properties</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gopter</span>.<span style="color:#a6e22e">NewProperties</span>(<span style="color:#a6e22e">parameters</span>)
-
-<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">Property</span>(<span style="color:#e6db74">&#34;Check Prime Factor Divisor Sum&#34;</span>, <span style="color:#a6e22e">prop</span>.<span style="color:#a6e22e">ForAll</span>(
-    <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
-
-        <span style="color:#a6e22e">smallerSliceLength</span> <span style="color:#f92672">:=</span> len(<span style="color:#a6e22e">b</span>)
-        <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">a</span>) <span style="color:#f92672">&lt;=</span> len(<span style="color:#a6e22e">b</span>) {
-            <span style="color:#a6e22e">smallerSliceLength</span> = len(<span style="color:#a6e22e">a</span>)
-        }
-        <span style="color:#a6e22e">input</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{}
-        <span style="color:#a6e22e">n</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">1</span>)
-
-        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">smallerSliceLength</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
-            <span style="color:#a6e22e">input</span> = append(<span style="color:#a6e22e">input</span>, []<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">i</span>], <span style="color:#a6e22e">b</span>[<span style="color:#a6e22e">i</span>]})
-            <span style="color:#a6e22e">n</span> <span style="color:#f92672">*=</span> int64(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Pow</span>(float64(<span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">i</span>]), float64(<span style="color:#a6e22e">b</span>[<span style="color:#a6e22e">i</span>])))
-        }
-
-        <span style="color:#a6e22e">resultA</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">riemann</span>.<span style="color:#a6e22e">PrimeFactorDivisorSum</span>(<span style="color:#a6e22e">input</span>)
-        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
-        }
-
-        <span style="color:#a6e22e">resultB</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">riemann</span>.<span style="color:#a6e22e">DivisorSum</span>(<span style="color:#a6e22e">n</span>)
-
-        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
-        }
-
-        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">resultA</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">resultB</span>
-
-    },
-    <span style="color:#a6e22e">gen</span>.<span style="color:#a6e22e">SliceOf</span>(<span style="color:#a6e22e">gen</span>.<span style="color:#a6e22e">IntRange</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">20</span>).<span style="color:#a6e22e">SuchThat</span>(<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">v</span> <span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">bool</span> { <span style="color:#75715e">// Have to constrain because it doesn&#39;t work for large numbers yet
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">riemann</span>.<span style="color:#a6e22e">CheckIfPrime</span>(<span style="color:#a6e22e">v</span>.(<span style="color:#66d9ef">int</span>))
-    }),
-        <span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">TypeOf</span>(int(<span style="color:#ae81ff">0</span>))).<span style="color:#a6e22e">SuchThat</span>(<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">v</span> <span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">bool</span> {
-        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">riemann</span>.<span style="color:#a6e22e">CheckUniqueness</span>(<span style="color:#a6e22e">v</span>.([]<span style="color:#66d9ef">int</span>))
-    }).<span style="color:#a6e22e">WithLabel</span>(<span style="color:#e6db74">&#34;a&#34;</span>),
-    <span style="color:#a6e22e">gen</span>.<span style="color:#a6e22e">SliceOf</span>(<span style="color:#a6e22e">gen</span>.<span style="color:#a6e22e">IntRange</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>),
-        <span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">TypeOf</span>(int(<span style="color:#ae81ff">0</span>))).<span style="color:#a6e22e">WithLabel</span>(<span style="color:#e6db74">&#34;b&#34;</span>),
-))
-<span style="color:#a6e22e">Expect</span>(<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">gopter</span>.<span style="color:#a6e22e">ConsoleReporter</span>(<span style="color:#66d9ef">true</span>))).<span style="color:#a6e22e">To</span>(<span style="color:#a6e22e">BeTrue</span>())
-
-</code></pre></div><p>In the above code, I randomly generate bases between 2 and 20 (while constraining them to be prime and unique), and exponents between 0 to 5. This testing actually managed to find specific issues with my first implementation that I had missed out!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">parameters</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gopter</span>.<span style="color:#a6e22e">DefaultTestParameters</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">parameters</span>.<span style="color:#a6e22e">MinSuccessfulTests</span> = <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">parameters</span>.<span style="color:#a6e22e">MaxSize</span> = <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">properties</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">gopter</span>.<span style="color:#a6e22e">NewProperties</span>(<span style="color:#a6e22e">parameters</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">Property</span>(<span style="color:#e6db74">&#34;Check Prime Factor Divisor Sum&#34;</span>, <span style="color:#a6e22e">prop</span>.<span style="color:#a6e22e">ForAll</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span> []<span style="color:#66d9ef">int</span>) <span style="color:#66d9ef">bool</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">smallerSliceLength</span> <span style="color:#f92672">:=</span> len(<span style="color:#a6e22e">b</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">a</span>) <span style="color:#f92672">&lt;=</span> len(<span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">smallerSliceLength</span> = len(<span style="color:#a6e22e">a</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">input</span> <span style="color:#f92672">:=</span> [][]<span style="color:#66d9ef">int</span>{}
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">n</span> <span style="color:#f92672">:=</span> int64(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">smallerSliceLength</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">input</span> = append(<span style="color:#a6e22e">input</span>, []<span style="color:#66d9ef">int</span>{<span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">i</span>], <span style="color:#a6e22e">b</span>[<span style="color:#a6e22e">i</span>]})
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">n</span> <span style="color:#f92672">*=</span> int64(<span style="color:#a6e22e">math</span>.<span style="color:#a6e22e">Pow</span>(float64(<span style="color:#a6e22e">a</span>[<span style="color:#a6e22e">i</span>]), float64(<span style="color:#a6e22e">b</span>[<span style="color:#a6e22e">i</span>])))
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">resultA</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">riemann</span>.<span style="color:#a6e22e">PrimeFactorDivisorSum</span>(<span style="color:#a6e22e">input</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">resultB</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">riemann</span>.<span style="color:#a6e22e">DivisorSum</span>(<span style="color:#a6e22e">n</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">resultA</span> <span style="color:#f92672">==</span> <span style="color:#a6e22e">resultB</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gen</span>.<span style="color:#a6e22e">SliceOf</span>(<span style="color:#a6e22e">gen</span>.<span style="color:#a6e22e">IntRange</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">20</span>).<span style="color:#a6e22e">SuchThat</span>(<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">v</span> <span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">bool</span> { <span style="color:#75715e">// Have to constrain because it doesn&#39;t work for large numbers yet
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">riemann</span>.<span style="color:#a6e22e">CheckIfPrime</span>(<span style="color:#a6e22e">v</span>.(<span style="color:#66d9ef">int</span>))
+</span></span><span style="display:flex;"><span>    }),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">TypeOf</span>(int(<span style="color:#ae81ff">0</span>))).<span style="color:#a6e22e">SuchThat</span>(<span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">v</span> <span style="color:#66d9ef">interface</span>{}) <span style="color:#66d9ef">bool</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">riemann</span>.<span style="color:#a6e22e">CheckUniqueness</span>(<span style="color:#a6e22e">v</span>.([]<span style="color:#66d9ef">int</span>))
+</span></span><span style="display:flex;"><span>    }).<span style="color:#a6e22e">WithLabel</span>(<span style="color:#e6db74">&#34;a&#34;</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">gen</span>.<span style="color:#a6e22e">SliceOf</span>(<span style="color:#a6e22e">gen</span>.<span style="color:#a6e22e">IntRange</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">TypeOf</span>(int(<span style="color:#ae81ff">0</span>))).<span style="color:#a6e22e">WithLabel</span>(<span style="color:#e6db74">&#34;b&#34;</span>),
+</span></span><span style="display:flex;"><span>))
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Expect</span>(<span style="color:#a6e22e">properties</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">gopter</span>.<span style="color:#a6e22e">ConsoleReporter</span>(<span style="color:#66d9ef">true</span>))).<span style="color:#a6e22e">To</span>(<span style="color:#a6e22e">BeTrue</span>())
+</span></span></code></pre></div><p>In the above code, I randomly generate bases between 2 and 20 (while constraining them to be prime and unique), and exponents between 0 to 5. This testing actually managed to find specific issues with my first implementation that I had missed out!</p>
 <ul>
 <li>The algorithm doesn&rsquo;t work with non-prime bases, for which I had added guard rails.</li>
 <li>The algorithm doesn&rsquo;t work if the bases are not unique, which I hadn&rsquo;t accounted for either in the first implementation.</li>
@@ -388,10 +393,6 @@ $$</p>
 <p>All the commits above are condensed into <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/pull/4">this</a> pull request.</p>
 <p>We are all set to solve the actual problem, since we have the subset of numbers that we need to search as candidates for a <code>Reimann counterexample</code>.</p>
 <p>In the next post, we will use the candidates we found using this approach to solve the Riemann Hypothesis problem.</p>
-<blockquote >
-    <strong>Cover art: <em>Interpretation of abundance, according to the Stable Diffusion AI</em></strong><br>
-    
-</blockquote>
   </div>
   
 
@@ -422,16 +423,12 @@ $$</p>
 
   
   
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-179464703-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+    
+      
+    
+  
+
 
 
 <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"

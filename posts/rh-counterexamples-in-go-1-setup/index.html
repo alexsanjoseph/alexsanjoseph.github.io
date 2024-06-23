@@ -4,14 +4,14 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.88.1" />
+<meta name="generator" content="Hugo 0.127.0">
 
     
     
@@ -20,17 +20,24 @@
 <title>Searching for RH Counterexamples in Golang - Setting up • Alex&#39;s Blog</title>
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Searching for RH Counterexamples in Golang - Setting up"/>
-<meta name="twitter:description" content=""/>
 
-<meta property="og:title" content="Searching for RH Counterexamples in Golang - Setting up" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/rh-counterexamples-in-go-1-setup/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-01-16T10:17:52+00:00" />
-<meta property="article:modified_time" content="2022-01-26T12:39:37+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Searching for RH Counterexamples in Golang - Setting up">
+  <meta name="twitter:description" content="Pasting random things together">
+      <meta name="twitter:site" content="@alexsanjoseph">
 
+<meta property="og:url" content="//localhost:1313/posts/rh-counterexamples-in-go-1-setup/">
+  <meta property="og:site_name" content="Alex&#39;s Blog">
+  <meta property="og:title" content="Searching for RH Counterexamples in Golang - Setting up">
+  <meta property="og:description" content="Pasting random things together">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-01-16T10:17:52+00:00">
+    <meta property="article:modified_time" content="2022-01-26T12:39:37+05:30">
+    <meta property="article:tag" content="Golang">
+    <meta property="article:tag" content="Riemann-Hypothesis">
+    <meta property="article:tag" content="Kata">
 
 
     
@@ -45,7 +52,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.a49b6ba6c4955c432d9ded493e8ac2653879067ed0659625ca96a85e8747609f.css" integrity="sha256-pJtrpsSVXEMtne1JPorCZTh5Bn7QZZYlypaoXodHYJ8=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -73,14 +80,14 @@
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="/">Alex&#39;s Blog</a>
+        <a href="//localhost:1313/">Alex&#39;s Blog</a>
       </span>
       
         
         
         
         <div class="author-image">
-          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="//localhost:1313/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -158,7 +165,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2016 - 2022 alexsanjoseph
+  &copy; 2016 - 2024 alexsanjoseph
   
 </div>
 
@@ -252,38 +259,37 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <h2 id="improving-testing">Improving testing</h2>
 <p>Once we have basic testing in place and working (you can test that this is failing by running <code>go test</code> on the terminal), we can move to a better testing package. In my case, I&rsquo;m using <a href="https://onsi.github.io/ginkgo/">Ginkgo</a>. Along with the <a href="https://onsi.github.io/gomega/">Gomega</a> matching/assertion library (almost always used in conjunction with Ginkgo), Ginkgo allows us to write more expressive tests, which almost read like plain English rather than having a million <code>if-else</code> statements with the basic testing library.</p>
 <p>For example, while the previous test case was simple enough with:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestDivisorSum</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
-	<span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">DivisorSum</span>(<span style="color:#ae81ff">195</span>)
-	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">sum</span>)
-	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">72</span> {
-		<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#e6db74">&#34;Divisor sum doesn&#39;t match!&#34;</span>)
-	}
-}
-</code></pre></div><p>In case of a failing error, the basic testing package outputs that the test has failed, unless any additional info is provided manually by the developer. Instead Ginkgo allows you to write the same test as</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">Describe</span>(<span style="color:#e6db74">&#34;Divisor&#34;</span>, <span style="color:#66d9ef">func</span>() {
-	<span style="color:#a6e22e">Context</span>(<span style="color:#e6db74">&#34;Good Cases&#34;</span>, <span style="color:#66d9ef">func</span>() {
-		<span style="color:#a6e22e">It</span>(<span style="color:#e6db74">&#34;Should give correct result&#34;</span>, <span style="color:#66d9ef">func</span>() {
-			<span style="color:#a6e22e">output</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">riemann</span>.<span style="color:#a6e22e">DivisorSum</span>(<span style="color:#ae81ff">72</span>)
-			<span style="color:#a6e22e">Expect</span>(<span style="color:#a6e22e">output</span>).<span style="color:#a6e22e">To</span>(<span style="color:#a6e22e">Equal</span>(<span style="color:#ae81ff">195</span>))
-		})
-    }
-}
-
-</code></pre></div><p>which is arguably much easier to read. More importantly, when an error is encountered, you get a nice error message like</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">Divisor
-/Users/alexsanjoseph/Learning/riemann-divisor-sum-go/riemann/divisor_test.go:9
-  Good Cases
-  /Users/alexsanjoseph/Learning/riemann-divisor-sum-go/riemann/divisor_test.go:11
-    Should give correct result <span style="color:#f92672">[</span>It<span style="color:#f92672">]</span>
-    /Users/alexsanjoseph/Learning/riemann-divisor-sum-go/riemann/divisor_test.go:12
-
-    Expected
-        &lt;int64&gt;: <span style="color:#ae81ff">195</span>
-    to equal
-        &lt;int64&gt;: <span style="color:#ae81ff">192</span>
-
-    /Users/alexsanjoseph/Learning/riemann-divisor-sum-go/riemann/divisor_test.go:17
-</code></pre></div><p>which allows us to debug the issue easily.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestDivisorSum</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">sum</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">DivisorSum</span>(<span style="color:#ae81ff">195</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">sum</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">72</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#e6db74">&#34;Divisor sum doesn&#39;t match!&#34;</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In case of a failing error, the basic testing package outputs that the test has failed, unless any additional info is provided manually by the developer. Instead Ginkgo allows you to write the same test as</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">_</span> = <span style="color:#a6e22e">Describe</span>(<span style="color:#e6db74">&#34;Divisor&#34;</span>, <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">Context</span>(<span style="color:#e6db74">&#34;Good Cases&#34;</span>, <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">It</span>(<span style="color:#e6db74">&#34;Should give correct result&#34;</span>, <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">output</span>, <span style="color:#a6e22e">_</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">riemann</span>.<span style="color:#a6e22e">DivisorSum</span>(<span style="color:#ae81ff">72</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">Expect</span>(<span style="color:#a6e22e">output</span>).<span style="color:#a6e22e">To</span>(<span style="color:#a6e22e">Equal</span>(<span style="color:#ae81ff">195</span>))
+</span></span><span style="display:flex;"><span>		})
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>which is arguably much easier to read. More importantly, when an error is encountered, you get a nice error message like</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Divisor
+</span></span><span style="display:flex;"><span>/Users/alexsanjoseph/Learning/riemann-divisor-sum-go/riemann/divisor_test.go:9
+</span></span><span style="display:flex;"><span>  Good Cases
+</span></span><span style="display:flex;"><span>  /Users/alexsanjoseph/Learning/riemann-divisor-sum-go/riemann/divisor_test.go:11
+</span></span><span style="display:flex;"><span>    Should give correct result <span style="color:#f92672">[</span>It<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    /Users/alexsanjoseph/Learning/riemann-divisor-sum-go/riemann/divisor_test.go:12
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Expected
+</span></span><span style="display:flex;"><span>        &lt;int64&gt;: <span style="color:#ae81ff">195</span>
+</span></span><span style="display:flex;"><span>    to equal
+</span></span><span style="display:flex;"><span>        &lt;int64&gt;: <span style="color:#ae81ff">192</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    /Users/alexsanjoseph/Learning/riemann-divisor-sum-go/riemann/divisor_test.go:17
+</span></span></code></pre></div><p>which allows us to debug the issue easily.</p>
 <p>With such a simple test, the value proposition might not be clear enough, but when the test suite gets larger and larger, having a dedicated testing library really helps to keep the code maintained and clean.</p>
 <p>Installing ginkgo/gomega libraries also pull in a bunch of indirect dependencies. All of these are marked in the <code>go.mod</code> file along with the hashes in the <code>go.sum</code> file which is very similar to <code>package-lock.json</code> in <code>NodeJS</code> or <code>Pipfile.lock</code> in <code>Python</code>.</p>
 <p>All of the above changes can be seen in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/591df89e79806eea8266ee934f964fbed5f5790e">this</a> commit.</p>
@@ -303,11 +309,11 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <h2 id="profiling-in-go">Profiling in Go</h2>
 <p>Although our search program is ostensibly working now, as evidenced by the tests, it is excruciatingly slow. <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/82927d73750cddf0a67e95d32d54d5714056c20a">Searching across</a> the first 100K integers using the current implementation takes ~4 seconds, and 500K integers ~1.5 minutes, which is ridiculously slow if we are to reach anywhere in the large numbers.</p>
 <p>To find out the bottleneck causing the program to run slow, we need to profile the code. Thankfully, <code>Go</code> has profiling implemented natively in the standard library and since we have tests for the same, this can be done very easily with</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">go test ./riemann -cpuprofile profile.out
-</code></pre></div><p>This command profiles the test code and outputs the profiling info into <code>profile.out</code>. The results can be visualized using the command</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pprof -http<span style="color:#f92672">=</span>localhost:10000 profile.out
-</code></pre></div><figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/profiling_naive.png#small"
-         alt="Profiling DivisorSum naive implementation "/>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>go test ./riemann -cpuprofile profile.out
+</span></span></code></pre></div><p>This command profiles the test code and outputs the profiling info into <code>profile.out</code>. The results can be visualized using the command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pprof -http<span style="color:#f92672">=</span>localhost:10000 profile.out
+</span></span></code></pre></div><figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/profiling_naive.png#small"
+    alt="Profiling DivisorSum naive implementation ">
 </figure>
 
 <p>Turns out that most of our time is spent calculating in the DivisorSum! It is easy to see that we have a time complexity of $O(n^2)$, one $n$ for the loop and one $n$ since we&rsquo;re going all the way up to the number, We need to find ways to improve this function.</p>
@@ -317,7 +323,7 @@ functionality. Copying the steps in the original post, there is an <a href="http
 <p>In this approach, we&rsquo;re trading computation complexity for space complexity (by caching all the previous computations) and for this we need to use some kind of cache. The original implementation uses the LRU cache, but we&rsquo;re going the simple route and instead using a <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/a309583e8580135a4412654dbb302a708482cbc1">simple hashmap as a cache</a>, since we don&rsquo;t worry too much about memory constraints.</p>
 <p>On rerunning the tests, we can see that the functions are running much 2-3x faster for our samples. Faster, but not fast enough. It is still taking 2.6 seconds for calculating up to 100K.</p>
 <figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/profiling_cached.png#medium"
-         alt="Profiling DivisorSum Cached implementation "/>
+    alt="Profiling DivisorSum Cached implementation ">
 </figure>
 
 <p>Rerunning the profiling, we can see that it is spending lesser time calculating the Divisor sum, but now there is definite overhead associated with the caching which is slowing things down.</p>
@@ -325,9 +331,9 @@ functionality. Copying the steps in the original post, there is an <a href="http
 <p>If we look at the algorithm, we can see that we still have a time complexity of $O(n^{\frac{3}{2}})$. This same complexity can be achieved by a much simpler implementation of the naive algorithm by only computing the divisors up to $\sqrt n$ instead of blindly counting all the way up to $n$ implemented in <a href="https://github.com/alexsanjoseph/riemann-divisor-sum-go/commit/d918f89302a51f037634617c1115f2c1a78f0ada">this</a> commit. It also gets rid of the caching since that&rsquo;s not relevant anymore.</p>
 <p>Rerunning the tests, the change is incredible, we&rsquo;ve gotten a benefit of two orders of magnitude in the tests and calculating up to 1M which used to take a minute happens in under a second now! We can now calculate all the way up to 10M in ~15 seconds as we can see from the <code>GoConvey</code> test output below.</p>
 <figure class="image"><img src="/images/rh-counterexamples-in-go-1-setup/witness_till_10M.png#large-left"
-         alt="open in separate window to zoom"/><figcaption>
-            <p>open in separate window to zoom</p>
-        </figcaption>
+    alt="open in separate window to zoom"><figcaption>
+      <p>open in separate window to zoom</p>
+    </figcaption>
 </figure>
 
 <blockquote class="info">
@@ -426,16 +432,12 @@ functionality. Copying the steps in the original post, there is an <a href="http
 
   
   
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-179464703-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+    
+      
+    
+  
+
 
 
 <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"

@@ -4,14 +4,14 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.88.1" />
+<meta name="generator" content="Hugo 0.127.0">
 
     
     
@@ -20,17 +20,24 @@
 <title>Optimizing Grafana Queries With Elasticsearch • Alex&#39;s Blog</title>
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Optimizing Grafana Queries With Elasticsearch"/>
-<meta name="twitter:description" content=""/>
 
-<meta property="og:title" content="Optimizing Grafana Queries With Elasticsearch" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/optimizing-grafana-queries-with-es/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-02-24T21:05:59+05:30" />
-<meta property="article:modified_time" content="2022-01-26T12:39:37+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Optimizing Grafana Queries With Elasticsearch">
+  <meta name="twitter:description" content="Pasting random things together">
+      <meta name="twitter:site" content="@alexsanjoseph">
 
+<meta property="og:url" content="//localhost:1313/posts/optimizing-grafana-queries-with-es/">
+  <meta property="og:site_name" content="Alex&#39;s Blog">
+  <meta property="og:title" content="Optimizing Grafana Queries With Elasticsearch">
+  <meta property="og:description" content="Pasting random things together">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-02-24T21:05:59+05:30">
+    <meta property="article:modified_time" content="2022-01-26T12:39:37+05:30">
+    <meta property="article:tag" content="Elasticsearch">
+    <meta property="article:tag" content="Grafana">
+    <meta property="article:tag" content="Optimization">
 
 
     
@@ -45,7 +52,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.a49b6ba6c4955c432d9ded493e8ac2653879067ed0659625ca96a85e8747609f.css" integrity="sha256-pJtrpsSVXEMtne1JPorCZTh5Bn7QZZYlypaoXodHYJ8=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -73,14 +80,14 @@
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="/">Alex&#39;s Blog</a>
+        <a href="//localhost:1313/">Alex&#39;s Blog</a>
       </span>
       
         
         
         
         <div class="author-image">
-          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="//localhost:1313/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -158,7 +165,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2016 - 2022 alexsanjoseph
+  &copy; 2016 - 2024 alexsanjoseph
   
 </div>
 
@@ -257,9 +264,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <li>If relative times are necessary, use the <code>/</code> notation (<code>now - 1d/d</code>, <code>now - 2h/h</code>) etc to tranch the time range to fixed boundaries</li>
 </ul>
 <figure><img src="/images/optimizing-grafana-queries-with-es/time_ranges.png"
-         alt="Use tranched absolute times rather than now queries"/><figcaption>
-            <p><em>Use tranched absolute times rather than <code>now</code> queries</em></p>
-        </figcaption>
+    alt="Use tranched absolute times rather than now queries"><figcaption>
+      <p><em>Use tranched absolute times rather than <code>now</code> queries</em></p>
+    </figcaption>
 </figure>
 
 <h2 id="time-aggregations-can-become-expensive">Time aggregations can become expensive</h2>
@@ -275,9 +282,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <li>Do not use terms queries for fields with large cardinality like time ranges</li>
 </ul>
 <figure><img src="/images/optimizing-grafana-queries-with-es/auto_interval.png"
-         alt="Using Interval: auto allows Grafana to manage the bucket size smartly"/><figcaption>
-            <p><em>Using <code>Interval: auto</code> allows Grafana to manage the bucket size smartly</em></p>
-        </figcaption>
+    alt="Using Interval: auto allows Grafana to manage the bucket size smartly"><figcaption>
+      <p><em>Using <code>Interval: auto</code> allows Grafana to manage the bucket size smartly</em></p>
+    </figcaption>
 </figure>
 
 <h2 id="a-single-dashboard-can-make-100s-of-queries">A Single Dashboard can make 100s of queries</h2>
@@ -289,9 +296,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <li>Use <a href="https://grafana.com/docs/Grafana/latest/dashboards/#rows">Rows</a> to hide set of panels that are not always relevant (rows are loaded lazily by Grafana only upon expanding)</li>
 </ul>
 <figure><img src="/images/optimizing-grafana-queries-with-es/group_by.png"
-         alt="Group By terms, then by time"/><figcaption>
-            <p><em>Group By terms, then by time</em></p>
-        </figcaption>
+    alt="Group By terms, then by time"><figcaption>
+      <p><em>Group By terms, then by time</em></p>
+    </figcaption>
 </figure>
 
 <h2 id="queries-hitting-multiple-shards-can-overload-the-system">Queries hitting multiple shards can overload the system</h2>
@@ -334,16 +341,12 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 
   
   
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-179464703-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+    
+      
+    
+  
+
 
 
 <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"

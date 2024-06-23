@@ -4,14 +4,14 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Cache-Control" content="public" />
 <!-- Enable responsiveness on mobile devices -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="generator" content="Hugo 0.88.1" />
+<meta name="generator" content="Hugo 0.127.0">
 
     
     
@@ -20,17 +20,26 @@
 <title>Building a Streamlit app from scratch and deploying it for free using Heroku • Alex&#39;s Blog</title>
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Building a Streamlit app from scratch and deploying it for free using Heroku"/>
-<meta name="twitter:description" content=""/>
 
-<meta property="og:title" content="Building a Streamlit app from scratch and deploying it for free using Heroku" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/posts/streamlit-openscale/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-11-02T01:48:26+05:30" />
-<meta property="article:modified_time" content="2022-01-26T12:39:37+05:30" /><meta property="og:site_name" content="Alex&#39;s Blog" />
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Building a Streamlit app from scratch and deploying it for free using Heroku">
+  <meta name="twitter:description" content="Pasting random things together">
+      <meta name="twitter:site" content="@alexsanjoseph">
 
+<meta property="og:url" content="//localhost:1313/posts/streamlit-openscale/">
+  <meta property="og:site_name" content="Alex&#39;s Blog">
+  <meta property="og:title" content="Building a Streamlit app from scratch and deploying it for free using Heroku">
+  <meta property="og:description" content="Pasting random things together">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-11-02T01:48:26+05:30">
+    <meta property="article:modified_time" content="2022-01-26T12:39:37+05:30">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Streamlit">
+    <meta property="article:tag" content="Openscale">
+    <meta property="article:tag" content="Heroku">
+    <meta property="article:tag" content="Dropbox">
 
 
     
@@ -45,7 +54,7 @@
 
 
 
-<link rel="stylesheet" href="/scss/hyde-hyde.a49b6ba6c4955c432d9ded493e8ac2653879067ed0659625ca96a85e8747609f.css" integrity="sha256-pJtrpsSVXEMtne1JPorCZTh5Bn7QZZYlypaoXodHYJ8=">
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
 
 
 <link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
@@ -73,14 +82,14 @@
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="/">Alex&#39;s Blog</a>
+        <a href="//localhost:1313/">Alex&#39;s Blog</a>
       </span>
       
         
         
         
         <div class="author-image">
-          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="//localhost:1313/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -158,7 +167,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2016 - 2022 alexsanjoseph
+  &copy; 2016 - 2024 alexsanjoseph
   
 </div>
 
@@ -236,75 +245,72 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <h2 id="build">Build</h2>
 <h3 id="basic-setup">Basic Setup</h3>
 <p>Let&rsquo;s start by creating a new folder as our root.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir streamlit-openscale <span style="color:#f92672">&amp;&amp;</span> cd streamlit-openscale
-</code></pre></div><p>It&rsquo;s a general practice for any sort of self-contained projects to start with by creating a virtual environment. There are <a href="https://realpython.com/python-virtual-environments-a-primer/">very good reasons</a> to use a virtual environment, which I&rsquo;ll not go into detail here. Let&rsquo;s create a <code>venv</code> and activate it</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">python3 -m venv venv <span style="color:#f92672">&amp;&amp;</span> source venv/bin/activate
-</code></pre></div><p>We&rsquo;ll also need to install the libraries that we&rsquo;ll be using for the project. Instead of manually installing them one by one, the standard approach is to create a <em>requirements</em> file which holds the information on the different libraries and their versions. Let&rsquo;s create a file called <code>requirements.txt</code> which has the following contents.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkdir streamlit-openscale <span style="color:#f92672">&amp;&amp;</span> cd streamlit-openscale
+</span></span></code></pre></div><p>It&rsquo;s a general practice for any sort of self-contained projects to start with by creating a virtual environment. There are <a href="https://realpython.com/python-virtual-environments-a-primer/">very good reasons</a> to use a virtual environment, which I&rsquo;ll not go into detail here. Let&rsquo;s create a <code>venv</code> and activate it</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>python3 -m venv venv <span style="color:#f92672">&amp;&amp;</span> source venv/bin/activate
+</span></span></code></pre></div><p>We&rsquo;ll also need to install the libraries that we&rsquo;ll be using for the project. Instead of manually installing them one by one, the standard approach is to create a <em>requirements</em> file which holds the information on the different libraries and their versions. Let&rsquo;s create a file called <code>requirements.txt</code> which has the following contents.</p>
 <pre tabindex="0"><code>dropbox==9.5.0
 pandas==1.0.3
 plotnine==0.6.0
 streamlit==0.57.3
 </code></pre><p>Now, we install the requirements using the following command. This should take a few minutes to install all the dependencies. These will be installed within the <code>venv</code> folder keeping the dependencies completely contained within that folder.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">pip3 install -r requirements.txt
-</code></pre></div><p><em>Note: If you&rsquo;re using git for version control, it is a good idea to add <code>venv</code> into <code>.gitignore</code> to prevent all the libraries from getting checked in</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>pip3 install -r requirements.txt
+</span></span></code></pre></div><p><em>Note: If you&rsquo;re using git for version control, it is a good idea to add <code>venv</code> into <code>.gitignore</code> to prevent all the libraries from getting checked in</em></p>
 <p>Now let&rsquo;s add the entrypoint into the app. This will be the <code>main.py</code> file which has the following content.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e">#!/usr/bin/env python3</span>
-
-<span style="color:#f92672">from</span> src.ui <span style="color:#f92672">import</span> run_streamlit_ui
-
-
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
-    run_streamlit_ui()
-</code></pre></div><p>The last thing to do as part of the setup is to create a <code>/src</code> folder and add the following empty files into it.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir src <span style="color:#f92672">&amp;&amp;</span> cd src
-touch __init__.py <span style="color:#f92672">&amp;&amp;</span> touch dropbox_aux.py <span style="color:#f92672">&amp;&amp;</span> touch plot.py <span style="color:#f92672">&amp;&amp;</span> touch ui.py
-</code></pre></div><p>Your directory structure should look like this now:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">├── main.py
-├── requirements.txt
-├── src
-│   ├── __init__.py
-│   ├── dropbox_aux.py
-│   ├── plot.py
-│   └── ui.py
-└── venv
-</code></pre></div><p>Just to make sure everything is working correctly till now, let&rsquo;s edit <code>ui.py</code> and add the following content into it.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">import</span> streamlit <span style="color:#66d9ef">as</span> st
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_streamlit_ui</span>():
-    st<span style="color:#f92672">.</span>markdown(<span style="color:#e6db74">&#34;## Openscale + Streamlit = Awesome&#34;</span>)
-
-</code></pre></div><p>Now run the following command in the terminal after moving to the root folder</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cd ..
-streamlit run main.py
-</code></pre></div><p>You should see a process running with an output similar to below.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">  You can now view your Streamlit app in your browser.
-
-  Local URL: http://localhost:8501
-  Network URL: http://192.168.0.36:8501
-
-</code></pre></div><p>You should also see the following screen if you navigate to <code>localhost:8501</code> in your browser:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> src.ui <span style="color:#f92672">import</span> run_streamlit_ui
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    run_streamlit_ui()
+</span></span></code></pre></div><p>The last thing to do as part of the setup is to create a <code>/src</code> folder and add the following empty files into it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkdir src <span style="color:#f92672">&amp;&amp;</span> cd src
+</span></span><span style="display:flex;"><span>touch __init__.py <span style="color:#f92672">&amp;&amp;</span> touch dropbox_aux.py <span style="color:#f92672">&amp;&amp;</span> touch plot.py <span style="color:#f92672">&amp;&amp;</span> touch ui.py
+</span></span></code></pre></div><p>Your directory structure should look like this now:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>├── main.py
+</span></span><span style="display:flex;"><span>├── requirements.txt
+</span></span><span style="display:flex;"><span>├── src
+</span></span><span style="display:flex;"><span>│   ├── __init__.py
+</span></span><span style="display:flex;"><span>│   ├── dropbox_aux.py
+</span></span><span style="display:flex;"><span>│   ├── plot.py
+</span></span><span style="display:flex;"><span>│   └── ui.py
+</span></span><span style="display:flex;"><span>└── venv
+</span></span></code></pre></div><p>Just to make sure everything is working correctly till now, let&rsquo;s edit <code>ui.py</code> and add the following content into it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> streamlit <span style="color:#66d9ef">as</span> st
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_streamlit_ui</span>():
+</span></span><span style="display:flex;"><span>    st<span style="color:#f92672">.</span>markdown(<span style="color:#e6db74">&#34;## Openscale + Streamlit = Awesome&#34;</span>)
+</span></span></code></pre></div><p>Now run the following command in the terminal after moving to the root folder</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cd ..
+</span></span><span style="display:flex;"><span>streamlit run main.py
+</span></span></code></pre></div><p>You should see a process running with an output similar to below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>  You can now view your Streamlit app in your browser.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Local URL: http://localhost:8501
+</span></span><span style="display:flex;"><span>  Network URL: http://192.168.0.36:8501
+</span></span></code></pre></div><p>You should also see the following screen if you navigate to <code>localhost:8501</code> in your browser:</p>
 <p><img src="/images/streamlit-openscale/basic_app.png#bordered" alt="Basic Streamlit App"></p>
 <p>Your basic streamlit app is ready!</p>
 <h3 id="adding-the-app-content">Adding the App content</h3>
 <p>Now let&rsquo;s populate each file to actually do something useful.</p>
 <h5 id="dropbox_auxpy">dropbox_aux.py</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
-<span style="color:#f92672">from</span> io <span style="color:#f92672">import</span> StringIO
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_latest_file_name_from_dropbox</span>(dbx, folder_name, username):
-    files_list <span style="color:#f92672">=</span> dbx<span style="color:#f92672">.</span>files_search(folder_name, query<span style="color:#f92672">=</span>username <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;*.csv&#34;</span>)
-    <span style="color:#66d9ef">return</span> sorted([(x<span style="color:#f92672">.</span>metadata<span style="color:#f92672">.</span>name, str(x<span style="color:#f92672">.</span>metadata<span style="color:#f92672">.</span>server_modified)) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> files_list<span style="color:#f92672">.</span>matches], key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#ae81ff">1</span>])[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">download_file_data_from_dropbox</span>(dbx, folder_name, latest_file):
-
-    meta, res <span style="color:#f92672">=</span> dbx<span style="color:#f92672">.</span>files_download(folder_name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> latest_file)
-    file_output <span style="color:#f92672">=</span> res<span style="color:#f92672">.</span>content<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
-    <span style="color:#66d9ef">return</span> pd<span style="color:#f92672">.</span>read_csv(StringIO(file_output))<span style="color:#f92672">.</span>query(<span style="color:#e6db74">&#34;dateTime!=&#39;0.0&#39;&#34;</span>)
-
-</code></pre></div><p>This file contains the auxilliary functions required to get the weights data using the Dropbox API.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> io <span style="color:#f92672">import</span> StringIO
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_latest_file_name_from_dropbox</span>(dbx, folder_name, username):
+</span></span><span style="display:flex;"><span>    files_list <span style="color:#f92672">=</span> dbx<span style="color:#f92672">.</span>files_search(folder_name, query<span style="color:#f92672">=</span>username <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;*.csv&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> sorted([(x<span style="color:#f92672">.</span>metadata<span style="color:#f92672">.</span>name, str(x<span style="color:#f92672">.</span>metadata<span style="color:#f92672">.</span>server_modified)) <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> files_list<span style="color:#f92672">.</span>matches], key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#ae81ff">1</span>])[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">download_file_data_from_dropbox</span>(dbx, folder_name, latest_file):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    meta, res <span style="color:#f92672">=</span> dbx<span style="color:#f92672">.</span>files_download(folder_name <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> latest_file)
+</span></span><span style="display:flex;"><span>    file_output <span style="color:#f92672">=</span> res<span style="color:#f92672">.</span>content<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> pd<span style="color:#f92672">.</span>read_csv(StringIO(file_output))<span style="color:#f92672">.</span>query(<span style="color:#e6db74">&#34;dateTime!=&#39;0.0&#39;&#34;</span>)
+</span></span></code></pre></div><p>This file contains the auxilliary functions required to get the weights data using the Dropbox API.</p>
 <ul>
 <li><code>get_latest_file_name_from_dropbox</code> - Gets the list of files matching a pattern from a particular folder and returns the latest one (most recently updated)</li>
 <li><code>download_file_data_from_dropbox</code> - Downloads the particular file from dropbox</li>
@@ -323,64 +329,61 @@ streamlit run main.py
 766  2018-08-10 08:35    65.8
 767  2018-08-10 08:26    66.2
 768  2018-08-10 08:23    66.2
-
 </code></pre><h5 id="plotpy">plot.py</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">from</span> plotnine <span style="color:#f92672">import</span> ggplot, geom_point, geom_smooth, aes, geom_vline, geom_text, geom_label
-<span style="color:#f92672">from</span> pandas <span style="color:#f92672">import</span> to_datetime
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plot_and_save</span>(scale_data_df_cleaned, smooth_factor, temp_file_name):
-    plot_output <span style="color:#f92672">=</span> (ggplot(scale_data_df_cleaned, aes(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;timestamp&#39;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;weight&#39;</span>)) <span style="color:#f92672">+</span>
-                   <span style="color:#75715e">##   facet_wrap(&#39;~&#39;, ncol = 1, scales = &#39;free&#39;) +</span>
-                   geom_point(size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>) <span style="color:#f92672">+</span>
-                   geom_smooth(span<span style="color:#f92672">=</span>smooth_factor, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;red&#39;</span>))
-    plot_output<span style="color:#f92672">.</span>save(temp_file_name, width<span style="color:#f92672">=</span><span style="color:#ae81ff">13</span>, height<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, dpi<span style="color:#f92672">=</span><span style="color:#ae81ff">80</span>)
-
-</code></pre></div><p>This file contains the plotting functions. Here I&rsquo;m using the <code>plotnine</code> package which is heavily inspired from the amazing <code>ggplot</code> package in <code>R</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">from</span> plotnine <span style="color:#f92672">import</span> ggplot, geom_point, geom_smooth, aes, geom_vline, geom_text, geom_label
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pandas <span style="color:#f92672">import</span> to_datetime
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plot_and_save</span>(scale_data_df_cleaned, smooth_factor, temp_file_name):
+</span></span><span style="display:flex;"><span>    plot_output <span style="color:#f92672">=</span> (ggplot(scale_data_df_cleaned, aes(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;timestamp&#39;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;weight&#39;</span>)) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>                   <span style="color:#75715e">##   facet_wrap(&#39;~&#39;, ncol = 1, scales = &#39;free&#39;) +</span>
+</span></span><span style="display:flex;"><span>                   geom_point(size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>                   geom_smooth(span<span style="color:#f92672">=</span>smooth_factor, color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;red&#39;</span>))
+</span></span><span style="display:flex;"><span>    plot_output<span style="color:#f92672">.</span>save(temp_file_name, width<span style="color:#f92672">=</span><span style="color:#ae81ff">13</span>, height<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, dpi<span style="color:#f92672">=</span><span style="color:#ae81ff">80</span>)
+</span></span></code></pre></div><p>This file contains the plotting functions. Here I&rsquo;m using the <code>plotnine</code> package which is heavily inspired from the amazing <code>ggplot</code> package in <code>R</code>.</p>
 <ul>
 <li><code>plot_and_save</code> - Plots the weight data and saves the plot into a temporarily file to plotted by <code>streamlit</code></li>
 </ul>
 <h5 id="uipy">ui.py</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#f92672">import</span> os
-<span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime, timedelta
-
-<span style="color:#f92672">import</span> dropbox
-<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
-<span style="color:#f92672">import</span> streamlit <span style="color:#66d9ef">as</span> st
-
-<span style="color:#f92672">from</span> src.dropbox_aux <span style="color:#f92672">import</span> get_latest_file_name_from_dropbox, download_file_data_from_dropbox
-<span style="color:#f92672">from</span> src.plot <span style="color:#f92672">import</span> plot_and_save
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_streamlit_ui</span>():
-    st<span style="color:#f92672">.</span>markdown(<span style="color:#e6db74">&#34;## Historical Weight Chart&#34;</span>)
-
-    DROPBOX_KEY <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>environ[<span style="color:#e6db74">&#39;DROPBOX_OPENSCALE_ACCESS_KEY&#39;</span>]
-    FOLDER_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/openscale&#34;</span>
-    TEMP_FILE_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;image.png&#34;</span>
-
-    users <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Alex&#34;</span>, <span style="color:#e6db74">&#34;Malavika&#34;</span>]
-    default_start_date <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(<span style="color:#e6db74">&#34;2018-08-01&#34;</span>)
-
-    username <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>selectbox(<span style="color:#e6db74">&#34;Select User&#34;</span>, users)
-    date_start <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>date_input(<span style="color:#e6db74">&#34;Start Date&#34;</span>, default_start_date)
-    date_end <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>date_input(<span style="color:#e6db74">&#34;End Date&#34;</span>, datetime<span style="color:#f92672">.</span>today()) <span style="color:#f92672">+</span> timedelta(days<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-    smooth_factor <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>slider(<span style="color:#e6db74">&#34;Select smoothening factor&#34;</span>, <span style="color:#ae81ff">0.01</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.12</span>)
-
-    dbx <span style="color:#f92672">=</span> dropbox<span style="color:#f92672">.</span>Dropbox(DROPBOX_KEY)
-
-    latest_file <span style="color:#f92672">=</span> get_latest_file_name_from_dropbox(dbx, FOLDER_NAME, username)
-    scale_data_df <span style="color:#f92672">=</span> download_file_data_from_dropbox(dbx, FOLDER_NAME, latest_file)
-
-    scale_data_df_cleaned <span style="color:#f92672">=</span> scale_data_df \
-        <span style="color:#f92672">.</span>loc[:, [<span style="color:#e6db74">&#34;dateTime&#34;</span>, <span style="color:#e6db74">&#34;weight&#34;</span>]] \
-        <span style="color:#f92672">.</span>assign(timestamp<span style="color:#f92672">=</span>pd<span style="color:#f92672">.</span>to_datetime(scale_data_df[<span style="color:#e6db74">&#39;dateTime&#39;</span>])) \
-        <span style="color:#f92672">.</span>query(<span style="color:#e6db74">&#34;timestamp &gt;= @date_start &amp; timestamp &lt;= @date_end&#34;</span>)
-
-    plot_and_save(scale_data_df_cleaned, smooth_factor, TEMP_FILE_NAME)
-    st<span style="color:#f92672">.</span>image(TEMP_FILE_NAME)
-
-</code></pre></div><p>This is the main file which wraps over all the other functions. It has a single function <code>run_streamlit_ui.py</code> which does the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime, timedelta
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> dropbox
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> streamlit <span style="color:#66d9ef">as</span> st
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> src.dropbox_aux <span style="color:#f92672">import</span> get_latest_file_name_from_dropbox, download_file_data_from_dropbox
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> src.plot <span style="color:#f92672">import</span> plot_and_save
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_streamlit_ui</span>():
+</span></span><span style="display:flex;"><span>    st<span style="color:#f92672">.</span>markdown(<span style="color:#e6db74">&#34;## Historical Weight Chart&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    DROPBOX_KEY <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>environ[<span style="color:#e6db74">&#39;DROPBOX_OPENSCALE_ACCESS_KEY&#39;</span>]
+</span></span><span style="display:flex;"><span>    FOLDER_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/openscale&#34;</span>
+</span></span><span style="display:flex;"><span>    TEMP_FILE_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;image.png&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    users <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Alex&#34;</span>, <span style="color:#e6db74">&#34;Malavika&#34;</span>]
+</span></span><span style="display:flex;"><span>    default_start_date <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(<span style="color:#e6db74">&#34;2018-08-01&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    username <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>selectbox(<span style="color:#e6db74">&#34;Select User&#34;</span>, users)
+</span></span><span style="display:flex;"><span>    date_start <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>date_input(<span style="color:#e6db74">&#34;Start Date&#34;</span>, default_start_date)
+</span></span><span style="display:flex;"><span>    date_end <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>date_input(<span style="color:#e6db74">&#34;End Date&#34;</span>, datetime<span style="color:#f92672">.</span>today()) <span style="color:#f92672">+</span> timedelta(days<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    smooth_factor <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>sidebar<span style="color:#f92672">.</span>slider(<span style="color:#e6db74">&#34;Select smoothening factor&#34;</span>, <span style="color:#ae81ff">0.01</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.12</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    dbx <span style="color:#f92672">=</span> dropbox<span style="color:#f92672">.</span>Dropbox(DROPBOX_KEY)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    latest_file <span style="color:#f92672">=</span> get_latest_file_name_from_dropbox(dbx, FOLDER_NAME, username)
+</span></span><span style="display:flex;"><span>    scale_data_df <span style="color:#f92672">=</span> download_file_data_from_dropbox(dbx, FOLDER_NAME, latest_file)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    scale_data_df_cleaned <span style="color:#f92672">=</span> scale_data_df \
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>loc[:, [<span style="color:#e6db74">&#34;dateTime&#34;</span>, <span style="color:#e6db74">&#34;weight&#34;</span>]] \
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>assign(timestamp<span style="color:#f92672">=</span>pd<span style="color:#f92672">.</span>to_datetime(scale_data_df[<span style="color:#e6db74">&#39;dateTime&#39;</span>])) \
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>query(<span style="color:#e6db74">&#34;timestamp &gt;= @date_start &amp; timestamp &lt;= @date_end&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    plot_and_save(scale_data_df_cleaned, smooth_factor, TEMP_FILE_NAME)
+</span></span><span style="display:flex;"><span>    st<span style="color:#f92672">.</span>image(TEMP_FILE_NAME)
+</span></span></code></pre></div><p>This is the main file which wraps over all the other functions. It has a single function <code>run_streamlit_ui.py</code> which does the following:</p>
 <ol>
 <li>Setup the high-level variables
 <ul>
@@ -410,8 +413,8 @@ streamlit run main.py
 </ol>
 <h3 id="running-everything-locally">Running everything locally</h3>
 <p>Now that we&rsquo;ve the app content also ready, we can try running it locally. As mentioned before, we&rsquo;re providing the <code>DROPBOX_OPENSCALE_ACCESS_KEY</code> as an environment variable.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">DROPBOX_OPENSCALE_ACCESS_KEY<span style="color:#f92672">=</span>&lt;your_key&gt; streamlit run main.py
-</code></pre></div><p>You should be able to the full output similar to below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>DROPBOX_OPENSCALE_ACCESS_KEY<span style="color:#f92672">=</span>&lt;your_key&gt; streamlit run main.py
+</span></span></code></pre></div><p>You should be able to the full output similar to below:</p>
 <p><img src="/images/streamlit-openscale/full_app.png#bordered#large" alt="Fully featured App"></p>
 <p><em>I seem to be slowly gaining the weight I lost during the lockdown!</em></p>
 <h2 id="heroku">Deploying it in Heroku</h2>
@@ -421,48 +424,48 @@ streamlit run main.py
 <p><img src="/images/streamlit-openscale/create_new_app.png#bordered" alt="Create New Heroku App"></p>
 <h3 id="step-2-login-to-heroku-create-a-git-repository-and-add-heroku-as-remote">Step 2: Login to Heroku, create a git repository and add Heroku as remote</h3>
 <p>First, download and install the <a href="https://devcenter.heroku.com/articles/heroku-command-line">Heroku CLI</a>. Then log in to your Heroku account and follow the prompts to create a new SSH public key.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">heroku login
-</code></pre></div><h3 id="step-3-create-a-git-repository-and-add-heroku-as-remote">Step 3: Create a git repository and add Heroku as remote</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>heroku login
+</span></span></code></pre></div><h3 id="step-3-create-a-git-repository-and-add-heroku-as-remote">Step 3: Create a git repository and add Heroku as remote</h3>
 <p>Run the following command in your terminal to create a git repository in your root folder and add heroku git as a remote</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git init
-heroku git:remote -a streamlit-openscale-test
-</code></pre></div><p><em>Optionally you can add github as a remote as well for version control</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>heroku git:remote -a streamlit-openscale-test
+</span></span></code></pre></div><p><em>Optionally you can add github as a remote as well for version control</em></p>
 <h3 id="step-4-add-the-heroku-configuration-files">Step 4: Add the Heroku configuration files</h3>
 <h5 id="procfile">Procfile</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">web: sh setup.sh <span style="color:#f92672">&amp;&amp;</span> streamlit run main.py
-</code></pre></div><h5 id="setupsh">setup.sh</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">mkdir -p ~/.streamlit/
-
-echo <span style="color:#e6db74">&#34;\
-</span><span style="color:#e6db74">[general]\n\
-</span><span style="color:#e6db74">email = \&#34;&lt;your_email_id&gt;\&#34;\n\
-</span><span style="color:#e6db74">&#34;</span> &gt; ~/.streamlit/credentials.toml
-
-echo <span style="color:#e6db74">&#34;\
-</span><span style="color:#e6db74">[server]\n\
-</span><span style="color:#e6db74">headless = true\n\
-</span><span style="color:#e6db74">enableCORS=false\n\
-</span><span style="color:#e6db74">port = </span>$PORT<span style="color:#e6db74">\n\
-</span><span style="color:#e6db74">&#34;</span> &gt; ~/.streamlit/config.toml
-</code></pre></div><p>Your folder structure should look like this now:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">├── Procfile
-├── image.png
-├── main.py
-├── requirements.txt
-├── setup.sh
-├── src
-│   ├── __init__.py
-│   ├── dropbox_aux.py
-│   ├── plot.py
-│   └── ui.py
-└── venv
-</code></pre></div><h3 id="step-5-add-the-heroku-env-vars">Step 5: Add the Heroku env vars</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>web: sh setup.sh <span style="color:#f92672">&amp;&amp;</span> streamlit run main.py
+</span></span></code></pre></div><h5 id="setupsh">setup.sh</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkdir -p ~/.streamlit/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[general]\n\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">email = \&#34;&lt;your_email_id&gt;\&#34;\n\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span> &gt; ~/.streamlit/credentials.toml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[server]\n\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">headless = true\n\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">enableCORS=false\n\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">port = </span>$PORT<span style="color:#e6db74">\n\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span> &gt; ~/.streamlit/config.toml
+</span></span></code></pre></div><p>Your folder structure should look like this now:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>├── Procfile
+</span></span><span style="display:flex;"><span>├── image.png
+</span></span><span style="display:flex;"><span>├── main.py
+</span></span><span style="display:flex;"><span>├── requirements.txt
+</span></span><span style="display:flex;"><span>├── setup.sh
+</span></span><span style="display:flex;"><span>├── src
+</span></span><span style="display:flex;"><span>│   ├── __init__.py
+</span></span><span style="display:flex;"><span>│   ├── dropbox_aux.py
+</span></span><span style="display:flex;"><span>│   ├── plot.py
+</span></span><span style="display:flex;"><span>│   └── ui.py
+</span></span><span style="display:flex;"><span>└── venv
+</span></span></code></pre></div><h3 id="step-5-add-the-heroku-env-vars">Step 5: Add the Heroku env vars</h3>
 <p>You can add the configuration variables, in this case <code>DROPBOX_OPENSCALE_ACCESS_KEY</code> in the <a href="https://dashboard.heroku.com/apps/streamlit-openscale-test/settings">heroku configuration page</a></p>
 <p><img src="/images/streamlit-openscale/heroku_config.png#bordered" alt="Adding Heroku Config"></p>
 <h3 id="step-6-deploy">Step 6: Deploy!</h3>
 <p>Once the configuration has been added, we can deploy it to heroku using the heroku command line.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git add . <span style="color:#f92672">&amp;&amp;</span> git commit -am <span style="color:#e6db74">&#34;heroku push&#34;</span> <span style="color:#f92672">&amp;&amp;</span> git push heroku master
-</code></pre></div><!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git add . <span style="color:#f92672">&amp;&amp;</span> git commit -am <span style="color:#e6db74">&#34;heroku push&#34;</span> <span style="color:#f92672">&amp;&amp;</span> git push heroku master
+</span></span></code></pre></div><!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <h2 id="check-it-out">Check it out!</h2>
 <p>You can checkout a live version of the app <a href="https://streamlit-openscale-test.herokuapp.com/">here</a>. Note that I&rsquo;m running it on free dynos, it might take a <a href="https://en.wikipedia.org/wiki/There_ain%27t_no_such_thing_as_a_free_lunch">little bit of time</a> to load.</p>
@@ -496,16 +499,12 @@ echo <span style="color:#e6db74">&#34;\
 
   
   
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-179464703-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+    
+      
+    
+  
+
 
 
 <script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"
