@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MTConnect on Alex&#39;s Blog</title>
-    <link>//localhost:1313/tags/mtconnect/</link>
+    <link>/tags/mtconnect/</link>
     <description>Recent content in MTConnect on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 26 Jan 2022 12:39:37 +0530</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/mtconnect/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/mtconnect/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MTConnect Webinar Example</title>
-      <link>//localhost:1313/posts/mtconnect-webinar/</link>
+      <link>/posts/mtconnect-webinar/</link>
       <pubDate>Sun, 16 Oct 2016 22:10:24 +0530</pubDate>
-      <guid>//localhost:1313/posts/mtconnect-webinar/</guid>
+      <guid>/posts/mtconnect-webinar/</guid>
       <description></description>
     </item>
   </channel>

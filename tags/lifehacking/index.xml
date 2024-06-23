@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lifehacking on Alex&#39;s Blog</title>
-    <link>//localhost:1313/tags/lifehacking/</link>
+    <link>/tags/lifehacking/</link>
     <description>Recent content in Lifehacking on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 30 Jun 2022 22:50:41 +0530</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/lifehacking/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/lifehacking/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The most &#34;painful&#34; analysis that I&#39;ve ever done</title>
-      <link>//localhost:1313/posts/adult-tonsillectomy/</link>
+      <link>/posts/adult-tonsillectomy/</link>
       <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/adult-tonsillectomy/</guid>
+      <guid>/posts/adult-tonsillectomy/</guid>
       <description></description>
     </item>
     <item>
       <title>Tracking Personal Expenses for Fun (and Future!)</title>
-      <link>//localhost:1313/posts/tracking-expenses/</link>
+      <link>/posts/tracking-expenses/</link>
       <pubDate>Sat, 18 Dec 2021 11:39:10 +0530</pubDate>
-      <guid>//localhost:1313/posts/tracking-expenses/</guid>
+      <guid>/posts/tracking-expenses/</guid>
       <description></description>
     </item>
   </channel>

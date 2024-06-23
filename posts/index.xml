@@ -2,122 +2,122 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Alex&#39;s Blog</title>
-    <link>//localhost:1313/posts/</link>
+    <link>/posts/</link>
     <description>Recent content in Posts on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 23 Jun 2024 17:18:47 +0530</lastBuildDate>
-    <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Searching for RH Counterexamples in Golang - Search Strategies</title>
-      <link>//localhost:1313/posts/rh-counterexamples-in-go-3-2-search-strategies/</link>
+      <link>/posts/rh-counterexamples-in-go-3-2-search-strategies/</link>
       <pubDate>Fri, 16 Dec 2022 18:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/rh-counterexamples-in-go-3-2-search-strategies/</guid>
+      <guid>/posts/rh-counterexamples-in-go-3-2-search-strategies/</guid>
       <description></description>
     </item>
     <item>
       <title>Searching for RH Counterexamples in Golang - Superabundant Numbers</title>
-      <link>//localhost:1313/posts/rh-counterexamples-in-go-3-1-superabundant/</link>
+      <link>/posts/rh-counterexamples-in-go-3-1-superabundant/</link>
       <pubDate>Sat, 29 Oct 2022 10:17:52 +0000</pubDate>
-      <guid>//localhost:1313/posts/rh-counterexamples-in-go-3-1-superabundant/</guid>
+      <guid>/posts/rh-counterexamples-in-go-3-1-superabundant/</guid>
       <description></description>
     </item>
     <item>
       <title>The most &#34;painful&#34; analysis that I&#39;ve ever done</title>
-      <link>//localhost:1313/posts/adult-tonsillectomy/</link>
+      <link>/posts/adult-tonsillectomy/</link>
       <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/adult-tonsillectomy/</guid>
+      <guid>/posts/adult-tonsillectomy/</guid>
       <description></description>
     </item>
     <item>
       <title>Searching for RH Counterexamples in Golang - Adding a Database</title>
-      <link>//localhost:1313/posts/rh-counterexamples-in-go-1-database/</link>
+      <link>/posts/rh-counterexamples-in-go-1-database/</link>
       <pubDate>Wed, 20 Apr 2022 10:17:52 +0000</pubDate>
-      <guid>//localhost:1313/posts/rh-counterexamples-in-go-1-database/</guid>
+      <guid>/posts/rh-counterexamples-in-go-1-database/</guid>
       <description></description>
     </item>
     <item>
       <title>Plagiarism Detection in Competitive Programming</title>
-      <link>//localhost:1313/posts/plagiarism-detection/</link>
+      <link>/posts/plagiarism-detection/</link>
       <pubDate>Sat, 26 Mar 2022 16:18:43 +0530</pubDate>
-      <guid>//localhost:1313/posts/plagiarism-detection/</guid>
+      <guid>/posts/plagiarism-detection/</guid>
       <description></description>
     </item>
     <item>
       <title>Searching for RH Counterexamples in Golang - Improving Performance via Parallel processing</title>
-      <link>//localhost:1313/posts/rh-counterexamples-in-go-1_1-performance/</link>
+      <link>/posts/rh-counterexamples-in-go-1_1-performance/</link>
       <pubDate>Sun, 06 Feb 2022 00:00:52 +0000</pubDate>
-      <guid>//localhost:1313/posts/rh-counterexamples-in-go-1_1-performance/</guid>
+      <guid>/posts/rh-counterexamples-in-go-1_1-performance/</guid>
       <description></description>
     </item>
     <item>
       <title>Searching for RH Counterexamples in Golang - Setting up</title>
-      <link>//localhost:1313/posts/rh-counterexamples-in-go-1-setup/</link>
+      <link>/posts/rh-counterexamples-in-go-1-setup/</link>
       <pubDate>Sun, 16 Jan 2022 10:17:52 +0000</pubDate>
-      <guid>//localhost:1313/posts/rh-counterexamples-in-go-1-setup/</guid>
+      <guid>/posts/rh-counterexamples-in-go-1-setup/</guid>
       <description></description>
     </item>
     <item>
       <title>Tracking Personal Expenses for Fun (and Future!)</title>
-      <link>//localhost:1313/posts/tracking-expenses/</link>
+      <link>/posts/tracking-expenses/</link>
       <pubDate>Sat, 18 Dec 2021 11:39:10 +0530</pubDate>
-      <guid>//localhost:1313/posts/tracking-expenses/</guid>
+      <guid>/posts/tracking-expenses/</guid>
       <description></description>
     </item>
     <item>
       <title>Duolingo Automatic Streak Save</title>
-      <link>//localhost:1313/posts/duolingo-save-streak/</link>
+      <link>/posts/duolingo-save-streak/</link>
       <pubDate>Mon, 24 May 2021 16:18:43 +0530</pubDate>
-      <guid>//localhost:1313/posts/duolingo-save-streak/</guid>
+      <guid>/posts/duolingo-save-streak/</guid>
       <description></description>
     </item>
     <item>
       <title>Optimizing Grafana Queries With Elasticsearch</title>
-      <link>//localhost:1313/posts/optimizing-grafana-queries-with-es/</link>
+      <link>/posts/optimizing-grafana-queries-with-es/</link>
       <pubDate>Wed, 24 Feb 2021 21:05:59 +0530</pubDate>
-      <guid>//localhost:1313/posts/optimizing-grafana-queries-with-es/</guid>
+      <guid>/posts/optimizing-grafana-queries-with-es/</guid>
       <description></description>
     </item>
     <item>
       <title>Reinstalling OSX Recovery Partition from a bricked MacBook Pro</title>
-      <link>//localhost:1313/posts/osx-reinstall-from-scratch/</link>
+      <link>/posts/osx-reinstall-from-scratch/</link>
       <pubDate>Sun, 24 Jan 2021 10:30:00 +0530</pubDate>
-      <guid>//localhost:1313/posts/osx-reinstall-from-scratch/</guid>
+      <guid>/posts/osx-reinstall-from-scratch/</guid>
       <description></description>
     </item>
     <item>
       <title>AWS Instance type recommender for optimal resource packing</title>
-      <link>//localhost:1313/posts/aws-instance-recommender/</link>
+      <link>/posts/aws-instance-recommender/</link>
       <pubDate>Sun, 20 Dec 2020 10:39:10 +0530</pubDate>
-      <guid>//localhost:1313/posts/aws-instance-recommender/</guid>
+      <guid>/posts/aws-instance-recommender/</guid>
       <description></description>
     </item>
     <item>
       <title>Building a Streamlit app from scratch and deploying it for free using Heroku</title>
-      <link>//localhost:1313/posts/streamlit-openscale/</link>
+      <link>/posts/streamlit-openscale/</link>
       <pubDate>Mon, 02 Nov 2020 01:48:26 +0530</pubDate>
-      <guid>//localhost:1313/posts/streamlit-openscale/</guid>
+      <guid>/posts/streamlit-openscale/</guid>
       <description></description>
     </item>
     <item>
       <title>Bodybuilder - A python port of the nodeJS BodyBuilder Package</title>
-      <link>//localhost:1313/posts/bodybuilder_intro/</link>
+      <link>/posts/bodybuilder_intro/</link>
       <pubDate>Sun, 18 Oct 2020 20:39:10 +0530</pubDate>
-      <guid>//localhost:1313/posts/bodybuilder_intro/</guid>
+      <guid>/posts/bodybuilder_intro/</guid>
       <description></description>
     </item>
     <item>
       <title>Introducing compareDF</title>
-      <link>//localhost:1313/posts/comparedf-intro/</link>
+      <link>/posts/comparedf-intro/</link>
       <pubDate>Fri, 17 Aug 2018 01:25:41 +0530</pubDate>
-      <guid>//localhost:1313/posts/comparedf-intro/</guid>
+      <guid>/posts/comparedf-intro/</guid>
       <description></description>
     </item>
     <item>
       <title>MTConnect Webinar Example</title>
-      <link>//localhost:1313/posts/mtconnect-webinar/</link>
+      <link>/posts/mtconnect-webinar/</link>
       <pubDate>Sun, 16 Oct 2016 22:10:24 +0530</pubDate>
-      <guid>//localhost:1313/posts/mtconnect-webinar/</guid>
+      <guid>/posts/mtconnect-webinar/</guid>
       <description></description>
     </item>
   </channel>
