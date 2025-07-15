@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Streamlit on Alex&#39;s Blog</title>
-    <link>/tags/streamlit/</link>
+    <link>//localhost:1313/tags/streamlit/</link>
     <description>Recent content in Streamlit on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 26 Jan 2022 12:39:37 +0530</lastBuildDate>
-    <atom:link href="/tags/streamlit/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/streamlit/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AWS Instance type recommender for optimal resource packing</title>
-      <link>/posts/aws-instance-recommender/</link>
+      <link>//localhost:1313/posts/aws-instance-recommender/</link>
       <pubDate>Sun, 20 Dec 2020 10:39:10 +0530</pubDate>
-      <guid>/posts/aws-instance-recommender/</guid>
+      <guid>//localhost:1313/posts/aws-instance-recommender/</guid>
       <description></description>
     </item>
     <item>
       <title>Building a Streamlit app from scratch and deploying it for free using Heroku</title>
-      <link>/posts/streamlit-openscale/</link>
+      <link>//localhost:1313/posts/streamlit-openscale/</link>
       <pubDate>Mon, 02 Nov 2020 01:48:26 +0530</pubDate>
-      <guid>/posts/streamlit-openscale/</guid>
+      <guid>//localhost:1313/posts/streamlit-openscale/</guid>
       <description></description>
     </item>
   </channel>

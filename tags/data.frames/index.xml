@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data.frames on Alex&#39;s Blog</title>
-    <link>/tags/data.frames/</link>
+    <link>//localhost:1313/tags/data.frames/</link>
     <description>Recent content in Data.frames on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 23 Jun 2024 17:18:47 +0530</lastBuildDate>
-    <atom:link href="/tags/data.frames/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/data.frames/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introducing compareDF</title>
-      <link>/posts/comparedf-intro/</link>
+      <link>//localhost:1313/posts/comparedf-intro/</link>
       <pubDate>Fri, 17 Aug 2018 01:25:41 +0530</pubDate>
-      <guid>/posts/comparedf-intro/</guid>
+      <guid>//localhost:1313/posts/comparedf-intro/</guid>
       <description></description>
     </item>
   </channel>

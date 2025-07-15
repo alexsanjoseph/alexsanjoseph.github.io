@@ -2,276 +2,297 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Alex&#39;s Blog</title>
-    <link>/tags/</link>
+    <link>//localhost:1313/tags/</link>
     <description>Recent content in Tags on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Jun 2024 17:18:47 +0530</lastBuildDate>
-    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Jun 2024 09:49:00 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data-Visualization</title>
+      <link>//localhost:1313/tags/data-visualization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/data-visualization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Netrin</title>
+      <link>//localhost:1313/tags/netrin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/netrin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Running</title>
+      <link>//localhost:1313/tags/running/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/running/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Zone-Based-Training</title>
+      <link>//localhost:1313/tags/zone-based-training/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/zone-based-training/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Golang</title>
-      <link>/tags/golang/</link>
+      <link>//localhost:1313/tags/golang/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/golang/</guid>
+      <guid>//localhost:1313/tags/golang/</guid>
       <description></description>
     </item>
     <item>
       <title>Riemann-Hypothesis</title>
-      <link>/tags/riemann-hypothesis/</link>
+      <link>//localhost:1313/tags/riemann-hypothesis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/riemann-hypothesis/</guid>
+      <guid>//localhost:1313/tags/riemann-hypothesis/</guid>
       <description></description>
     </item>
     <item>
       <title>Search-Strategies</title>
-      <link>/tags/search-strategies/</link>
+      <link>//localhost:1313/tags/search-strategies/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/search-strategies/</guid>
+      <guid>//localhost:1313/tags/search-strategies/</guid>
       <description></description>
     </item>
     <item>
       <title>Superabundant</title>
-      <link>/tags/superabundant/</link>
+      <link>//localhost:1313/tags/superabundant/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/superabundant/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Data-Visualization</title>
-      <link>/tags/data-visualization/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/data-visualization/</guid>
+      <guid>//localhost:1313/tags/superabundant/</guid>
       <description></description>
     </item>
     <item>
       <title>Lifehacking</title>
-      <link>/tags/lifehacking/</link>
+      <link>//localhost:1313/tags/lifehacking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/lifehacking/</guid>
+      <guid>//localhost:1313/tags/lifehacking/</guid>
       <description></description>
     </item>
     <item>
       <title>Pain</title>
-      <link>/tags/pain/</link>
+      <link>//localhost:1313/tags/pain/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/pain/</guid>
+      <guid>//localhost:1313/tags/pain/</guid>
       <description></description>
     </item>
     <item>
       <title>Tonsillectomy</title>
-      <link>/tags/tonsillectomy/</link>
+      <link>//localhost:1313/tags/tonsillectomy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/tonsillectomy/</guid>
+      <guid>//localhost:1313/tags/tonsillectomy/</guid>
       <description></description>
     </item>
     <item>
       <title>Database</title>
-      <link>/tags/database/</link>
+      <link>//localhost:1313/tags/database/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/database/</guid>
+      <guid>//localhost:1313/tags/database/</guid>
       <description></description>
     </item>
     <item>
       <title>Algorithms</title>
-      <link>/tags/algorithms/</link>
+      <link>//localhost:1313/tags/algorithms/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/algorithms/</guid>
+      <guid>//localhost:1313/tags/algorithms/</guid>
       <description></description>
     </item>
     <item>
       <title>Clustering</title>
-      <link>/tags/clustering/</link>
+      <link>//localhost:1313/tags/clustering/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/clustering/</guid>
+      <guid>//localhost:1313/tags/clustering/</guid>
       <description></description>
     </item>
     <item>
       <title>R</title>
-      <link>/tags/r/</link>
+      <link>//localhost:1313/tags/r/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/r/</guid>
+      <guid>//localhost:1313/tags/r/</guid>
       <description></description>
     </item>
     <item>
       <title>Optimization</title>
-      <link>/tags/optimization/</link>
+      <link>//localhost:1313/tags/optimization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/optimization/</guid>
+      <guid>//localhost:1313/tags/optimization/</guid>
       <description></description>
     </item>
     <item>
       <title>Parallelization</title>
-      <link>/tags/parallelization/</link>
+      <link>//localhost:1313/tags/parallelization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/parallelization/</guid>
+      <guid>//localhost:1313/tags/parallelization/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>/tags/python/</link>
+      <link>//localhost:1313/tags/python/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/python/</guid>
+      <guid>//localhost:1313/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Kata</title>
-      <link>/tags/kata/</link>
+      <link>//localhost:1313/tags/kata/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/kata/</guid>
+      <guid>//localhost:1313/tags/kata/</guid>
       <description></description>
     </item>
     <item>
       <title>Expense-Tracking</title>
-      <link>/tags/expense-tracking/</link>
+      <link>//localhost:1313/tags/expense-tracking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/expense-tracking/</guid>
+      <guid>//localhost:1313/tags/expense-tracking/</guid>
       <description></description>
     </item>
     <item>
       <title>Fun</title>
-      <link>/tags/fun/</link>
+      <link>//localhost:1313/tags/fun/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/fun/</guid>
+      <guid>//localhost:1313/tags/fun/</guid>
       <description></description>
     </item>
     <item>
       <title>Aws</title>
-      <link>/tags/aws/</link>
+      <link>//localhost:1313/tags/aws/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/aws/</guid>
+      <guid>//localhost:1313/tags/aws/</guid>
       <description></description>
     </item>
     <item>
       <title>Duolingo</title>
-      <link>/tags/duolingo/</link>
+      <link>//localhost:1313/tags/duolingo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/duolingo/</guid>
+      <guid>//localhost:1313/tags/duolingo/</guid>
       <description></description>
     </item>
     <item>
       <title>Lambda</title>
-      <link>/tags/lambda/</link>
+      <link>//localhost:1313/tags/lambda/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/lambda/</guid>
+      <guid>//localhost:1313/tags/lambda/</guid>
       <description></description>
     </item>
     <item>
       <title>Elasticsearch</title>
-      <link>/tags/elasticsearch/</link>
+      <link>//localhost:1313/tags/elasticsearch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/elasticsearch/</guid>
+      <guid>//localhost:1313/tags/elasticsearch/</guid>
       <description></description>
     </item>
     <item>
       <title>Grafana</title>
-      <link>/tags/grafana/</link>
+      <link>//localhost:1313/tags/grafana/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/grafana/</guid>
+      <guid>//localhost:1313/tags/grafana/</guid>
       <description></description>
     </item>
     <item>
       <title>Macbook</title>
-      <link>/tags/macbook/</link>
+      <link>//localhost:1313/tags/macbook/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/macbook/</guid>
+      <guid>//localhost:1313/tags/macbook/</guid>
       <description></description>
     </item>
     <item>
       <title>Osx</title>
-      <link>/tags/osx/</link>
+      <link>//localhost:1313/tags/osx/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/osx/</guid>
+      <guid>//localhost:1313/tags/osx/</guid>
       <description></description>
     </item>
     <item>
       <title>Recovery</title>
-      <link>/tags/recovery/</link>
+      <link>//localhost:1313/tags/recovery/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/recovery/</guid>
+      <guid>//localhost:1313/tags/recovery/</guid>
       <description></description>
     </item>
     <item>
       <title>Reinstall</title>
-      <link>/tags/reinstall/</link>
+      <link>//localhost:1313/tags/reinstall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/reinstall/</guid>
+      <guid>//localhost:1313/tags/reinstall/</guid>
       <description></description>
     </item>
     <item>
       <title>Linear-Programming</title>
-      <link>/tags/linear-programming/</link>
+      <link>//localhost:1313/tags/linear-programming/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/linear-programming/</guid>
+      <guid>//localhost:1313/tags/linear-programming/</guid>
       <description></description>
     </item>
     <item>
       <title>Streamlit</title>
-      <link>/tags/streamlit/</link>
+      <link>//localhost:1313/tags/streamlit/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/streamlit/</guid>
+      <guid>//localhost:1313/tags/streamlit/</guid>
       <description></description>
     </item>
     <item>
       <title>Dropbox</title>
-      <link>/tags/dropbox/</link>
+      <link>//localhost:1313/tags/dropbox/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/dropbox/</guid>
+      <guid>//localhost:1313/tags/dropbox/</guid>
       <description></description>
     </item>
     <item>
       <title>Heroku</title>
-      <link>/tags/heroku/</link>
+      <link>//localhost:1313/tags/heroku/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/heroku/</guid>
+      <guid>//localhost:1313/tags/heroku/</guid>
       <description></description>
     </item>
     <item>
       <title>Openscale</title>
-      <link>/tags/openscale/</link>
+      <link>//localhost:1313/tags/openscale/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/openscale/</guid>
+      <guid>//localhost:1313/tags/openscale/</guid>
       <description></description>
     </item>
     <item>
       <title>Bodybuilder</title>
-      <link>/tags/bodybuilder/</link>
+      <link>//localhost:1313/tags/bodybuilder/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/bodybuilder/</guid>
+      <guid>//localhost:1313/tags/bodybuilder/</guid>
       <description></description>
     </item>
     <item>
       <title>Compare</title>
-      <link>/tags/compare/</link>
+      <link>//localhost:1313/tags/compare/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/compare/</guid>
+      <guid>//localhost:1313/tags/compare/</guid>
       <description></description>
     </item>
     <item>
       <title>Data.frames</title>
-      <link>/tags/data.frames/</link>
+      <link>//localhost:1313/tags/data.frames/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/data.frames/</guid>
+      <guid>//localhost:1313/tags/data.frames/</guid>
       <description></description>
     </item>
     <item>
       <title>Package</title>
-      <link>/tags/package/</link>
+      <link>//localhost:1313/tags/package/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/package/</guid>
+      <guid>//localhost:1313/tags/package/</guid>
       <description></description>
     </item>
     <item>
       <title>MTConnect</title>
-      <link>/tags/mtconnect/</link>
+      <link>//localhost:1313/tags/mtconnect/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/mtconnect/</guid>
+      <guid>//localhost:1313/tags/mtconnect/</guid>
       <description></description>
     </item>
     <item>
       <title>Webinar</title>
-      <link>/tags/webinar/</link>
+      <link>//localhost:1313/tags/webinar/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/tags/webinar/</guid>
+      <guid>//localhost:1313/tags/webinar/</guid>
       <description></description>
     </item>
   </channel>

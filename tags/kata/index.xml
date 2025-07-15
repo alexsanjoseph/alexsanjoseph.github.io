@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kata on Alex&#39;s Blog</title>
-    <link>/tags/kata/</link>
+    <link>//localhost:1313/tags/kata/</link>
     <description>Recent content in Kata on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 26 Jan 2022 12:39:37 +0530</lastBuildDate>
-    <atom:link href="/tags/kata/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/kata/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Searching for RH Counterexamples in Golang - Setting up</title>
-      <link>/posts/rh-counterexamples-in-go-1-setup/</link>
+      <link>//localhost:1313/posts/rh-counterexamples-in-go-1-setup/</link>
       <pubDate>Sun, 16 Jan 2022 10:17:52 +0000</pubDate>
-      <guid>/posts/rh-counterexamples-in-go-1-setup/</guid>
+      <guid>//localhost:1313/posts/rh-counterexamples-in-go-1-setup/</guid>
       <description></description>
     </item>
   </channel>

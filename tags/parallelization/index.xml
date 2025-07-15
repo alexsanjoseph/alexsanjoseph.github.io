@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Parallelization on Alex&#39;s Blog</title>
-    <link>/tags/parallelization/</link>
+    <link>//localhost:1313/tags/parallelization/</link>
     <description>Recent content in Parallelization on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 24 Apr 2022 15:09:59 -0400</lastBuildDate>
-    <atom:link href="/tags/parallelization/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/parallelization/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Searching for RH Counterexamples in Golang - Improving Performance via Parallel processing</title>
-      <link>/posts/rh-counterexamples-in-go-1_1-performance/</link>
+      <link>//localhost:1313/posts/rh-counterexamples-in-go-1_1-performance/</link>
       <pubDate>Sun, 06 Feb 2022 00:00:52 +0000</pubDate>
-      <guid>/posts/rh-counterexamples-in-go-1_1-performance/</guid>
+      <guid>//localhost:1313/posts/rh-counterexamples-in-go-1_1-performance/</guid>
       <description></description>
     </item>
   </channel>

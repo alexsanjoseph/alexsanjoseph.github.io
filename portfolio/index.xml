@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Alex&#39;s Blog</title>
-    <link>/portfolio/</link>
+    <link>//localhost:1313/portfolio/</link>
     <description>Recent content in Projects on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 26 Jan 2022 12:39:37 +0530</lastBuildDate>
-    <atom:link href="/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/portfolio/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RH Counterexample Search</title>
-      <link>/portfolio/rh/</link>
+      <link>//localhost:1313/portfolio/rh/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>/portfolio/rh/</guid>
+      <guid>//localhost:1313/portfolio/rh/</guid>
       <description>In this project, I recreate a Python project that inspired me, to find out counterexamples of Riemann Hypothesis by searching across integers, in Golang.&#xA;This includes setting up a project using git, test-driven development, using a database, deploying the project on cloud, scaling and productionizing.</description>
     </item>
     <item>
       <title>AWS Instance Recommender</title>
-      <link>/portfolio/awsinstance/</link>
+      <link>//localhost:1313/portfolio/awsinstance/</link>
       <pubDate>Thu, 01 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>/portfolio/awsinstance/</guid>
+      <guid>//localhost:1313/portfolio/awsinstance/</guid>
       <description>The optimization problem is solved by expressing it as a linear programming equation and solving it using the PuLP package in python.</description>
     </item>
     <item>
       <title>Plagiarism Detection in Competitive programming</title>
-      <link>/portfolio/plagiarism/</link>
+      <link>//localhost:1313/portfolio/plagiarism/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>/portfolio/plagiarism/</guid>
+      <guid>//localhost:1313/portfolio/plagiarism/</guid>
       <description>This project was done in a personal capacity as a way to automate manual detection of plagiarism for a campus recruitment drive.</description>
     </item>
     <item>
       <title>Automatic Duolingo Streak Saver</title>
-      <link>/portfolio/streak_save/</link>
+      <link>//localhost:1313/portfolio/streak_save/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
-      <guid>/portfolio/streak_save/</guid>
+      <guid>//localhost:1313/portfolio/streak_save/</guid>
       <description>Duolingo has the concept of a &amp;ldquo;streak freeze&amp;rdquo; in the in-app shop by which you can spend the Duo currency you&amp;rsquo;ve earned by advancing across levels to buy a component in-app which prevents you to from losing your hard-earned streak, just for that day. Once the streak freeze is used, you have to buy a new one from the market again in order to be able to use it. What if you&amp;rsquo;re out for multiple days in a row and you&amp;rsquo;re not in a position to play/buy the streak freeze?</description>
     </item>
     <item>
       <title>CompareDF</title>
-      <link>/portfolio/comparedf/</link>
+      <link>//localhost:1313/portfolio/comparedf/</link>
       <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
-      <guid>/portfolio/comparedf/</guid>
+      <guid>//localhost:1313/portfolio/comparedf/</guid>
       <description>This package has been on CRAN since 2016 with two major releases and many minor/patch releases and Has 70+ stars, with 80K downloads, currently averaging ~2000 downloads per month.</description>
     </item>
   </channel>

@@ -4,7 +4,7 @@
     
 
 
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,7 @@
   <meta name="twitter:description" content="Pasting random things together">
       <meta name="twitter:site" content="@alexsanjoseph">
 
-<meta property="og:url" content="/posts/aws-instance-recommender/">
+<meta property="og:url" content="//localhost:1313/posts/aws-instance-recommender/">
   <meta property="og:site_name" content="Alex&#39;s Blog">
   <meta property="og:title" content="AWS Instance type recommender for optimal resource packing">
   <meta property="og:description" content="Pasting random things together">
@@ -82,14 +82,14 @@
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="/">Alex&#39;s Blog</a>
+        <a href="//localhost:1313/">Alex&#39;s Blog</a>
       </span>
       
         
         
         
         <div class="author-image">
-          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="//localhost:1313/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -167,7 +167,7 @@
     </div>
     
 <div class="copyright">
-  &copy; 2016 - 2024 alexsanjoseph
+  &copy; 2016 - 2025 alexsanjoseph
   
 </div>
 
@@ -305,7 +305,7 @@ on ephemeral demands, making sure that resources are not wasted when not require
 </span></span><span style="display:flex;"><span>    best_reco <span style="color:#f92672">=</span> best_reco<span style="color:#f92672">.</span>merge(instance_df)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> best_reco
 </span></span></code></pre></div><h1 id="wrapping-it-into-an-application">Wrapping it into an Application</h1>
-<p>For making this into an app, we chose to use <a href="https://www.streamlit.io/">Streamlit</a>. We&rsquo;ve written in detail about making a Streamlit app and hosting it yourself for free <a href="/posts/streamlit-openscale/">here</a>. In this app, we follow the following high level steps:</p>
+<p>For making this into an app, we chose to use <a href="https://www.streamlit.io/">Streamlit</a>. We&rsquo;ve written in detail about making a Streamlit app and hosting it yourself for free <a href="//localhost:1313/posts/streamlit-openscale/">here</a>. In this app, we follow the following high level steps:</p>
 <ul>
 <li>Get the requirements from the user
 <ul>
@@ -321,7 +321,7 @@ on ephemeral demands, making sure that resources are not wasted when not require
 </ul>
 <p><img src="/images/aws-instance-recommender/example_ui.png#bordered" alt="Example UI"></p>
 <h1 id="try-it-out">Try it out</h1>
-<p>You can checkout the app in action <a href="https://share.streamlit.io/tuxiedev/instance-recommender/main/streamlit_ui.py">here</a> (using streamlit sharing) and <a href="https://aws-instance-recommender.herokuapp.com/">here</a> (using <a href="/posts/streamlit-openscale/#heroku">heroku</a>, please wait 30 seconds for the very first load since this is on the free tier!).</p>
+<p>You can checkout the app in action <a href="https://share.streamlit.io/tuxiedev/instance-recommender/main/streamlit_ui.py">here</a> (using streamlit sharing) and <a href="https://aws-instance-recommender.herokuapp.com/">here</a> (using <a href="//localhost:1313/posts/streamlit-openscale/#heroku">heroku</a>, please wait 30 seconds for the very first load since this is on the free tier!).</p>
 <h1 id="host-it-yourself">Host it yourself!</h1>
 <p>Instructions on how to host the app yourself can be found in the <a href="https://github.com/alexsanjoseph/instance-recommender">project homepage</a>.</p>
 <h1 id="credits">Credits</h1>

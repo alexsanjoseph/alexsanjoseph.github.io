@@ -2,198 +2,210 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
+    <loc>//localhost:1313/</loc>
+    <lastmod>2024-06-24T09:49:00+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/data-visualization/</loc>
+    <lastmod>2024-06-24T09:49:00+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/my-journey-with-zone-based-training/</loc>
+    <lastmod>2024-06-24T09:49:00+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/netrin/</loc>
+    <lastmod>2024-06-24T09:49:00+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/</loc>
+    <lastmod>2024-06-24T09:49:00+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/running/</loc>
+    <lastmod>2024-06-24T09:49:00+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2024-06-24T09:49:00+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/zone-based-training/</loc>
+    <lastmod>2024-06-24T09:49:00+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/golang/</loc>
     <lastmod>2024-06-23T17:18:47+05:30</lastmod>
   </url><url>
-    <loc>/posts/</loc>
+    <loc>//localhost:1313/tags/riemann-hypothesis/</loc>
     <lastmod>2024-06-23T17:18:47+05:30</lastmod>
   </url><url>
-    <loc>/tags/golang/</loc>
-    <lastmod>2024-06-23T17:18:47+05:30</lastmod>
-  </url><url>
-    <loc>/tags/riemann-hypothesis/</loc>
-    <lastmod>2024-06-23T17:18:47+05:30</lastmod>
-  </url><url>
-    <loc>/tags/search-strategies/</loc>
+    <loc>//localhost:1313/tags/search-strategies/</loc>
     <lastmod>2022-12-18T14:24:06+05:30</lastmod>
   </url><url>
-    <loc>/posts/rh-counterexamples-in-go-3-2-search-strategies/</loc>
+    <loc>//localhost:1313/posts/rh-counterexamples-in-go-3-2-search-strategies/</loc>
     <lastmod>2022-12-18T14:24:06+05:30</lastmod>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>//localhost:1313/posts/rh-counterexamples-in-go-3-1-superabundant/</loc>
     <lastmod>2024-06-23T17:18:47+05:30</lastmod>
   </url><url>
-    <loc>/posts/rh-counterexamples-in-go-3-1-superabundant/</loc>
+    <loc>//localhost:1313/tags/superabundant/</loc>
     <lastmod>2024-06-23T17:18:47+05:30</lastmod>
   </url><url>
-    <loc>/tags/superabundant/</loc>
-    <lastmod>2024-06-23T17:18:47+05:30</lastmod>
-  </url><url>
-    <loc>/tags/data-visualization/</loc>
+    <loc>//localhost:1313/tags/lifehacking/</loc>
     <lastmod>2022-06-30T22:50:41+05:30</lastmod>
   </url><url>
-    <loc>/tags/lifehacking/</loc>
+    <loc>//localhost:1313/tags/pain/</loc>
     <lastmod>2022-06-30T22:50:41+05:30</lastmod>
   </url><url>
-    <loc>/tags/pain/</loc>
+    <loc>//localhost:1313/posts/adult-tonsillectomy/</loc>
     <lastmod>2022-06-30T22:50:41+05:30</lastmod>
   </url><url>
-    <loc>/posts/adult-tonsillectomy/</loc>
+    <loc>//localhost:1313/tags/tonsillectomy/</loc>
     <lastmod>2022-06-30T22:50:41+05:30</lastmod>
   </url><url>
-    <loc>/tags/tonsillectomy/</loc>
-    <lastmod>2022-06-30T22:50:41+05:30</lastmod>
-  </url><url>
-    <loc>/tags/database/</loc>
+    <loc>//localhost:1313/tags/database/</loc>
     <lastmod>2022-10-31T14:04:53+05:30</lastmod>
   </url><url>
-    <loc>/posts/rh-counterexamples-in-go-1-database/</loc>
+    <loc>//localhost:1313/posts/rh-counterexamples-in-go-1-database/</loc>
     <lastmod>2022-10-31T14:04:53+05:30</lastmod>
   </url><url>
-    <loc>/tags/algorithms/</loc>
+    <loc>//localhost:1313/tags/algorithms/</loc>
     <lastmod>2022-06-24T18:53:25+05:30</lastmod>
   </url><url>
-    <loc>/tags/clustering/</loc>
+    <loc>//localhost:1313/tags/clustering/</loc>
     <lastmod>2022-06-24T18:53:25+05:30</lastmod>
   </url><url>
-    <loc>/posts/plagiarism-detection/</loc>
+    <loc>//localhost:1313/posts/plagiarism-detection/</loc>
     <lastmod>2022-06-24T18:53:25+05:30</lastmod>
   </url><url>
-    <loc>/tags/r/</loc>
+    <loc>//localhost:1313/tags/r/</loc>
     <lastmod>2024-06-23T17:18:47+05:30</lastmod>
   </url><url>
-    <loc>/tags/optimization/</loc>
+    <loc>//localhost:1313/tags/optimization/</loc>
     <lastmod>2022-04-24T15:09:59-04:00</lastmod>
   </url><url>
-    <loc>/tags/parallelization/</loc>
+    <loc>//localhost:1313/tags/parallelization/</loc>
     <lastmod>2022-04-24T15:09:59-04:00</lastmod>
   </url><url>
-    <loc>/tags/python/</loc>
+    <loc>//localhost:1313/tags/python/</loc>
     <lastmod>2022-04-24T15:09:59-04:00</lastmod>
   </url><url>
-    <loc>/posts/rh-counterexamples-in-go-1_1-performance/</loc>
+    <loc>//localhost:1313/posts/rh-counterexamples-in-go-1_1-performance/</loc>
     <lastmod>2022-04-24T15:09:59-04:00</lastmod>
   </url><url>
-    <loc>/about/</loc>
+    <loc>//localhost:1313/about/</loc>
     <lastmod>2022-01-26T01:50:19+05:30</lastmod>
   </url><url>
-    <loc>/portfolio/</loc>
+    <loc>//localhost:1313/portfolio/</loc>
     <lastmod>2022-01-16T15:59:03+05:30</lastmod>
   </url><url>
-    <loc>/tags/kata/</loc>
+    <loc>//localhost:1313/tags/kata/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/posts/rh-counterexamples-in-go-1-setup/</loc>
+    <loc>//localhost:1313/posts/rh-counterexamples-in-go-1-setup/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/portfolio/rh/</loc>
+    <loc>//localhost:1313/portfolio/rh/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/expense-tracking/</loc>
+    <loc>//localhost:1313/tags/expense-tracking/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/fun/</loc>
+    <loc>//localhost:1313/tags/fun/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/posts/tracking-expenses/</loc>
+    <loc>//localhost:1313/posts/tracking-expenses/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/aws/</loc>
+    <loc>//localhost:1313/tags/aws/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/duolingo/</loc>
+    <loc>//localhost:1313/tags/duolingo/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/posts/duolingo-save-streak/</loc>
+    <loc>//localhost:1313/posts/duolingo-save-streak/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/lambda/</loc>
+    <loc>//localhost:1313/tags/lambda/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/elasticsearch/</loc>
+    <loc>//localhost:1313/tags/elasticsearch/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/grafana/</loc>
+    <loc>//localhost:1313/tags/grafana/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/posts/optimizing-grafana-queries-with-es/</loc>
+    <loc>//localhost:1313/posts/optimizing-grafana-queries-with-es/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/macbook/</loc>
+    <loc>//localhost:1313/tags/macbook/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/osx/</loc>
+    <loc>//localhost:1313/tags/osx/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/recovery/</loc>
+    <loc>//localhost:1313/tags/recovery/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/reinstall/</loc>
+    <loc>//localhost:1313/tags/reinstall/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/posts/osx-reinstall-from-scratch/</loc>
+    <loc>//localhost:1313/posts/osx-reinstall-from-scratch/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/posts/aws-instance-recommender/</loc>
+    <loc>//localhost:1313/posts/aws-instance-recommender/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/linear-programming/</loc>
+    <loc>//localhost:1313/tags/linear-programming/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/streamlit/</loc>
+    <loc>//localhost:1313/tags/streamlit/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/posts/streamlit-openscale/</loc>
+    <loc>//localhost:1313/posts/streamlit-openscale/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/dropbox/</loc>
+    <loc>//localhost:1313/tags/dropbox/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/heroku/</loc>
+    <loc>//localhost:1313/tags/heroku/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/openscale/</loc>
+    <loc>//localhost:1313/tags/openscale/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/bodybuilder/</loc>
+    <loc>//localhost:1313/tags/bodybuilder/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/posts/bodybuilder_intro/</loc>
+    <loc>//localhost:1313/posts/bodybuilder_intro/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/portfolio/awsinstance/</loc>
+    <loc>//localhost:1313/portfolio/awsinstance/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/portfolio/plagiarism/</loc>
+    <loc>//localhost:1313/portfolio/plagiarism/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/compare/</loc>
+    <loc>//localhost:1313/tags/compare/</loc>
     <lastmod>2024-06-23T17:18:47+05:30</lastmod>
   </url><url>
-    <loc>/tags/data.frames/</loc>
+    <loc>//localhost:1313/tags/data.frames/</loc>
     <lastmod>2024-06-23T17:18:47+05:30</lastmod>
   </url><url>
-    <loc>/posts/comparedf-intro/</loc>
+    <loc>//localhost:1313/posts/comparedf-intro/</loc>
     <lastmod>2024-06-23T17:18:47+05:30</lastmod>
   </url><url>
-    <loc>/tags/package/</loc>
+    <loc>//localhost:1313/tags/package/</loc>
     <lastmod>2024-06-23T17:18:47+05:30</lastmod>
   </url><url>
-    <loc>/portfolio/streak_save/</loc>
+    <loc>//localhost:1313/portfolio/streak_save/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/mtconnect/</loc>
+    <loc>//localhost:1313/tags/mtconnect/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/posts/mtconnect-webinar/</loc>
+    <loc>//localhost:1313/posts/mtconnect-webinar/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/tags/webinar/</loc>
+    <loc>//localhost:1313/tags/webinar/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/portfolio/comparedf/</loc>
+    <loc>//localhost:1313/portfolio/comparedf/</loc>
     <lastmod>2022-01-26T12:39:37+05:30</lastmod>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>//localhost:1313/categories/</loc>
   </url>
 </urlset>
