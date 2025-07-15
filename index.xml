@@ -6,14 +6,14 @@
     <description>Recent content on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 15 Jul 2025 14:18:40 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 15 Jul 2025 14:20:48 +0530</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Reality Check on the &#34;The New Code&#34;</title>
       <link>/posts/specifications-as-code-reality-check/</link>
       <pubDate>Mon, 14 Jul 2025 10:30:00 -0700</pubDate>
       <guid>/posts/specifications-as-code-reality-check/</guid>
-      <description>I just watched this talk by Sean from OpenAI about how specifications will become the new code, fundamentally changing what it means to be a programmer. (Go watch it if you haven&amp;rsquo;t!)&#xA;This is the core thesis:&#xA;As AI models advance, writing clear specifications in natural language will become more valuable than traditional coding skills&#xA;While I appreciate the vision (conflicts of interest aside!), I think there are some fundamental challenges that make this harder than it appears.</description>
+      <description></description>
     </item>
     <item>
       <title>Searching for RH Counterexamples in Golang - Search Strategies</title>
