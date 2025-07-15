@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Specifications on Alex&#39;s Blog</title>
+    <link>//localhost:1313/tags/specifications/</link>
+    <description>Recent content in Specifications on Alex&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 14 Jul 2025 10:30:00 -0700</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/specifications/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Specifications as Code: A Reality Check on the Future of Programming</title>
+      <link>//localhost:1313/posts/specifications-as-code-reality-check/</link>
+      <pubDate>Mon, 14 Jul 2025 10:30:00 -0700</pubDate>
+      <guid>//localhost:1313/posts/specifications-as-code-reality-check/</guid>
+      <description>I recently watched a fascinating talk by Sean from OpenAI about how specifications will become the new code, fundamentally changing what it means to be a programmer. The core thesis is compelling: as AI models advance, writing clear specifications in natural language will become more valuable than traditional coding skills. While I appreciate the vision, I think there are some fundamental challenges that make this harder than it appears.&#xA;The English Problem: Why Legalese Exists Sean&amp;rsquo;s talk emphasizes that specifications capture intent better than code - and he&amp;rsquo;s absolutely right about that.</description>
+    </item>
+  </channel>
+</rss>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Clustering on Alex&#39;s Blog</title>
-    <link>//localhost:1313/tags/clustering/</link>
+    <link>/tags/clustering/</link>
     <description>Recent content in Clustering on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Fri, 24 Jun 2022 18:53:25 +0530</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/clustering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Plagiarism Detection in Competitive Programming</title>
-      <link>//localhost:1313/posts/plagiarism-detection/</link>
+      <link>/posts/plagiarism-detection/</link>
       <pubDate>Sat, 26 Mar 2022 16:18:43 +0530</pubDate>
-      <guid>//localhost:1313/posts/plagiarism-detection/</guid>
+      <guid>/posts/plagiarism-detection/</guid>
       <description></description>
     </item>
   </channel>

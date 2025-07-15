@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reinstall on Alex&#39;s Blog</title>
-    <link>//localhost:1313/tags/reinstall/</link>
+    <link>/tags/reinstall/</link>
     <description>Recent content in Reinstall on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 26 Jan 2022 12:39:37 +0530</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/reinstall/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/reinstall/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reinstalling OSX Recovery Partition from a bricked MacBook Pro</title>
-      <link>//localhost:1313/posts/osx-reinstall-from-scratch/</link>
+      <link>/posts/osx-reinstall-from-scratch/</link>
       <pubDate>Sun, 24 Jan 2021 10:30:00 +0530</pubDate>
-      <guid>//localhost:1313/posts/osx-reinstall-from-scratch/</guid>
+      <guid>/posts/osx-reinstall-from-scratch/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,24 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data-Visualization on Alex&#39;s Blog</title>
-    <link>//localhost:1313/tags/data-visualization/</link>
+    <link>/tags/data-visualization/</link>
     <description>Recent content in Data-Visualization on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 24 Jun 2024 09:49:00 +0530</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/data-visualization/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>My Journey with Running</title>
-      <link>//localhost:1313/posts/my-journey-with-zone-based-training/</link>
-      <pubDate>Sun, 23 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/my-journey-with-zone-based-training/</guid>
-      <description></description>
-    </item>
+    <lastBuildDate>Thu, 30 Jun 2022 22:50:41 +0530</lastBuildDate>
+    <atom:link href="/tags/data-visualization/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The most &#34;painful&#34; analysis that I&#39;ve ever done</title>
-      <link>//localhost:1313/posts/adult-tonsillectomy/</link>
+      <link>/posts/adult-tonsillectomy/</link>
       <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/adult-tonsillectomy/</guid>
+      <guid>/posts/adult-tonsillectomy/</guid>
       <description></description>
     </item>
   </channel>
