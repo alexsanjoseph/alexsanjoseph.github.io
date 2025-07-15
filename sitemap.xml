@@ -2,11 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/posts/specifications-as-code-reality-check/</loc>
+    <lastmod>2025-07-15T14:04:07+05:30</lastmod>
+  </url><url>
+    <loc>/tags/ai/</loc>
+    <lastmod>2025-07-15T14:04:07+05:30</lastmod>
+  </url><url>
     <loc>/</loc>
-    <lastmod>2025-07-15T13:52:22+05:30</lastmod>
+    <lastmod>2025-07-15T14:04:07+05:30</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2025-07-15T13:52:22+05:30</lastmod>
+    <lastmod>2025-07-15T14:04:07+05:30</lastmod>
+  </url><url>
+    <loc>/tags/programming/</loc>
+    <lastmod>2025-07-15T14:04:07+05:30</lastmod>
+  </url><url>
+    <loc>/tags/software-engineering/</loc>
+    <lastmod>2025-07-15T14:04:07+05:30</lastmod>
+  </url><url>
+    <loc>/tags/specifications/</loc>
+    <lastmod>2025-07-15T14:04:07+05:30</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2025-07-15T14:04:07+05:30</lastmod>
   </url><url>
     <loc>/tags/golang/</loc>
     <lastmod>2024-06-23T17:18:47+05:30</lastmod>
@@ -19,9 +37,6 @@
   </url><url>
     <loc>/posts/rh-counterexamples-in-go-3-2-search-strategies/</loc>
     <lastmod>2022-12-18T14:24:06+05:30</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2024-06-23T17:18:47+05:30</lastmod>
   </url><url>
     <loc>/posts/rh-counterexamples-in-go-3-1-superabundant/</loc>
     <lastmod>2024-06-23T17:18:47+05:30</lastmod>

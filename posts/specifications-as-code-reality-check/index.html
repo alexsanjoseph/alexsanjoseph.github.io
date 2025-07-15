@@ -4,7 +4,7 @@
     
 
 
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +29,7 @@ As AI models advance, writing clear specifications in natural language will beco
 While I appreciate the vision (conflicts of interest aside!), I think there are some fundamental challenges that make this harder than it appears.">
       <meta name="twitter:site" content="@alexsanjoseph">
 
-<meta property="og:url" content="//localhost:1313/posts/specifications-as-code-reality-check/">
+<meta property="og:url" content="/posts/specifications-as-code-reality-check/">
   <meta property="og:site_name" content="Alex&#39;s Blog">
   <meta property="og:title" content="A Reality Check on the &#34;The New Code&#34;">
   <meta property="og:description" content="I Just watched this talk by Sean from OpenAI about how specifications will become the new code, fundamentally changing what it means to be a programmer. (Go watch it if you haven’t!).
@@ -40,7 +40,7 @@ While I appreciate the vision (conflicts of interest aside!), I think there are 
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-07-14T10:30:00-07:00">
-    <meta property="article:modified_time" content="2025-07-14T10:30:00-07:00">
+    <meta property="article:modified_time" content="2025-07-15T14:04:07+05:30">
     <meta property="article:tag" content="Programming">
     <meta property="article:tag" content="Ai">
     <meta property="article:tag" content="Specifications">
@@ -87,14 +87,14 @@ While I appreciate the vision (conflicts of interest aside!), I think there are 
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="//localhost:1313/">Alex&#39;s Blog</a>
+        <a href="/">Alex&#39;s Blog</a>
       </span>
       
         
         
         
         <div class="author-image">
-          <img src="//localhost:1313/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -201,6 +201,9 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     
+    , Updated:
+    2025 Jul 15
+    
     
     
     
@@ -241,7 +244,8 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>While I appreciate the vision (conflicts of interest aside!), I think there are some fundamental challenges that make this harder than it appears.</p>
 <p>I want to explain my thoughts by going to another domain.</p>
 <h2 id="why-legalese-exists">Why Legalese Exists</h2>
-<p>There is a joke that lawyers are the only people who can write a 100-page document to say &ldquo;don&rsquo;t steal&rdquo; and still leave room for interpretation. Legal documents aren&rsquo;t written in that tortured, verbose style because lawyers enjoy making things complicated (maybe they do? <a href="https://en.wikipedia.org/wiki/IANAL">IANAL</a>). They&rsquo;re written that way because centuries of litigation have taught us that every ambiguity in natural language becomes a potential loophole or misinterpretation.</p>
+<p>If everyone can be a programmer tomorrow, everyone would have be a lawyer decades ago. Sure, if you&rsquo;re arguing with your friend about who should pay for dinner, you can probably make your case just fine. But in a real court case, with real contracts and real consequences, you need lawyers for a reason.</p>
+<p>There&rsquo;s a joke that lawyers are the only people who can write a 100-page document to say &ldquo;don&rsquo;t steal&rdquo; and still leave room for interpretation. Legal documents aren&rsquo;t written in that tortured, verbose style because lawyers enjoy making things complicated (maybe they do? <a href="https://en.wikipedia.org/wiki/IANAL">IANAL</a>). They&rsquo;re written that way because centuries of litigation have taught us that every ambiguity in natural language becomes a potential loophole or misinterpretation.</p>
 <p>When you write &ldquo;the software should be fast,&rdquo; what does that mean? Fast compared to what? Fast for which operations? Fast under what load conditions? The more precise you try to be in English, the more you start sounding like&hellip; well, like a legal contract. Or code.</p>
 <h2 id="the-sycophancy-bug-is-the-point">The Sycophancy &ldquo;Bug&rdquo; is the point</h2>
 <p>To be fair, Sean does mention they told their models &ldquo;Don&rsquo;t be sycophantic,&rdquo; but the models continued being sycophantic anyway. He promptly dismissed this as a &ldquo;bug&rdquo; - but that&rsquo;s exactly the point.</p>
