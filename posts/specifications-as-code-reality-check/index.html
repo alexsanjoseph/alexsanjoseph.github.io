@@ -17,18 +17,18 @@
     
     
 
-<title>A Reality Check on the &#34;The New Code&#34; • Alex&#39;s Blog</title>
+<title>A Reality Check on &#34;The New Code&#34; • Alex&#39;s Blog</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="A Reality Check on the &#34;The New Code&#34;">
+  <meta name="twitter:title" content="A Reality Check on &#34;The New Code&#34;">
   <meta name="twitter:description" content="Pasting random things together">
       <meta name="twitter:site" content="@alexsanjoseph">
 
 <meta property="og:url" content="/posts/specifications-as-code-reality-check/">
   <meta property="og:site_name" content="Alex&#39;s Blog">
-  <meta property="og:title" content="A Reality Check on the &#34;The New Code&#34;">
+  <meta property="og:title" content="A Reality Check on &#34;The New Code&#34;">
   <meta property="og:description" content="Pasting random things together">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
@@ -184,7 +184,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
 <article>
   <header>
-    <h1>A Reality Check on the &#34;The New Code&#34;</h1>
+    <h1>A Reality Check on &#34;The New Code&#34;</h1>
     
     
 <div class="post__meta">
@@ -222,24 +222,25 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     <br />
-    <i class="fas fa-clock"></i> 3 min read
+    <i class="fas fa-clock"></i> 4 min read
 </div>
 
   </header>
   
   
   <div class="post">
-    <p>I just watched <a href="https://www.youtube.com/watch?v=8rABwKRsec4">this talk by Sean from OpenAI</a> about how specifications will become the new code, fundamentally changing what it means to be a programmer. (Go watch it if you haven&rsquo;t!)</p>
+    <p>I just watched <a href="https://www.youtube.com/watch?v=8rABwKRsec4">this talk by Sean from OpenAI</a> about how specifications will become &ldquo;the new code,&rdquo; fundamentally changing what it means to be a programmer. (Go watch it if you haven&rsquo;t!)</p>
 <p>This is the core thesis:</p>
 <blockquote class="info">
     <strong>As AI models advance, writing clear specifications in natural language will become more valuable than traditional coding skills</strong><br>
     
 </blockquote>
-<p>While I appreciate the vision (conflicts of interest aside!), I think there are some fundamental challenges that make this harder than it appears.</p>
+<p>While I appreciate the vision (conflicts of interest aside!), I think there are some fundamental challenges that make this transition harder than it appears.</p>
+<p>Let us jump into a different domain to explain my point.</p>
 <h2 id="why-legalese-exists">Why Legalese Exists</h2>
 <p>If everyone can be a programmer tomorrow, everyone would have been a lawyer decades ago. Sure, if you&rsquo;re arguing with your friend about who should pay for dinner, you can probably make your case just fine. But in a real court case, with real contracts and real consequences, you need lawyers for a reason.</p>
 <p>There&rsquo;s a joke that lawyers are the only people who can write a 100-page document to say &ldquo;don&rsquo;t steal&rdquo; and still leave room for interpretation. Legal documents aren&rsquo;t written in that tortured, verbose style because lawyers enjoy making things complicated (maybe they do? <a href="https://en.wikipedia.org/wiki/IANAL">IANAL</a>). They&rsquo;re written that way because centuries of litigation have taught us that every ambiguity in natural language becomes a potential loophole or misinterpretation.</p>
-<p>When you write &ldquo;the software should be fast,&rdquo; what does that mean? Fast compared to what? Fast for which operations? Fast under what load conditions? The more precise you try to be in English, the more you start sounding like&hellip; well, like a legal contract. Or code.</p>
+<p>When you write &ldquo;the software should be fast,&rdquo; what does that mean exactly? Fast compared to what? Fast for which operations? Fast under what load conditions? The more precise you try to be in English, the more you start sounding like&hellip; well, like a legal contract. Or code.</p>
 <figure><img src="/images/specifications-as-code-reality-check/you-want-a-new-internet.png"
     alt="You want to build a new internet?"><figcaption>
       <p><em>You want to build a new internet?</em></p>
@@ -255,9 +256,11 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>LLM behavior is already so variable that adding another layer of interpretation through natural language specifications doesn&rsquo;t significantly increase the unpredictability. In fact, it might make the system more transparent and easier to reason about.</p>
 <h2 id="not-there-yet-for-the-rest-of-us">Not there yet for the rest of us</h2>
 <p>When I write code, I want predictable, deterministic behavior. I want to know that <code>calculateTotal(items)</code> will always return the same result for the same input. I want my functions to have clear contracts and my tests to either pass or fail consistently.</p>
+<p>When something breaks with the &ldquo;new code&rdquo;, you&rsquo;re not just debugging the code - you&rsquo;re debugging the specification, the AI&rsquo;s interpretation of the specification, and then the generated code. It&rsquo;s three potential points of failure instead of one that I am handling today.</p>
 <p>I think the most honest assessment is that specifications as code will be transformative for certain types of problems - particularly those involving human-AI collaboration where flexibility and intent-capture matter more than deterministic behavior.</p>
 <p>For building user interfaces, content generation, or systems that need to adapt to changing requirements, specification-driven development could be revolutionary. For building anything that is business critical, I want my precise, deterministic, well-tested code.</p>
 <p>English is hard, intent is complex, and sometimes you just need code that does exactly what you told it to do - no interpretation required.</p>
+<p>For now, I&rsquo;m keeping my debugging skills sharp (while going all in on vibe-&ldquo;engineering&rdquo;!)</p>
   </div>
   
 
