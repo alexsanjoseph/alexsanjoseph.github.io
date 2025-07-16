@@ -34,7 +34,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-07-14T10:30:00-07:00">
-    <meta property="article:modified_time" content="2025-07-17T00:21:00+05:30">
+    <meta property="article:modified_time" content="2025-07-17T00:56:18+05:30">
     <meta property="article:tag" content="Programming">
     <meta property="article:tag" content="Ai">
     <meta property="article:tag" content="Specifications">
@@ -236,7 +236,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
 </blockquote>
 <p>While I appreciate the vision (conflicts of interest aside!), I think there are some fundamental challenges that make this transition harder than it appears.</p>
-<p>Let us jump into a different domain to explain my point.</p>
+<p>Let me jump into a different domain to explain my point.</p>
 <h2 id="why-legalese-exists">Why Legalese Exists</h2>
 <p>If everyone can be a programmer tomorrow, everyone would have been a lawyer decades ago. Sure, if you&rsquo;re arguing with your friend about who should pay for dinner, you can probably make your case just fine. But in a real court case, with real contracts and real consequences, you need lawyers for a reason.</p>
 <p>There&rsquo;s a joke that lawyers are the only people who can write a 100-page document to say &ldquo;don&rsquo;t steal&rdquo; and still leave room for interpretation. Legal documents aren&rsquo;t written in that tortured, verbose style because lawyers enjoy making things complicated (maybe they do? <a href="https://en.wikipedia.org/wiki/IANAL">IANAL</a>). They&rsquo;re written that way because centuries of litigation have taught us that every ambiguity in natural language becomes a potential loophole or misinterpretation.</p>
@@ -247,7 +247,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     </figcaption>
 </figure>
 
-<h2 id="the-sycophancy-bug-is-the-point">The Sycophancy &ldquo;Bug&rdquo; is the point</h2>
+<h2 id="the-sycophancy-bug-is-the-point">The Sycophancy &ldquo;Bug&rdquo; Is the Point</h2>
 <p>To be fair, Sean does mention they told their models &ldquo;Don&rsquo;t be sycophantic,&rdquo; but the models continued being sycophantic anyway. He promptly dismissed this as a &ldquo;bug&rdquo; - but that&rsquo;s exactly the point.</p>
 <p>This was not so much a bug, but a demonstration that natural language specifications are inherently ambiguous, and non-deterministic systems will interpret them in ways you didn&rsquo;t intend. What does &ldquo;sycophantic&rdquo; mean exactly? When is agreement genuine versus sycophantic? These distinctions that seem obvious to humans are actually incredibly nuanced.</p>
 <p>The fact that OpenAI - with their deep expertise in language models - struggled to specify &ldquo;don&rsquo;t be sycophantic&rdquo; in a way that actually worked should give us pause about how easy this specification-driven future will be.</p>
@@ -256,7 +256,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>LLM behavior is already so variable that adding another layer of interpretation through natural language specifications doesn&rsquo;t significantly increase the unpredictability. In fact, it might make the system more transparent and easier to reason about.</p>
 <h2 id="not-there-yet-for-the-rest-of-us">Not there yet for the rest of us</h2>
 <p>When I write code, I want predictable, deterministic behavior. I want to know that <code>calculateTotal(items)</code> will always return the same result for the same input. I want my functions to have clear contracts and my tests to either pass or fail consistently.</p>
-<p>When something breaks with the &ldquo;new code&rdquo;, you&rsquo;re not just debugging the code - you&rsquo;re debugging the specification, the AI&rsquo;s interpretation of the specification, and then the generated code. It&rsquo;s three potential points of failure instead of one that I am handling today.</p>
+<p>When something breaks with the &ldquo;new code&rdquo;, you&rsquo;re not just debugging the code - you&rsquo;re debugging the specification, the AI&rsquo;s interpretation of the specification, and then the generated code. It&rsquo;s three potential points of failure instead of the one I&rsquo;m handling today.</p>
 <p>I think the most honest assessment is that specifications as code will be transformative for certain types of problems - particularly those involving human-AI collaboration where flexibility and intent-capture matter more than deterministic behavior.</p>
 <p>For building user interfaces, content generation, or systems that need to adapt to changing requirements, specification-driven development could be revolutionary. For building anything that is business critical, I want my precise, deterministic, well-tested code.</p>
 <p>English is hard, intent is complex, and sometimes you just need code that does exactly what you told it to do - no interpretation required.</p>
