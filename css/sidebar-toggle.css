@@ -1,0 +1,80 @@
+/* Override default content width to be consistent */
+.content .container {
+    max-width: 60rem;
+}
+
+/* Default collapsed state - sidebar and content start collapsed */
+.sidebar {
+    transform: translateX(-20.125rem);
+}
+
+.content {
+    transform: translateX(-16rem);
+    padding-left: 120px;
+}
+
+.sidebar-toggle {
+    position: fixed;
+    left: 0;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #300030;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-toggle:hover {
+    background: #4a0040;
+}
+
+/* When expanded (sidebar-expanded class added) */
+.sidebar-expanded .sidebar {
+    transform: translateX(0);
+}
+
+.sidebar-expanded .content {
+    transform: translateX(0);
+    padding-left: 0;
+}
+
+.sidebar-expanded .sidebar-toggle {
+    left: 20rem;
+}
+
+/* Smooth transitions */
+.sidebar, .content {
+    transition: all 0.3s ease;
+}
+
+/* Ensure content has transform origin set for smooth transitions */
+.content {
+    transform-origin: left center;
+}
+
+/* Hide on mobile */
+@media (max-width: 767px) {
+    .sidebar-toggle {
+        display: none !important;
+    }
+
+    .sidebar {
+        transform: none !important;
+    }
+
+    .content {
+        transform: none !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+}
