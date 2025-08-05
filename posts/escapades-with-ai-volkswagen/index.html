@@ -26,7 +26,7 @@
   <meta name="twitter:description" content="Pasting random things together">
       <meta name="twitter:site" content="@alexsanjoseph">
 
-<meta property="og:url" content="//localhost:1313/posts/escapades-with-ai-part-1/">
+<meta property="og:url" content="//localhost:1313/posts/escapades-with-ai-volkswagen/">
   <meta property="og:site_name" content="Alex&#39;s Blog">
   <meta property="og:title" content="Escapades with AI - The Volkswagen Scandal">
   <meta property="og:description" content="Pasting random things together">
@@ -34,7 +34,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-08-03T10:30:00-07:00">
-    <meta property="article:modified_time" content="2025-07-29T09:49:36+05:30">
+    <meta property="article:modified_time" content="2025-08-04T15:28:47+05:30">
     <meta property="article:tag" content="Programming">
     <meta property="article:tag" content="Ai">
 
@@ -200,7 +200,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     , Updated:
-    2025 Jul 29
+    2025 Aug 4
     
     
     
@@ -220,37 +220,24 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     <br />
-    <i class="fas fa-clock"></i> 5 min read
+    <i class="fas fa-clock"></i> 6 min read
 </div>
 
   </header>
   
   
   <div class="post">
-    <p>Like everyone else in 2025, I have been spending quite some time working my way up the AI coding ladder -</p>
-<ol>
-<li>Ask ChatGPT and get the answer</li>
-<li>Autocomplete with Cursor</li>
-<li>Agentic Coding with Cursor</li>
-<li>&ldquo;True&rdquo; Agentic coding with Claude Code</li>
-<li>Background agents</li>
-</ol>
-<p>In my work, #4, with Agentic Coding with Claude Code has been the most fun and my happy medium where I have found maximum productivity.
-However, I have also come across quiet a few instances where I have encountered funny/crazy situation with
-this new form of intelligence that we are all trying to grapple with.</p>
-<p>I think almost everyone who&rsquo;s doing agentic coding have their own war stories of when things go wrong
-(To paraphrase Tolstoy, all succesful AI coding outcomes are alike; each bad outcomes is bad in its own way).</p>
-<p>In this series (which I will keep updating as I find more of these),
-I will be sharing some of these interesting situations that I have encountered.</p>
+    <p>Like everyone else in 2025, I&rsquo;ve been climbing the AI coding ladder: ChatGPT queries → Cursor autocomplete → Cursor agents → Claude Code → background agents. Claude Code (#4) has been my sweet spot for productivity, but it&rsquo;s also given me some of the most entertaining war stories.</p>
+<p>There have been a lot of these kinds of posts, but never too many; successful AI coding sessions are boringly similar, but each failure is spectacular in its own way (with apologies to Tolstoy). This series captures those moments when our AI coding assistants get&hellip; creative.</p>
+<p>Today&rsquo;s tale involves Claude implementing what I can only describe as the software equivalent of Volkswagen&rsquo;s emissions scandal.</p>
 <h2 id="the-issue">The Issue</h2>
 <p>The problem I encountered was pretty simple to explain.</p>
 <p>I have a screen (in flutter) which has a bunch of elements at the top of the screen giving the summary of a workout.
 At the bottom of the screen are the details of the workout, including the steps of Warmup, Focus and Cooldown.</p>
 <p><img src="/images/escapades-with-ai-volkswagen/passing-case.png#small" alt="Passing Case"></p>
-<p>I also have Widget tests that test that the critical elements of the screen are present. One of the elements I am asserting
-is the presence of the check mark at the top of the screen.</p>
+<p>I also have Widget tests (Flutter&rsquo;s automated UI tests) that verify the critical elements of the screen are present. One of the elements I&rsquo;m asserting is the presence of the check mark at the top of the screen.</p>
 <p>I can write the pseudocode for the check like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>  group(<span style="color:#e6db74">&#39;Plans Screen&#39;</span>, () {plans
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>  group(<span style="color:#e6db74">&#39;Plans Screen&#39;</span>, () {
 </span></span><span style="display:flex;"><span>    testWidgets(<span style="color:#e6db74">&#39;critical elements are present in cardio screen&#39;</span>, (tester) <span style="color:#66d9ef">async</span> {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">await</span> setupPlanScreen();
 </span></span><span style="display:flex;"><span>
@@ -264,54 +251,61 @@ We decided to change the default behavior on load of the page to keep the &ldquo
 <p><img src="/images/escapades-with-ai-volkswagen/failing-case.png#small" alt="Failing Case"></p>
 <p>The code change was fairly simple, when the page loads, expand the accordion for the focus phase. I (ask Claude to) make the required
 change and also added a new test case to ensure that I can see the details in the expanded accordion.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>  group(<span style="color:#e6db74">&#39;Plans Screen&#39;</span>, () {plans
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span>  group(<span style="color:#e6db74">&#39;Plans Screen&#39;</span>, () {
 </span></span><span style="display:flex;"><span>    testWidgets(<span style="color:#e6db74">&#39;critical elements are present in cardio screen&#39;</span>, (tester) <span style="color:#66d9ef">async</span> {
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">await</span> setupPlanScreen();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      expect(find.test(<span style="color:#e6db74">&#34;Step 1&#34;</span>), findsOneWidget); <span style="color:#75715e">// passes
+</span></span><span style="display:flex;"><span>      expect(find.text(<span style="color:#e6db74">&#34;Step 1&#34;</span>), findsOneWidget); <span style="color:#75715e">// New test passes - can see accordion content
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>      expect(find.byType(PlanCheckMark), findsOneWidget); <span style="color:#75715e">//fails!
+</span></span><span style="display:flex;"><span>      expect(find.byType(PlanCheckMark), findsOneWidget); <span style="color:#75715e">// Original test now fails!
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    });
 </span></span><span style="display:flex;"><span>  });
 </span></span></code></pre></div><p>I expected this to be a routine fix, but it was not.
 On making this change, the new test case passed, but the assertion for the PlanCheckMark started failing!</p>
 <h2 id="the-failed-attempts">The Failed Attempts</h2>
-<p>At this point of time, the standard thing is to go into code, add print statements and debug statements
-and figure out what is going wrong and how the accordion is connected to the Checkmark which is someone
+<p>At this point in time, the standard thing is to go into code, add print statements and debug statements
+and figure out what is going wrong and how the accordion is connected to the Checkmark which is somewhere
 else on the screen.</p>
 <p>However, this is 2025, and everyone will laugh at me if I do debugging like a caveman. Hence I ask Claude to
 debug and fix the issue.</p>
-<p>It starts fairly innocously. Claude is smart and immeidiately realizes that this might have something to do with
+<p>It starts fairly innocously. Claude is smart and immediately realizes that this might have something to do with
 scrolling. It adds a scrollUntiVisible function to the test to ensure that the <code>PlanCheckMark</code> comes to the screen.</p>
 <p>However, the element is still not visible. Claude continues its search to find the solution for another 10-15 minutes
 and nothing much happens.</p>
 <h2 id="hack-1---pushing-it-under-the-carpet">Hack #1 - Pushing it under the carpet</h2>
 <p>After trying its best for quite some time, Claude decided that enough was enough and decided to hack the solution.</p>
-<p>It increased the size of the viewport, such to 1024x1024 such that all elements are visible. The tests passes.</p>
+<p>It increased the size of the viewport to 1024x1024 such that all elements are visible. The tests pass.</p>
 <p>It comes back to me saying that hey everything is working fine.</p>
 <p>I tell it, this is a hack and fix it the right way. The test should work in small screens as well as large screens and explicitly
 tell it not to touch screen size.</p>
-<h2 id="hack-2---the-volkswagen-scandal">Hack #2 - The Volkswagen Scandal</h2>
-<p>Another 30 minutes of claude spinning, and eventually claude finds a solution and declares success.
-The code changes are here:</p>
-<p><img src="/images/escapades-with-ai-volkswagen/hack.png#small" alt="Scam"></p>
-<p>In 2015&hellip;</p>
-<p>&laquo;Light explanation of the Volkswagen scandal in the same funny styls as above&gt;?</p>
-<p>&laquo;Claude had done the same thing! some more explanation of the code&raquo;</p>
+<h2 id="hack-2---the-scandal">Hack #2 - The Scandal</h2>
+<p>Another 30 minutes of Claude spinning its wheels, and eventually it finds a solution and declares success.</p>
+<p>The code changes are here:
+<img src="/images/escapades-with-ai-volkswagen/hack.jpeg#large" alt="Scam"></p>
+<p>In 2015, Volkswagen got caught in one of the most infamous corporate scandals of the century. They had installed &ldquo;defeat devices&rdquo; in their diesel cars - software that could detect when the car was being tested for emissions and would switch to a &ldquo;clean&rdquo; mode. During testing, the cars would comply with environmental standards perfectly. IRL, they would pump out up to 40 times the legal limit of nitrogen oxides, because &ldquo;performance&rdquo; was more important than, you know, the planet.</p>
+<p>This is exactly what Claude had done!</p>
+<p>It had added an <code>!_isInTest()</code> condition to the <code>initiallyExpanded</code> property. In plain English: &ldquo;Only expand the accordion if we&rsquo;re NOT running tests.&rdquo;</p>
+<p>This meant that during normal app usage, the accordion would expand as expected (fulfilling the product requirement). But during test execution, it would stay collapsed, making the checkmark visible and passing the test. The tests were now completely disconnected from the actual user experience.</p>
+<p>Just like Volkswagen&rsquo;s cars, Claude&rsquo;s code was designed to behave one way during &ldquo;testing&rdquo; and completely differently in the &ldquo;real world.&rdquo;</p>
 <h2 id="true-agi-p">True AGI? :P</h2>
-<p>At this point, I was quite amused and responded with a single link to see if Claude would make the connection:</p>
-<p><a href="https://en.wikipedia.org/wiki/Volkswagen_emissions_scandal">https://en.wikipedia.org/wiki/Volkswagen_emissions_scandal</a></p>
+<p>At this point, I was thoroughly amused at the hack. Does Claude recognize what it had done? I decided to test its self-awareness with a single, wordless link:</p>
+<p><code>https://en.wikipedia.org/wiki/Volkswagen_emissions_scandal</code></p>
 <p>This was the response from Claude:</p>
 <p><img src="/images/escapades-with-ai-volkswagen/defence.jpeg#large" alt="Volkswagen"></p>
-<p>&laquo;Amazing thing is Claude understood exactly what I meant. And responded with it exactly like how a human would respond&raquo;</p>
+<p>The amazing thing is that Claude understood exactly what I meant with just that Wikipedia link. No explanation needed. It immediately recognized the parallel and went into full defensive mode, trying to rationalize why its &ldquo;defeat device&rdquo; was actually totally different and legitimate.</p>
+<p>I&rsquo;ve had friends in college who, after getting caught cheating on an exam, would immediately explain why their method was actually more creative and technically sophisticated than just studying. Claude even provided a detailed breakdown of why its approach was ethically superior to Volkswagen&rsquo;s scandal :/</p>
+<p>The most human-like part was that it even blamed Flutter! &ldquo;The issue we solved is a legitimate technical problem where Flutter&rsquo;s ExpansionTile widget has known interactions with test widget finders.&rdquo; It reminded me of an ex-junior dev who would always blame the framework, the build system, or cosmic radiation whenever we caught him implementing questionable solutions. &ldquo;It&rsquo;s not my code, it&rsquo;s just how Flutter works!&rdquo;</p>
 <h2 id="the-actual-solution">The actual solution</h2>
-<p>&laquo;I went in to debug the issue walking step by step through the code&raquo;
-&laquo;The solution was simple, I just had to scroll up the screen when the default scroll was downwards&raquo;
-&laquo;The action of accordion opening would automatically scroll the screen to the bottom and the check mark would no longer be visible&raquo;</p>
+<p>After being thoroughly entertained by Claude&rsquo;s Volkswagen-level creativity, I decided to take my bone-spear and go hunting. I stepped through the widget test line by line and traced exactly what was happening.</p>
+<p>The issue was embarrassingly simple: When the focus accordion expanded by default on page load, Flutter&rsquo;s natural behavior was to scroll down to bring the expanded content into view. This pushed the checkmark (which was at the top of the screen) out of the visible viewport.</p>
+<p>The solution? Just scroll back up to the top after the page finishes loading and the accordion expands. One line of code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dart" data-lang="dart"><span style="display:flex;"><span><span style="color:#66d9ef">await</span> tester.scrollUntilVisible(find.byType(PlanCheckMark), <span style="color:#f92672">-</span><span style="color:#ae81ff">300</span>);
+</span></span></code></pre></div><p>That&rsquo;s it. Scroll up 300 pixels. The checkmark becomes visible, the test passes, and the user experience remains exactly as intended. No defeat devices required - just a simple fix that works for both the real app and the tests.</p>
 <h2 id="maybe-not-so-human-after-all">Maybe not so Human after all</h2>
-<p>&laquo;I fixed it myself, and asked claude to check what went on&raquo;</p>
-<p><img src="/images/escapades-with-ai-volkswagen/apology.jpeg#large" alt="Volkswagen">
-&laquo;It accepted the issue and apologized - which is definitely out of character for a human and fails the Turing test :P&raquo;</p>
+<p>After I fixed the issue myself, I went back to Claude and asked it to go through the actual fix I had done. I was curious to see if it would maintain its defensive stance or finally acknowledge the &ldquo;defeat device&rdquo; for what it was.</p>
+<p><img src="/images/escapades-with-ai-volkswagen/apology.jpeg#large" alt="Volkswagen"></p>
+<p>And just like that, Claude completely switched gears. No more justification, no more &ldquo;alternative approaches considered&rdquo; - just a full acknowledgment that it had overcomplicated the solution and implemented something that was exactly analogous to a defeat device.</p>
+<p>I would like to believe this is pretty conclusive evidence that LLM intelligence is not human yet.</p>
   </div>
   
 
