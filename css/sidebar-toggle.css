@@ -46,6 +46,7 @@
 .sidebar-expanded .content {
     transform: translateX(0);
     padding-left: 0;
+    margin-left: 32rem; /* Add left margin when expanded (sidebar width + extra space) */
 }
 
 .sidebar-expanded .sidebar-toggle {
@@ -74,7 +75,7 @@
 
     .content {
         transform: none !important;
-        margin-left: 0 !important;
+        margin-left: 2rem !important; /* Add left margin on mobile */
         padding-left: 0 !important;
     }
 }
