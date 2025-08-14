@@ -6,13 +6,13 @@
     <description>Recent content in Kata on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 26 Jan 2022 12:39:37 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 14 Aug 2025 15:12:48 +0530</lastBuildDate>
     <atom:link href="/tags/kata/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Searching for RH Counterexamples in Golang - Setting up</title>
-      <link>/posts/rh-counterexamples-in-go-1-setup/</link>
+      <link>/posts/20220116-rh-counterexamples-in-go-1-setup/</link>
       <pubDate>Sun, 16 Jan 2022 10:17:52 +0000</pubDate>
-      <guid>/posts/rh-counterexamples-in-go-1-setup/</guid>
+      <guid>/posts/20220116-rh-counterexamples-in-go-1-setup/</guid>
       <description></description>
     </item>
   </channel>

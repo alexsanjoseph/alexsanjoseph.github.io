@@ -6,13 +6,13 @@
     <description>Recent content in Database on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 31 Oct 2022 14:04:53 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 14 Aug 2025 15:12:48 +0530</lastBuildDate>
     <atom:link href="/tags/database/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Searching for RH Counterexamples in Golang - Adding a Database</title>
-      <link>/posts/rh-counterexamples-in-go-1-database/</link>
+      <link>/posts/20220420-rh-counterexamples-in-go-1-database/</link>
       <pubDate>Wed, 20 Apr 2022 10:17:52 +0000</pubDate>
-      <guid>/posts/rh-counterexamples-in-go-1-database/</guid>
+      <guid>/posts/20220420-rh-counterexamples-in-go-1-database/</guid>
       <description></description>
     </item>
   </channel>

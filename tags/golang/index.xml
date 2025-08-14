@@ -6,41 +6,41 @@
     <description>Recent content in Golang on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 23 Jun 2024 17:18:47 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 14 Aug 2025 15:12:48 +0530</lastBuildDate>
     <atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Searching for RH Counterexamples in Golang - Search Strategies</title>
-      <link>/posts/rh-counterexamples-in-go-3-2-search-strategies/</link>
+      <link>/posts/20221216-rh-counterexamples-in-go-3-2-search-strategies/</link>
       <pubDate>Fri, 16 Dec 2022 18:00:00 +0000</pubDate>
-      <guid>/posts/rh-counterexamples-in-go-3-2-search-strategies/</guid>
+      <guid>/posts/20221216-rh-counterexamples-in-go-3-2-search-strategies/</guid>
       <description></description>
     </item>
     <item>
       <title>Searching for RH Counterexamples in Golang - Superabundant Numbers</title>
-      <link>/posts/rh-counterexamples-in-go-3-1-superabundant/</link>
+      <link>/posts/20221029-rh-counterexamples-in-go-3-1-superabundant/</link>
       <pubDate>Sat, 29 Oct 2022 10:17:52 +0000</pubDate>
-      <guid>/posts/rh-counterexamples-in-go-3-1-superabundant/</guid>
+      <guid>/posts/20221029-rh-counterexamples-in-go-3-1-superabundant/</guid>
       <description></description>
     </item>
     <item>
       <title>Searching for RH Counterexamples in Golang - Adding a Database</title>
-      <link>/posts/rh-counterexamples-in-go-1-database/</link>
+      <link>/posts/20220420-rh-counterexamples-in-go-1-database/</link>
       <pubDate>Wed, 20 Apr 2022 10:17:52 +0000</pubDate>
-      <guid>/posts/rh-counterexamples-in-go-1-database/</guid>
+      <guid>/posts/20220420-rh-counterexamples-in-go-1-database/</guid>
       <description></description>
     </item>
     <item>
       <title>Searching for RH Counterexamples in Golang - Improving Performance via Parallel processing</title>
-      <link>/posts/rh-counterexamples-in-go-1_1-performance/</link>
+      <link>/posts/20220206-rh-counterexamples-in-go-1_1-performance/</link>
       <pubDate>Sun, 06 Feb 2022 00:00:52 +0000</pubDate>
-      <guid>/posts/rh-counterexamples-in-go-1_1-performance/</guid>
+      <guid>/posts/20220206-rh-counterexamples-in-go-1_1-performance/</guid>
       <description></description>
     </item>
     <item>
       <title>Searching for RH Counterexamples in Golang - Setting up</title>
-      <link>/posts/rh-counterexamples-in-go-1-setup/</link>
+      <link>/posts/20220116-rh-counterexamples-in-go-1-setup/</link>
       <pubDate>Sun, 16 Jan 2022 10:17:52 +0000</pubDate>
-      <guid>/posts/rh-counterexamples-in-go-1-setup/</guid>
+      <guid>/posts/20220116-rh-counterexamples-in-go-1-setup/</guid>
       <description></description>
     </item>
   </channel>

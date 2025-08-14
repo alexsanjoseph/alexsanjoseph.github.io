@@ -6,13 +6,13 @@
     <description>Recent content in Bodybuilder on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 26 Jan 2022 12:39:37 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 14 Aug 2025 15:12:48 +0530</lastBuildDate>
     <atom:link href="/tags/bodybuilder/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bodybuilder - A python port of the nodeJS BodyBuilder Package</title>
-      <link>/posts/bodybuilder_intro/</link>
+      <link>/posts/20201018-bodybuilder_intro/</link>
       <pubDate>Sun, 18 Oct 2020 20:39:10 +0530</pubDate>
-      <guid>/posts/bodybuilder_intro/</guid>
+      <guid>/posts/20201018-bodybuilder_intro/</guid>
       <description></description>
     </item>
   </channel>

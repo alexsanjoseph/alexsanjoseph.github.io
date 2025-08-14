@@ -6,27 +6,27 @@
     <description>Recent content in Optimization on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 24 Apr 2022 15:09:59 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 14 Aug 2025 15:12:48 +0530</lastBuildDate>
     <atom:link href="/tags/optimization/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Searching for RH Counterexamples in Golang - Improving Performance via Parallel processing</title>
-      <link>/posts/rh-counterexamples-in-go-1_1-performance/</link>
+      <link>/posts/20220206-rh-counterexamples-in-go-1_1-performance/</link>
       <pubDate>Sun, 06 Feb 2022 00:00:52 +0000</pubDate>
-      <guid>/posts/rh-counterexamples-in-go-1_1-performance/</guid>
+      <guid>/posts/20220206-rh-counterexamples-in-go-1_1-performance/</guid>
       <description></description>
     </item>
     <item>
       <title>Optimizing Grafana Queries With Elasticsearch</title>
-      <link>/posts/optimizing-grafana-queries-with-es/</link>
+      <link>/posts/20210224-optimizing-grafana-queries-with-es/</link>
       <pubDate>Wed, 24 Feb 2021 21:05:59 +0530</pubDate>
-      <guid>/posts/optimizing-grafana-queries-with-es/</guid>
+      <guid>/posts/20210224-optimizing-grafana-queries-with-es/</guid>
       <description></description>
     </item>
     <item>
       <title>AWS Instance type recommender for optimal resource packing</title>
-      <link>/posts/aws-instance-recommender/</link>
+      <link>/posts/20201220-aws-instance-recommender/</link>
       <pubDate>Sun, 20 Dec 2020 10:39:10 +0530</pubDate>
-      <guid>/posts/aws-instance-recommender/</guid>
+      <guid>/posts/20201220-aws-instance-recommender/</guid>
       <description></description>
     </item>
   </channel>
