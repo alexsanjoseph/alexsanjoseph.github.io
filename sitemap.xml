@@ -3,10 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2025-08-14T19:18:14+05:30</lastmod>
+    <lastmod>2025-08-15T09:42:14+05:30</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2025-08-14T19:18:14+05:30</lastmod>
+    <lastmod>2025-08-15T09:42:14+05:30</lastmod>
+  </url><url>
+    <loc>/tags/small-teams/</loc>
+    <lastmod>2025-08-15T09:42:14+05:30</lastmod>
+  </url><url>
+    <loc>/posts/20250815-working-with-ai/</loc>
+    <lastmod>2025-08-15T09:42:14+05:30</lastmod>
+  </url><url>
+    <loc>/tags/software-engineering/</loc>
+    <lastmod>2025-08-15T09:42:14+05:30</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2025-08-15T09:42:14+05:30</lastmod>
   </url><url>
     <loc>/tags/ai/</loc>
     <lastmod>2025-08-14T19:16:36+05:30</lastmod>
@@ -17,13 +29,7 @@
     <loc>/tags/programming/</loc>
     <lastmod>2025-08-14T19:16:36+05:30</lastmod>
   </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2025-08-14T19:16:36+05:30</lastmod>
-  </url><url>
     <loc>/posts/20250714-specifications-as-code-reality-check/</loc>
-    <lastmod>2025-08-14T19:16:36+05:30</lastmod>
-  </url><url>
-    <loc>/tags/software-engineering/</loc>
     <lastmod>2025-08-14T19:16:36+05:30</lastmod>
   </url><url>
     <loc>/tags/specifications/</loc>
