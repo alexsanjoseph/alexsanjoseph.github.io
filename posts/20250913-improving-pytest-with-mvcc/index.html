@@ -17,28 +17,28 @@
     
     
 
-<title>Improving pytest with MVCC • Alex&#39;s Blog</title>
+<title>Unit Test Isolation using MVCC • Alex&#39;s Blog</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Improving pytest with MVCC">
+  <meta name="twitter:title" content="Unit Test Isolation using MVCC">
   <meta name="twitter:description" content="Pasting random things together">
       <meta name="twitter:site" content="@alexsanjoseph">
 
 <meta property="og:url" content="/posts/20250913-improving-pytest-with-mvcc/">
   <meta property="og:site_name" content="Alex&#39;s Blog">
-  <meta property="og:title" content="Improving pytest with MVCC">
+  <meta property="og:title" content="Unit Test Isolation using MVCC">
   <meta property="og:description" content="Pasting random things together">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-09-13T00:30:00-07:00">
-    <meta property="article:modified_time" content="2025-09-13T15:44:34+05:30">
+    <meta property="article:modified_time" content="2025-09-13T19:40:03+05:30">
     <meta property="article:tag" content="Programming">
-    <meta property="article:tag" content="Python">
     <meta property="article:tag" content="Testing">
-    <meta property="article:tag" content="Postgresql">
+    <meta property="article:tag" content="Databases">
+    <meta property="article:tag" content="Mvcc">
 
 
     
@@ -192,10 +192,10 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     </div>
     
     <div class="post-header-image">
-      <img src="/images/improving-pytest-with-mvcc/cover.png" alt="Improving pytest with MVCC" class="header-image" />
+      <img src="/images/improving-pytest-with-mvcc/cover.png" alt="Unit Test Isolation using MVCC" class="header-image" />
     </div>
     
-    <h1>Improving pytest with MVCC</h1>
+    <h1>Unit Test Isolation using MVCC</h1>
     
     
 <div class="post__meta">
@@ -218,13 +218,13 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     <a class="badge badge-tag" href="/tags/programming">programming</a>
      
     
-    <a class="badge badge-tag" href="/tags/python">python</a>
-     
-    
     <a class="badge badge-tag" href="/tags/testing">testing</a>
      
     
-    <a class="badge badge-tag" href="/tags/postgresql">postgresql</a>
+    <a class="badge badge-tag" href="/tags/databases">databases</a>
+     
+    
+    <a class="badge badge-tag" href="/tags/mvcc">mvcc</a>
     
     
     
@@ -238,15 +238,15 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
   
   <div class="post">
     <p>I believe that a hacker/script-kiddie evolves into a software engineer at the point when they realize that they need to write tests for their own benefit and not because someone else forced them to complete 100% test coverage in the code. That realization took me four years down the line after writing my first professional code, but that&rsquo;s a story for another day. Anything more than a pure exploratory script that I write will have some sort of automated testing associated with it today.</p>
-<p>Today I want to take a break from all the AI craziness and spend a little bit of time explaining a small technique to improve the way you write tests in Python.</p>
+<p>Today I want to take a break from all the AI craziness and spend a little bit of time explaining a small technique that works across any testing framework and any MVCC-capable database - using database transactions to achieve perfect test isolation without teardown boilerplate.</p>
 <h2 id="using-data-in-tests">Using Data in Tests</h2>
-<p>Any reasonably sized product and system will use a database to store/access the data. At a really small scale, it can even be something as simple as a SQLite/Files/Memory, but the moment you hit production, at any scale, you will want to use a real database. The standard choice today for 90% of cases is PostgreSQL, because the industry seems to have settled on it.</p>
-<p>Using PostgreSQL as the DB, writing a test goes something like this.</p>
+<p>Any reasonably sized product and system will use a database to store/access data. At a really small scale, it can even be something as simple as SQLite/Files/Memory, but the moment you hit production, at any scale, you will want to use a real database.</p>
+<p>Whether you&rsquo;re using pytest, unittest, Jest, RSpec, or any other testing framework, the pattern for database tests is always the same:</p>
 <ul>
 <li>Add data into the DB</li>
 <li>Verify that the functionality works</li>
 </ul>
-<p>For example, let&rsquo;s say we have a User model in our application and want to test user permissions.</p>
+<p>For example, let&rsquo;s say we have a User model in our application and want to test user permissions. Here&rsquo;s how it might look in Python with PostgreSQL (but the same concept applies to any language and database):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_user_permissions</span>():
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create a user and role directly in the database (setup)</span>
 </span></span><span style="display:flex;"><span>    conn <span style="color:#f92672">=</span> get_db_connection()
@@ -269,12 +269,13 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Test permission functionality</span>
 </span></span><span style="display:flex;"><span>    has_admin <span style="color:#f92672">=</span> check_user_permission(user_id, <span style="color:#e6db74">&#34;admin_access&#34;</span>)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> has_admin <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>
-</span></span></code></pre></div><p>The above setup works fine and if there are some issues with the application logic in <code>check_user_permission</code>, the test should find it correctly. However, the code above, as is, can cause insidious bugs.</p>
-<h2 id="test-isolation-with-setup-and-teardown">Test isolation with Setup and Teardown</h2>
+</span></span></code></pre></div><p>The above setup works fine and if there are some issues with the application logic in <code>check_user_permission</code>, the test should find it correctly. However, the code above, as is, can cause insidious bugs regardless of which testing framework you&rsquo;re using.</p>
+<h2 id="the-test-isolation-problem">The Test Isolation Problem</h2>
 <p>The reason is that once there are multiple tests, they could secretly affect each other. If you create data in test A, it could still be hanging around when test B runs.
 This causes flaky tests that pass sometimes and fail other times depending on the order they run in.
 There is already lots of material available online on test isolation, so I am not going to go into that here.</p>
-<p>The traditional solution around the problem is <code>setup</code> and <code>teardown</code>. Before each test, you set up the data you need. After each test, you clean up everything you created.</p>
+<p>The traditional solution to the problem is <code>setup</code> and <code>teardown</code>. Every testing framework has some version of this - pytest fixtures, unittest setUp/tearDown, Jest beforeEach/afterEach, etc. Before each test, you set up the data you need. After each test, you clean up everything you created.
+In this example we are doing <code>setup</code> and <code>teardown</code> directly in the test function.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_user_permissions</span>():
 </span></span><span style="display:flex;"><span>    conn <span style="color:#f92672">=</span> get_db_connection()
 </span></span><span style="display:flex;"><span>    cursor <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span>cursor()
@@ -306,20 +307,21 @@ There is already lots of material available online on test isolation, so I am no
 </span></span><span style="display:flex;"><span>    cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#34;DELETE FROM users WHERE id = </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span>, (user_id,))
 </span></span><span style="display:flex;"><span>    cursor<span style="color:#f92672">.</span>execute(<span style="color:#e6db74">&#34;DELETE FROM roles WHERE id = </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span>, (role_id,))
 </span></span><span style="display:flex;"><span>    conn<span style="color:#f92672">.</span>commit()
-</span></span></code></pre></div><p>This seems to have fixed the problem to an extent, but we have more issues now.</p>
+</span></span></code></pre></div><p>This seems to have fixed the problem to an extent, but now we have more issues.</p>
 <ol>
-<li>We have a lot of boilerplate now which we don&rsquo;t care about.</li>
-<li>Tests stopping in the middle for any reason (error in the code or even a power failure) can cause the data state to reach an invalid state which can cause flakiness when running the test again.</li>
+<li>We now have a lot of boilerplate code which we don&rsquo;t care about.</li>
+<li>Tests stopping in the middle for any reason (error in the code or even a power failure) can cause the data state to reach an invalid state, which can cause flakiness when running the test again.</li>
 </ol>
 <h2 id="mvcc">MVCC</h2>
-<p>PostgreSQL has this brilliant feature called Multi-Version Concurrency Control (MVCC).
-Without getting too deep into the database internals, it can be summarized as: PostgreSQL can handle multiple versions of the same data simultaneously.</p>
-<p>When you start a <em>transaction</em>, PostgreSQL creates a snapshot of the database at that moment. Any changes you make within that transaction are only visible to you on that connection.
-Other connections see the original data. If you rollback the transaction, it&rsquo;s like your changes never happened - PostgreSQL just discards your version and keeps the original.
+<p>Many modern databases have this brilliant feature called Multi-Version Concurrency Control (MVCC). PostgreSQL, SQL Server, Oracle, and many others support it.
+Without getting too deep into the database internals, it can be summarized as: MVCC databases can handle multiple versions of the same data simultaneously.</p>
+<p>When you start a <em>transaction</em>, the database creates a snapshot of the data at that moment. Any changes you make within that transaction are only visible to you on that connection.
+Other connections see the original data. If you rollback the transaction, it&rsquo;s like your changes never happened - the database just discards your version and keeps the original.
 What is beautiful is that even if you don&rsquo;t manually rollback and the transaction gets cancelled for any reason, it is happening within a &ldquo;sandbox&rdquo; and other queries are not affected by these changes.</p>
-<p>This is what makes PostgreSQL so good at handling concurrent queries without locks everywhere. But it also gives us a superpower for testing.</p>
+<p>This is what makes MVCC databases so good at handling concurrent queries without locks everywhere. But it also gives us a superpower for testing.</p>
 <h2 id="mvcc--tests">MVCC + Tests</h2>
 <p>The idea is simple: what if we run each test inside its own transaction? Any data we create during the test automatically becomes invisible to other tests. We don&rsquo;t even need to worry about teardown!</p>
+<p>We can update our code as:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># conftest.py</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pytest
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> psycopg2
@@ -362,17 +364,18 @@ What is beautiful is that even if you don&rsquo;t manually rollback and the tran
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> has_super <span style="color:#f92672">==</span> <span style="color:#66d9ef">False</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e"># No teardown needed! MVCC handles isolation automatically</span>
-</span></span></code></pre></div><p>This seems like a very small change but the benefits can add up quickly since we are no longer worried about test isolation.
-The connection object is best defined at the main <code>conftest.py</code> (with function/class scope) and be shared by all of the tests.
+</span></span></code></pre></div><p>This seems like a very small change, but the benefits can add up quickly since we are no longer worried about test isolation.
+The connection object is best managed at the framework level (pytest&rsquo;s <code>conftest.py</code>, Jest&rsquo;s setup files, etc.) with appropriate scoping and shared by all tests.
 This pattern has saved me countless hours of writing teardown code and hunting down flaky tests.</p>
 <p>One thing to note is that this works great for database logic, but if your tests interact with external services or run E2E tests or files, you&rsquo;ll still need traditional teardown for those.
 For the vast majority of backend tests this shouldn&rsquo;t be a problem since you&rsquo;re mostly testing application logic and using the DB to store/retrieve data.</p>
-<p>Give it a try in your next Python project and let me know how it goes!</p>
+<p>Give it a try in your next project, regardless of which testing framework you&rsquo;re using, and let me know how it goes!</p>
 <blockquote class="info">
     <strong>You can use the same MVCC concepts within an API to keep it idempotent as well as handle failures cleanly! I&rsquo;ll explain this in another post.</strong><br>
     
 </blockquote>
 <hr>
+<p><em>Thanks to <a href="https://github.com/acrarshin">acrarshin</a> and <a href="https://github.com/RainingComputers">RainingComputers</a> for giving pointers to improve this post!</em></p>
 <p><em>If you found this useful, please consider sharing it on <a href="https://news.ycombinator.com/submitlink?u=https://alexjoseph.dev/posts/improving-pytest-with-mvcc/">Hacker News</a>!</em></p>
   </div>
   
