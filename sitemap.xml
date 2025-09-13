@@ -3,28 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2025-09-13T14:35:33+05:30</lastmod>
+    <lastmod>2025-09-13T15:07:36+05:30</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2025-09-13T14:35:33+05:30</lastmod>
+    <lastmod>2025-09-13T15:07:36+05:30</lastmod>
   </url><url>
     <loc>/posts/20250913-improving-pytest-with-mvcc/</loc>
-    <lastmod>2025-09-13T14:35:33+05:30</lastmod>
+    <lastmod>2025-09-13T15:07:36+05:30</lastmod>
+  </url><url>
+    <loc>/posts/202510-17-improving-apis-with-mvcc/</loc>
+    <lastmod>2025-09-13T15:07:36+05:30</lastmod>
   </url><url>
     <loc>/tags/postgresql/</loc>
-    <lastmod>2025-09-13T14:35:33+05:30</lastmod>
+    <lastmod>2025-09-13T15:07:36+05:30</lastmod>
   </url><url>
     <loc>/tags/programming/</loc>
-    <lastmod>2025-09-13T14:35:33+05:30</lastmod>
+    <lastmod>2025-09-13T15:07:36+05:30</lastmod>
   </url><url>
     <loc>/tags/python/</loc>
-    <lastmod>2025-09-13T14:35:33+05:30</lastmod>
+    <lastmod>2025-09-13T15:07:36+05:30</lastmod>
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2025-09-13T14:35:33+05:30</lastmod>
+    <lastmod>2025-09-13T15:07:36+05:30</lastmod>
   </url><url>
     <loc>/tags/testing/</loc>
-    <lastmod>2025-09-13T14:35:33+05:30</lastmod>
+    <lastmod>2025-09-13T15:07:36+05:30</lastmod>
   </url><url>
     <loc>/tags/small-teams/</loc>
     <lastmod>2025-08-15T15:45:24+05:30</lastmod>
