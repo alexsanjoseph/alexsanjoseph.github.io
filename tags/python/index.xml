@@ -6,8 +6,15 @@
     <description>Recent content in Python on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 14 Aug 2025 15:13:55 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 13 Sep 2025 14:35:33 +0530</lastBuildDate>
     <atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Improving pytest with MVCC</title>
+      <link>/posts/20250913-improving-pytest-with-mvcc/</link>
+      <pubDate>Sat, 13 Sep 2025 00:30:00 -0700</pubDate>
+      <guid>/posts/20250913-improving-pytest-with-mvcc/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Searching for RH Counterexamples in Golang - Improving Performance via Parallel processing</title>
       <link>/posts/20220206-rh-counterexamples-in-go-1_1-performance/</link>

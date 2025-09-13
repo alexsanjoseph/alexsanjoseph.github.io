@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Half-Marathon on Alex&#39;s Blog</title>
+    <link>//localhost:1313/tags/half-marathon/</link>
+    <description>Recent content in Half-Marathon on Alex&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 28 Aug 2025 17:33:50 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/half-marathon/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beyond the Plateau: My Running Transformation Results</title>
+      <link>//localhost:1313/posts/20250830-beyond-the-plateau-transformation-results/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/20250830-beyond-the-plateau-transformation-results/</guid>
+      <description>&lt;p&gt;In my previous posts, I explained how I was stuck in the Running Plateau and the science-based training approach that helped me break through it. I detailed the principles of zone-based training, proper recovery, strategic intervals, and structured periodization that formed the foundation of my new approach.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
