@@ -6,7 +6,7 @@
     <description>Recent content in Testing on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 13 Sep 2025 19:40:03 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 14 Sep 2025 10:47:52 +0530</lastBuildDate>
     <atom:link href="/tags/testing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Improving APIs with MVCC</title>
@@ -24,9 +24,9 @@
     </item>
     <item>
       <title>Unit Test Isolation using MVCC</title>
-      <link>/posts/20250913-improving-pytest-with-mvcc/</link>
+      <link>/posts/20250914-unit-test-isolation-with-mvcc/</link>
       <pubDate>Sat, 13 Sep 2025 00:30:00 -0700</pubDate>
-      <guid>/posts/20250913-improving-pytest-with-mvcc/</guid>
+      <guid>/posts/20250914-unit-test-isolation-with-mvcc/</guid>
       <description></description>
     </item>
   </channel>
