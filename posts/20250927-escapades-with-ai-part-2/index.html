@@ -4,7 +4,7 @@
     
 
 
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <head>
     <link href="https://gmpg.org/xfn/11" rel="profile">
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,24 +17,24 @@
     
     
 
-<title>Escapades with AI - One Bite at a time • Alex&#39;s Blog</title>
+<title>Escapades with AI - How do you eat an elephant? • Alex&#39;s Blog</title>
 
 
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Escapades with AI - One Bite at a time">
+  <meta name="twitter:title" content="Escapades with AI - How do you eat an elephant?">
   <meta name="twitter:description" content="Pasting random things together">
       <meta name="twitter:site" content="@alexsanjoseph">
 
-<meta property="og:url" content="//localhost:1313/posts/20250927-escapades-with-ai-part-2/">
+<meta property="og:url" content="/posts/20250927-escapades-with-ai-part-2/">
   <meta property="og:site_name" content="Alex&#39;s Blog">
-  <meta property="og:title" content="Escapades with AI - One Bite at a time">
+  <meta property="og:title" content="Escapades with AI - How do you eat an elephant?">
   <meta property="og:description" content="Pasting random things together">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-09-07T10:30:00-07:00">
-    <meta property="article:modified_time" content="2025-09-07T10:30:00-07:00">
+    <meta property="article:published_time" content="2025-09-27T10:30:00-07:00">
+    <meta property="article:modified_time" content="2025-10-04T10:19:37+05:30">
     <meta property="article:tag" content="Programming">
     <meta property="article:tag" content="Ai">
 
@@ -82,14 +82,14 @@
   <div class="container ">
     <div class="sidebar-about">
       <span class="site__title">
-        <a href="//localhost:1313/">Alex&#39;s Blog</a>
+        <a href="/">Alex&#39;s Blog</a>
       </span>
       
         
         
         
         <div class="author-image">
-          <img src="//localhost:1313/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
+          <img src="/images/alex.jpeg" alt="Author Image" class="img--circle img--headshot element--center">
         </div>
         
       
@@ -186,23 +186,26 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <article>
   <header>
     <div class="home-button">
-      <a href="//localhost:1313/" class="home-link">← Home</a>
+      <a href="/" class="home-link">← Home</a>
     </div>
     
     <div class="post-header-image">
-      <img src="/images/specifications-as-code-reality-check/you-want-a-new-internet.png" alt="Escapades with AI - One Bite at a time" class="header-image" />
+      <img src="/images/escapades-with-ai-one-bite/cover.png" alt="Escapades with AI - How do you eat an elephant?" class="header-image" />
     </div>
     
-    <h1>Escapades with AI - One Bite at a time</h1>
+    <h1>Escapades with AI - How do you eat an elephant?</h1>
     
     
 <div class="post__meta">
     </script>
     
     
-    <i class="fas fa-calendar-alt"></i> Created: 2025 Sep 7
+    <i class="fas fa-calendar-alt"></i> Created: 2025 Sep 27
     
     
+    
+    , Updated:
+    2025 Oct 4
     
     
     
@@ -222,21 +225,66 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
     
     
     <br />
-    <i class="fas fa-clock"></i> 1 min read
+    <i class="fas fa-clock"></i> 5 min read
 </div>
 
   </header>
   
   
   <div class="post">
-    <ul>
-<li>This is the second on on the series</li>
-</ul>
-<p>Problem statement</p>
+    <p>This is the second installment in my &ldquo;Escapades with AI&rdquo; series. Today&rsquo;s story comes from early June, back when I was still figuring out the boundaries of what these AI agents could actually handle.</p>
+<blockquote class="info">
+    <strong>If you missed the first one about <a href="/posts/2025/08/escapades-with-ai-the-volkswagen/">Claude&rsquo;s Volkswagen-level defeat device</a>, check it out here.</strong><br>
+    
+</blockquote>
+<h2 id="the-mission">The Mission</h2>
+<p>I was attempting to migrate a module in my Flutter app from the aging MVC paradigm to the shiny new MVVM architecture. The details of MVC vs MVVM aren&rsquo;t important here - what matters is that we were modernizing a legacy app. This seemed like the perfect use case for a completely hands-off LLM agent approach:</p>
 <ul>
-<li>Convert MVC to MVVM</li>
-<li>I&rsquo;m an abject failure</li>
+<li>✅ Clear problem statement</li>
+<li>✅ Existing tests to prevent complete derailment</li>
+<li>✅ Boring, mechanical work</li>
 </ul>
+<p>Normally, a migration like this would take a week of tedious refactoring. With the help of agentic tools, I was hoping to knock it out in a couple of hours.</p>
+<p>This was around the time Claude was released, and we were still not all in on &ldquo;agentic&rdquo; bandwagon and were still using Cursor. I fired up Cursor in agentic mode and gave it the high-level problem statement.</p>
+<p>I gave it complete permissions and asked it to proceed with implementation. I was hoping that by the time I was back from grabbing a cup of coffee the migration would be complete.</p>
+<h2 id="the-spiral">The Spiral</h2>
+<p>It took roughly 30 minutes for the first cut. During that time, Cursor occasionally asked for further permissions to do stuff, and I wasn&rsquo;t really paying attention - just generally making sure it wasn&rsquo;t doing anything blatantly stupid.</p>
+<p>After 30 minutes, it went into a loop. I realized that it wasn&rsquo;t making any progress anymore.</p>
+<p>When I looked at the number of files that had changed in the GitHub diff, it had modified almost the <strong>entire repository</strong> - not just the module it was supposed to touch.</p>
+<p>That&rsquo;s when I realized this might not be as easy as I&rsquo;d hoped.</p>
+<p>Here&rsquo;s a snippet from the interaction at that point:</p>
+<p><img src="/images/escapades-with-ai-one-bite/snippet-1.png#large" alt="Cursor realizes it&rsquo;s losing control"></p>
+<p>The LLM is quite self-aware here and realizes it&rsquo;s losing hold of the story, but it&rsquo;s very tenacious in trying to see if it can fix things. Although the problem itself wasn&rsquo;t that complicated, it had changed quite a few files. I asked it to check the Git history - it was working fine before with all tests passing, so let&rsquo;s see what changed since then.</p>
+<p>At this point, it started spinning for another 15-20 minutes and came back with this:</p>
+<p><img src="/images/escapades-with-ai-one-bite/snippet-2.png#large" alt="Cursor tries advanced Git archaeology"></p>
+<p>Now we&rsquo;re really losing control. You can see the LLM trying to do advanced Git commands and finding the history, but it&rsquo;s not going anywhere! The funny part is how it almost expects me to shout at it somehow, and is strangely human in the way the response is phrased. I wonder if this happens because of how it&rsquo;s been trained to be extremely apologetic when something goes wrong.</p>
+<p>I gave it a little bit more encouragement, saying &ldquo;These are the files to fix&rdquo; and asked it to continue to see if it could recover.</p>
+<p><img src="/images/escapades-with-ai-one-bite/snippet-3.png#large" alt="Cursor admits defeat"></p>
+<p>At this point, the LLM kind of really gave up. It literally told me that it couldn&rsquo;t fix it and it might be better for me to take over and fix it manually. It apologizes to me for the &ldquo;time wasted&rdquo; (althought it was doing all the work)</p>
+<h2 id="the-choice">The Choice</h2>
+<p>I was left with two options:</p>
+<ol>
+<li>Completely give up and manually do the bulk of the migration</li>
+<li>Provide deep architectural help on how to do the migration</li>
+</ol>
+<p>Instead of choosing either of those, I was wondering if I could teach it like I would teach a junior developer. So I asked, <strong>&ldquo;How would you eat an elephant?&rdquo;</strong></p>
+<p>I wasn&rsquo;t expecting the LLM to really parse it - it was more like a funny human question that I would ask a colleague who was overthinking a problem and I was hoping that the LLM would ask for clarification.</p>
+<p>I was quite surprised by how well it handled the nuance:</p>
+<p><img src="/images/escapades-with-ai-one-bite/snippet-4.png#large" alt="Cursor gets the metaphor"></p>
+<p>It had really understood what was going on and grasped the meaning of the metaphor. It realized that to make a big change like this, it needed to go step by step - or bite by bite. At this point, it understood it had to slow down and make a plan.</p>
+<p>This is now standard practice for us when working with LLM tools (Cursor, Claude Code, etc.) - entering planning mode before tackling bigger projects. But at that point in June, we had to manually prompt it to slow down.</p>
+<h2 id="the-recovery">The Recovery</h2>
+<p>With the prompting, it actually started step-by-step, created a plan, and went through it one-by-one. Even here, it did keep making the mistake of trying to do too many things at once, and I had to rein it back and slow it down to make sure that at each point the tests were passing.</p>
+<p>But what was interesting was that with all of this back-and-forth and false starts, we were able to do the migration end-to-end in <strong>less than a day</strong> - which was still an amazing improvement from what we would&rsquo;ve done before. I had to spend maybe a few more hours making sure the polish was fine and the edges were all filed correctly, but there was no doubt that this approach had made my life easier by giving me at least a <strong>3x speedup</strong>.</p>
+<h2 id="the-lessons">The Lessons</h2>
+<p>Many of the learnings from this experience have now become industry standard:</p>
+<ul>
+<li><strong>Do planning</strong> - Don&rsquo;t let the agent jump straight into implementation</li>
+<li><strong>Go step by step</strong> - Rather than trying to solve everything at once</li>
+<li><strong>LLMs do understand human nuance and humor</strong> - The elephant metaphor indeed helped it get out of the hole.</li>
+</ul>
+<p>This was the point where I went all in on LLMs. They&rsquo;re not magic - they need guidance, constraints, and the occasional metaphorical nudge - but when you work with them right, they can be incredibly effective.</p>
+<p>Sometimes the best way to help an AI is to treat it like you would a smart but overeager junior developer: give it permission to slow down, break things into smaller pieces, and tackle them one bite at a time.</p>
   </div>
   
 
