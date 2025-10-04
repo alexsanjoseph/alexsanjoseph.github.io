@@ -34,7 +34,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-09-27T10:30:00-07:00">
-    <meta property="article:modified_time" content="2025-10-04T12:41:17+05:30">
+    <meta property="article:modified_time" content="2025-10-04T22:50:32+05:30">
     <meta property="article:tag" content="Programming">
     <meta property="article:tag" content="Ai">
 
@@ -247,7 +247,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>Normally, a migration like this would take a week of tedious refactoring. With the help of agentic tools, I was hoping to knock it out in a couple of hours.</p>
 <p>This was around the time Claude was released, and we were still not all in on &ldquo;agentic&rdquo; bandwagon and were still using Cursor. I fired up Cursor in agentic mode and gave it the high-level problem statement.</p>
 <p>I gave it complete permissions and asked it to proceed with implementation. I was hoping that by the time I was back from grabbing a cup of coffee the migration would be complete.</p>
-<h2 id="the-spiral">The Spiral</h2>
+<h2 id="entering-the-infinite-loop">Entering the infinite loop</h2>
 <p>It took roughly 30 minutes for the first cut. During that time, Cursor occasionally asked for further permissions to do stuff, and I wasn&rsquo;t really paying attention - just generally making sure it wasn&rsquo;t doing anything blatantly stupid.</p>
 <p>After 30 minutes, it went into a loop. I realized that it wasn&rsquo;t making any progress anymore.</p>
 <p>When I looked at the number of files that had changed in the GitHub diff, it had modified almost the <strong>entire repository</strong> - not just the module it was supposed to touch.</p>
@@ -261,7 +261,7 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p>I gave it a little bit more encouragement, saying &ldquo;These are the files to fix&rdquo; and asked it to continue to see if it could recover.</p>
 <p><img src="/images/escapades-with-ai-one-bite/snippet-3.png#large" alt="Cursor admits defeat"></p>
 <p>At this point, the LLM kind of really gave up. It literally told me that it couldn&rsquo;t fix it and it might be better for me to take over and fix it manually. It apologizes to me for the &ldquo;time wasted&rdquo; (althought it was doing all the work)</p>
-<h2 id="the-choice">The Choice</h2>
+<h2 id="one-bite-at-a-time">One bite at a time</h2>
 <p>I was left with two options:</p>
 <ol>
 <li>Completely give up and manually do the bulk of the migration</li>
@@ -273,7 +273,6 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
 <p><img src="/images/escapades-with-ai-one-bite/snippet-4.png#large" alt="Cursor gets the metaphor"></p>
 <p>It had really understood what was going on and grasped the meaning of the metaphor. It realized that to make a big change like this, it needed to go step by step - or bite by bite. At this point, it understood it had to slow down and make a plan.</p>
 <p>This is now standard practice for us when working with LLM tools (Cursor, Claude Code, etc.) - entering planning mode before tackling bigger projects. But at that point in June, we had to manually prompt it to slow down.</p>
-<h2 id="the-recovery">The Recovery</h2>
 <p>With the prompting, it actually started step-by-step, created a plan, and went through it one-by-one. Even here, it did keep making the mistake of trying to do too many things at once, and I had to rein it back and slow it down to make sure that at each point the tests were passing.</p>
 <p>But what was interesting was that with all of this back-and-forth and false starts, we were able to do the migration end-to-end in <strong>less than a day</strong> - which was still an amazing improvement from what we would&rsquo;ve done before. I had to spend maybe a few more hours making sure the polish was fine and the edges were all filed correctly, but there was no doubt that this approach had made my life easier by giving me at least a <strong>3x speedup</strong>.</p>
 <h2 id="the-lessons">The Lessons</h2>
