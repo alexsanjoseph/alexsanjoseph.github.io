@@ -6,20 +6,34 @@
     <description>Recent content in Kicking-It-Forward on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 13 Sep 2025 14:05:18 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 24 Oct 2025 02:42:53 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/tags/kicking-it-forward/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Help the people who leave you get the jobs they deserve</title>
-      <link>//localhost:1313/posts/20251122-land-good-jobs-for-your-employees-copy/</link>
-      <pubDate>Wed, 17 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/20251122-land-good-jobs-for-your-employees-copy/</guid>
+      <title>Once you go down the vibe code route, you are stuck</title>
+      <link>//localhost:1313/posts/20251108-vibe-coding-is-self-reinforcing/</link>
+      <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/20251108-vibe-coding-is-self-reinforcing/</guid>
       <description></description>
     </item>
     <item>
-      <title>Vibe code first, engineer when you need to maintain.</title>
-      <link>//localhost:1313/posts/20251011-vibe-first-engineer-at-point-of-maintenance/</link>
+      <title>Keep text short</title>
+      <link>//localhost:1313/posts/20251025-keep-text-short/</link>
+      <pubDate>Sat, 25 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/20251025-keep-text-short/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fallback problem - Fragility is a feature in early production, not a bug</title>
+      <link>//localhost:1313/posts/20251122-fragility-is-a-feature-not-a-bug/</link>
       <pubDate>Wed, 17 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/20251011-vibe-first-engineer-at-point-of-maintenance/</guid>
+      <guid>//localhost:1313/posts/20251122-fragility-is-a-feature-not-a-bug/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Help the people who leave you get the jobs they deserve</title>
+      <link>//localhost:1313/posts/20251122-how-to-learn-in-the-age-of-ai/</link>
+      <pubDate>Wed, 17 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/20251122-how-to-learn-in-the-age-of-ai/</guid>
       <description></description>
     </item>
   </channel>
