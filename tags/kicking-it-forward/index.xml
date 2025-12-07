@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kicking-It-Forward on Alex&#39;s Blog</title>
-    <link>//localhost:1313/tags/kicking-it-forward/</link>
+    <link>/tags/kicking-it-forward/</link>
     <description>Recent content in Kicking-It-Forward on Alex&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 24 Oct 2025 02:42:53 +0530</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/kicking-it-forward/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Nov 2025 09:29:58 +0530</lastBuildDate>
+    <atom:link href="/tags/kicking-it-forward/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Once you go down the vibe code route, you are stuck</title>
-      <link>//localhost:1313/posts/20251108-vibe-coding-is-self-reinforcing/</link>
+      <link>/posts/20261108-vibe-coding-is-self-reinforcing/</link>
       <pubDate>Sat, 08 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/20251108-vibe-coding-is-self-reinforcing/</guid>
+      <guid>/posts/20261108-vibe-coding-is-self-reinforcing/</guid>
       <description></description>
     </item>
     <item>
       <title>Keep text short</title>
-      <link>//localhost:1313/posts/20251025-keep-text-short/</link>
+      <link>/posts/20261025-keep-text-short/</link>
       <pubDate>Sat, 25 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/20251025-keep-text-short/</guid>
+      <guid>/posts/20261025-keep-text-short/</guid>
       <description></description>
     </item>
     <item>
       <title>Fallback problem - Fragility is a feature in early production, not a bug</title>
-      <link>//localhost:1313/posts/20251122-fragility-is-a-feature-not-a-bug/</link>
+      <link>/posts/20261122-fragility-is-a-feature-not-a-bug/</link>
       <pubDate>Wed, 17 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/20251122-fragility-is-a-feature-not-a-bug/</guid>
+      <guid>/posts/20261122-fragility-is-a-feature-not-a-bug/</guid>
       <description></description>
     </item>
     <item>
       <title>Help the people who leave you get the jobs they deserve</title>
-      <link>//localhost:1313/posts/20251122-how-to-learn-in-the-age-of-ai/</link>
+      <link>/posts/20261122-how-to-learn-in-the-age-of-ai/</link>
       <pubDate>Wed, 17 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/20251122-how-to-learn-in-the-age-of-ai/</guid>
+      <guid>/posts/20261122-how-to-learn-in-the-age-of-ai/</guid>
       <description></description>
     </item>
   </channel>
