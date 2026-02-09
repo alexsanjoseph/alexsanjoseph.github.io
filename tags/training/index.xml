@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Training on Alex&#39;s Blog</title>
+    <link>//localhost:1313/tags/training/</link>
+    <description>Recent content in Training on Alex&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 28 Aug 2025 17:33:50 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/training/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Breaking the Plateau: A Data-Driven Approach to Running</title>
+      <link>//localhost:1313/posts/20250829-breaking-the-plateau-data-driven-approach/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/20250829-breaking-the-plateau-data-driven-approach/</guid>
+      <description>&lt;p&gt;In my previous post, I shared my 8-year running journey and the frustrating 4-year plateau I couldn&amp;rsquo;t seem to break through. I described how despite consistent effort, my 10K time improved by only 1 second over four long years. Today, I want to dive into the science and methodology that finally broke that plateau.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Running Plateau: My Eight-Year Search for Speed</title>
+      <link>//localhost:1313/posts/20250828-running-plateau-eight-year-search/</link>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/20250828-running-plateau-eight-year-search/</guid>
+      <description>&lt;p&gt;Hi, this is Alex, CTO and Co-founder of Netrin. This post chronicles my unlikely transformation from a kid who couldn&amp;rsquo;t run a single lap without gasping for air to someone who now comfortably logs half marathons.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
