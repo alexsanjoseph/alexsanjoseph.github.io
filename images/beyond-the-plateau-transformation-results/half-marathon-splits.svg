@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="550" viewBox="0 0 960 550" role="img" aria-labelledby="title desc">
+  <title id="title">Half-marathon splits: 2017 versus 2025</title>
+  <desc id="desc">Average pace per segment, with faster paces higher on the chart. In 2017: 7:38, 7:35, 8:07, and 8:39 per kilometre. In 2025: 6:06, 6:04, 6:04, and 6:09 per kilometre. All four segments are 5 kilometres each, covering the first 20 kilometres. The 2017 race slowed markedly, while the 2025 race stayed steady.</desc>
+  <rect width="960" height="550" fill="#ffffff"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#000000">
+    <text x="480" y="34" text-anchor="middle" font-size="24" font-weight="700">5K Splits for Two Half Marathons</text>
+    <g stroke="#d3d3d3" stroke-width="1" fill="none">
+      <path d="M 110 80 H 775 V 420 H 110 Z"/>
+      <path d="M 110 95 H 775 M 110 145 H 775 M 110 195 H 775 M 110 245 H 775 M 110 295 H 775 M 110 345 H 775 M 110 395 H 775"/>
+      <path d="M 165 80 V 420 M 350 80 V 420 M 535 80 V 420 M 720 80 V 420"/>
+    </g>
+    <g stroke="#777777" stroke-width="1" fill="none">
+      <path d="M 110 80 V 420 H 775"/>
+      <path d="M 104 95 H 110 M 104 145 H 110 M 104 195 H 110 M 104 245 H 110 M 104 295 H 110 M 104 345 H 110 M 104 395 H 110"/>
+      <path d="M 165 420 V 426 M 350 420 V 426 M 535 420 V 426 M 720 420 V 426"/>
+    </g>
+    <g font-size="16" text-anchor="end">
+      <text x="98" y="101">6:00</text>
+      <text x="98" y="151">6:30</text>
+      <text x="98" y="201">7:00</text>
+      <text x="98" y="251">7:30</text>
+      <text x="98" y="301">8:00</text>
+      <text x="98" y="351">8:30</text>
+      <text x="98" y="401">9:00</text>
+    </g>
+    <text transform="translate(30 250) rotate(-90)" text-anchor="middle" font-size="18" font-weight="700">Average Pace (min/km)</text>
+    <g font-size="16" text-anchor="middle">
+      <text x="165" y="450">First 5K</text>
+      <text x="350" y="450">Second 5K</text>
+      <text x="535" y="450">Third 5K</text>
+      <text x="720" y="450">Fourth 5K</text>
+    </g>
+    <text x="442.5" y="486" text-anchor="middle" font-size="18" font-weight="700">Race Segment</text>
+    <g fill="none" stroke-width="3" stroke-linejoin="round">
+      <path d="M 165 258.33 L 350 253.33 L 535 306.67 L 720 360" stroke="#f58518" stroke-dasharray="7 5"/>
+      <path d="M 165 105 L 350 101.67 L 535 101.67 L 720 110" stroke="#4c78a8"/>
+    </g>
+    <g fill="#ffffff" stroke-width="2.5">
+      <g stroke="#f58518">
+        <circle cx="165" cy="258.33" r="5"/>
+        <circle cx="350" cy="253.33" r="5"/>
+        <circle cx="535" cy="306.67" r="5"/>
+        <circle cx="720" cy="360" r="5"/>
+      </g>
+      <g stroke="#4c78a8">
+        <circle cx="165" cy="105" r="5"/>
+        <circle cx="350" cy="101.67" r="5"/>
+        <circle cx="535" cy="101.67" r="5"/>
+        <circle cx="720" cy="110" r="5"/>
+      </g>
+    </g>
+    <g font-size="17" text-anchor="middle">
+      <text x="165" y="241">7:38</text>
+      <text x="350" y="236">7:35</text>
+      <text x="535" y="289">8:07</text>
+      <text x="720" y="343">8:39</text>
+      <text x="165" y="134">6:06</text>
+      <text x="350" y="131">6:04</text>
+      <text x="535" y="131">6:04</text>
+      <text x="720" y="139">6:09</text>
+    </g>
+    <g font-size="16">
+      <text x="802" y="94" font-weight="700">Race Year</text>
+      <path d="M 802 119 H 834" stroke="#f58518" stroke-width="3" stroke-dasharray="7 5"/>
+      <circle cx="818" cy="119" r="5" fill="#ffffff" stroke="#f58518" stroke-width="2.5"/>
+      <text x="844" y="125">2017</text>
+      <path d="M 802 151 H 834" stroke="#4c78a8" stroke-width="3"/>
+      <circle cx="818" cy="151" r="5" fill="#ffffff" stroke="#4c78a8" stroke-width="2.5"/>
+      <text x="844" y="157">2025</text>
+    </g>
+  </g>
+</svg>
